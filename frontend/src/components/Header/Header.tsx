@@ -24,6 +24,9 @@ const Header = () => {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
+          <li>
+            <Link to="/contact">change</Link>
+          </li>
         </ul>
         <div className="user-panel flex items-center gap-2 text-2xl font-bold">
           <CiSun className="cursor-pointer" />
