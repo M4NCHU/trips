@@ -4,10 +4,13 @@ import Logo from "../../assets/images/logo.png";
 
 import { CiSun } from "react-icons/ci";
 import { PiHeartLight } from "react-icons/pi";
+import Navlink from "./Navlink";
+import SearchModal from "../Modals/SearchModal";
+import Switcher from "../ui/Switcher";
 
 const Header = () => {
   return (
-    <nav className="w-full flex justify-center">
+    <nav className="w-full flex justify-center border-b-[1px] border-gray">
       <div className="p-2 flex flex-row justify-between container">
         <div className="nav-logo ">
           <div className="w-12 h-12 flex items-center">
@@ -15,22 +18,27 @@ const Header = () => {
           </div>
         </div>
         <ul className="flex flex-row items-center gap-4 ">
-          <li>
+          <Navlink>
             <Link to="/">Home</Link>
-          </li>
-          <li>
+          </Navlink>
+
+          <Navlink>
             <Link to="/blogs">Blogs</Link>
-          </li>
-          <li>
+          </Navlink>
+
+          <Navlink>
             <Link to="/contact">Contact</Link>
-          </li>
-          <li>
-            <Link to="/contact">change</Link>
-          </li>
+          </Navlink>
+
+          <Navlink>
+            <SearchModal />
+          </Navlink>
         </ul>
         <div className="user-panel flex items-center gap-2 text-2xl font-bold">
-          <CiSun className="cursor-pointer" />
-          <PiHeartLight className="cursor-pointer" />
+          <Switcher />
+          <button>
+            <PiHeartLight className="cursor-pointer" />
+          </button>
           <div className="w-12 h-12 flex items-center">
             <img src={Logo} alt="site logo" className="object-contain" />
           </div>
