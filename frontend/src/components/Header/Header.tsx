@@ -10,14 +10,14 @@ import Switcher from "../ui/Switcher";
 
 const Header = () => {
   return (
-    <nav className="w-full flex justify-center border-b-[1px] border-gray">
+    <nav className="w-full flex justify-center border-b-[1px] border-secondary">
       <div className="p-2 flex flex-row justify-between container">
         <div className="nav-logo ">
-          <div className="w-12 h-12 flex items-center">
+          <Link to={"/"} className="w-12 h-12 flex items-center">
             <img src={Logo} alt="site logo" className="object-contain" />
-          </div>
+          </Link>
         </div>
-        <ul className="flex flex-row items-center gap-4 ">
+        <ul className="hidden md:flex flex-row items-center gap-4 ">
           <Navlink>
             <Link to="/">Home</Link>
           </Navlink>
