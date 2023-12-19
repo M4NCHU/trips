@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using backend.Models;
 using Microsoft.Extensions.Hosting;
 using backend.Services;
+using backend.Authentication;
 
 namespace backend.Controllers
 {

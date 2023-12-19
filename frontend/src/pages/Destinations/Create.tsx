@@ -7,6 +7,7 @@ import axios from "axios";
 import { FC, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
 import { DestinationPayload } from "../../lib/validators/destination";
+import FormHeader from "../../components/Forms/FormHeader";
 
 interface CreateProps {}
 
@@ -136,15 +137,7 @@ const Create: FC<CreateProps> = ({}) => {
 
   return (
     <div className="container px-4">
-      <div className="form-header flex flex-row py-6 gap-4 items-center">
-        <Button className="bg-transparent text-foreground border-2 border-secondary hover:bg-secondary">
-          <FaArrowLeft />
-        </Button>
-        <div className="flex flex-col justify-center">
-          <span className="text-xs">Back to home page</span>
-          <h1 className="text-2xl font-bold">Create new Destination</h1>
-        </div>
-      </div>
+      <FormHeader title="Create new Destination" />
       <form
         className=" bg-secondary rounded-lg p-4 "
         onSubmit={handleFormSubmit}
