@@ -32,7 +32,7 @@
 
   <ItemGroup>
     <Folder Include="Images\Destinations\" />
-    <Folder Include="Interface\" />
+    <Folder Include="Images\Category\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -14,8 +14,11 @@ namespace backend.Models
         public string? PhotoUrl { get; set; }
 
         [NotMapped]
-        public IFormFile ImageFile {  get; set; }
+        public IFormFile ImageFile { get; set; }
 
+        public int? CategoryId { get; set; }
+        public Category? Category { get; set; }
 
     }
 }
+

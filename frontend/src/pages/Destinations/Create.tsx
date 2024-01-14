@@ -1,13 +1,9 @@
-import TextArea from "../../components/Forms/TextArea";
+import { FC, useState } from "react";
+import { createDestination } from "../../api/Destinations";
+import FormHeader from "../../components/Forms/FormHeader";
 import Input from "../../components/Forms/Input";
 import { Button } from "../../components/ui/button";
-import { Destinations } from "@/src/types/Destinations";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { FC, useState } from "react";
-import { FaArrowLeft } from "react-icons/fa6";
-import { DestinationPayload } from "../../lib/validators/destination";
-import FormHeader from "../../components/Forms/FormHeader";
+import { GetCategoryList } from "../../api/Category";
 
 interface CreateProps {}
 
@@ -17,6 +13,7 @@ interface FormValues {
   destinationDesc: string;
   imageSrc: string;
   imageFile: File | null;
+  selectedCategory: number;
 }
 
 const initialFieldValues: FormValues = {
@@ -25,16 +22,12 @@ const initialFieldValues: FormValues = {
   destinationDesc: "",
   imageSrc: "",
   imageFile: null,
+  selectedCategory: 0,
 };
 
-const Create: FC<CreateProps> = ({}) => {
-  // const [destinationName, setDestinationName] = useState<string>("");
-  // const [destinationLocation, setDestinationLocation] = useState<string>("");
-  // const [destinationDesc, setDestinationDesc] = useState<string>("");
-  // const [imageSrc, setImageSrc] = useState<string>("");
-  // const [imageFile, setImageFile] = useState<File | null>(null);
-
+const CreateDestination: FC<CreateProps> = ({}) => {
   const [values, setValues] = useState(initialFieldValues);
+  const { data: categories, isLoading, isError } = GetCategoryList();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -44,23 +37,14 @@ const Create: FC<CreateProps> = ({}) => {
     });
   };
 
-  // console.log("imageFile", imageFile);
-  // console.log("imageSrc", imageSrc);
+  const handleCategoryToggle = (categoryId: number) => {
+    setValues({
+      ...values,
+      selectedCategory: values.selectedCategory === categoryId ? 0 : categoryId,
+    });
+  };
 
-  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (e.target.files && e.target.files[0]) {
-  //     const file = e.target.files[0];
-  //     setImageFile(file);
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       if (typeof reader.result === "string") {
-  //         setImageFile(file);
-  //         setImageSrc(reader.result);
-  //       }
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
+  console.log(values.selectedCategory);
 
   const showPreview = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -95,45 +79,18 @@ const Create: FC<CreateProps> = ({}) => {
     formData.append("location", values.destinationLocation);
     formData.append("description", values.destinationDesc);
     formData.append("photoUrl", values.imageSrc);
+    formData.append("categoryId", String(values.selectedCategory));
 
     if (values.imageFile !== null) {
       formData.append("imageFile", values.imageFile);
     }
 
     try {
-      // Now you can proceed with the form submission using formData
-      const response = await axios.post(
-        "https://localhost:7154/api/Destinations",
-        formData
-      );
-
-      console.log(response.data);
+      await createDestination(formData);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
   };
-
-  // const { mutate: createComment } = useMutation({
-  //   mutationFn: async () => {
-  //     const payload = {
-  //       name: destinationName,
-  //       location: destinationLocation,
-  //       description: destinationDesc,
-  //       photoUrl: imageSrc,
-  //       imageFile: imageFile,
-  //     };
-
-  //     console.log("payload", payload);
-
-  //     const { data } = await axios.post(
-  //       "https://localhost:7154/api/Destinations",
-  //       payload
-  //     );
-
-  //     console.log(data);
-  //     return data;
-  //   },
-  // });
 
   return (
     <div className="container px-4">
@@ -168,6 +125,35 @@ const Create: FC<CreateProps> = ({}) => {
               value={values.destinationDesc}
               onChange={handleInputChange}
             />
+
+            <div className="flex flex-col gap-4 mb-2">
+              <label className="font-bold mb-2" htmlFor="">
+                Choose category
+              </label>
+
+              <div>
+                {categories
+                  ? categories.map((category, i) => (
+                      <div
+                        key={category.id}
+                        className={`flex flex-col w-14 h-14 items-center justify-center relative gap-1 ${
+                          values.selectedCategory === category.id
+                            ? "border-2 border-blue-500" // Apply styling for the selected category
+                            : ""
+                        }`}
+                        onClick={() => handleCategoryToggle(category.id)}
+                      >
+                        <img
+                          src={category.photoUrl}
+                          alt={`${category.name}`}
+                          className="object-cover"
+                        />
+                        <div>{category.name}</div>
+                      </div>
+                    ))
+                  : "There is no categories"}
+              </div>
+            </div>
           </div>
 
           <div className="w-full md:w-1/3 flex flex-col">
@@ -199,4 +185,4 @@ const Create: FC<CreateProps> = ({}) => {
   );
 };
 
-export default Create;
+export default CreateDestination;

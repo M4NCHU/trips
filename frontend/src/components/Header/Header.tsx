@@ -7,6 +7,7 @@ import { PiHeartLight } from "react-icons/pi";
 import Navlink from "./Navlink";
 import SearchModal from "../Modals/SearchModal";
 import Switcher from "../ui/Switcher";
+import { Button } from "../ui/button";
 
 const Header = () => {
   return (
@@ -34,7 +35,8 @@ const Header = () => {
             <SearchModal />
           </Navlink>
         </ul>
-        <div className="user-panel flex items-center gap-2 text-2xl font-bold">
+        <div className="user-panel flex items-center gap-4 text-2xl font-bold">
+          <Button className="bg-pink-600 text-white">Planning</Button>
           <Switcher />
           <button>
             <PiHeartLight className="cursor-pointer" />

@@ -13,6 +13,7 @@ namespace backend.Authentication
 
         /*public DbSet<Employee> Employees { get; set; }*/
         public DbSet<Trip> Trips { get; set; }
+        public DbSet<Category> Category { get; set; }
         /*public DbSet<User> Users { get; set; }
         public DbSet<GuardianParticipant> GuardianParticipants { get; set; }
         public DbSet<TripGuardian> TripGuardians { get; set; }
@@ -33,6 +34,13 @@ namespace backend.Authentication
 
 
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Destination>()
+                .HasOne(d => d.Category)
+                .WithMany(c => c.Destinations)
+                .HasForeignKey(d => d.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+
         }
     }
 }

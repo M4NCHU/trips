@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
 import { Button } from "../ui/button";
+import { Link } from "react-router-dom";
 
 interface FormHeaderProps {
   title: string;
@@ -9,9 +10,12 @@ interface FormHeaderProps {
 const FormHeader: FC<FormHeaderProps> = ({ title }) => {
   return (
     <div className="form-header flex flex-row py-6 gap-4 items-center">
-      <Button className="bg-transparent text-foreground border-2 border-secondary hover:bg-secondary">
+      <Link
+        to={`/`}
+        className="bg-transparent p-3 rounded-lg text-foreground border-2 border-secondary hover:bg-secondary"
+      >
         <FaArrowLeft />
-      </Button>
+      </Link>
       <div className="flex flex-col justify-center">
         <span className="text-xs">Back to home page</span>
         <h1 className="text-2xl font-bold">{title}</h1>

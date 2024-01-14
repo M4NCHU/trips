@@ -1,4 +1,5 @@
 using backend.Authentication;
+using backend.Controllers;
 using backend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -24,13 +25,16 @@ builder.Services.AddScoped<ImageService>(provider =>
     return new ImageService(hostingEnvironment, "Images");
 });
 
+builder.Services.AddScoped<IDestinationService, DestinationService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 
 
 
 // Register DBContext
 builder.Services.AddDbContext<TripsDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DBconnection"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DBconnection") + ";Include Error Detail=true");
 });
 
 

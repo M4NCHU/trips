@@ -1,7 +1,6 @@
-export type Destinations = {
+export type Category = {
   id: number;
   name: string;
   description: string;
-  location: string;
   photoUrl: string;
 };

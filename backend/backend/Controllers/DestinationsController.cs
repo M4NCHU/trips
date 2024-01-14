@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using backend.DTOs;
+using backend.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using backend.Models;
 using Microsoft.Extensions.Hosting;
-using backend.Services;
-using backend.Authentication;
 
 namespace backend.Controllers
 {
@@ -16,129 +14,50 @@ namespace backend.Controllers
     [ApiController]
     public class DestinationsController : ControllerBase
     {
-        private readonly TripsDbContext _context;
-        private readonly IWebHostEnvironment _hostEnvironment;
-        private readonly ImageService _imageService;
+        private readonly IDestinationService _destinationService;
 
-        public DestinationsController(TripsDbContext context, IWebHostEnvironment hostEnvironment, ImageService imageService)
+        public DestinationsController(IDestinationService destinationService)
         {
-            _context = context;
-            this._hostEnvironment = hostEnvironment;
-            this._imageService = imageService;
+            _destinationService = destinationService;
         }
 
         // GET: api/Destinations
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Destination>>> GetDestinations()
+        public async Task<ActionResult<IEnumerable<DestinationDTO>>> GetDestinations(int page = 1, int pageSize = 2)
         {
-          if (_context.Destinations == null)
-          {
-              return NotFound();
-          }
-            return await _context.Destinations
-                .Select(x=>new Destination() { 
-                    Name = x.Name,
-                    Description = x.Description,
-                    Location = x.Location,
-                    PhotoUrl = String.Format("{0}://{1}{2}/Images/Destinations/{3}", Request.Scheme, Request.Host, Request.PathBase, x.PhotoUrl)
-                }).ToListAsync();
-
+            var destinations = await _destinationService.GetDestinations(page, pageSize, Request.Scheme, Request.Host.ToString(), Request.PathBase.ToString());
+            return destinations;
         }
+
 
         // GET: api/Destinations/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Destination>> GetDestination(int id)
+        public async Task<ActionResult<DestinationDTO>> GetDestination(int id)
         {
-          if (_context.Destinations == null)
-          {
-              return NotFound();
-          }
-            var destination = await _context.Destinations.FindAsync(id);
-
-            if (destination == null)
-            {
-                return NotFound();
-            }
-
-            return destination;
+            return await _destinationService.GetDestination(id, Request.Scheme, Request.Host.ToString(), Request.PathBase.ToString());
         }
 
         // PUT: api/Destinations/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDestination(int id, Destination destination)
+        public async Task<IActionResult> PutDestination(int id, DestinationDTO destination)
         {
-            if (id != destination.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(destination).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DestinationExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return await _destinationService.PutDestination(id, destination);
         }
 
         // POST: api/Destinations
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPost]
-        public async Task<ActionResult<Destination>> PostDestination([FromForm]Destination destination)
+        public async Task<ActionResult<DestinationDTO>> PostDestination([FromForm] DestinationDTO destination)
         {
-          if (_context.Destinations == null)
-          {
-              return Problem("Entity set 'TripsDbContext.Destinations'  is null.");
-          }
-            if (destination.ImageFile != null)
-            {
-                destination.PhotoUrl = await _imageService.SaveImage(destination.ImageFile, "Destinations");
-            }
-            _context.Destinations.Add(destination);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetDestination", new { id = destination.Id }, destination);
+            return await _destinationService.PostDestination(destination);
         }
 
         // DELETE: api/Destinations/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDestination(int id)
         {
-            if (_context.Destinations == null)
-            {
-                return NotFound();
-            }
-            var destination = await _context.Destinations.FindAsync(id);
-            if (destination == null)
-            {
-                return NotFound();
-            }
-
-            _context.Destinations.Remove(destination);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return await _destinationService.DeleteDestination(id);
         }
-
-        private bool DestinationExists(int id)
-        {
-            return (_context.Destinations?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
-
-       
-
     }
 }

@@ -3,7 +3,7 @@ import CategoriesList from "../../components/Categories/CategoriesList";
 import DestinationsList from "../../components/Destinations/DestinationsList";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { Destinations } from "@/src/types/Destinations";
+import { Destination } from "@/src/types/Destination";
 import axios from "axios";
 import { GoPlus } from "react-icons/go";
 
@@ -16,17 +16,6 @@ type DestinationType = {
 };
 
 const Home = () => {
-  // useEffect(() => {
-  //   fetch("https://localhost:7154/api/Destinations")
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       setDestinations(data);
-  //       console.log(data);
-  //     });
-  // }, []);
-
   return (
     <>
       <CategoriesList />
