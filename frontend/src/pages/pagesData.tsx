@@ -6,6 +6,7 @@ import CreateCategory from "./Categories/Create";
 import Contact from "./Contact/Contact";
 import CreateDestination from "./Destinations/Create";
 import Home from "./Home/Home";
+import CreateVisitPlace from "./VisitPlaces/Create";
 
 const pagesData: routerType[] = [
   {
@@ -32,6 +33,11 @@ const pagesData: routerType[] = [
     path: "categories/create",
     element: <CreateCategory />,
     title: "Create destination category",
+  },
+  {
+    path: ":id/visit-place/create",
+    element: <CreateVisitPlace />,
+    title: "Create visit place",
   },
   {
     path: "login",

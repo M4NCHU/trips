@@ -7,7 +7,7 @@ import { fetchData } from "./apiUtils";
 // Get Categories with pagination
 export const GetCategoryList = () => {
   return useQuery<Category[], Error>({
-    queryKey: ["categoires"],
+    queryKey: ["categories"],
     queryFn: async () => {
       return fetchData<Category[]>("/api/category");
     },

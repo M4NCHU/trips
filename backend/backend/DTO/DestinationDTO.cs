@@ -16,10 +16,13 @@ namespace backend.DTOs
 
         
         public int? CategoryId { get; set; }
-        public CategoryDTO? Category { get; set; }
-
+        
         // Property for handling file uploads
         public IFormFile ImageFile { get; set; }
+
+        public CategoryDTO? Category { get; set; }
+
+        public List<VisitPlaceDTO> VisitPlaces { get; set; }
     }
 
 

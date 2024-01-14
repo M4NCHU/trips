@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using backend.Authentication;
@@ -11,9 +12,10 @@ using backend.Authentication;
 namespace backend.Migrations
 {
     [DbContext(typeof(TripsDbContext))]
-    partial class TripsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240114111657_VisitPlaces")]
+    partial class VisitPlaces
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -209,9 +211,6 @@ namespace backend.Migrations
                     b.Property<string>("PhotoUrl")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("double precision");
 
                     b.HasKey("Id");
 

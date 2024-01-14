@@ -80,6 +80,7 @@ namespace backend.Services
 
             var destinationDTO = new DestinationDTO
             {
+                Id = destination.Id,
                 Name = destination.Name,
                 Description = destination.Description,
                 Location = destination.Location,

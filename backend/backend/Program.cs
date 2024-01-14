@@ -27,6 +27,7 @@ builder.Services.AddScoped<ImageService>(provider =>
 
 builder.Services.AddScoped<IDestinationService, DestinationService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IVisitPlaceService, VisitPlaceService>();
 
 
 
