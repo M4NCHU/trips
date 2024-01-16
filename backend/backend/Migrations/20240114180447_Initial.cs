@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace backend.Migrations
 {
-    public partial class Auth : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,6 +47,37 @@ namespace backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Category",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
+                    PhotoUrl = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Category", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Trips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Status = table.Column<int>(type: "integer", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    EndDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    TotalPrice = table.Column<double>(type: "double precision", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Trips", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -155,6 +186,111 @@ namespace backend.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Destinations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
+                    Location = table.Column<string>(type: "text", nullable: true),
+                    PhotoUrl = table.Column<string>(type: "text", nullable: true),
+                    CategoryId = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Destinations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Destinations_Category_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Category",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TripDestinations",
+                columns: table => new
+                {
+                    TripId = table.Column<int>(type: "integer", nullable: false),
+                    DestinationId = table.Column<int>(type: "integer", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TripDestinations", x => new { x.TripId, x.DestinationId });
+                    table.ForeignKey(
+                        name: "FK_TripDestinations_Destinations_DestinationId",
+                        column: x => x.DestinationId,
+                        principalTable: "Destinations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TripDestinations_Trips_TripId",
+                        column: x => x.TripId,
+                        principalTable: "Trips",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VisitPlaces",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
+                    PhotoUrl = table.Column<string>(type: "text", nullable: false),
+                    Price = table.Column<double>(type: "double precision", nullable: false),
+                    DestinationId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VisitPlaces", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_VisitPlaces_Destinations_DestinationId",
+                        column: x => x.DestinationId,
+                        principalTable: "Destinations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SelectedPlace",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    TripDestinationId = table.Column<int>(type: "integer", nullable: false),
+                    TripDestinationTripId = table.Column<int>(type: "integer", nullable: false),
+                    TripDestinationDestinationId = table.Column<int>(type: "integer", nullable: false),
+                    VisitPlaceId = table.Column<int>(type: "integer", nullable: false),
+                    TripModelId = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SelectedPlace", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SelectedPlace_TripDestinations_TripDestinationTripId_TripDe~",
+                        columns: x => new { x.TripDestinationTripId, x.TripDestinationDestinationId },
+                        principalTable: "TripDestinations",
+                        principalColumns: new[] { "TripId", "DestinationId" },
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SelectedPlace_Trips_TripModelId",
+                        column: x => x.TripModelId,
+                        principalTable: "Trips",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_SelectedPlace_VisitPlaces_VisitPlaceId",
+                        column: x => x.VisitPlaceId,
+                        principalTable: "VisitPlaces",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -191,6 +327,36 @@ namespace backend.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Destinations_CategoryId",
+                table: "Destinations",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SelectedPlace_TripDestinationTripId_TripDestinationDestinat~",
+                table: "SelectedPlace",
+                columns: new[] { "TripDestinationTripId", "TripDestinationDestinationId" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SelectedPlace_TripModelId",
+                table: "SelectedPlace",
+                column: "TripModelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SelectedPlace_VisitPlaceId",
+                table: "SelectedPlace",
+                column: "VisitPlaceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TripDestinations_DestinationId",
+                table: "TripDestinations",
+                column: "DestinationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VisitPlaces_DestinationId",
+                table: "VisitPlaces",
+                column: "DestinationId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -211,10 +377,28 @@ namespace backend.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "SelectedPlace");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "TripDestinations");
+
+            migrationBuilder.DropTable(
+                name: "VisitPlaces");
+
+            migrationBuilder.DropTable(
+                name: "Trips");
+
+            migrationBuilder.DropTable(
+                name: "Destinations");
+
+            migrationBuilder.DropTable(
+                name: "Category");
         }
     }
 }

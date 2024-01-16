@@ -10,7 +10,7 @@ interface DestinationItemProps {
 const DestinationItem: FC<DestinationItemProps> = ({ data }) => {
   return (
     <Link to={`/destinations/details/${data.id}`}>
-      <div className="category-item flex flex-col gap-4 p-4 cursor-pointer  border-b-2 border-transparent hover:border-secondary">
+      <div className="category-item flex flex-col gap-4 p-2 cursor-pointer  border-b-2 border-transparent hover:border-secondary">
         <div className="category-item__img  flex items-center justify-center relative">
           <img
             src={data.photoUrl}

@@ -33,7 +33,9 @@
   <ItemGroup>
     <Folder Include="Images\Destinations\" />
     <Folder Include="Images\Category\" />
+    <Folder Include="Images\Accommodations\" />
     <Folder Include="Images\VisitPlace\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>

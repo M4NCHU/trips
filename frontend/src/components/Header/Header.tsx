@@ -36,7 +36,15 @@ const Header = () => {
           </Navlink>
         </ul>
         <div className="user-panel flex items-center gap-4 text-2xl font-bold">
-          <Button className="bg-pink-600 text-white">Planning</Button>
+          <Link
+            to={`/planning`}
+            className="bg-pink-600 p-2 rounded-lg text-base text-white relative"
+          >
+            <div className="absolute -top-2 -right-2 bg-green-400 rounded-full p-1 w-6 h-6 flex items-center justify-center">
+              2
+            </div>
+            Planning
+          </Link>
           <Switcher />
           <button>
             <PiHeartLight className="cursor-pointer" />

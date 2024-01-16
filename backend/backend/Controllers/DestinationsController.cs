@@ -29,6 +29,20 @@ namespace backend.Controllers
             return destinations;
         }
 
+        // GET: api/Destinations/GetDestinationsForTrip/1
+        [HttpGet("GetDestinationsForTrip/{tripId}")]
+        public async Task<ActionResult<IEnumerable<DestinationDTO>>> GetDestinationsForTrip(int tripId)
+        {
+            try
+            {
+                var destinationsForTrip = await _destinationService.GetDestinationsForTrip(tripId);
+                return destinationsForTrip;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+            }
+        }
 
         // GET: api/Destinations/5
         [HttpGet("{id}")]

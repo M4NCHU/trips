@@ -4,13 +4,13 @@
 
 namespace backend.Migrations
 {
-    public partial class VisitPlacesPrice : Migration
+    public partial class pricetodestination : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<double>(
                 name: "Price",
-                table: "VisitPlaces",
+                table: "Destinations",
                 type: "double precision",
                 nullable: false,
                 defaultValue: 0.0);
@@ -20,7 +20,7 @@ namespace backend.Migrations
         {
             migrationBuilder.DropColumn(
                 name: "Price",
-                table: "VisitPlaces");
+                table: "Destinations");
         }
     }
 }

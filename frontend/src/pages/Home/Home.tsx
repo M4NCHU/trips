@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <>
       <CategoriesList />
-      <div className="container my-5">
+      <div className="container my-5 px-4">
         <div className="flex justify-end fixed bottom-4 right-4 z-[9999]">
           <Link
             to="/destinations/create"

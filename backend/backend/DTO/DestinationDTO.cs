@@ -13,6 +13,7 @@ namespace backend.DTOs
         public string Description { get; set; }
         public string? Location { get; set; }
         public string? PhotoUrl { get; set; }
+        public double Price { get; set; }
 
         
         public int? CategoryId { get; set; }
@@ -22,7 +23,9 @@ namespace backend.DTOs
 
         public CategoryDTO? Category { get; set; }
 
-        public List<VisitPlaceDTO> VisitPlaces { get; set; }
+        public List<VisitPlaceDTO>? VisitPlaces { get; set; }
+        public List<TripDestinationDTO>? TripDestinations { get; set; }
+
     }
 
 

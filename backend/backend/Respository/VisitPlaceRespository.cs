@@ -47,7 +47,7 @@ namespace backend.Services
         }
 
 
-        public async Task<ActionResult<VisitPlaceDTO>> GetVisitPlace(int id)
+        public async Task<ActionResult<VisitPlaceDTO>> GetVisitPlace(int id, string scheme = "https", string host = "example.com", string pathBase = "/basepath")
         {
             if (_context.VisitPlaces == null)
             {
@@ -65,8 +65,9 @@ namespace backend.Services
             {
                 Name = visitPlace.Name,
                 Description = visitPlace.Description,
-                PhotoUrl = visitPlace.PhotoUrl,
-                DestinationId = visitPlace.DestinationId
+                PhotoUrl = string.Format("{0}://{1}{2}/Images/VisitPlace/{3}", scheme, host, pathBase, visitPlace.PhotoUrl),
+                DestinationId = visitPlace.DestinationId,
+                Price = visitPlace.Price
             };
 
             return VisitPlaceDTO;
@@ -193,6 +194,9 @@ namespace backend.Services
             return (_context.VisitPlaces?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
+
         
+
+
     }
 }

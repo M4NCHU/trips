@@ -6,6 +6,7 @@ export type Destination = {
   description: string;
   location: string;
   photoUrl: string;
+  price: number;
   categoryId: number;
 };
 

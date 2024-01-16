@@ -38,3 +38,13 @@ export const GetVisitPlacesByDestination = (id: string) => {
     },
   });
 };
+
+// Get visitPlace by destination id
+export const GetVisitPlacesById = (id: string) => {
+  return useQuery<VisitPlace[], Error>({
+    queryKey: ["visitPlaceByDestinationId"],
+    queryFn: async () => {
+      return fetchData<VisitPlace[]>(`/api/VisitPlace/${id}`);
+    },
+  });
+};

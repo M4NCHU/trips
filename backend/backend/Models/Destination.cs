@@ -12,6 +12,7 @@ namespace backend.Models
         public string Description { get; set; }
         public string? Location { get; set; }
         public string? PhotoUrl { get; set; }
+        public double Price { get; set; }
 
         [NotMapped]
         public IFormFile ImageFile { get; set; }
@@ -19,6 +20,8 @@ namespace backend.Models
         public int? CategoryId { get; set; }
         public Category? Category { get; set; }
         public List<VisitPlace>? VisitPlaces { get; set; }
+
+        public List<TripDestination>? TripDestinations { get; set; }
 
     }
 }

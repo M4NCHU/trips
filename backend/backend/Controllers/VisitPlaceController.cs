@@ -34,7 +34,7 @@ namespace backend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<VisitPlaceDTO>> GetVisitPlace(int id)
         {
-            return await _visitPlaceService.GetVisitPlace(id);
+            return await _visitPlaceService.GetVisitPlace(id, Request.Scheme, Request.Host.ToString(), Request.PathBase.ToString());
         }
 
         // GET: api/VisitPlaces/ByDestination/1

@@ -27,6 +27,8 @@ namespace backend.Authentication
         /*public DbSet<Rating> Ratings { get; set; }
         public DbSet<Guardian> Guardians { get; set; }*/
         public DbSet<TripDestination> TripDestinations { get; set; }
+        public DbSet<SelectedPlaceModel> SelectedPlace { get; set; }
+        public DbSet<AccommodationModel> Accommodation { get; set; }
 
 
 
@@ -49,7 +51,20 @@ namespace backend.Authentication
                 .HasForeignKey(vp => vp.DestinationId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<TripDestination>()
+                .HasKey(td => td.Id);
 
+            modelBuilder.Entity<TripDestination>()
+                .HasOne(td => td.Trip)
+                .WithMany(t => t.TripDestinations)
+                .HasForeignKey(td => td.TripId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<TripDestination>()
+                .HasOne(td => td.Destination)
+                .WithMany(d => d.TripDestinations)
+                .HasForeignKey(td => td.DestinationId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

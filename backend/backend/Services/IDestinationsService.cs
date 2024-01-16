@@ -11,6 +11,9 @@ namespace backend.Services
 
         Task<ActionResult<DestinationDTO>> GetDestination(int id, string scheme = "https", string host = "example.com", string pathBase = "/basepath");
 
+        Task<List<DestinationDTO>> GetDestinationsForTrip(int tripId);
+
+
         Task<IActionResult> PutDestination(int id, DestinationDTO destination);
 
         Task<ActionResult<DestinationDTO>> PostDestination([FromForm] DestinationDTO destination);

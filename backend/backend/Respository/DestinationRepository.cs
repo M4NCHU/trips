@@ -43,6 +43,7 @@ namespace backend.Services
                     Description = x.Description,
                     Location = x.Location,
                     PhotoUrl = string.Format("{0}://{1}{2}/Images/Destinations/{3}", scheme, host, pathBase, x.PhotoUrl),
+                    Price = x.Price,
                     CategoryId = x.CategoryId, // Assign CategoryId
                     Category = x.Category != null ? new CategoryDTO // Check if Category is not null
                     {
@@ -85,6 +86,7 @@ namespace backend.Services
                 Description = destination.Description,
                 Location = destination.Location,
                 PhotoUrl = string.Format("{0}://{1}{2}/Images/Destinations/{3}", scheme, host, pathBase, destination.PhotoUrl),
+                Price = destination.Price,
                 CategoryId = destination.CategoryId, // Assign CategoryId
                 Category = destination.Category != null ? new CategoryDTO // Check if Category is not null
                 {
@@ -96,6 +98,26 @@ namespace backend.Services
 
             return destinationDTO;
         }
+
+        public async Task<List<DestinationDTO>> GetDestinationsForTrip(int tripId)
+        {
+            var destinations = await _context.TripDestinations
+                .Where(td => td.TripId == tripId)
+                .Select(td => new DestinationDTO
+                {
+                    Id = td.DestinationId,
+                    Name = td.Destination.Name, // Assuming Destination has a Name property
+                    Description = td.Destination.Description,
+                    Location = td.Destination.Location,
+                    PhotoUrl = td.Destination.PhotoUrl,
+                    CategoryId = td.Destination.CategoryId
+                   
+                })
+                .ToListAsync();
+
+            return destinations;
+        }
+
 
         public async Task<IActionResult> PutDestination(int id, DestinationDTO destinationDTO)
         {

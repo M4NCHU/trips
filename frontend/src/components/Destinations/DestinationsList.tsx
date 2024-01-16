@@ -18,7 +18,7 @@ const DestinationsList: FC<DestinationsListProps> = ({}) => {
 
   return (
     <div className="flex flex-col items-center gap-12">
-      <div className="categories-list flex flex-row flex-wrap mt-4 justify-center ">
+      <div className="categories-list flex flex-row flex-wrap gap-4 md:gap-2 mt-4 justify-center ">
         {destinations
           ? destinations.map((item, i) => (
               <DestinationItem key={i} data={item} />
