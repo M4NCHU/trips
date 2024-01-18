@@ -23,7 +23,7 @@
     <Folder Include="Images\Destinations\" />
     <Folder Include="Images\Category\" />
     <Folder Include="Images\Accommodations\" />
-    <Folder Include="Images\TripParticipant\" />
+    <Folder Include="Images\Participant\" />
     <Folder Include="Images\VisitPlace\" />
     <Folder Include="Migrations\" />
   </ItemGroup>

@@ -25,7 +25,7 @@ namespace backend.Authentication
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-
+             
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<DestinationModel>()
@@ -55,7 +55,20 @@ namespace backend.Authentication
                 .HasForeignKey(td => td.DestinationId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            
+            modelBuilder.Entity<TripParticipantModel>()
+            .HasKey(tp => tp.Id);
+
+            modelBuilder.Entity<TripParticipantModel>()
+                .HasOne(tp => tp.Trip)
+                .WithMany(t => t.TripParticipants)
+                .HasForeignKey(tp => tp.TripId)
+                .OnDelete(DeleteBehavior.Restrict); 
+
+            modelBuilder.Entity<TripParticipantModel>()
+                .HasOne(tp => tp.Participant)
+                .WithMany(p => p.TripParticipants)
+                .HasForeignKey(tp => tp.ParticipantId)
+                .OnDelete(DeleteBehavior.Restrict); 
         }
     }
 }

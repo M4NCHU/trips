@@ -1,7 +1,7 @@
 import { FC } from "react";
-import DestinationItem from "./DestinationItem";
 import { GetDestinationList } from "../../api/Destinations";
 import PaginationButtons from "../ui/PaginationButtons";
+import DestinationItem from "./DestinationItem";
 
 interface DestinationsListProps {}
 

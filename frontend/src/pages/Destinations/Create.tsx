@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
+import { GetCategoryList } from "../../api/Category";
 import { createDestination } from "../../api/Destinations";
 import FormHeader from "../../components/Forms/FormHeader";
 import Input from "../../components/Forms/Input";
 import { Button } from "../../components/ui/button";
-import { GetCategoryList } from "../../api/Category";
 
 interface CreateProps {}
 

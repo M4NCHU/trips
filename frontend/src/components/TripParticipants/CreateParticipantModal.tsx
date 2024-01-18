@@ -1,24 +1,18 @@
 import { FC, useState } from "react";
+import { CiCirclePlus } from "react-icons/ci";
+import { UseCreateParticipant } from "../../api/ParticipantAPI";
+import { Participant } from "../../types/ParticipantTypes";
+import Input from "../Forms/Input";
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
-import { CiCirclePlus } from "react-icons/ci";
-import Input from "../Forms/Input";
-import { TripParticipant } from "../../types/TripParticipantTypes";
-import { UseCreateTripParticipant } from "../../api/TripParticipantAPI";
-// import { isDate, format } from "date-fns";
 
-interface CreateTripParticipantModalProps {}
+interface CreateParticipantModalProps {}
 
-const initialFieldValues: TripParticipant = {
+const initialFieldValues: Participant = {
   id: 0,
   firstName: "",
   lastName: "",
@@ -35,10 +29,8 @@ const initialFieldValues: TripParticipant = {
   tripId: 0,
 };
 
-const CreateTripParticipantModal: FC<
-  CreateTripParticipantModalProps
-> = ({}) => {
-  const [values, setValues] = useState<TripParticipant>(initialFieldValues);
+const CreateParticipantModal: FC<CreateParticipantModalProps> = ({}) => {
+  const [values, setValues] = useState<Participant>(initialFieldValues);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -97,7 +89,7 @@ const CreateTripParticipantModal: FC<
     formData.append("email", values.email);
     formData.append("phoneNumber", values.phoneNumber);
     formData.append("address", values.address);
-    formData.append("emergencyContactName", values.emergencyContactName);
+    formData.append("emergencyContact", values.emergencyContactName);
     formData.append("emergencyContactPhone", values.emergencyContactPhone);
     formData.append("medicalConditions", values.medicalConditions);
     formData.append("photoUrl", values.photoUrl || "");
@@ -109,7 +101,7 @@ const CreateTripParticipantModal: FC<
 
     try {
       // Assuming createDestination is a function to send the form data to the backend
-      await UseCreateTripParticipant(formData);
+      await UseCreateParticipant(formData);
       setValues(initialFieldValues);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -118,10 +110,8 @@ const CreateTripParticipantModal: FC<
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger>
-        <button className=" w-full p-2 flex items-center justify-center border-4 rounded-xl border-secondary hover:bg-secondary mt-2">
-          <CiCirclePlus className="text-4xl font-bold" />
-        </button>
+      <AlertDialogTrigger className=" w-full p-2 flex items-center justify-center border-4 rounded-xl border-secondary hover:bg-secondary mt-2">
+        <CiCirclePlus className="text-4xl font-bold" />
       </AlertDialogTrigger>
       <AlertDialogContent>
         <div className="flex flex-col flex-wrap gap-4">
@@ -131,7 +121,7 @@ const CreateTripParticipantModal: FC<
           </div>
           <form onSubmit={handleFormSubmit} className="">
             <div className="flex flex-col md:flex-row gap-4">
-              <div className=" w-1/2 flex flex-col gap-4">
+              <div className="w-full md:w-1/2 flex flex-col gap-4">
                 <Input
                   placeholder="Enter first name"
                   label="First Name"
@@ -176,7 +166,7 @@ const CreateTripParticipantModal: FC<
                 />
               </div>
 
-              <div className=" w-1/2 flex flex-col gap-4">
+              <div className="w-full md:w-1/2 flex flex-col gap-4">
                 <Input
                   placeholder="Enter address"
                   label="Address"
@@ -243,4 +233,4 @@ const CreateTripParticipantModal: FC<
   );
 };
 
-export default CreateTripParticipantModal;
+export default CreateParticipantModal;

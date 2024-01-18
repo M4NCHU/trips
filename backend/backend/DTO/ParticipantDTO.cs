@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace backend.DTOs
 {
@@ -25,7 +23,6 @@ namespace backend.DTOs
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Phone number is required.")]
-        [Phone(ErrorMessage = "Invalid phone number format.")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Address is required.")]
@@ -35,7 +32,6 @@ namespace backend.DTOs
         public string EmergencyContact { get; set; }
 
         [Required(ErrorMessage = "Emergency contact phone is required.")]
-        [Phone(ErrorMessage = "Invalid emergency contact phone number format.")]
         public string EmergencyContactPhone { get; set; }
 
         public string MedicalConditions { get; set; }
@@ -48,11 +44,11 @@ namespace backend.DTOs
         public int TripId { get; set; }
 
         public string PhotoUrl { get; set; }
-
-        [Required(ErrorMessage = "Image file is required.")]
-        [DataType(DataType.Upload)]
-        [NotMapped]
+        
         public IFormFile ImageFile { get; set; }
+
+       
+        public List<TripParticipantDTO>? TripParticipants { get; set; }
 
 
     }

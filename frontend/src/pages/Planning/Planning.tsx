@@ -1,19 +1,22 @@
-import { GetVisitPlacesById } from "../../api/VisitPlaceAPI";
-import { GetTripById } from "../../api/TripAPI";
-import { Button } from "../../components/ui/button";
 import { FC, useEffect, useState } from "react";
-import { CiCircleInfo, CiCirclePlus } from "react-icons/ci";
-import { FaArrowLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { GetDestinationById } from "../../api/Destinations";
-import { Destination, DestinationCategory } from "../../types/Destination";
-import { VisitPlace } from "../../types/VisitPlaceTypes";
-import { TripDestination } from "../../types/TripDestinationTypes";
-import { Trip } from "../../types/TripTypes";
-import { fetchData } from "../../api/apiUtils";
-import { IoMdClose } from "react-icons/io";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import CreateTripParticipantModal from "../../components/TripParticipants/CreateTripParticipantModal";
+import { CiCircleInfo } from "react-icons/ci";
+import { FaArrowLeft } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
+import { Link } from "react-router-dom";
+import { GetTripById } from "../../api/TripAPI";
+import { fetchData } from "../../api/apiUtils";
+
+import CreateParticipantModal from "../../components/TripParticipants/CreateParticipantModal";
+import { Button } from "../../components/ui/button";
+import { DestinationCategory } from "../../types/Destination";
+import { TripParticipant } from "../../types/TripParticipantTypes";
+import { VisitPlace } from "../../types/VisitPlaceTypes";
+import Card from "../../components/Planning/Card";
+import ParticipantCard from "../../components/Planning/ParticipantCard";
+import DestinationCard from "../../components/Planning/DestinationCard";
+import { TripDestinationInterface } from "../../types/TripDestinationTypes";
+import VisitPlaceCard from "../../components/Planning/VisitPlaceCard";
 
 interface PlanningProps {}
 
@@ -24,18 +27,13 @@ interface SelectedPlace {
   visitPlace: VisitPlace | null;
 }
 
-interface TripDestinationInterface {
-  tripId: number;
-  destinationId: number;
-  destination: DestinationCategory;
-  selectedPlaces: SelectedPlace[];
-}
-
 const Planning: FC<PlanningProps> = ({}) => {
   const [tripDestinations, setTripDestinations] = useState<
     TripDestinationInterface[]
   >([]);
   const [numberOfPeople, setNumberOfPeople] = useState<number>(1);
+  const [participantsListData, setParticipantsListData] =
+    useState<TripParticipant[]>();
 
   const { data: trip, isLoading, isError } = GetTripById("1");
 
@@ -47,23 +45,25 @@ const Planning: FC<PlanningProps> = ({}) => {
             trip.tripDestinations.map(async (tripDestination) => {
               // Fetch data for destination
               const destinationData = await fetchData<DestinationCategory>(
-                `/api/Destinations/GetDestinationById/${tripDestination.destinationId}`
+                `/api/Destination/GetDestinationById/${tripDestination.destinationId}`
               );
 
-              // Fetch data for each selectedPlace
+              // Fetch data for each selectedPlaceParticipant
               const selectedPlacesData = await Promise.all(
-                tripDestination.selectedPlaces.map(async (selectedPlace) => {
-                  const visitPlaceQuery = await fetchData<VisitPlace>(
-                    `/api/VisitPlace/GetVisitPlaceById/${selectedPlace.visitPlaceId}`
-                  );
-                  const visitPlaceData = visitPlaceQuery;
+                tripDestination.selectedPlaces.map(
+                  async (selectedPlace: any) => {
+                    const visitPlaceQuery = await fetchData<VisitPlace>(
+                      `/api/VisitPlace/GetVisitPlaceById/${selectedPlace.visitPlaceId}`
+                    );
+                    const visitPlaceData = visitPlaceQuery;
 
-                  return {
-                    ...selectedPlace,
-                    visitPlace: visitPlaceData,
-                    // You can add other properties as needed
-                  };
-                })
+                    return {
+                      ...selectedPlace,
+                      visitPlace: visitPlaceData,
+                      // You can add other properties as needed
+                    };
+                  }
+                )
               );
 
               return {
@@ -104,8 +104,6 @@ const Planning: FC<PlanningProps> = ({}) => {
     return totalPrice.toFixed(2);
   };
 
-  console.log(tripDestinations);
-
   //     await Promise.all(
 
   //         const selectedPlacesData = await Promise.all(
@@ -133,6 +131,29 @@ const Planning: FC<PlanningProps> = ({}) => {
   //     );
   //   setTripDestinations(tripDestinationsData);
 
+  useEffect(() => {
+    const fetchParticipantsList = async () => {
+      if (trip && trip.id) {
+        try {
+          const ParticipantQuery = await fetchData<TripParticipant[]>(
+            `/api/TripParticipant/GetTripParticipant/${trip.id}`
+          );
+
+          if (ParticipantQuery) {
+            setParticipantsListData(ParticipantQuery);
+          }
+        } catch (error) {
+          // Handle the error if necessary
+          console.error("Error fetching participants:", error);
+        }
+      }
+    };
+
+    fetchParticipantsList();
+  }, [trip]);
+
+  console.log("participantsListData" + participantsListData);
+
   return (
     <div className="container px-4 mt-6 flex flex-col md:flex-row gap-4">
       <div className="w-full md:w-3/5 flex flex-col gap-6">
@@ -150,64 +171,11 @@ const Planning: FC<PlanningProps> = ({}) => {
           </div>
           <hr />
           {tripDestinations.map((item, i) => (
-            <div
-              className="bg-secondary p-4 rounded-xl flex flex-col gap-2 relative"
-              key={i}
-            >
-              <button className="absolute top-4 right-4 text-2xl cursor-pointer p-2 rounded-xl hover:bg-pink-600">
-                <IoMdClose />
-              </button>
-
-              <div className="flex flex-row items-center gap-4 mb-2">
-                <div className="relative w-16 h-16">
-                  <img
-                    className="object-cover rounded-xl"
-                    src={item.destination.photoUrl}
-                    alt={item.destination.name}
-                  />
-                </div>
-
-                <Link
-                  to={`/destinations/details/${item.destination?.id}`}
-                  className="text-xl font-semibold"
-                >
-                  {item.destination.name}
-                </Link>
-              </div>
-
-              <hr />
-
-              <div className="mt-2 px-0 md:px-4">
+            <div key={i} className="flex flex-col gap-2">
+              <Card content={<DestinationCard data={item} />} />
+              <div className="mt-2 px-0 pl-4 border-l-2 border-gray-500 flex flex-col">
                 {item.selectedPlaces.map((place, index) => (
-                  <div
-                    key={index}
-                    className="border-l-2 px-4 py-2 rounded-xl rounded-l-none hover:bg-background flex flex-row items-center gap-4 justify-between"
-                  >
-                    <div className="flex flex-row items-center gap-4">
-                      <div className="relative w-16 h-16">
-                        <img
-                          className="object-cover rounded-xl"
-                          src={place.visitPlace?.photoUrl}
-                          alt={place.visitPlace?.name}
-                        />
-                      </div>
-                      <p className=" flex flex-col">
-                        {place.visitPlace?.name}
-                        <span className="block md:hidden text-sm">
-                          {place.visitPlace?.price} zł /person
-                        </span>
-                      </p>
-                    </div>
-                    <div className="flex flex-row items-center gap-4">
-                      <p className="hidden md:block">
-                        {place.visitPlace?.price} zł
-                        <span className="px-2">/</span>person
-                      </p>
-                      <button className="text-xl cursor-pointer p-2 rounded-xl hover:bg-pink-600">
-                        <BsThreeDotsVertical />
-                      </button>
-                    </div>
-                  </div>
+                  <Card key={index} content={<VisitPlaceCard data={place} />} />
                 ))}
               </div>
             </div>
@@ -234,8 +202,17 @@ const Planning: FC<PlanningProps> = ({}) => {
             <h1 className="text-2xl font-bold">Add trip participants</h1>
           </div>
           <hr />
-          <div className="mt-2">No participants</div>
-          <CreateTripParticipantModal />
+          <div className="mt-2 flex flex-col gap-4">
+            {participantsListData && participantsListData
+              ? participantsListData.map((item, i) => (
+                  <Card
+                    key={i}
+                    content={<ParticipantCard data={item.participants} />}
+                  />
+                ))
+              : "No participants"}
+          </div>
+          <CreateParticipantModal />
         </div>
       </div>
       <div className="w-full md:w-2/5">
@@ -248,17 +225,7 @@ const Planning: FC<PlanningProps> = ({}) => {
             <CiCircleInfo className="text-xl cursor-pointer" />
           </div>
 
-          <div className="flex flex-col gap-2">
-            <label htmlFor="persons-amount">How many people?</label>
-            <input
-              name="persons-amount"
-              type="number"
-              className="bg-background w-full rounded-lg p-2"
-              placeholder="1"
-              value={numberOfPeople}
-              onChange={(e) => setNumberOfPeople(parseInt(e.target.value, 10))}
-            />
-          </div>
+          <div className="flex flex-col gap-2"></div>
 
           <Button className="bg-pink-700 text-white font-semibold text-lg p-6">
             Reserve

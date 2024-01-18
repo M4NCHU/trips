@@ -1,13 +1,10 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 
-import { CiSun } from "react-icons/ci";
 import { PiHeartLight } from "react-icons/pi";
-import Navlink from "./Navlink";
 import SearchModal from "../Modals/SearchModal";
 import Switcher from "../ui/Switcher";
-import { Button } from "../ui/button";
+import Navlink from "./Navlink";
 
 const Header = () => {
   return (

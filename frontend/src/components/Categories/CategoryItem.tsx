@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Logo from "../../assets/images/logo.png";
 import { Category } from "../../types/Category";
 
 interface CategoryItemProps {

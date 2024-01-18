@@ -15,15 +15,19 @@ namespace backend.Models
 
         public DateTime? EndDate { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
 
-        public DateTime ModifiedAt { get; set; } = DateTime.Now;
+        public DateTime? ModifiedAt { get; set; } = DateTime.Now;
 
 
         public List<TripDestinationModel>? TripDestinations { get; set; }
 
         public List<SelectedPlaceModel>? SelectedPlaces { get; set; }
 
+        public List<TripParticipantModel> TripParticipants { get; set; }
+
         public double TotalPrice { get; set; }
+        
+
     }
 }

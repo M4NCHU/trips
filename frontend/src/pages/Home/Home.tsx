@@ -1,11 +1,7 @@
-import { useEffect, useState } from "react";
+import { GoPlus } from "react-icons/go";
+import { Link } from "react-router-dom";
 import CategoriesList from "../../components/Categories/CategoriesList";
 import DestinationsList from "../../components/Destinations/DestinationsList";
-import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { Destination } from "@/src/types/Destination";
-import axios from "axios";
-import { GoPlus } from "react-icons/go";
 
 type DestinationType = {
   id: number;

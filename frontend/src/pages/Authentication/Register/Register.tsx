@@ -1,19 +1,11 @@
 import { FC, useState } from "react";
 import { Button } from "../../../components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../../../components/ui/card";
 
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import FormHeader from "../../../components/Forms/FormHeader";
 import Input from "../../../components/Forms/Input";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { useMutation } from "@tanstack/react-query";
 
 interface RegisterProps {}
 

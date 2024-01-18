@@ -32,9 +32,9 @@ namespace backend.Controllers
 
         // GET: api/Trip/GetTripById/5
         [HttpGet("GetTripById/{id}")]
-        public async Task<ActionResult<TripDTO>> GetTrip(int id)
+        public async Task<ActionResult<TripDTO>> GetTripById(int id)
         {
-            var trip = await _tripService.GetTrip(id);
+            var trip = await _tripService.GetTripById(id);
 
             
 

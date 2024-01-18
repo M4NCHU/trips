@@ -1,4 +1,3 @@
-import { useDarkMode } from "usehooks-ts";
 import { FiMoon } from "react-icons/fi";
 import { MdOutlineWbSunny } from "react-icons/md";
 import { useTheme } from "../../../src/context/ThemeContext";

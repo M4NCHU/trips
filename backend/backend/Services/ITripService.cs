@@ -9,7 +9,6 @@ namespace backend.Services
     {
         Task<ActionResult<IEnumerable<TripDTO>>> GetTrips();
 
-        Task<ActionResult<TripDTO>> GetTrip(int id);
         Task<ActionResult<TripDTO>> GetTripById(int id);
 
         Task<List<VisitPlaceDTO>> GetVisitPlacesForTrip(int tripId);

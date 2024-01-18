@@ -1,5 +1,4 @@
-﻿using backend.Models;
-using Microsoft.AspNetCore.Http;
+﻿
 using System.ComponentModel.DataAnnotations;
 
 namespace backend.DTOs
@@ -21,8 +20,6 @@ namespace backend.DTOs
 
         public DateTime ModifiedAt { get; set; }
 
-        [Required(ErrorMessage = "Image file is required.")]
-        [DataType(DataType.Upload)]
         public IFormFile ImageFile { get; set; }
 
         public ICollection<DestinationDTO>? Destinations { get; set; } = new List<DestinationDTO>();

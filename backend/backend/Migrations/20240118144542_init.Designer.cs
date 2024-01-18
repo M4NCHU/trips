@@ -12,7 +12,7 @@ using backend.Authentication;
 namespace backend.Migrations
 {
     [DbContext(typeof(TripsDbContext))]
-    [Migration("20240117194103_init")]
+    [Migration("20240118144542_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -221,74 +221,6 @@ namespace backend.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("backend.DTOs.ParticipantDTO", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("EmergencyContact")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("EmergencyContactPhone")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<string>("MedicalConditions")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("ModifiedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("PhotoUrl")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("TripId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("TripParticipantModelId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TripParticipantModelId");
-
-                    b.ToTable("ParticipantDTO");
-                });
-
             modelBuilder.Entity("backend.Models.AccommodationModel", b =>
                 {
                     b.Property<int>("Id")
@@ -337,14 +269,14 @@ namespace backend.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("ModifiedAt")
+                    b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
@@ -371,7 +303,7 @@ namespace backend.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
@@ -381,7 +313,7 @@ namespace backend.Migrations
                     b.Property<string>("Location")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("ModifiedAt")
+                    b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
@@ -389,7 +321,6 @@ namespace backend.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("PhotoUrl")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<double>("Price")
@@ -455,7 +386,12 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int?>("TripParticipantModelId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("TripParticipantModelId");
 
                     b.ToTable("Participant");
                 });
@@ -531,13 +467,13 @@ namespace backend.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("ModifiedAt")
+                    b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("StartDate")
@@ -575,6 +511,10 @@ namespace backend.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ParticipantId");
+
+                    b.HasIndex("TripId");
 
                     b.ToTable("TripParticipant");
                 });
@@ -669,13 +609,6 @@ namespace backend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("backend.DTOs.ParticipantDTO", b =>
-                {
-                    b.HasOne("backend.Models.TripParticipantModel", null)
-                        .WithMany("Participants")
-                        .HasForeignKey("TripParticipantModelId");
-                });
-
             modelBuilder.Entity("backend.Models.DestinationModel", b =>
                 {
                     b.HasOne("backend.Models.CategoryModel", "Category")
@@ -685,6 +618,13 @@ namespace backend.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("backend.Models.ParticipantModel", b =>
+                {
+                    b.HasOne("backend.Models.TripParticipantModel", null)
+                        .WithMany("Participants")
+                        .HasForeignKey("TripParticipantModelId");
                 });
 
             modelBuilder.Entity("backend.Models.SelectedPlaceModel", b =>
@@ -729,6 +669,25 @@ namespace backend.Migrations
                     b.Navigation("Trip");
                 });
 
+            modelBuilder.Entity("backend.Models.TripParticipantModel", b =>
+                {
+                    b.HasOne("backend.Models.ParticipantModel", "Participant")
+                        .WithMany("TripParticipants")
+                        .HasForeignKey("ParticipantId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("backend.Models.TripModel", "Trip")
+                        .WithMany("TripParticipants")
+                        .HasForeignKey("TripId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Participant");
+
+                    b.Navigation("Trip");
+                });
+
             modelBuilder.Entity("backend.Models.VisitPlace", b =>
                 {
                     b.HasOne("backend.Models.DestinationModel", "Destination")
@@ -752,6 +711,11 @@ namespace backend.Migrations
                     b.Navigation("VisitPlaces");
                 });
 
+            modelBuilder.Entity("backend.Models.ParticipantModel", b =>
+                {
+                    b.Navigation("TripParticipants");
+                });
+
             modelBuilder.Entity("backend.Models.TripDestinationModel", b =>
                 {
                     b.Navigation("SelectedPlace");
@@ -762,6 +726,8 @@ namespace backend.Migrations
                     b.Navigation("SelectedPlaces");
 
                     b.Navigation("TripDestinations");
+
+                    b.Navigation("TripParticipants");
                 });
 
             modelBuilder.Entity("backend.Models.TripParticipantModel", b =>

@@ -60,7 +60,7 @@ namespace backend.Services
             return trips;
         }
 
-        public async Task<ActionResult<TripDTO>> GetTrip(int id)
+        public async Task<ActionResult<TripDTO>> GetTripById(int id)
         {
             var tripModel = await _context.Trip.FindAsync(id);
 
@@ -99,40 +99,7 @@ namespace backend.Services
            
         }
 
-        public async Task<ActionResult<TripDTO>> GetTripById(int id)
-        {
-            var tripModel = await _context.Trip.FindAsync(id);
-
-
-            var tripDTO = new TripDTO
-            {
-                Id = tripModel.Id,
-                Status = tripModel.Status,
-                StartDate = tripModel.StartDate,
-                EndDate = tripModel.EndDate,
-                TotalPrice = tripModel.TotalPrice,
-                TripDestinations = _context.TripDestination
-        .Where(td => td.TripId == tripModel.Id)
-        .Select(td => new TripDestinationDTO
-        {
-            TripId = td.TripId,
-            DestinationId = td.DestinationId,
-            
-            SelectedPlaces = _context.SelectedPlace
-                .Where(sp => sp.TripDestinationId == td.Id)
-                .Select(sp => new SelectedPlaceDTO
-                {
-                    Id = sp.Id,
-                    TripDestinationId = sp.TripDestinationId,
-                    VisitPlaceId = sp.VisitPlace.Id,
-                   
-                }).ToList() ?? new List<SelectedPlaceDTO>()
-        }).ToList(),
-            };
-
-            return tripDTO;
-
-        }
+        
 
         public async Task<List<VisitPlaceDTO>> GetVisitPlacesForTrip(int tripId)
         {
@@ -206,12 +173,18 @@ namespace backend.Services
 
         public async Task<ActionResult<TripDTO>> PostTrip([FromForm] TripDTO tripDTO)
         {
+            var currentDate = DateTime.Now.ToUniversalTime();
+
+
             var trip = new TripModel
             {
                 Status = tripDTO.Status,
                 StartDate = tripDTO.StartDate,
                 EndDate = tripDTO.EndDate,
                 TotalPrice = tripDTO.TotalPrice,
+                CreatedAt = currentDate,
+                ModifiedAt = currentDate,
+
                 TripDestinations = tripDTO.TripDestinations.Select(td => new TripDestinationModel
                 {
                     DestinationId = td.DestinationId,

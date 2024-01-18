@@ -31,20 +31,20 @@ namespace backend.Controllers
             return tripParticipants;
         }
 
-        /*// GET: api/TripParticipant/GetTripParticipantForTrip/1
-        [HttpGet("GetTripParticipantForTrip/{tripId}")]
-        public async Task<ActionResult<IEnumerable<TripParticipantDTO>>> GetTripParticipantForTrip(int tripId)
+        // GET: api/TripParticipant/GetTripParticipants/1
+        [HttpGet("GetTripParticipant/{tripId}")]
+        public async Task<ActionResult<IEnumerable<TripParticipantDTO>>> GetTripParticipants(int tripId)
         {
             try
             {
-                var tripParticipantsForTrip = await _tripParticipantService.GetTripParticipantForTrip(tripId);
-                return tripParticipantsForTrip;
+                var tripParticipants = await _tripParticipantService.GetTripParticipants(tripId);
+                return tripParticipants;
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
-        }*/
+        }
 
         // GET: api/TripParticipant/5
         [HttpGet("{id}")]

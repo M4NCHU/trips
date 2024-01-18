@@ -1,13 +1,15 @@
+import { FC, useState } from "react";
+import {
+  CiCircleInfo,
+  CiCirclePlus,
+  CiSquarePlus,
+  CiStar,
+} from "react-icons/ci";
+import { FaArrowLeft, FaRegHeart } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom";
 import { GetDestinationById } from "../../api/Destinations";
 import { GetVisitPlacesByDestination } from "../../api/VisitPlaceAPI";
-import { FC, useState } from "react";
-import { Link, redirect, useNavigate, useParams } from "react-router-dom";
 import { Button } from "../ui/button";
-import { FaRegHeart } from "react-icons/fa";
-import { CiSquarePlus, CiStar } from "react-icons/ci";
-import { CiCirclePlus } from "react-icons/ci";
-import { CiCircleInfo } from "react-icons/ci";
-import { FaArrowLeft } from "react-icons/fa";
 
 interface DestinationDetailsProps {}
 

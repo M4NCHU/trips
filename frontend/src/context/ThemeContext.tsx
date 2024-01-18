@@ -1,9 +1,9 @@
 import React, {
+  ReactNode,
   createContext,
   useContext,
-  useState,
-  ReactNode,
   useEffect,
+  useState,
 } from "react";
 
 interface ThemeContextProps {

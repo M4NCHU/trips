@@ -40,7 +40,11 @@ namespace backend.Models
 
         public string PhotoUrl { get; set; }
 
+        public List<TripParticipantModel>? TripParticipants { get; set; }
+
         [NotMapped]
         public IFormFile ImageFile { get; set; }
+        
+
     }
 }

@@ -1,18 +1,9 @@
 // api/visitPlaces.timport { useQuery } from "@tanstack/react-query";
 import { useQuery } from "@tanstack/react-query";
-import { usePagination } from "../hooks/usePagination";
 import { VisitPlace } from "../types/VisitPlaceTypes";
 import { fetchData } from "./apiUtils";
 
 // // Get visitPlace by id
-// export const GetVisitPlaces = () => {
-//   return useQuery<VisitPlace, Error>({
-//     queryKey: ["visitPlace"],
-//     queryFn: async () => {
-//       return fetchData<VisitPlace>(`/api/VisitPlace`);
-//     },
-//   });
-// };
 
 // Adding visitPlace
 export const createVisitPlace = async (formData: FormData) => {

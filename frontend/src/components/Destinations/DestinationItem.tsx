@@ -1,7 +1,6 @@
 import { FC } from "react";
-import Logo from "../../assets/images/test.webp";
-import { Destination } from "@/src/types/Destination";
 import { Link } from "react-router-dom";
+import { Destination } from "../../types/Destination";
 
 interface DestinationItemProps {
   data: Destination;

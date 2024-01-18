@@ -76,7 +76,48 @@ namespace backend.Services
            
         }
 
-        
+        public async Task<ActionResult<IEnumerable<TripParticipantDTO>>> GetTripParticipants(int tripId)
+        {
+            if (_context.TripParticipant == null)
+            {
+                return new NotFoundResult();
+            }
+
+            var tripParticipants = await _context.TripParticipant
+        .Where(tp => tp.TripId == tripId)
+        .Select(tp => new TripParticipantDTO
+        {
+            Id = tp.Id,
+            TripId = tp.TripId,
+            ParticipantId = tp.ParticipantId,
+            Participants = _context.Participant
+                .Where(p => p.Id == tp.ParticipantId)
+                .Select(p => new ParticipantDTO
+                {
+                    
+                    Id = p.Id,
+                    FirstName = p.FirstName,
+                    LastName = p.LastName,
+                    PhotoUrl = $"{_baseUrl}/Images/Participant/{p.PhotoUrl}",
+
+                })
+                .FirstOrDefault()
+        })
+        .ToListAsync();
+
+            if (tripParticipants == null)
+            {
+                return new NotFoundResult();
+            }
+
+            
+
+            return tripParticipants;
+
+
+        }
+
+
 
 
         public async Task<IActionResult> PutTripParticipant(int id, TripParticipantDTO tripParticipantDTO)

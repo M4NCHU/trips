@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.ComponentModel.DataAnnotations;
+﻿
+
 
 namespace backend.DTOs
 {
@@ -10,6 +10,13 @@ namespace backend.DTOs
         public int ParticipantId { get; set; }
 
         public List<ParticipantDTO>? Participant { get; set; }
+
+        
+        
+        public TripDTO Trip { get; set; }
+
+        
+        public ParticipantDTO Participants { get; set; }
 
         public DateTime CreatedAt { get; set; }
 

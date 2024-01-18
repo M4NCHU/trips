@@ -1,10 +1,10 @@
 import { FC, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { GetDestinationById } from "../../api/Destinations";
 import { createVisitPlace } from "../../api/VisitPlaceAPI";
 import FormHeader from "../../components/Forms/FormHeader";
 import Input from "../../components/Forms/Input";
 import { Button } from "../../components/ui/button";
-import { GetDestinationById } from "../../api/Destinations";
-import { Link, Navigate, redirect, useParams } from "react-router-dom";
 
 interface CreateProps {}
 

@@ -1,6 +1,5 @@
 // api/Categorys.ts
 import { useQuery } from "@tanstack/react-query";
-import { usePagination } from "../hooks/usePagination";
 import { Category } from "../types/Category";
 import { fetchData } from "./apiUtils";
 

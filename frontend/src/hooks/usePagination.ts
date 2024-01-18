@@ -1,12 +1,12 @@
 // hooks/usePagination.ts
 import {
+  keepPreviousData,
   useQuery,
   useQueryClient,
-  keepPreviousData,
 } from "@tanstack/react-query";
-import { fetchDataPaginated } from "../api/apiUtils";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { fetchDataPaginated } from "../api/apiUtils";
 
 interface PaginationOptions {
   pageSize: number;

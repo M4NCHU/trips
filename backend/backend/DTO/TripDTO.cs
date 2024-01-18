@@ -18,12 +18,13 @@ namespace backend.DTOs
 
         public List<TripDestinationDTO>? TripDestinations { get; set; }
         public List<SelectedPlaceDTO>? SelectedPlaces { get; set; }
+        public List<TripParticipantDTO>? TripParticipants { get; set; }
 
         [Range(0.01, double.MaxValue, ErrorMessage = "Total price must be greater than 0.")]
         public double TotalPrice { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
 
-        public DateTime ModifiedAt { get; set; }
+        public DateTime? ModifiedAt { get; set; }
     }
 }

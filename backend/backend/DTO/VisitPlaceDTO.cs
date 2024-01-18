@@ -22,8 +22,6 @@ namespace backend.DTOs
 
         public DateTime ModifiedAt { get; set; }
 
-        [Required(ErrorMessage = "Image file is required.")]
-        [DataType(DataType.Upload)]
         public IFormFile ImageFile { get; set; }
 
         [Required(ErrorMessage = "Destination ID is required.")]
