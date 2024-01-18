@@ -17,7 +17,9 @@ export const GetDestinationList = () => {
     fetchPreviousPage,
     page,
     setPage,
-  } = usePagination<Destination>("/api/Destinations", { pageSize: 8 });
+  } = usePagination<Destination>("/api/Destination/GetAllDestinations", {
+    pageSize: 8,
+  });
 
   return {
     isPending,
@@ -38,7 +40,9 @@ export const GetDestinationById = (id: string) => {
   return useQuery<DestinationCategory, Error>({
     queryKey: ["destination"],
     queryFn: async () => {
-      return fetchData<DestinationCategory>(`/api/Destinations/${id}`);
+      return fetchData<DestinationCategory>(
+        `/api/Destination/GetDestinationById/${id}`
+      );
     },
   });
 };
@@ -47,10 +51,13 @@ export const GetDestinationById = (id: string) => {
 export const createDestination = async (formData: FormData) => {
   console.log(formData);
   try {
-    const response = await fetchData<Destination>("/api/Destinations", {
-      method: "post",
-      data: formData,
-    });
+    const response = await fetchData<Destination>(
+      "/api/Destination/CreateDestination",
+      {
+        method: "post",
+        data: formData,
+      }
+    );
 
     return response;
   } catch (error) {

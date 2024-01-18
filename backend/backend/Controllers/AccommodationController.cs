@@ -25,7 +25,7 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AccommodationDTO>>> GetAccommodations(int page = 1, int pageSize = 2)
         {
-            var accommodations = await _accommodationService.GetAccommodations(page, pageSize, Request.Scheme, Request.Host.ToString(), Request.PathBase.ToString());
+            var accommodations = await _accommodationService.GetAccommodations(page, pageSize);
             return accommodations;
         }
 
@@ -33,7 +33,7 @@ namespace backend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<AccommodationDTO>> GetAccommodation(int id)
         {
-            return await _accommodationService.GetAccommodation(id, Request.Scheme, Request.Host.ToString(), Request.PathBase.ToString());
+            return await _accommodationService.GetAccommodation(id);
         }
 
         // PUT: api/Accommodations/5

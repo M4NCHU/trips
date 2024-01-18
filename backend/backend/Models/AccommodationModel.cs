@@ -5,17 +5,25 @@ namespace backend.Models
 {
     public class AccommodationModel
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }
+
         public string Description { get; set; }
+
         public string Location { get; set; }
+
         public string? PhotoUrl { get; set; }
+
         public double Price { get; set; }
+
         public int BedAmmount { get; set; }
+
         public DateTime CreatedAt { get; set; }
-        public DateTime? ModifiedAt { get; set; }
+
+        public DateTime ModifiedAt { get; set; } = DateTime.Now;
 
         [NotMapped]
         public IFormFile ImageFile { get; set; }

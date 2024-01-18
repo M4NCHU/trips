@@ -7,11 +7,11 @@ namespace backend.Services
 {
     public interface IVisitPlaceService
     {
-        Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlaces(string scheme = "https", string host = "example.com", string pathBase = "/basepath");
+        Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlaces();
 
-        Task<ActionResult<VisitPlaceDTO>> GetVisitPlace(int id, string scheme = "https", string host = "example.com", string pathBase = "/basepath");
+        Task<ActionResult<VisitPlaceDTO>> GetVisitPlace(int id);
 
-        Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlacesByDestination(int destinationId, string scheme = "https", string host = "example.com", string pathBase = "/basepath");
+        Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlacesByDestination(int destinationId);
 
 
         Task<IActionResult> PutVisitPlace(int id, VisitPlaceDTO visitPlace);

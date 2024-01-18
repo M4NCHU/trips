@@ -15,16 +15,20 @@ namespace backend.Services
         private readonly TripsDbContext _context;
         private readonly ImageService _imageService;
         private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly BaseUrlService _baseUrlService;
+        private readonly string _baseUrl;
 
 
-        public CategoryService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment)
+        public CategoryService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService)
         {
             _context = context;
             _imageService = imageService;
             _hostEnvironment = hostEnvironment;
+            _baseUrlService = baseUrlService;
+            _baseUrl = _baseUrlService.GetBaseUrl();
         }
 
-        public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories(string scheme = "https", string host = "example.com", string pathBase = "/basepath")
+        public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories()
         {
             if (_context.Category == null)
             {
@@ -37,8 +41,9 @@ namespace backend.Services
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    Description = x.Description,
-                    PhotoUrl = string.Format("{0}://{1}{2}/Images/Category/{3}", scheme, host, pathBase, x.PhotoUrl)
+                    Description = x.Description,        
+                    PhotoUrl = $"{_baseUrl}/Images/Category/{x.PhotoUrl}",
+
                 })
                 .ToListAsync();
 
@@ -77,7 +82,7 @@ namespace backend.Services
                 return new BadRequestResult();
             }
 
-            var category = new Category
+            var category = new CategoryModel
             {
                 Id = id,
                 Name = CategoryDTO.Name,
@@ -123,11 +128,15 @@ namespace backend.Services
 
             CategoryDTO.PhotoUrl = await _imageService.SaveImage(CategoryDTO.ImageFile, "Category");
 
-            var category = new Category
+            var currentDate = DateTime.Now.ToUniversalTime();
+
+            var category = new CategoryModel
             {
                 Name = CategoryDTO.Name,
                 Description = CategoryDTO.Description,
-                PhotoUrl = CategoryDTO.PhotoUrl
+                PhotoUrl = CategoryDTO.PhotoUrl,
+                CreatedAt = currentDate,
+                ModifiedAt = currentDate,   
             };
 
             _context.Category.Add(category);

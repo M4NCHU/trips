@@ -27,7 +27,7 @@ namespace backend.Services
 
         public async Task<ActionResult<IEnumerable<TripDTO>>> GetTrips()
         {
-            var trips = await _context.Trips
+            var trips = await _context.Trip
                 .OrderBy(x => x.Id)
                 .Select(x => new TripDTO
                 {
@@ -41,7 +41,7 @@ namespace backend.Services
                         DestinationId = td.DestinationId,
                         TripId = td.TripId,
                         
-                        SelectedPlaces = td.SelectedPlaces.Select(sp => new SelectedPlaceDTO
+                        SelectedPlaces = td.SelectedPlace.Select(sp => new SelectedPlaceDTO
                         {
                             Id = sp.Id,
                             TripDestinationId = sp.TripDestinationId,
@@ -62,9 +62,13 @@ namespace backend.Services
 
         public async Task<ActionResult<TripDTO>> GetTrip(int id)
         {
-            var tripModel = await _context.Trips.FindAsync(id);
+            var tripModel = await _context.Trip.FindAsync(id);
 
-            
+            if (tripModel == null)
+            {
+                return new NotFoundResult(); 
+            }
+
             var tripDTO = new TripDTO
             {
                 Id = tripModel.Id,
@@ -72,7 +76,7 @@ namespace backend.Services
                 StartDate = tripModel.StartDate,
                 EndDate = tripModel.EndDate,
                 TotalPrice = tripModel.TotalPrice,
-                TripDestinations = _context.TripDestinations
+                TripDestinations = _context.TripDestination
         .Where(td => td.TripId == tripModel.Id)
         .Select(td => new TripDestinationDTO
         {
@@ -97,7 +101,7 @@ namespace backend.Services
 
         public async Task<ActionResult<TripDTO>> GetTripById(int id)
         {
-            var tripModel = await _context.Trips.FindAsync(id);
+            var tripModel = await _context.Trip.FindAsync(id);
 
 
             var tripDTO = new TripDTO
@@ -107,7 +111,7 @@ namespace backend.Services
                 StartDate = tripModel.StartDate,
                 EndDate = tripModel.EndDate,
                 TotalPrice = tripModel.TotalPrice,
-                TripDestinations = _context.TripDestinations
+                TripDestinations = _context.TripDestination
         .Where(td => td.TripId == tripModel.Id)
         .Select(td => new TripDestinationDTO
         {
@@ -132,9 +136,9 @@ namespace backend.Services
 
         public async Task<List<VisitPlaceDTO>> GetVisitPlacesForTrip(int tripId)
         {
-            var visitPlaces = await _context.TripDestinations
+            var visitPlaces = await _context.TripDestination
                 .Where(td => td.TripId == tripId)
-                .SelectMany(td => td.SelectedPlaces)
+                .SelectMany(td => td.SelectedPlace)
                 .Select(sp => new VisitPlaceDTO
                 {
                     Id = sp.VisitPlace.Id,
@@ -165,10 +169,10 @@ namespace backend.Services
                 StartDate = tripDTO.StartDate,
                 EndDate = tripDTO.EndDate,
                 TotalPrice = tripDTO.TotalPrice,
-                TripDestinations = tripDTO.TripDestinations.Select(td => new TripDestination
+                TripDestinations = tripDTO.TripDestinations.Select(td => new TripDestinationModel
                 {
                     DestinationId = td.DestinationId,
-                    SelectedPlaces = td.SelectedPlaces.Select(sp => new SelectedPlaceModel
+                    SelectedPlace = td.SelectedPlaces.Select(sp => new SelectedPlaceModel
                     {
                         VisitPlaceId = sp.VisitPlaceId
                     }).ToList()
@@ -208,10 +212,10 @@ namespace backend.Services
                 StartDate = tripDTO.StartDate,
                 EndDate = tripDTO.EndDate,
                 TotalPrice = tripDTO.TotalPrice,
-                TripDestinations = tripDTO.TripDestinations.Select(td => new TripDestination
+                TripDestinations = tripDTO.TripDestinations.Select(td => new TripDestinationModel
                 {
                     DestinationId = td.DestinationId,
-                    SelectedPlaces = td.SelectedPlaces.Select(sp => new SelectedPlaceModel
+                    SelectedPlace = td.SelectedPlaces.Select(sp => new SelectedPlaceModel
                     {
                         VisitPlaceId = sp.VisitPlaceId
                     }).ToList()
@@ -222,7 +226,7 @@ namespace backend.Services
                 }).ToList()
             };
 
-            _context.Trips.Add(trip);
+            _context.Trip.Add(trip);
             await _context.SaveChangesAsync();
 
             return new CreatedAtActionResult("GetTrip", "Trip", new { id = trip.Id }, tripDTO);
@@ -230,13 +234,13 @@ namespace backend.Services
 
         public async Task<IActionResult> DeleteTrip(int id)
         {
-            var trip = await _context.Trips.FindAsync(id);
+            var trip = await _context.Trip.FindAsync(id);
             if (trip == null)
             {
                 return new NotFoundResult();
             }
 
-            _context.Trips.Remove(trip);
+            _context.Trip.Remove(trip);
             await _context.SaveChangesAsync();
 
             return new NoContentResult();
@@ -244,7 +248,7 @@ namespace backend.Services
 
         private bool TripExists(int id)
         {
-            return (_context.Trips?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Trip?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
 

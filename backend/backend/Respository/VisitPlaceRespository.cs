@@ -15,30 +15,34 @@ namespace backend.Services
         private readonly TripsDbContext _context;
         private readonly ImageService _imageService;
         private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly BaseUrlService _baseUrlService;
+        private readonly string _baseUrl;
 
 
-        public VisitPlaceService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment)
+        public VisitPlaceService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService)
         {
             _context = context;
             _imageService = imageService;
             _hostEnvironment = hostEnvironment;
+            _baseUrlService = baseUrlService;
+            _baseUrl = _baseUrlService.GetBaseUrl();
         }
 
-        public async Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlaces(string scheme = "https", string host = "example.com", string pathBase = "/basepath")
+        public async Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlaces()
         {
-            if (_context.VisitPlaces == null)
+            if (_context.VisitPlace == null)
             {
                 return new NotFoundResult();
             }
 
-            var visitPlaces = await _context.VisitPlaces
+            var visitPlaces = await _context.VisitPlace
                 .OrderBy(x => x.Id)
                 .Select(x => new VisitPlaceDTO
                 {
                     Id = x.Id,
                     Name = x.Name,
                     Description = x.Description,
-                    PhotoUrl = string.Format("{0}://{1}{2}/Images/VisitPlace/{3}", scheme, host, pathBase, x.PhotoUrl),
+                    PhotoUrl = $"{_baseUrl}/Images/VisitPlace/{x.PhotoUrl}",
                     DestinationId = x.DestinationId
                 })
                 .ToListAsync();
@@ -47,14 +51,14 @@ namespace backend.Services
         }
 
 
-        public async Task<ActionResult<VisitPlaceDTO>> GetVisitPlace(int id, string scheme = "https", string host = "example.com", string pathBase = "/basepath")
+        public async Task<ActionResult<VisitPlaceDTO>> GetVisitPlace(int id)
         {
-            if (_context.VisitPlaces == null)
+            if (_context.VisitPlace == null)
             {
                 return new NotFoundResult();
             }
 
-            var visitPlace = await _context.VisitPlaces.FindAsync(id);
+            var visitPlace = await _context.VisitPlace.FindAsync(id);
 
             if (visitPlace == null)
             {
@@ -65,7 +69,7 @@ namespace backend.Services
             {
                 Name = visitPlace.Name,
                 Description = visitPlace.Description,
-                PhotoUrl = string.Format("{0}://{1}{2}/Images/VisitPlace/{3}", scheme, host, pathBase, visitPlace.PhotoUrl),
+                PhotoUrl = $"{_baseUrl}/Images/VisitPlace/{visitPlace.PhotoUrl}",
                 DestinationId = visitPlace.DestinationId,
                 Price = visitPlace.Price
             };
@@ -74,10 +78,10 @@ namespace backend.Services
         }
 
 
-        public async Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlacesByDestination(int destinationId, string scheme = "https", string host = "example.com", string pathBase = "/basepath")
+        public async Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlacesByDestination(int destinationId)
         {
             
-            var visitPlaces = await _context.VisitPlaces
+            var visitPlaces = await _context.VisitPlace
                 .Where(vp => vp.DestinationId == destinationId)
                 .ToListAsync();
 
@@ -86,7 +90,7 @@ namespace backend.Services
                 Id = vp.Id,
                 Name = vp.Name,
                 Description = vp.Description,
-                PhotoUrl = string.Format("{0}://{1}{2}/Images/VisitPlace/{3}", scheme, host, pathBase, vp.PhotoUrl),
+                PhotoUrl = $"{_baseUrl}/Images/VisitPlace/{vp.PhotoUrl}",
                 DestinationId = vp.DestinationId,
                 Price = vp.Price,
                 
@@ -141,7 +145,7 @@ namespace backend.Services
 
         public async Task<ActionResult<VisitPlaceDTO>> PostVisitPlace([FromForm] VisitPlaceDTO VisitPlaceDTO)
         {
-            if (_context.VisitPlaces == null)
+            if (_context.VisitPlace == null)
             {
                 return new ObjectResult("Entity set 'TripsDbContext.VisitPlace' is null.")
                 {
@@ -156,15 +160,19 @@ namespace backend.Services
 
             VisitPlaceDTO.PhotoUrl = await _imageService.SaveImage(VisitPlaceDTO.ImageFile, "VisitPlace");
 
+            var currentDate = DateTime.Now.ToUniversalTime();
+
             var visitPlace = new VisitPlace
             {
                 Name = VisitPlaceDTO.Name,
                 Description = VisitPlaceDTO.Description,
                 PhotoUrl = VisitPlaceDTO.PhotoUrl,
-                DestinationId = VisitPlaceDTO.DestinationId
+                DestinationId = VisitPlaceDTO.DestinationId,
+                CreatedAt = currentDate,
+                ModifiedAt = currentDate,
             };
 
-            _context.VisitPlaces.Add(visitPlace);
+            _context.VisitPlace.Add(visitPlace);
             await _context.SaveChangesAsync();
 
             return new CreatedAtActionResult("GetVisitPlace", "VisitPlace", new { id = visitPlace.Id }, VisitPlaceDTO);
@@ -172,18 +180,18 @@ namespace backend.Services
 
         public async Task<IActionResult> DeleteVisitPlace(int id)
         {
-            if (_context.VisitPlaces == null)
+            if (_context.VisitPlace == null)
             {
                 return new NotFoundResult();
             }
 
-            var visitPlace = await _context.VisitPlaces.FindAsync(id);
+            var visitPlace = await _context.VisitPlace.FindAsync(id);
             if (visitPlace == null)
             {
                 return new NotFoundResult();
             }
 
-            _context.VisitPlaces.Remove(visitPlace);
+            _context.VisitPlace.Remove(visitPlace);
             await _context.SaveChangesAsync();
 
             return new NoContentResult();
@@ -191,7 +199,7 @@ namespace backend.Services
 
         private bool VisitPlaceExists(int id)
         {
-            return (_context.VisitPlaces?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.VisitPlace?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
 

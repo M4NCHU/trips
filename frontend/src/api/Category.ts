@@ -9,14 +9,14 @@ export const GetCategoryList = () => {
   return useQuery<Category[], Error>({
     queryKey: ["categories"],
     queryFn: async () => {
-      return fetchData<Category[]>("/api/category");
+      return fetchData<Category[]>("/api/category/GetAllCategories");
     },
   });
 };
 
 export const createCategory = async (formData: FormData) => {
   try {
-    const response = await fetchData<Category>("/api/category", {
+    const response = await fetchData<Category>("/api/category/CreateCategory", {
       method: "post",
       data: formData,
     });

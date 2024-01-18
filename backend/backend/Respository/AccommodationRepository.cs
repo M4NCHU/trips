@@ -15,16 +15,20 @@ namespace backend.Services
         private readonly TripsDbContext _context;
         private readonly ImageService _imageService;
         private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly BaseUrlService _baseUrlService;
+        private readonly string _baseUrl;
 
 
-        public AccommodationService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment)
+        public AccommodationService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService)
         {
             _context = context;
             _imageService = imageService;
             _hostEnvironment = hostEnvironment;
+            _baseUrlService = baseUrlService;
+            _baseUrl = _baseUrlService.GetBaseUrl();
         }
 
-        public async Task<ActionResult<IEnumerable<AccommodationDTO>>> GetAccommodations(int page = 1, int pageSize = 2, string scheme = "https", string host = "example.com", string pathBase = "/basepath")
+        public async Task<ActionResult<IEnumerable<AccommodationDTO>>> GetAccommodations(int page = 1, int pageSize = 2)
         {
             if (_context.Accommodation == null)
             {
@@ -42,7 +46,7 @@ namespace backend.Services
                     Name = x.Name,
                     Description = x.Description,
                     Location = x.Location,
-                    PhotoUrl = string.Format("{0}://{1}{2}/Images/Accommodations/{3}", scheme, host, pathBase, x.PhotoUrl),
+                    PhotoUrl = $"{_baseUrl}/Images/Accommodations/{x.PhotoUrl}",
                     Price = x.Price,
                     
                 })
@@ -52,7 +56,7 @@ namespace backend.Services
         }
 
 
-        public async Task<ActionResult<AccommodationDTO>> GetAccommodation(int id, string scheme = "https", string host = "example.com", string pathBase = "/basepath")
+        public async Task<ActionResult<AccommodationDTO>> GetAccommodation(int id)
         {
             if (_context.Accommodation == null)
             {
@@ -77,7 +81,7 @@ namespace backend.Services
                 Name = accommodation.Name,
                 Description = accommodation.Description,
                 Location = accommodation.Location,
-                PhotoUrl = string.Format("{0}://{1}{2}/Images/Accommodations/{3}", scheme, host, pathBase, accommodation.PhotoUrl),
+                PhotoUrl = $"{_baseUrl}/Images/Accommodations/{accommodation.PhotoUrl}",
                 Price = accommodation.Price,
                 
             };

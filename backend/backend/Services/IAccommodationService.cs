@@ -7,9 +7,9 @@ namespace backend.Services
 {
     public interface IAccommodationService
     {
-        Task<ActionResult<IEnumerable<AccommodationDTO>>> GetAccommodations(int page = 1, int pageSize = 2, string scheme = "https", string host = "example.com", string pathBase = "/basepath");
+        Task<ActionResult<IEnumerable<AccommodationDTO>>> GetAccommodations(int page = 1, int pageSize = 2);
 
-        Task<ActionResult<AccommodationDTO>> GetAccommodation(int id, string scheme = "https", string host = "example.com", string pathBase = "/basepath");
+        Task<ActionResult<AccommodationDTO>> GetAccommodation(int id);
 
         Task<IActionResult> PutAccommodation(int id, AccommodationDTO accommodation);
 

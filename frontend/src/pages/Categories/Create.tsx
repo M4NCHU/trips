@@ -8,17 +8,15 @@ interface CreateProps {}
 
 interface FormValues {
   categoryName: string;
-  categoryLocation: string;
   categoryDesc: string;
-  imageSrc: string;
+  photoUrl: string;
   imageFile: File | null;
 }
 
 const initialFieldValues: FormValues = {
   categoryName: "",
-  categoryLocation: "",
   categoryDesc: "",
-  imageSrc: "",
+  photoUrl: "",
   imageFile: null,
 };
 
@@ -43,7 +41,7 @@ const CreateCategory: FC<CreateProps> = ({}) => {
           setValues({
             ...values,
             imageFile: imageFile,
-            imageSrc: x.target.result,
+            photoUrl: x.target.result,
           });
         }
       };
@@ -53,19 +51,19 @@ const CreateCategory: FC<CreateProps> = ({}) => {
       setValues({
         ...values,
         imageFile: null,
-        imageSrc: "",
+        photoUrl: "",
       });
     }
   };
 
+  console.log(values.photoUrl);
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const formData = new FormData();
     formData.append("name", values.categoryName);
-    formData.append("location", values.categoryLocation);
     formData.append("description", values.categoryDesc);
-    formData.append("photoUrl", values.imageSrc);
+    formData.append("photoUrl", values.photoUrl);
 
     if (values.imageFile !== null) {
       formData.append("imageFile", values.imageFile);
@@ -97,13 +95,7 @@ const CreateCategory: FC<CreateProps> = ({}) => {
               value={values.categoryName}
               onChange={handleInputChange}
             />
-            <Input
-              placeholder="Enter location"
-              label="location"
-              name="categoryLocation"
-              value={values.categoryLocation}
-              onChange={handleInputChange}
-            />
+
             <Input
               placeholder="Enter description"
               label="description"
@@ -126,10 +118,10 @@ const CreateCategory: FC<CreateProps> = ({}) => {
               onChange={showPreview}
               id="image-uploader"
             />
-            {values.imageSrc && (
+            {values.photoUrl && (
               <div className="img-preview">
                 <p>Image Preview</p>
-                <img src={values.imageSrc} alt="" />
+                <img src={values.photoUrl} alt="" />
               </div>
             )}
           </div>

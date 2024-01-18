@@ -17,10 +17,13 @@ import { fetchData } from "./apiUtils";
 // Adding visitPlace
 export const createVisitPlace = async (formData: FormData) => {
   try {
-    const response = await fetchData<VisitPlace>("/api/VisitPlace", {
-      method: "post",
-      data: formData,
-    });
+    const response = await fetchData<VisitPlace>(
+      "/api/VisitPlace/CreateVisitPlace",
+      {
+        method: "post",
+        data: formData,
+      }
+    );
 
     return response;
   } catch (error) {

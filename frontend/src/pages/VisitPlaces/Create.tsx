@@ -12,6 +12,7 @@ interface FormValues {
   visitPlaceName: string;
   visitPlaceDesc: string;
   imageSrc: string;
+  price: number;
   imageFile: File | null;
 }
 
@@ -19,6 +20,7 @@ const initialFieldValues: FormValues = {
   visitPlaceName: "",
   visitPlaceDesc: "",
   imageSrc: "",
+  price: 0,
   imageFile: null,
 };
 
@@ -70,6 +72,7 @@ const CreateVisitPlace: FC<CreateProps> = ({}) => {
         formData.append("name", values.visitPlaceName);
         formData.append("description", values.visitPlaceDesc);
         formData.append("photoUrl", values.imageSrc);
+        formData.append("price", (values.price ?? 2).toString());
         formData.append("destinationId", destination.id.toString());
 
         if (values.imageFile !== null) {
@@ -119,6 +122,13 @@ const CreateVisitPlace: FC<CreateProps> = ({}) => {
                   label="description"
                   name="visitPlaceDesc"
                   value={values.visitPlaceDesc}
+                  onChange={handleInputChange}
+                />
+                <Input
+                  placeholder="Enter description"
+                  label="Price/person"
+                  name="price"
+                  value={values.price}
                   onChange={handleInputChange}
                 />
               </div>

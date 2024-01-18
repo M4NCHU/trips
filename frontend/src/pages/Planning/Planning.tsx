@@ -2,7 +2,7 @@ import { GetVisitPlacesById } from "../../api/VisitPlaceAPI";
 import { GetTripById } from "../../api/TripAPI";
 import { Button } from "../../components/ui/button";
 import { FC, useEffect, useState } from "react";
-import { CiCircleInfo } from "react-icons/ci";
+import { CiCircleInfo, CiCirclePlus } from "react-icons/ci";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { GetDestinationById } from "../../api/Destinations";
@@ -13,6 +13,7 @@ import { Trip } from "../../types/TripTypes";
 import { fetchData } from "../../api/apiUtils";
 import { IoMdClose } from "react-icons/io";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import CreateTripParticipantModal from "../../components/TripParticipants/CreateTripParticipantModal";
 
 interface PlanningProps {}
 
@@ -46,14 +47,14 @@ const Planning: FC<PlanningProps> = ({}) => {
             trip.tripDestinations.map(async (tripDestination) => {
               // Fetch data for destination
               const destinationData = await fetchData<DestinationCategory>(
-                `/api/Destinations/${tripDestination.destinationId}`
+                `/api/Destinations/GetDestinationById/${tripDestination.destinationId}`
               );
 
               // Fetch data for each selectedPlace
               const selectedPlacesData = await Promise.all(
                 tripDestination.selectedPlaces.map(async (selectedPlace) => {
                   const visitPlaceQuery = await fetchData<VisitPlace>(
-                    `/api/VisitPlace/${selectedPlace.visitPlaceId}`
+                    `/api/VisitPlace/GetVisitPlaceById/${selectedPlace.visitPlaceId}`
                   );
                   const visitPlaceData = visitPlaceQuery;
 
@@ -134,7 +135,7 @@ const Planning: FC<PlanningProps> = ({}) => {
 
   return (
     <div className="container px-4 mt-6 flex flex-col md:flex-row gap-4">
-      <div className="w-full md:w-3/5 flex flex-col gap-4">
+      <div className="w-full md:w-3/5 flex flex-col gap-6">
         <div className="destination-header flex flex-row items-center gap-2 mb-4">
           <Link to={`/`} className="flex flex-row items-center gap-2">
             <FaArrowLeft />
@@ -227,6 +228,14 @@ const Planning: FC<PlanningProps> = ({}) => {
                 </div>
               ))
             : "no data"} */}
+        </div>
+        <div className="mt-4 flex flex-col gap-2">
+          <div className="destination-header flex flex-row items-center gap-2 mb-4">
+            <h1 className="text-2xl font-bold">Add trip participants</h1>
+          </div>
+          <hr />
+          <div className="mt-2">No participants</div>
+          <CreateTripParticipantModal />
         </div>
       </div>
       <div className="w-full md:w-2/5">

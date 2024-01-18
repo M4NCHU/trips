@@ -7,7 +7,7 @@ namespace backend.Services
 {
     public interface ICategoryService
     {
-        Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories(string scheme = "https", string host = "example.com", string pathBase = "/basepath");
+        Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories();
 
         Task<ActionResult<CategoryDTO>> GetCategory(int id);
 

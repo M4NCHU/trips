@@ -17,7 +17,7 @@ import { fetchData } from "./apiUtils";
 // Adding trip
 export const createTrip = async (formData: FormData) => {
   try {
-    const response = await fetchData<Trip>("/api/Trip", {
+    const response = await fetchData<Trip>("/api/Trip/CreateTrip", {
       method: "post",
       data: formData,
     });
@@ -34,7 +34,7 @@ export const GetTripById = (id: string) => {
   return useQuery<Trip, Error>({
     queryKey: ["tripById"],
     queryFn: async () => {
-      return fetchData<Trip>(`/api/Trip/${id}`);
+      return fetchData<Trip>(`/api/Trip/GetTripById/${id}`);
     },
   });
 };

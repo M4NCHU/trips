@@ -21,8 +21,8 @@ namespace backend.Controllers
             _tripService = tripService;
         }
 
-        // GET: api/Trip
-        [HttpGet]
+        // GET: api/Trip/GetAllTrips
+        [HttpGet("GetAllTrips")]
         public async Task<ActionResult<IEnumerable<TripDTO>>> GetTrip()
         {
             var trip = await _tripService.GetTrips();
@@ -30,8 +30,8 @@ namespace backend.Controllers
         }
 
 
-        // GET: api/Trip/5
-        [HttpGet("{id}")]
+        // GET: api/Trip/GetTripById/5
+        [HttpGet("GetTripById/{id}")]
         public async Task<ActionResult<TripDTO>> GetTrip(int id)
         {
             var trip = await _tripService.GetTrip(id);
@@ -41,14 +41,7 @@ namespace backend.Controllers
             return trip;
         }
 
-        // GET: api/Trip/GetTripById/5
-        [HttpGet("GetTripById/{id}")]
-        public async Task<ActionResult<TripDTO>> GetTripById(int id)
-        {
-            var trip = await _tripService.GetTripById(id);
-            return trip;
-        }
-
+       
         
 
         // GET: api/Trip/5/VisitPlaces
@@ -75,7 +68,7 @@ namespace backend.Controllers
 
         // POST: api/Trip
         
-        [HttpPost]
+        [HttpPost("CreateTrip")]
         public async Task<ActionResult<TripDTO>> PostTrip([FromForm] TripDTO trip)
         {
             return await _tripService.PostTrip(trip);

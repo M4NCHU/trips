@@ -21,39 +21,39 @@ namespace backend.Controllers
             _categoryService = categoryService;
         }
 
-        // GET: api/Categorys
-        [HttpGet]
+        // GET: api/Category/GetAllDestinations
+        [HttpGet("GetAllCategories")]
         public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories()
         {
-            var categories = await _categoryService.GetCategories(Request.Scheme, Request.Host.ToString(), Request.PathBase.ToString());
+            var categories = await _categoryService.GetCategories();
             return categories;
         }
 
 
-        // GET: api/Categorys/5
-        [HttpGet("{id}")]
+        // GET: api/Category/GetCategoryById/5
+        [HttpGet("GetCategoryById/{id}")]
         public async Task<ActionResult<CategoryDTO>> GetCategory(int id)
         {
             return await _categoryService.GetCategory(id);
         }
 
-        // PUT: api/Categorys/5
-        
+        // PUT: api/Category/5
+
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategory(int id, CategoryDTO category)
         {
             return await _categoryService.PutCategory(id, category);
         }
 
-        // POST: api/Categorys
-        
-        [HttpPost]
+        // POST: api/Category
+
+        [HttpPost("CreateCategory")]
         public async Task<ActionResult<CategoryDTO>> PostCategory([FromForm] CategoryDTO category)
         {
             return await _categoryService.PostCategory(category);
         }
 
-        // DELETE: api/Categorys/5
+        // DELETE: api/Category/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {

@@ -21,27 +21,27 @@ namespace backend.Controllers
             _visitPlaceService = visitPlaceService;
         }
 
-        // GET: api/VisitPlaces
-        [HttpGet]
+        // GET: api/VisitPlaces/GetAllVisitPlaces
+        [HttpGet("GetAllVisitPlaces")]
         public async Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlaces()
         {
-            var visitPlaces = await _visitPlaceService.GetVisitPlaces(Request.Scheme, Request.Host.ToString(), Request.PathBase.ToString());
+            var visitPlaces = await _visitPlaceService.GetVisitPlaces();
             return visitPlaces;
         }
 
 
-        // GET: api/VisitPlaces/5
-        [HttpGet("{id}")]
+        // GET: api/VisitPlaces/GetVisitPlaceById/5
+        [HttpGet("GetVisitPlaceById/{id}")]
         public async Task<ActionResult<VisitPlaceDTO>> GetVisitPlace(int id)
         {
-            return await _visitPlaceService.GetVisitPlace(id, Request.Scheme, Request.Host.ToString(), Request.PathBase.ToString());
+            return await _visitPlaceService.GetVisitPlace(id);
         }
 
         // GET: api/VisitPlaces/ByDestination/1
         [HttpGet("destination/{destinationId}")]
         public async Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlacesByDestination(int destinationId)
         {
-            return await _visitPlaceService.GetVisitPlacesByDestination(destinationId, Request.Scheme, Request.Host.ToString(), Request.PathBase.ToString());
+            return await _visitPlaceService.GetVisitPlacesByDestination(destinationId);
         }
 
 
@@ -53,9 +53,9 @@ namespace backend.Controllers
             return await _visitPlaceService.PutVisitPlace(id, visitPlace);
         }
 
-        // POST: api/VisitPlaces
-        
-        [HttpPost]
+        // POST: api/VisitPlaces/CreateVisitPlace
+
+        [HttpPost("CreateVisitPlace")]
         public async Task<ActionResult<VisitPlaceDTO>> PostVisitPlace([FromForm] VisitPlaceDTO visitPlace)
         {
             return await _visitPlaceService.PostVisitPlace(visitPlace);

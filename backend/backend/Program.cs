@@ -30,6 +30,10 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IVisitPlaceService, VisitPlaceService>();
 builder.Services.AddScoped<ITripService, TripService>();
 builder.Services.AddScoped<IAccommodationService, AccommodationService>();
+builder.Services.AddScoped<ITripParticipantService, TripParticipantService>();
+builder.Services.AddScoped<IParticipantService, ParticipantService>();
+
+builder.Services.AddSingleton<BaseUrlService>();
 
 
 
@@ -70,11 +74,13 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddHttpContextAccessor();
 
 
 
 
 builder.Services.AddSwaggerGen();
+
 
 
 builder.Services.AddCors(options =>

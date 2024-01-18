@@ -7,5 +7,9 @@
         public int VisitPlaceId { get; set; }
         public VisitPlaceDTO VisitPlace { get; set; }
 
+        public DateTime CreatedAt { get; set; }
+
+        public DateTime ModifiedAt { get; set; }
+
     }
 }

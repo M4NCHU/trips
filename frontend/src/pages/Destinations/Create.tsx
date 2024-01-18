@@ -14,6 +14,7 @@ interface FormValues {
   imageSrc: string;
   imageFile: File | null;
   selectedCategory: number;
+  price: number;
 }
 
 const initialFieldValues: FormValues = {
@@ -23,6 +24,7 @@ const initialFieldValues: FormValues = {
   imageSrc: "",
   imageFile: null,
   selectedCategory: 0,
+  price: 0,
 };
 
 const CreateDestination: FC<CreateProps> = ({}) => {
@@ -80,6 +82,7 @@ const CreateDestination: FC<CreateProps> = ({}) => {
     formData.append("description", values.destinationDesc);
     formData.append("photoUrl", values.imageSrc);
     formData.append("categoryId", String(values.selectedCategory));
+    formData.append("price", values.price.toString());
 
     if (values.imageFile !== null) {
       formData.append("imageFile", values.imageFile);
@@ -123,6 +126,14 @@ const CreateDestination: FC<CreateProps> = ({}) => {
               label="description"
               name="destinationDesc"
               value={values.destinationDesc}
+              onChange={handleInputChange}
+            />
+
+            <Input
+              placeholder="Enter Price"
+              label="Price"
+              name="price"
+              value={values.price}
               onChange={handleInputChange}
             />
 
