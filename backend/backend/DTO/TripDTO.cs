@@ -5,7 +5,7 @@ namespace backend.DTOs
 {
     public class TripDTO
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Status is required.")]
         public TripStatus Status { get; set; }

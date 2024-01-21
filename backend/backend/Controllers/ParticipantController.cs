@@ -48,7 +48,7 @@ namespace backend.Controllers
 
         // GET: api/Participant/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ParticipantDTO>> GetParticipant(int id)
+        public async Task<ActionResult<ParticipantDTO>> GetParticipant(Guid id)
         {
             return await _participantService.GetParticipant(id);
         }
@@ -56,7 +56,7 @@ namespace backend.Controllers
         // PUT: api/Participant/5
         
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutParticipant(int id, ParticipantDTO participant)
+        public async Task<IActionResult> PutParticipant(Guid id, ParticipantDTO participant)
         {
             return await _participantService.PutParticipant(id, participant);
         }
@@ -71,7 +71,7 @@ namespace backend.Controllers
 
         // DELETE: api/Participant/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteParticipant(int id)
+        public async Task<IActionResult> DeleteParticipant(Guid id)
         {
             return await _participantService.DeleteParticipant(id);
         }

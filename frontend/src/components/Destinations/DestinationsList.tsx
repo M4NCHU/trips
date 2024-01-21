@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { GetDestinationList } from "../../api/Destinations";
+import { useDestinationList } from "../../api/Destinations";
 import PaginationButtons from "../ui/PaginationButtons";
 import DestinationItem from "./DestinationItem";
 
@@ -14,7 +14,7 @@ const DestinationsList: FC<DestinationsListProps> = ({}) => {
     fetchPreviousPage,
     page,
     isFetching,
-  } = GetDestinationList();
+  } = useDestinationList();
 
   return (
     <div className="flex flex-col items-center gap-12">

@@ -1,9 +1,12 @@
 import { FC, useState } from "react";
-import { GetCategoryList } from "../../api/Category";
-import { createDestination } from "../../api/Destinations";
+import { UseCategoryList } from "../../api/Category";
+import { UseCreateDestination } from "../../api/Destinations";
 import FormHeader from "../../components/Forms/FormHeader";
 import Input from "../../components/Forms/Input";
 import { Button } from "../../components/ui/button";
+import { DestinationValidator } from "../../lib/validators/destination";
+import { ZodError } from "zod";
+import useImagePreview from "src/hooks/useImagePreview";
 
 interface CreateProps {}
 
@@ -13,8 +16,8 @@ interface FormValues {
   destinationDesc: string;
   imageSrc: string;
   imageFile: File | null;
-  selectedCategory: number;
-  price: number;
+  selectedCategory: string;
+  price: string;
 }
 
 const initialFieldValues: FormValues = {
@@ -23,13 +26,17 @@ const initialFieldValues: FormValues = {
   destinationDesc: "",
   imageSrc: "",
   imageFile: null,
-  selectedCategory: 0,
-  price: 0,
+  selectedCategory: "",
+  price: "",
 };
 
 const CreateDestination: FC<CreateProps> = ({}) => {
   const [values, setValues] = useState(initialFieldValues);
-  const { data: categories, isLoading, isError } = GetCategoryList();
+  const { data: categories, isLoading, isError } = UseCategoryList();
+  const [validationErrors, setValidationErrors] = useState<
+    Record<string, string>
+  >({});
+  const { showPreview, imagePreview } = useImagePreview();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -39,59 +46,50 @@ const CreateDestination: FC<CreateProps> = ({}) => {
     });
   };
 
-  const handleCategoryToggle = (categoryId: number) => {
+  const handleCategoryToggle = (categoryId: string) => {
     setValues({
       ...values,
-      selectedCategory: values.selectedCategory === categoryId ? 0 : categoryId,
+      selectedCategory:
+        values.selectedCategory === categoryId ? "0" : categoryId,
     });
-  };
-
-  console.log(values.selectedCategory);
-
-  const showPreview = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const imageFile: File = e.target.files[0];
-      const reader = new FileReader();
-
-      reader.onload = (x: ProgressEvent<FileReader>) => {
-        if (x.target && typeof x.target.result === "string") {
-          setValues({
-            ...values,
-            imageFile: imageFile,
-            imageSrc: x.target.result,
-          });
-        }
-      };
-
-      reader.readAsDataURL(imageFile);
-    } else {
-      setValues({
-        ...values,
-        imageFile: null,
-        imageSrc: "",
-      });
-    }
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const formDataObject = {
+      name: values.destinationName,
+      description: values.destinationDesc,
+      location: values.destinationLocation,
+      price: parseFloat(values.price),
+      categoryId: values.selectedCategory,
+    };
+
     const formData = new FormData();
     formData.append("name", values.destinationName);
     formData.append("location", values.destinationLocation);
     formData.append("description", values.destinationDesc);
-    formData.append("photoUrl", values.imageSrc);
+    formData.append("photoUrl", imagePreview.imageSrc);
     formData.append("categoryId", String(values.selectedCategory));
-    formData.append("price", values.price.toString());
+    formData.append("price", values.price);
 
-    if (values.imageFile !== null) {
-      formData.append("imageFile", values.imageFile);
+    if (imagePreview.imageFile !== null) {
+      formData.append("imageFile", imagePreview.imageFile);
     }
 
     try {
-      await createDestination(formData);
+      DestinationValidator.parse(formDataObject);
+      await UseCreateDestination(formData);
     } catch (error) {
-      console.error("Error submitting form:", error);
+      if (error instanceof ZodError) {
+        const newErrors: Record<string, string> = {};
+        for (const issue of error.issues) {
+          newErrors[issue.path[0]] = issue.message;
+        }
+        setValidationErrors(newErrors);
+      } else {
+        console.error("Error submitting form:", error);
+      }
     }
   };
 
@@ -113,6 +111,7 @@ const CreateDestination: FC<CreateProps> = ({}) => {
               name="destinationName"
               value={values.destinationName}
               onChange={handleInputChange}
+              errorMessage={validationErrors.name}
             />
             <Input
               placeholder="Enter location"
@@ -120,6 +119,7 @@ const CreateDestination: FC<CreateProps> = ({}) => {
               name="destinationLocation"
               value={values.destinationLocation}
               onChange={handleInputChange}
+              errorMessage={validationErrors.location}
             />
             <Input
               placeholder="Enter description"
@@ -127,14 +127,17 @@ const CreateDestination: FC<CreateProps> = ({}) => {
               name="destinationDesc"
               value={values.destinationDesc}
               onChange={handleInputChange}
+              errorMessage={validationErrors.description}
             />
 
             <Input
               placeholder="Enter Price"
               label="Price"
               name="price"
+              type="number"
               value={values.price}
               onChange={handleInputChange}
+              errorMessage={validationErrors.price}
             />
 
             <div className="flex flex-col gap-4 mb-2">
@@ -180,10 +183,10 @@ const CreateDestination: FC<CreateProps> = ({}) => {
               onChange={showPreview}
               id="image-uploader"
             />
-            {values.imageSrc && (
+            {imagePreview.imageSrc && (
               <div className="img-preview">
                 <p>Image Preview</p>
-                <img src={values.imageSrc} alt="" />
+                <img src={imagePreview.imageSrc} alt="" />
               </div>
             )}
           </div>

@@ -22,7 +22,7 @@ namespace backend.Controllers
         }
 
         // GET: api/Trip/GetAllTrips
-        [HttpGet("GetAllTrips")]
+        [HttpGet()]
         public async Task<ActionResult<IEnumerable<TripDTO>>> GetTrip()
         {
             var trip = await _tripService.GetTrips();
@@ -31,8 +31,8 @@ namespace backend.Controllers
 
 
         // GET: api/Trip/GetTripById/5
-        [HttpGet("GetTripById/{id}")]
-        public async Task<ActionResult<TripDTO>> GetTripById(int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<TripDTO>> GetTripById(Guid id)
         {
             var trip = await _tripService.GetTripById(id);
 
@@ -46,7 +46,7 @@ namespace backend.Controllers
 
         // GET: api/Trip/5/VisitPlaces
         [HttpGet("{id}/VisitPlaces")]
-        public async Task<ActionResult<List<VisitPlaceDTO>>> GetSelectedPlacesForTrip(int id)
+        public async Task<ActionResult<List<VisitPlaceDTO>>> GetSelectedPlacesForTrip(Guid id)
         {
             var visitPlaces = await _tripService.GetVisitPlacesForTrip(id);
 
@@ -61,14 +61,14 @@ namespace backend.Controllers
         // PUT: api/Trip/5
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTrip(int id, TripDTO trip)
+        public async Task<IActionResult> PutTrip(Guid id, TripDTO trip)
         {
             return await _tripService.PutTrip(id, trip);
         }
 
         // POST: api/Trip
         
-        [HttpPost("CreateTrip")]
+        [HttpPost()]
         public async Task<ActionResult<TripDTO>> PostTrip([FromForm] TripDTO trip)
         {
             return await _tripService.PostTrip(trip);
@@ -76,7 +76,7 @@ namespace backend.Controllers
 
         // DELETE: api/Trip/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTrip(int id)
+        public async Task<IActionResult> DeleteTrip(Guid id)
         {
             return await _tripService.DeleteTrip(id);
         }

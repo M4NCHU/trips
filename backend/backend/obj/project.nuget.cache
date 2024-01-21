@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CYldpCar+MYJfE0tSio0G/I9qDdaxxe/XcxRYEBTmZSB5crxLUzkIVj9lClR01AM/3AN8myrIXJkwn0iGY+2eA==",
+  "dgSpecHash": "PGml7/MgC49Wa2BVNjjTdyN9mOubJixMi9l2kBQ14qJ7LJN4SualRIeibKBr5ACgWhLnJ7Axu4yLHlp13uNcyg==",
   "success": true,
-  "projectFilePath": "D:\\ProjectASP\\TripsAPP\\backend\\backend\\backend.csproj",
+  "projectFilePath": "C:\\Projects\\Trips\\trips\\backend\\backend\\backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Maciek\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Maciek\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

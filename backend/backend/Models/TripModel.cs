@@ -7,7 +7,7 @@ namespace backend.Models
     public class TripModel
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public TripStatus Status { get; set; }
 

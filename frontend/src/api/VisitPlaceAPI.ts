@@ -6,15 +6,12 @@ import { fetchData } from "./apiUtils";
 // // Get visitPlace by id
 
 // Adding visitPlace
-export const createVisitPlace = async (formData: FormData) => {
+export const UseCreateVisitPlace = async (formData: FormData) => {
   try {
-    const response = await fetchData<VisitPlace>(
-      "/api/VisitPlace/CreateVisitPlace",
-      {
-        method: "post",
-        data: formData,
-      }
-    );
+    const response = await fetchData<VisitPlace>("/api/VisitPlace", {
+      method: "post",
+      data: formData,
+    });
 
     return response;
   } catch (error) {
@@ -24,21 +21,29 @@ export const createVisitPlace = async (formData: FormData) => {
 };
 
 // Get visitPlace by destination id
-export const GetVisitPlacesByDestination = (id: string) => {
+export const useVisitPlacesByDestination = (id: string | undefined) => {
   return useQuery<VisitPlace[], Error>({
-    queryKey: ["visitPlaceByDestinationId"],
+    queryKey: ["visitPlaceByDestination", id],
     queryFn: async () => {
+      if (!id) {
+        throw new Error("No ID provided");
+      }
       return fetchData<VisitPlace[]>(`/api/VisitPlace/destination/${id}`);
     },
+    enabled: !!id,
   });
 };
 
 // Get visitPlace by destination id
-export const GetVisitPlacesById = (id: string) => {
-  return useQuery<VisitPlace[], Error>({
-    queryKey: ["visitPlaceByDestinationId"],
+export const useVisitPlacesById = (id: string | undefined) => {
+  return useQuery<VisitPlace, Error>({
+    queryKey: ["visitPlaceById", id],
     queryFn: async () => {
-      return fetchData<VisitPlace[]>(`/api/VisitPlace/${id}`);
+      if (!id) {
+        throw new Error("No ID provided");
+      }
+      return fetchData<VisitPlace>(`/api/VisitPlace/${id}`);
     },
+    enabled: !!id,
   });
 };

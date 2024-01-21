@@ -9,11 +9,18 @@ import {
   AlertDialogContent,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
+import useImagePreview from "src/hooks/useImagePreview";
+import { ParticipantValidator } from "src/lib/validators/TripParticipantValidatior";
+import { ZodError } from "zod";
+import { useNavigate } from "react-router-dom";
+import { UseCreateTripParticipant } from "src/api/TripParticipantAPI";
 
-interface CreateParticipantModalProps {}
+interface CreateParticipantModalProps {
+  tripId: string;
+}
 
 const initialFieldValues: Participant = {
-  id: 0,
+  id: "",
   firstName: "",
   lastName: "",
   dateOfBirth: "",
@@ -26,11 +33,18 @@ const initialFieldValues: Participant = {
   createdAt: "",
   photoUrl: "",
   imageFile: null,
-  tripId: 0,
+  tripId: "",
 };
 
-const CreateParticipantModal: FC<CreateParticipantModalProps> = ({}) => {
+const CreateParticipantModal: FC<CreateParticipantModalProps> = ({
+  tripId,
+}) => {
   const [values, setValues] = useState<Participant>(initialFieldValues);
+  const [validationErrors, setValidationErrors] = useState<
+    Record<string, string>
+  >({});
+  const { showPreview, imagePreview } = useImagePreview();
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -40,71 +54,62 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({}) => {
     });
   };
 
-  const showPreview = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const imageFile: File = e.target.files[0];
-      const reader = new FileReader();
-
-      reader.onload = (x: ProgressEvent<FileReader>) => {
-        if (x.target && typeof x.target.result === "string") {
-          setValues({
-            ...values,
-            imageFile: imageFile,
-            photoUrl: x.target.result,
-          });
-        }
-      };
-
-      reader.readAsDataURL(imageFile);
-    } else {
-      setValues({
-        ...values,
-        imageFile: null,
-        photoUrl: "",
-      });
-    }
-  };
-
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const currentDate = new Date();
-    let dateOfBirth: Date;
 
-    // if (isDate(values.dateOfBirth)) {
-    //     dateOfBirth = values.dateOfBirth;
-    //   } else {
-    //     dateOfBirth = new Date(values.dateOfBirth);
-    //   }
-
-    // // Sformatuj dateOfBirth
-    // const formattedDateOfBirth = format(
-    //   dateOfBirth,
-    //   "yyyy-MM-dd HH:mm:ss.SSSSSSZxx"
-    // );
+    const formDataObject = {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      dateOfBirth: values.dateOfBirth,
+      email: values.email,
+      phoneNumber: values.phoneNumber.toString(),
+      address: values.address,
+      emergencyContactName: values.emergencyContactName,
+      emergencyContactPhone: values.emergencyContactPhone,
+      medicalConditions: values.medicalConditions,
+    };
 
     const formData = new FormData();
     formData.append("firstName", values.firstName);
     formData.append("lastName", values.lastName);
     formData.append("dateOfBirth", values.dateOfBirth);
     formData.append("email", values.email);
-    formData.append("phoneNumber", values.phoneNumber);
+    formData.append("phoneNumber", values.phoneNumber.toString());
     formData.append("address", values.address);
     formData.append("emergencyContact", values.emergencyContactName);
     formData.append("emergencyContactPhone", values.emergencyContactPhone);
     formData.append("medicalConditions", values.medicalConditions);
-    formData.append("photoUrl", values.photoUrl || "");
-    formData.append("tripId", String(1));
+    formData.append("photoUrl", imagePreview.imageSrc || "");
+    formData.append("tripId", tripId);
 
-    if (values.imageFile !== null && values.imageFile !== undefined) {
-      formData.append("imageFile", values.imageFile);
+    if (
+      imagePreview.imageFile !== null &&
+      imagePreview.imageFile !== undefined
+    ) {
+      formData.append("imageFile", imagePreview.imageFile);
     }
 
     try {
-      // Assuming createDestination is a function to send the form data to the backend
-      await UseCreateParticipant(formData);
+      ParticipantValidator.parse(formDataObject);
+
+      const participant = await UseCreateParticipant(formData);
+      console.log(participant);
+
       setValues(initialFieldValues);
+      setValidationErrors({});
+      imagePreview.imageSrc = "";
+      imagePreview.imageFile = null;
+      navigate(0);
     } catch (error) {
-      console.error("Error submitting form:", error);
+      if (error instanceof ZodError) {
+        const newErrors: Record<string, string> = {};
+        for (const issue of error.issues) {
+          newErrors[issue.path[0]] = issue.message;
+        }
+        setValidationErrors(newErrors);
+      } else {
+        console.error("Error submitting form:", error);
+      }
     }
   };
 
@@ -130,6 +135,7 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({}) => {
                   value={values.firstName}
                   onChange={handleInputChange}
                   className="p-2 rounded-lg bg-secondary"
+                  errorMessage={validationErrors.firstName}
                 />
                 <Input
                   placeholder="Enter last name"
@@ -138,6 +144,7 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({}) => {
                   value={values.lastName}
                   onChange={handleInputChange}
                   className="p-2 rounded-lg bg-secondary"
+                  errorMessage={validationErrors.lastName}
                 />
                 <Input
                   placeholder="Enter date of birth"
@@ -147,6 +154,7 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({}) => {
                   value={values.dateOfBirth}
                   onChange={handleInputChange}
                   className="p-2 rounded-lg bg-secondary"
+                  errorMessage={validationErrors.dateOfBirth}
                 />
                 <Input
                   placeholder="Enter email"
@@ -155,6 +163,7 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({}) => {
                   value={values.email}
                   onChange={handleInputChange}
                   className="p-2 rounded-lg bg-secondary"
+                  errorMessage={validationErrors.email}
                 />
                 <Input
                   placeholder="Enter phone number"
@@ -163,6 +172,7 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({}) => {
                   value={values.phoneNumber}
                   onChange={handleInputChange}
                   className="p-2 rounded-lg bg-secondary"
+                  errorMessage={validationErrors.phoneNumber}
                 />
               </div>
 
@@ -174,6 +184,7 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({}) => {
                   value={values.address}
                   onChange={handleInputChange}
                   className="p-2 rounded-lg bg-secondary"
+                  errorMessage={validationErrors.address}
                 />
                 <Input
                   placeholder="Enter emergency contact name"
@@ -182,6 +193,7 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({}) => {
                   value={values.emergencyContactName}
                   onChange={handleInputChange}
                   className="p-2 rounded-lg bg-secondary"
+                  errorMessage={validationErrors.emergencyContactName}
                 />
                 <Input
                   placeholder="Enter emergency contact phone"
@@ -190,6 +202,7 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({}) => {
                   value={values.emergencyContactPhone}
                   onChange={handleInputChange}
                   className="p-2 rounded-lg bg-secondary"
+                  errorMessage={validationErrors.emergencyContactPhone}
                 />
                 <Input
                   placeholder="Enter medical conditions"
@@ -198,6 +211,7 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({}) => {
                   value={values.medicalConditions}
                   onChange={handleInputChange}
                   className="p-2 rounded-lg bg-secondary"
+                  errorMessage={validationErrors.medicalConditions}
                 />
                 <Input
                   placeholder="Choose photo"
@@ -208,10 +222,10 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({}) => {
                   onChange={showPreview}
                   id="image-uploader"
                 />
-                {values.photoUrl && (
+                {imagePreview.imageSrc && (
                   <div className="img-preview">
                     <p>Image Preview</p>
-                    <img src={values.photoUrl} alt="" />
+                    <img src={imagePreview.imageSrc} alt="" />
                   </div>
                 )}
               </div>

@@ -4,9 +4,9 @@ import { Trip } from "../types/TripTypes";
 import { fetchData } from "./apiUtils";
 
 // Adding trip
-export const createTrip = async (formData: FormData) => {
+export const UseCreateTrip = async (formData: FormData) => {
   try {
-    const response = await fetchData<Trip>("/api/Trip/CreateTrip", {
+    const response = await fetchData<Trip>("/api/Trip", {
       method: "post",
       data: formData,
     });
@@ -19,11 +19,12 @@ export const createTrip = async (formData: FormData) => {
 };
 
 // Get trip by id
-export const GetTripById = (id: string) => {
+export const UseTripById = (id: string | undefined) => {
   return useQuery<Trip, Error>({
     queryKey: ["tripById"],
     queryFn: async () => {
-      return fetchData<Trip>(`/api/Trip/GetTripById/${id}`);
+      return fetchData<Trip>(`/api/Trip/${id}`);
     },
+    enabled: !!id,
   });
 };

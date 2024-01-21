@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Participant } from "../types/ParticipantTypes";
 import { fetchData } from "./apiUtils";
+import toast from "react-hot-toast";
 
 // Get all  participants
 export const useParticipants = (page = 1, pageSize = 2) => {
@@ -28,7 +29,7 @@ export const useParticipantById = (id: string) => {
 // export const useUpdateParticipant = () => {
 //   const queryClient = useQueryClient();
 
-//   return useMutation<void, Error, { id: number; Participant: Participant }>(
+//   return useMutation<void, Error, { id: string; Participant: Participant }>(
 //     ({ id, Participant }) => fetchData<void>(`/api/Participant/${id}`, {
 //       method: "put",
 //       data: Participant,
@@ -49,10 +50,10 @@ export const UseCreateParticipant = async (formData: FormData) => {
       method: "post",
       data: formData,
     });
-
+    toast.success("Participant created successfully!");
     return response;
-  } catch (error) {
-    console.error("Error creating destination:", error);
+  } catch (error: any) {
+    toast.error(error.message || "An unexpected error occurred.");
     throw new Error("Failed to create destination. Please try again.");
   }
 };

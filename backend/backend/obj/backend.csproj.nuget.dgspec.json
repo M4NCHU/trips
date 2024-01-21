@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ProjectASP\\TripsAPP\\backend\\backend\\backend.csproj": {}
+    "C:\\Projects\\Trips\\trips\\backend\\backend\\backend.csproj": {}
   },
   "projects": {
-    "D:\\ProjectASP\\TripsAPP\\backend\\backend\\backend.csproj": {
+    "C:\\Projects\\Trips\\trips\\backend\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ProjectASP\\TripsAPP\\backend\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\Projects\\Trips\\trips\\backend\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "D:\\ProjectASP\\TripsAPP\\backend\\backend\\backend.csproj",
+        "projectPath": "C:\\Projects\\Trips\\trips\\backend\\backend\\backend.csproj",
         "packagesPath": "C:\\Users\\Maciek\\.nuget\\packages\\",
-        "outputPath": "D:\\ProjectASP\\TripsAPP\\backend\\backend\\obj\\",
+        "outputPath": "C:\\Projects\\Trips\\trips\\backend\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Maciek\\AppData\\Roaming\\NuGet\\NuGet.Config",

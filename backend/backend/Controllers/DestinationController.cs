@@ -24,16 +24,16 @@ namespace backend.Controllers
         
 
         // GET: api/Destinations
-        [HttpGet("GetAllDestinations")]
+        [HttpGet()]
         public async Task<ActionResult<IEnumerable<DestinationDTO>>> GetDestinations(int page = 1, int pageSize = 2)
         {
             var destinations = await _destinationService.GetDestinations(page, pageSize);
             return destinations;
         }
 
-        // GET: api/Destinations/GetDestinationsForTrip/1
-        [HttpGet("GetDestinationsForTrip/{tripId}")]
-        public async Task<ActionResult<IEnumerable<DestinationDTO>>> GetDestinationsForTrip(int tripId)
+        // GET: api/Destinations/1
+        [HttpGet("trip/{tripId}")]
+        public async Task<ActionResult<IEnumerable<DestinationDTO>>> GetDestinationsForTrip(Guid tripId)
         {
             try
             {
@@ -47,31 +47,31 @@ namespace backend.Controllers
         }
 
         // GET: api/Destinations/5
-        [HttpGet("GetDestinationById/{id}")]
-        public async Task<ActionResult<DestinationDTO>> GetDestination(int id)
+        [HttpGet("{destinationId}")]
+        public async Task<ActionResult<DestinationDTO>> GetDestination(Guid destinationId)
         {
-            return await _destinationService.GetDestination(id);
+            return await _destinationService.GetDestination(destinationId);
         }
 
         // PUT: api/Destinations/5
         
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDestination(int id, DestinationDTO destination)
+        public async Task<IActionResult> PutDestination(Guid id, DestinationDTO destination)
         {
             return await _destinationService.PutDestination(id, destination);
         }
 
         // POST: api/Destinations
         
-        [HttpPost("CreateDestination")]
+        [HttpPost()]
         public async Task<ActionResult<DestinationDTO>> PostDestination([FromForm] DestinationDTO destination)
         {
             return await _destinationService.PostDestination(destination);
         }
 
         // DELETE: api/Destinations/5
-        [HttpDelete("DeleteDestination/{id}")]
-        public async Task<IActionResult> DeleteDestination(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteDestination(Guid id)
         {
             return await _destinationService.DeleteDestination(id);
         }

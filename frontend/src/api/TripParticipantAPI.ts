@@ -2,30 +2,38 @@ import { useQuery } from "@tanstack/react-query";
 import { TripParticipant } from "../types/TripParticipantTypes";
 import { Trip } from "../types/TripTypes";
 import { fetchData } from "./apiUtils";
+import toast from "react-hot-toast";
 
 // Adding trip participant
-export const createTrip = async (formData: FormData) => {
+export const UseCreateTripParticipant = async (
+  tripId: string,
+  participantId: string
+) => {
   try {
-    const response = await fetchData<Trip>("/api/TripParticipant", {
+    const response = await fetchData<TripParticipant>("/api/TripParticipant", {
       method: "post",
-      data: formData,
+      data: {
+        tripId: tripId,
+        participantId: participantId,
+      },
     });
-
+    toast.success("Trip participant created successfully!");
     return response;
-  } catch (error) {
-    console.error("Error creating trip:", error);
-    throw new Error("Failed to create trip. Please try again.");
+  } catch (error: any) {
+    toast.error(error.message || "An unexpected error occurred.");
+    throw new Error("Failed to create trip participant. Please try again.");
   }
 };
 
 // Get trip participant by id
-export const GetTripParticipant = (id: string) => {
-  return useQuery<TripParticipant, Error>({
-    queryKey: ["tripParticipantsByTripId"],
+export const UseTripParticipant = (tripId: string | undefined) => {
+  return useQuery<TripParticipant[], Error>({
+    queryKey: ["tripParticipantsByTripId", tripId],
     queryFn: async () => {
-      return fetchData<TripParticipant>(
-        `/api/TripParticipant/GetTripParticipant/${id}`
+      return fetchData<TripParticipant[]>(
+        `/api/TripParticipant/trip/${tripId}`
       );
     },
+    enabled: !!tripId,
   });
 };

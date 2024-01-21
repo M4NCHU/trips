@@ -9,12 +9,12 @@ namespace backend.Services
     {
         Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories();
 
-        Task<ActionResult<CategoryDTO>> GetCategory(int id);
+        Task<ActionResult<CategoryDTO>> GetCategory(Guid id);
 
-        Task<IActionResult> PutCategory(int id, CategoryDTO category);
+        Task<IActionResult> PutCategory(Guid id, CategoryDTO category);
 
         Task<ActionResult<CategoryDTO>> PostCategory([FromForm] CategoryDTO category);
 
-        Task<IActionResult> DeleteCategory(int id);
+        Task<IActionResult> DeleteCategory(Guid id);
     }
 }

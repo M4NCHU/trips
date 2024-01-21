@@ -51,7 +51,7 @@ namespace backend.Services
         }
 
 
-        public async Task<ActionResult<CategoryDTO>> GetCategory(int id)
+        public async Task<ActionResult<CategoryDTO>> GetCategory(Guid id)
         {
             if (_context.Category == null)
             {
@@ -75,7 +75,7 @@ namespace backend.Services
             return CategoryDTO;
         }
 
-        public async Task<IActionResult> PutCategory(int id, CategoryDTO CategoryDTO)
+        public async Task<IActionResult> PutCategory(Guid id, CategoryDTO CategoryDTO)
         {
             if (id != CategoryDTO.Id)
             {
@@ -145,7 +145,7 @@ namespace backend.Services
             return new CreatedAtActionResult("GetCategory", "Category", new { id = category.Id }, CategoryDTO);
         }
 
-        public async Task<IActionResult> DeleteCategory(int id)
+        public async Task<IActionResult> DeleteCategory(Guid id)
         {
             if (_context.Category == null)
             {
@@ -164,7 +164,7 @@ namespace backend.Services
             return new NoContentResult();
         }
 
-        private bool CategoryExists(int id)
+        private bool CategoryExists(Guid id)
         {
             return (_context.Category?.Any(e => e.Id == id)).GetValueOrDefault();
         }

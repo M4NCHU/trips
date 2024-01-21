@@ -21,8 +21,8 @@ namespace backend.Controllers
             _visitPlaceService = visitPlaceService;
         }
 
-        // GET: api/VisitPlaces/GetAllVisitPlaces
-        [HttpGet("GetAllVisitPlaces")]
+        // GET: api/VisitPlaces
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlaces()
         {
             var visitPlaces = await _visitPlaceService.GetVisitPlaces();
@@ -30,16 +30,16 @@ namespace backend.Controllers
         }
 
 
-        // GET: api/VisitPlaces/GetVisitPlaceById/5
-        [HttpGet("GetVisitPlaceById/{id}")]
-        public async Task<ActionResult<VisitPlaceDTO>> GetVisitPlace(int id)
+        // GET: api/VisitPlaces/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<VisitPlaceDTO>> GetVisitPlace(Guid id)
         {
             return await _visitPlaceService.GetVisitPlace(id);
         }
 
-        // GET: api/VisitPlaces/ByDestination/1
+        // GET: api/VisitPlaces/destination/1
         [HttpGet("destination/{destinationId}")]
-        public async Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlacesByDestination(int destinationId)
+        public async Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlacesByDestination(Guid destinationId)
         {
             return await _visitPlaceService.GetVisitPlacesByDestination(destinationId);
         }
@@ -48,14 +48,14 @@ namespace backend.Controllers
         // PUT: api/VisitPlaces/5
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutVisitPlace(int id, VisitPlaceDTO visitPlace)
+        public async Task<IActionResult> PutVisitPlace(Guid id, VisitPlaceDTO visitPlace)
         {
             return await _visitPlaceService.PutVisitPlace(id, visitPlace);
         }
 
-        // POST: api/VisitPlaces/CreateVisitPlace
+        // POST: api/VisitPlaces
 
-        [HttpPost("CreateVisitPlace")]
+        [HttpPost()]
         public async Task<ActionResult<VisitPlaceDTO>> PostVisitPlace([FromForm] VisitPlaceDTO visitPlace)
         {
             return await _visitPlaceService.PostVisitPlace(visitPlace);
@@ -63,7 +63,7 @@ namespace backend.Controllers
 
         // DELETE: api/VisitPlaces/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteVisitPlace(int id)
+        public async Task<IActionResult> DeleteVisitPlace(Guid id)
         {
             return await _visitPlaceService.DeleteVisitPlace(id);
         }

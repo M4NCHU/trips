@@ -2,9 +2,9 @@ import { TripDestination } from "./TripDestinationTypes";
 import { VisitPlace } from "./VisitPlaceTypes";
 
 export type Accommodation = {
-  id: number;
-  tripDestinationId: number;
+  id: string;
+  tripDestinationId: string;
   tripDestination: TripDestination;
-  visitPlaceId: number;
+  visitPlaceId: string;
   visitPlace: VisitPlace;
 };

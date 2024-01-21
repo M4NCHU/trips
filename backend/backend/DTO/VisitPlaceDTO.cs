@@ -4,7 +4,7 @@ namespace backend.DTOs
 {
     public class VisitPlaceDTO
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Name is required.")]
         [StringLength(100, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 100 characters.")]
@@ -25,6 +25,6 @@ namespace backend.DTOs
         public IFormFile ImageFile { get; set; }
 
         [Required(ErrorMessage = "Destination ID is required.")]
-        public int DestinationId { get; set; }
+        public Guid DestinationId { get; set; }
     }
 }

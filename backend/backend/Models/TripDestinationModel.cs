@@ -5,13 +5,13 @@ namespace backend.Models
     public class TripDestinationModel
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        public int TripId { get; set; }
+        public Guid TripId { get; set; }
 
         public TripModel Trip { get; set; }
 
-        public int DestinationId { get; set; }
+        public Guid DestinationId { get; set; }
 
         public DestinationModel Destination { get; set; }
 

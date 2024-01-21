@@ -12,7 +12,7 @@ using backend.Authentication;
 namespace backend.Migrations
 {
     [DbContext(typeof(TripsDbContext))]
-    [Migration("20240118144542_init")]
+    [Migration("20240119175433_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -223,11 +223,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.AccommodationModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<int>("BedAmmount")
                         .HasColumnType("integer");
@@ -263,11 +261,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.CategoryModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -294,14 +290,12 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.DestinationModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -335,11 +329,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.ParticipantModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -386,8 +378,8 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("TripParticipantModelId")
-                        .HasColumnType("integer");
+                    b.Property<Guid?>("TripParticipantModelId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -398,11 +390,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.SelectedPlaceModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -410,14 +400,14 @@ namespace backend.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("TripDestinationId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("TripDestinationId")
+                        .HasColumnType("uuid");
 
-                    b.Property<int?>("TripModelId")
-                        .HasColumnType("integer");
+                    b.Property<Guid?>("TripModelId")
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("VisitPlaceId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("VisitPlaceId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -432,23 +422,21 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.TripDestinationModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("DestinationId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("DestinationId")
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("TripId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("TripId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -461,11 +449,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.TripModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -492,11 +478,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.TripParticipantModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -504,11 +488,11 @@ namespace backend.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("ParticipantId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("ParticipantId")
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("TripId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("TripId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -521,11 +505,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.VisitPlace", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -534,8 +516,8 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("DestinationId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("DestinationId")
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");

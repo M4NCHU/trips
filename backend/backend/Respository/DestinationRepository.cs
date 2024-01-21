@@ -64,7 +64,7 @@ namespace backend.Services
         }
 
 
-        public async Task<ActionResult<DestinationDTO>> GetDestination(int id)
+        public async Task<ActionResult<DestinationDTO>> GetDestination(Guid id)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace backend.Services
             }
         }
 
-        public async Task<List<DestinationDTO>> GetDestinationsForTrip(int tripId)
+        public async Task<List<DestinationDTO>> GetDestinationsForTrip(Guid tripId)
         {
             var destinations = await _context.TripDestination
                 .Where(td => td.TripId == tripId)
@@ -127,7 +127,7 @@ namespace backend.Services
         }
 
 
-        public async Task<IActionResult> PutDestination(int id, DestinationDTO destinationDTO)
+        public async Task<IActionResult> PutDestination(Guid id, DestinationDTO destinationDTO)
         {
             if (id != destinationDTO.Id)
             {
@@ -201,7 +201,7 @@ namespace backend.Services
             return new CreatedAtActionResult("GetDestination", "Destinations", new { id = destination.Id }, destinationDTO);
         }
 
-        public async Task<IActionResult> DeleteDestination(int id)
+        public async Task<IActionResult> DeleteDestination(Guid id)
         {
             if (_context.Destination == null)
             {
@@ -220,7 +220,7 @@ namespace backend.Services
             return new NoContentResult();
         }
 
-        private bool DestinationExists(int id)
+        private bool DestinationExists(Guid id)
         {
             return (_context.Destination?.Any(e => e.Id == id)).GetValueOrDefault();
         }

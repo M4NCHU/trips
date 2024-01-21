@@ -31,7 +31,7 @@ namespace backend.Controllers
 
         // GET: api/Accommodations/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AccommodationDTO>> GetAccommodation(int id)
+        public async Task<ActionResult<AccommodationDTO>> GetAccommodation(Guid id)
         {
             return await _accommodationService.GetAccommodation(id);
         }
@@ -39,7 +39,7 @@ namespace backend.Controllers
         // PUT: api/Accommodations/5
         
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAccommodation(int id, AccommodationDTO accommodation)
+        public async Task<IActionResult> PutAccommodation(Guid id, AccommodationDTO accommodation)
         {
             return await _accommodationService.PutAccommodation(id, accommodation);
         }
@@ -54,7 +54,7 @@ namespace backend.Controllers
 
         // DELETE: api/Accommodations/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAccommodation(int id)
+        public async Task<IActionResult> DeleteAccommodation(Guid id)
         {
             return await _accommodationService.DeleteAccommodation(id);
         }

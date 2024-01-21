@@ -1,8 +1,8 @@
 export type VisitPlace = {
-  id: number;
+  id: string;
   name: string;
   description: string;
   photoUrl: string;
-  destinationId: number;
+  destinationId: string;
   price: number;
 };

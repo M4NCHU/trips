@@ -5,8 +5,13 @@ import { PiHeartLight } from "react-icons/pi";
 import SearchModal from "../Modals/SearchModal";
 import Switcher from "../ui/Switcher";
 import Navlink from "./Navlink";
+import { UseTripDestinationCount } from "src/api/TripDestinationAPI";
 
 const Header = () => {
+  const { data: TripDestinationCount } = UseTripDestinationCount(
+    "670f17bb-320b-46a4-b739-f17678df7c3a"
+  );
+
   return (
     <nav className="w-full flex justify-center border-b-[1px] border-secondary">
       <div className="p-2 flex flex-row justify-between container">
@@ -34,11 +39,11 @@ const Header = () => {
         </ul>
         <div className="user-panel flex items-center gap-4 text-2xl font-bold">
           <Link
-            to={`/planning`}
+            to={`/planning/${"670f17bb-320b-46a4-b739-f17678df7c3a"}`}
             className="bg-pink-600 p-2 rounded-lg text-base text-white relative"
           >
             <div className="absolute -top-2 -right-2 bg-green-400 rounded-full p-1 w-6 h-6 flex items-center justify-center">
-              2
+              {TripDestinationCount}
             </div>
             Planning
           </Link>

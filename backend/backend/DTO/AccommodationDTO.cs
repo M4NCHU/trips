@@ -5,7 +5,7 @@ namespace backend.DTOs
 {
     public class AccommodationDTO
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Name is required.")]
         [StringLength(32, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 32 characters.")]

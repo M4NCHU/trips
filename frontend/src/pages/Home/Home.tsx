@@ -2,9 +2,10 @@ import { GoPlus } from "react-icons/go";
 import { Link } from "react-router-dom";
 import CategoriesList from "../../components/Categories/CategoriesList";
 import DestinationsList from "../../components/Destinations/DestinationsList";
+import Card from "../../components/Cards/CardTest";
 
 type DestinationType = {
-  id: number;
+  id: string;
   name: string;
   description: string;
   location: string;

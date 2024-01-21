@@ -1,8 +1,9 @@
 import { FC, useState } from "react";
-import { createCategory } from "../../api/Category";
+import { UseCreateCategory } from "../../api/Category";
 import FormHeader from "../../components/Forms/FormHeader";
 import Input from "../../components/Forms/Input";
 import { Button } from "../../components/ui/button";
+import useImagePreview from "../../hooks/useImagePreview";
 
 interface CreateProps {}
 
@@ -22,6 +23,7 @@ const initialFieldValues: FormValues = {
 
 const CreateCategory: FC<CreateProps> = ({}) => {
   const [values, setValues] = useState(initialFieldValues);
+  const { showPreview, imagePreview } = useImagePreview();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -31,31 +33,6 @@ const CreateCategory: FC<CreateProps> = ({}) => {
     });
   };
 
-  const showPreview = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const imageFile: File = e.target.files[0];
-      const reader = new FileReader();
-
-      reader.onload = (x: ProgressEvent<FileReader>) => {
-        if (x.target && typeof x.target.result === "string") {
-          setValues({
-            ...values,
-            imageFile: imageFile,
-            photoUrl: x.target.result,
-          });
-        }
-      };
-
-      reader.readAsDataURL(imageFile);
-    } else {
-      setValues({
-        ...values,
-        imageFile: null,
-        photoUrl: "",
-      });
-    }
-  };
-
   console.log(values.photoUrl);
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,14 +40,14 @@ const CreateCategory: FC<CreateProps> = ({}) => {
     const formData = new FormData();
     formData.append("name", values.categoryName);
     formData.append("description", values.categoryDesc);
-    formData.append("photoUrl", values.photoUrl);
+    formData.append("photoUrl", imagePreview.imageSrc);
 
-    if (values.imageFile !== null) {
-      formData.append("imageFile", values.imageFile);
+    if (imagePreview.imageFile !== null) {
+      formData.append("imageFile", imagePreview.imageFile);
     }
 
     try {
-      await createCategory(formData);
+      await UseCreateCategory(formData);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -118,10 +95,10 @@ const CreateCategory: FC<CreateProps> = ({}) => {
               onChange={showPreview}
               id="image-uploader"
             />
-            {values.photoUrl && (
+            {imagePreview.imageSrc && (
               <div className="img-preview">
                 <p>Image Preview</p>
-                <img src={values.photoUrl} alt="" />
+                <img src={imagePreview.imageSrc} alt="" />
               </div>
             )}
           </div>

@@ -60,7 +60,7 @@ namespace backend.Services
             return trips;
         }
 
-        public async Task<ActionResult<TripDTO>> GetTripById(int id)
+        public async Task<ActionResult<TripDTO>> GetTripById(Guid id)
         {
             var tripModel = await _context.Trip.FindAsync(id);
 
@@ -101,7 +101,7 @@ namespace backend.Services
 
         
 
-        public async Task<List<VisitPlaceDTO>> GetVisitPlacesForTrip(int tripId)
+        public async Task<List<VisitPlaceDTO>> GetVisitPlacesForTrip(Guid tripId)
         {
             var visitPlaces = await _context.TripDestination
                 .Where(td => td.TripId == tripId)
@@ -122,7 +122,7 @@ namespace backend.Services
         }
 
 
-        public async Task<IActionResult> PutTrip(int id, TripDTO tripDTO)
+        public async Task<IActionResult> PutTrip(Guid id, TripDTO tripDTO)
         {
             if (id != tripDTO.Id)
             {
@@ -205,7 +205,7 @@ namespace backend.Services
             return new CreatedAtActionResult("GetTrip", "Trip", new { id = trip.Id }, tripDTO);
         }
 
-        public async Task<IActionResult> DeleteTrip(int id)
+        public async Task<IActionResult> DeleteTrip(Guid id)
         {
             var trip = await _context.Trip.FindAsync(id);
             if (trip == null)
@@ -219,7 +219,7 @@ namespace backend.Services
             return new NoContentResult();
         }
 
-        private bool TripExists(int id)
+        private bool TripExists(Guid id)
         {
             return (_context.Trip?.Any(e => e.Id == id)).GetValueOrDefault();
         }

@@ -9,15 +9,15 @@ namespace backend.Services
     {
         Task<ActionResult<IEnumerable<TripDTO>>> GetTrips();
 
-        Task<ActionResult<TripDTO>> GetTripById(int id);
+        Task<ActionResult<TripDTO>> GetTripById(Guid id);
 
-        Task<List<VisitPlaceDTO>> GetVisitPlacesForTrip(int tripId);
+        Task<List<VisitPlaceDTO>> GetVisitPlacesForTrip(Guid tripId);
 
 
-        Task<IActionResult> PutTrip(int id, TripDTO trip);
+        Task<IActionResult> PutTrip(Guid id, TripDTO trip);
 
         Task<ActionResult<TripDTO>> PostTrip([FromForm] TripDTO trip);
 
-        Task<IActionResult> DeleteTrip(int id);
+        Task<IActionResult> DeleteTrip(Guid id);
     }
 }

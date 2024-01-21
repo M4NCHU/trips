@@ -2,9 +2,9 @@ import { Participant } from "./ParticipantTypes";
 import { Trip } from "./TripTypes";
 
 export type TripParticipant = {
-  id: number;
-  tripId: number;
+  id: string;
+  tripId: string;
   trip: Trip;
-  ParticipantId: number;
+  ParticipantId: string;
   participants: Participant;
 };

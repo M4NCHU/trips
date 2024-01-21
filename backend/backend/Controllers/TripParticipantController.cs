@@ -32,8 +32,8 @@ namespace backend.Controllers
         }
 
         // GET: api/TripParticipant/GetTripParticipants/1
-        [HttpGet("GetTripParticipant/{tripId}")]
-        public async Task<ActionResult<IEnumerable<TripParticipantDTO>>> GetTripParticipants(int tripId)
+        [HttpGet("trip/{tripId}")]
+        public async Task<ActionResult<IEnumerable<TripParticipantDTO>>> GetTripParticipants(Guid tripId)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace backend.Controllers
 
         // GET: api/TripParticipant/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TripParticipantDTO>> GetTripParticipant(int id)
+        public async Task<ActionResult<TripParticipantDTO>> GetTripParticipant(Guid id)
         {
             return await _tripParticipantService.GetTripParticipant(id);
         }
@@ -56,7 +56,7 @@ namespace backend.Controllers
         // PUT: api/TripParticipant/5
         
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTripParticipant(int id, TripParticipantDTO tripParticipant)
+        public async Task<IActionResult> PutTripParticipant(Guid id, TripParticipantDTO tripParticipant)
         {
             return await _tripParticipantService.PutTripParticipant(id, tripParticipant);
         }
@@ -64,14 +64,14 @@ namespace backend.Controllers
         // POST: api/TripParticipant
         
         [HttpPost]
-        public async Task<ActionResult<TripParticipantDTO>> PostTripParticipant([FromForm] TripParticipantDTO tripParticipant)
+        public async Task<ActionResult<TripParticipantDTO>> PostTripParticipant(Guid tripId, Guid participantId)
         {
-            return await _tripParticipantService.PostTripParticipant(tripParticipant);
+            return await _tripParticipantService.CreateTripParticipant(tripId, participantId);
         }
 
         // DELETE: api/TripParticipant/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTripParticipant(int id)
+        public async Task<IActionResult> DeleteTripParticipant(Guid id)
         {
             return await _tripParticipantService.DeleteTripParticipant(id);
         }

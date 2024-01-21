@@ -6,7 +6,7 @@ namespace backend.Models
     public class VisitPlace
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -26,7 +26,7 @@ namespace backend.Models
         [NotMapped]
         public IFormFile ImageFile { get; set; }
 
-        public int DestinationId { get; set; }
+        public Guid DestinationId { get; set; }
 
         public DestinationModel Destination { get; set; }
     }

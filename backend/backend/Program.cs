@@ -32,6 +32,8 @@ builder.Services.AddScoped<ITripService, TripService>();
 builder.Services.AddScoped<IAccommodationService, AccommodationService>();
 builder.Services.AddScoped<ITripParticipantService, TripParticipantService>();
 builder.Services.AddScoped<IParticipantService, ParticipantService>();
+builder.Services.AddScoped<ITripDestinationService, TripDestinationService>();
+builder.Services.AddScoped<ISelectedPlaceService, SelectedPlaceService>();
 
 builder.Services.AddSingleton<BaseUrlService>();
 

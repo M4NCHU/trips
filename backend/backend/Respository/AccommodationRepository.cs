@@ -56,7 +56,7 @@ namespace backend.Services
         }
 
 
-        public async Task<ActionResult<AccommodationDTO>> GetAccommodation(int id)
+        public async Task<ActionResult<AccommodationDTO>> GetAccommodation(Guid id)
         {
             if (_context.Accommodation == null)
             {
@@ -91,7 +91,7 @@ namespace backend.Services
 
         
 
-        public async Task<IActionResult> PutAccommodation(int id, AccommodationDTO accommodationDTO)
+        public async Task<IActionResult> PutAccommodation(Guid id, AccommodationDTO accommodationDTO)
         {
             if (id != accommodationDTO.Id)
             {
@@ -159,7 +159,7 @@ namespace backend.Services
             return new CreatedAtActionResult("GetAccommodation", "Accommodations", new { id = accommodation.Id }, accommodationDTO);
         }
 
-        public async Task<IActionResult> DeleteAccommodation(int id)
+        public async Task<IActionResult> DeleteAccommodation(Guid id)
         {
             if (_context.Accommodation == null)
             {
@@ -178,7 +178,7 @@ namespace backend.Services
             return new NoContentResult();
         }
 
-        private bool AccommodationExists(int id)
+        private bool AccommodationExists(Guid id)
         {
             return (_context.Accommodation?.Any(e => e.Id == id)).GetValueOrDefault();
         }

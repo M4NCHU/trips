@@ -66,7 +66,7 @@ namespace backend.Services
         }
 
 
-        public async Task<ActionResult<ParticipantDTO>> GetParticipant(int id)
+        public async Task<ActionResult<ParticipantDTO>> GetParticipant(Guid id)
         {
             if (_context.Participant == null)
             {
@@ -129,7 +129,7 @@ namespace backend.Services
         }*/
 
 
-        public async Task<IActionResult> PutParticipant(int id, ParticipantDTO participantDTO)
+        public async Task<IActionResult> PutParticipant(Guid id, ParticipantDTO participantDTO)
         {
             if (id != participantDTO.Id)
             {
@@ -206,10 +206,31 @@ namespace backend.Services
             _context.Participant.Add(participant);
             await _context.SaveChangesAsync();
 
-            return new CreatedAtActionResult("GetParticipant", "Participant", new { id = participant.Id }, participantDTO);
+            // Sprawdź, czy TripId jest różne od pustego GUID
+            if (participantDTO.TripId != Guid.Empty)
+            {
+                var tripParticipant = new TripParticipantModel
+                {
+                    TripId = participantDTO.TripId,
+                    ParticipantId = participant.Id
+                };
+
+                _context.TripParticipant.Add(tripParticipant);
+                await _context.SaveChangesAsync();
+            }
+
+            var responseDTO = new ParticipantDTO
+            {
+                Id = participant.Id,
+                FirstName = participant.FirstName,
+                // Uzupełnij pozostałe pola...
+                PhotoUrl = participant.PhotoUrl
+            };
+
+            return new CreatedAtActionResult("GetParticipant", "Participant", new { id = participant.Id }, responseDTO);
         }
 
-        public async Task<IActionResult> DeleteParticipant(int id)
+        public async Task<IActionResult> DeleteParticipant(Guid id)
         {
             if (_context.Participant == null)
             {
@@ -228,7 +249,7 @@ namespace backend.Services
             return new NoContentResult();
         }
 
-        private bool ParticipantExists(int id)
+        private bool ParticipantExists(Guid id)
         {
             return (_context.Participant?.Any(e => e.Id == id)).GetValueOrDefault();
         }

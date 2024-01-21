@@ -6,7 +6,7 @@ namespace backend.Models
     public class DestinationModel
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -23,7 +23,7 @@ namespace backend.Models
 
         public DateTime? ModifiedAt { get; set; } = DateTime.Now;
 
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
 
         [NotMapped]
         public IFormFile ImageFile { get; set; }

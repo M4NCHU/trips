@@ -2,12 +2,12 @@ import { FC } from "react";
 import CategoryItem from "./CategoryItem";
 import { CiCirclePlus } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import { GetCategoryList } from "../../api/Category";
+import { UseCategoryList } from "../../api/Category";
 
 interface CategoriesListProps {}
 
 const CategoriesList: FC<CategoriesListProps> = ({}) => {
-  const { data: categories, isLoading, isError } = GetCategoryList();
+  const { data: categories, isLoading, isError } = UseCategoryList();
 
   return (
     <div className="categories-list flex flex-row container justify-center overflow-auto">

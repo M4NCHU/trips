@@ -18,14 +18,17 @@ namespace backend.Services
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly BaseUrlService _baseUrlService;
         private readonly string _baseUrl;
+        private readonly ILogger<TripParticipantService> _logger;
 
-        public TripParticipantService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService)
+
+        public TripParticipantService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService, ILogger<TripParticipantService> logger)
         {
             _context = context;
             _imageService = imageService;
             _hostEnvironment = hostEnvironment;
             _baseUrlService = baseUrlService;
             _baseUrl = _baseUrlService.GetBaseUrl();
+            _logger = logger;
         }
 
         
@@ -51,7 +54,7 @@ namespace backend.Services
         }
 
 
-        public async Task<ActionResult<TripParticipantDTO>> GetTripParticipant(int id)
+        public async Task<ActionResult<TripParticipantDTO>> GetTripParticipant(Guid id)
         {
             if (_context.TripParticipant == null)
             {
@@ -76,7 +79,7 @@ namespace backend.Services
            
         }
 
-        public async Task<ActionResult<IEnumerable<TripParticipantDTO>>> GetTripParticipants(int tripId)
+        public async Task<ActionResult<IEnumerable<TripParticipantDTO>>> GetTripParticipants(Guid tripId)
         {
             if (_context.TripParticipant == null)
             {
@@ -120,7 +123,7 @@ namespace backend.Services
 
 
 
-        public async Task<IActionResult> PutTripParticipant(int id, TripParticipantDTO tripParticipantDTO)
+        public async Task<IActionResult> PutTripParticipant(Guid id, TripParticipantDTO tripParticipantDTO)
         {
             if (id != tripParticipantDTO.Id)
             {
@@ -154,34 +157,46 @@ namespace backend.Services
             return new NoContentResult();
         }
 
-        public async Task<ActionResult<TripParticipantDTO>> PostTripParticipant([FromForm] TripParticipantDTO tripParticipantDTO)
+        public async Task<ActionResult<TripParticipantDTO>> CreateTripParticipant(Guid tripId, Guid participantId)
         {
-            if (_context.TripParticipant == null)
+
+            _logger.LogInformation($"Creating TripParticipant - TripId: {tripId}, ParticipantId: {participantId}");
+
+            // Sprawdź, czy istnieje trip
+            var trip = await _context.Trip.FindAsync(tripId);
+            if (trip == null)
             {
-                return new ObjectResult("Entity set 'TripsDbContext.TripParticipant' is null.")
-                {
-                    StatusCode = 500
-                };
+                return new NotFoundObjectResult($"Trip with Id {tripId} not found.");
             }
 
-            
-           
+            // Sprawdź, czy istnieje participant
+            var participant = await _context.Participant.FindAsync(participantId);
+            if (participant == null)
+            {
+                return new NotFoundObjectResult($"Participant with Id {participantId} not found.");
+            }
 
             var tripParticipant = new TripParticipantModel
             {
-                Id = tripParticipantDTO.Id,
-                
+                TripId = tripId,
+                ParticipantId = participantId,
+                // Uzupełnij pozostałe pola
             };
-
-            
 
             _context.TripParticipant.Add(tripParticipant);
             await _context.SaveChangesAsync();
 
+            var tripParticipantDTO = new TripParticipantDTO
+            {
+                Id = tripParticipant.Id, // Uzyskany id po zapisie
+                                         // Uzupełnij pozostałe dane DTO
+            };
+
             return new CreatedAtActionResult("GetTripParticipant", "TripParticipant", new { id = tripParticipant.Id }, tripParticipantDTO);
         }
 
-        public async Task<IActionResult> DeleteTripParticipant(int id)
+
+        public async Task<IActionResult> DeleteTripParticipant(Guid id)
         {
             if (_context.TripParticipant == null)
             {
@@ -200,7 +215,7 @@ namespace backend.Services
             return new NoContentResult();
         }
 
-        private bool TripParticipantExists(int id)
+        private bool TripParticipantExists(Guid id)
         {
             return (_context.TripParticipant?.Any(e => e.Id == id)).GetValueOrDefault();
         }

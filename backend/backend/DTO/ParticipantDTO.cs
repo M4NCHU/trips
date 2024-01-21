@@ -4,7 +4,7 @@ namespace backend.DTOs
 {
     public class ParticipantDTO
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "First name is required.")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "First name must be between 2 and 50 characters.")]
@@ -41,7 +41,7 @@ namespace backend.DTOs
         public DateTime? ModifiedAt { get; set; }
 
         [Required(ErrorMessage = "Trip ID is required.")]
-        public int TripId { get; set; }
+        public Guid TripId { get; set; }
 
         public string PhotoUrl { get; set; }
         

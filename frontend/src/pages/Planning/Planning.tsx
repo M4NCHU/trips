@@ -3,8 +3,8 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { CiCircleInfo } from "react-icons/ci";
 import { FaArrowLeft } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
-import { Link } from "react-router-dom";
-import { GetTripById } from "../../api/TripAPI";
+import { Link, useParams } from "react-router-dom";
+import { UseTripById } from "../../api/TripAPI";
 import { fetchData } from "../../api/apiUtils";
 
 import CreateParticipantModal from "../../components/TripParticipants/CreateParticipantModal";
@@ -17,79 +17,45 @@ import ParticipantCard from "../../components/Planning/ParticipantCard";
 import DestinationCard from "../../components/Planning/DestinationCard";
 import { TripDestinationInterface } from "../../types/TripDestinationTypes";
 import VisitPlaceCard from "../../components/Planning/VisitPlaceCard";
+import { useDestinationById } from "src/api/Destinations";
+import { useVisitPlacesByDestination } from "src/api/VisitPlaceAPI";
+import TripDestinationComponent from "src/components/Planning/TripDestination";
+import TripParticipants from "src/components/Planning/TripParticipants";
+import PlanningHeader from "src/components/Planning/PlanningHeader";
 
 interface PlanningProps {}
 
 interface SelectedPlace {
-  id: number;
-  tripDestinationId: number;
-  visitPlaceId: number;
+  id: string;
+  tripDestinationId: string;
+  visitPlaceId: string;
   visitPlace: VisitPlace | null;
 }
 
 const Planning: FC<PlanningProps> = ({}) => {
-  const [tripDestinations, setTripDestinations] = useState<
-    TripDestinationInterface[]
-  >([]);
+  const { id } = useParams<{ id: string | undefined }>();
   const [numberOfPeople, setNumberOfPeople] = useState<number>(1);
   const [participantsListData, setParticipantsListData] =
     useState<TripParticipant[]>();
 
-  const { data: trip, isLoading, isError } = GetTripById("1");
+  const {
+    data: trip,
+    isLoading: isLoadingTrip,
+    isError: isErrorTrip,
+  } = UseTripById(id);
 
-  useEffect(() => {
-    const fetchVisitPlacesData = async () => {
-      if (trip && trip.tripDestinations) {
-        try {
-          const tripDestinationsData = await Promise.all(
-            trip.tripDestinations.map(async (tripDestination) => {
-              // Fetch data for destination
-              const destinationData = await fetchData<DestinationCategory>(
-                `/api/Destination/GetDestinationById/${tripDestination.destinationId}`
-              );
+  if (isLoadingTrip) {
+    return <div>Loading...</div>;
+  }
 
-              // Fetch data for each selectedPlaceParticipant
-              const selectedPlacesData = await Promise.all(
-                tripDestination.selectedPlaces.map(
-                  async (selectedPlace: any) => {
-                    const visitPlaceQuery = await fetchData<VisitPlace>(
-                      `/api/VisitPlace/GetVisitPlaceById/${selectedPlace.visitPlaceId}`
-                    );
-                    const visitPlaceData = visitPlaceQuery;
-
-                    return {
-                      ...selectedPlace,
-                      visitPlace: visitPlaceData,
-                      // You can add other properties as needed
-                    };
-                  }
-                )
-              );
-
-              return {
-                ...tripDestination,
-                destination: destinationData,
-                selectedPlaces: selectedPlacesData,
-                // You can add other properties as needed
-              };
-            })
-          );
-
-          // Update state with the fetched data
-          setTripDestinations(tripDestinationsData);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      }
-    };
-
-    fetchVisitPlacesData();
-  }, [trip]);
+  if (isErrorTrip || !trip) {
+    return <div>Error or no trip data.</div>;
+  }
 
   const calculateTotalPrice = () => {
     let totalPrice = 0;
 
-    tripDestinations.forEach((item) => {
+    trip.tripDestinations.forEach((item) => {
       totalPrice += item.destination?.price || 0;
 
       item.selectedPlaces.forEach((place) => {
@@ -104,56 +70,6 @@ const Planning: FC<PlanningProps> = ({}) => {
     return totalPrice.toFixed(2);
   };
 
-  //     await Promise.all(
-
-  //         const selectedPlacesData = await Promise.all(
-  //           tripDestination.selectedPlaces.map(async (selectedPlace) => {
-  //             if (selectedPlace.visitPlaceId) {
-  //               const visitPlaceQuery = GetVisitPlacesById(
-  //                 selectedPlace.visitPlaceId.toString()
-  //               );
-  //               const visitPlaceData = await visitPlaceQuery.data;
-  //               return {
-  //                 ...selectedPlace,
-  //                 visitPlace: visitPlaceData,
-  //               };
-  //             } else {
-  //               return selectedPlace;
-  //             }
-  //           })
-  //         );
-  //         return {
-  //           ...tripDestination,
-  //           destination: destinationData,
-  //           selectedPlaces: selectedPlacesData,
-  //         };
-  //       })
-  //     );
-  //   setTripDestinations(tripDestinationsData);
-
-  useEffect(() => {
-    const fetchParticipantsList = async () => {
-      if (trip && trip.id) {
-        try {
-          const ParticipantQuery = await fetchData<TripParticipant[]>(
-            `/api/TripParticipant/GetTripParticipant/${trip.id}`
-          );
-
-          if (ParticipantQuery) {
-            setParticipantsListData(ParticipantQuery);
-          }
-        } catch (error) {
-          // Handle the error if necessary
-          console.error("Error fetching participants:", error);
-        }
-      }
-    };
-
-    fetchParticipantsList();
-  }, [trip]);
-
-  console.log("participantsListData" + participantsListData);
-
   return (
     <div className="container px-4 mt-6 flex flex-col md:flex-row gap-4">
       <div className="w-full md:w-3/5 flex flex-col gap-6">
@@ -166,57 +82,16 @@ const Planning: FC<PlanningProps> = ({}) => {
           <h1 className="text-2xl font-bold">Plan your trip</h1>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="destination-header flex flex-row items-center gap-2">
-            <h1 className="text-2xl font-bold">Chosen trip destinations</h1>
-          </div>
+          <PlanningHeader title="Chosen trip destinations" />
           <hr />
-          {tripDestinations.map((item, i) => (
-            <div key={i} className="flex flex-col gap-2">
-              <Card content={<DestinationCard data={item} />} />
-              <div className="mt-2 px-0 pl-4 border-l-2 border-gray-500 flex flex-col">
-                {item.selectedPlaces.map((place, index) => (
-                  <Card key={index} content={<VisitPlaceCard data={place} />} />
-                ))}
-              </div>
-            </div>
+          {trip.tripDestinations.map((tripDestination, index) => (
+            <TripDestinationComponent key={index} data={tripDestination} />
           ))}
-          {/* {trip
-            ? trip.destinations &&
-              trip.destinations.map((item, i) => (
-                <div key={i}>
-                  <p>{item.name}</p>
-                </div>
-              ))
-            : "no data"}
-          {trip
-            ? trip.visitPlaces &&
-              trip.visitPlaces.map((item, i) => (
-                <div key={i}>
-                  <p>{item.name}</p>
-                </div>
-              ))
-            : "no data"} */}
         </div>
-        <div className="mt-4 flex flex-col gap-2">
-          <div className="destination-header flex flex-row items-center gap-2 mb-4">
-            <h1 className="text-2xl font-bold">Add trip participants</h1>
-          </div>
-          <hr />
-          <div className="mt-2 flex flex-col gap-4">
-            {participantsListData && participantsListData
-              ? participantsListData.map((item, i) => (
-                  <Card
-                    key={i}
-                    content={<ParticipantCard data={item.participants} />}
-                  />
-                ))
-              : "No participants"}
-          </div>
-          <CreateParticipantModal />
-        </div>
+        <TripParticipants tripId={trip.id} />
       </div>
-      <div className="w-full md:w-2/5">
-        <div className="reservation-card w-full bg-secondary p-6 rounded-xl flex flex-col gap-4">
+      <div className="w-full md:w-2/5 ">
+        <div className="reservation-card w-full bg-secondary p-6 rounded-xl flex flex-col gap-4 sticky top-10">
           <div className="destination-price flex flex-row items-center gap-1">
             <h4 className="text-xl font-bold">
               <span className="font-normal">Total:</span>{" "}

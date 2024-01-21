@@ -5,9 +5,9 @@ namespace backend.DTOs
 {
     public class TripParticipantDTO
     {
-        public int Id { get; set; }
-        public int TripId { get; set; }
-        public int ParticipantId { get; set; }
+        public Guid Id { get; set; }
+        public Guid TripId { get; set; }
+        public Guid ParticipantId { get; set; }
 
         public List<ParticipantDTO>? Participant { get; set; }
 

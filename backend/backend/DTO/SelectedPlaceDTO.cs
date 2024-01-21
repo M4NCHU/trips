@@ -2,10 +2,10 @@
 {
     public class SelectedPlaceDTO
     {
-        public int Id { get; set; }
-        public int TripDestinationId { get; set; }
-        public int VisitPlaceId { get; set; }
-        public VisitPlaceDTO VisitPlace { get; set; }
+        public Guid Id { get; set; }
+        public Guid TripDestinationId { get; set; }
+        public Guid VisitPlaceId { get; set; }
+        public VisitPlaceDTO? VisitPlace { get; set; }
 
         public DateTime CreatedAt { get; set; }
 

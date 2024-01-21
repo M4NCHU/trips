@@ -9,17 +9,17 @@ namespace backend.Services
     {
         Task<ActionResult<IEnumerable<TripParticipantDTO>>> GetTripParticipants();
 
-        Task<ActionResult<TripParticipantDTO>> GetTripParticipant(int id);
+        Task<ActionResult<TripParticipantDTO>> GetTripParticipant(Guid id);
 
         /*Task<List<TripParticipantDTO>> GetTripParticipantsForTrip(int tripId);*/
 
 
-        Task<IActionResult> PutTripParticipant(int id, TripParticipantDTO tripParticipant);
+        Task<IActionResult> PutTripParticipant(Guid id, TripParticipantDTO tripParticipant);
 
-        Task<ActionResult<IEnumerable<TripParticipantDTO>>> GetTripParticipants(int TripId);
+        Task<ActionResult<IEnumerable<TripParticipantDTO>>> GetTripParticipants(Guid TripId);
 
-        Task<ActionResult<TripParticipantDTO>> PostTripParticipant([FromForm] TripParticipantDTO tripParticipant);
+        Task<ActionResult<TripParticipantDTO>> CreateTripParticipant(Guid tripId, Guid participantId);
 
-        Task<IActionResult> DeleteTripParticipant(int id);
+        Task<IActionResult> DeleteTripParticipant(Guid id);
     }
 }

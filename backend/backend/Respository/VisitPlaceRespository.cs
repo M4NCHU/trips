@@ -51,7 +51,7 @@ namespace backend.Services
         }
 
 
-        public async Task<ActionResult<VisitPlaceDTO>> GetVisitPlace(int id)
+        public async Task<ActionResult<VisitPlaceDTO>> GetVisitPlace(Guid id)
         {
             if (_context.VisitPlace == null)
             {
@@ -78,7 +78,7 @@ namespace backend.Services
         }
 
 
-        public async Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlacesByDestination(int destinationId)
+        public async Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlacesByDestination(Guid destinationId)
         {
             
             var visitPlaces = await _context.VisitPlace
@@ -106,7 +106,7 @@ namespace backend.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IActionResult> PutVisitPlace(int id, VisitPlaceDTO VisitPlaceDTO)
+        public async Task<IActionResult> PutVisitPlace(Guid id, VisitPlaceDTO VisitPlaceDTO)
         {
             if (id != VisitPlaceDTO.Id)
             {
@@ -178,7 +178,7 @@ namespace backend.Services
             return new CreatedAtActionResult("GetVisitPlace", "VisitPlace", new { id = visitPlace.Id }, VisitPlaceDTO);
         }
 
-        public async Task<IActionResult> DeleteVisitPlace(int id)
+        public async Task<IActionResult> DeleteVisitPlace(Guid id)
         {
             if (_context.VisitPlace == null)
             {
@@ -197,7 +197,7 @@ namespace backend.Services
             return new NoContentResult();
         }
 
-        private bool VisitPlaceExists(int id)
+        private bool VisitPlaceExists(Guid id)
         {
             return (_context.VisitPlace?.Any(e => e.Id == id)).GetValueOrDefault();
         }

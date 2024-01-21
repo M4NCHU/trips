@@ -2,7 +2,7 @@ import DestinationDetails from "../components/Destinations/DestinationDetails";
 import { routerType } from "../types/Router";
 import Login from "./Authentication/Login/Login";
 import Register from "./Authentication/Register/Register";
-import CreateCategory from "./Categories/Create";
+import UseCreateCategory from "./Categories/Create";
 import Contact from "./Contact/Contact";
 import CreateDestination from "./Destinations/Create";
 import Home from "./Home/Home";
@@ -26,22 +26,22 @@ const pagesData: routerType[] = [
     title: "Create trip destination",
   },
   {
-    path: "destinations/details/:id",
+    path: "destination/:id",
     element: <DestinationDetails />,
     title: "Destination Details",
   },
   {
     path: "categories/create",
-    element: <CreateCategory />,
+    element: <UseCreateCategory />,
     title: "Create destination category",
   },
   {
-    path: ":id/visit-place/create",
+    path: "destination/:id/visit-place/create",
     element: <CreateVisitPlace />,
     title: "Create visit place",
   },
   {
-    path: "planning",
+    path: "planning/:id",
     element: <Planning />,
     title: "Plan your trip",
   },

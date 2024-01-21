@@ -1,56 +1,56 @@
 import axios, { AxiosResponse, AxiosError } from "axios";
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
 
 interface FetchDataOptions {
-  method?: string;
+  method?: "get" | "post" | "put" | "delete";
   data?: any;
 }
 
-// Zmieniona funkcja fetchDataPaginated, która korzysta z paginacji
 export const fetchDataPaginated = async <T>(
   url: string,
   page: number,
   pageSize: number
-) => {
-  const response: AxiosResponse<T[]> = await axios.get<T[]>(
-    `${API_BASE_URL}${url}?page=${page}&pageSize=${pageSize}`
-  );
-
-  return {
-    data: response.data,
-    hasMore: response.data.length === pageSize,
-  };
-};
-
-export const fetchData = async <T>(url: string, options?: FetchDataOptions) => {
-  const { method = "get", data = null } = options || {};
-
+): Promise<{ data: T[]; hasMore: boolean }> => {
   try {
-    const response: AxiosResponse<T> = await axios({
-      method,
-      url: `${API_BASE_URL}${url}`,
-      data,
-    });
-
-    return response.data;
+    const response: AxiosResponse<T[]> = await axios.get<T[]>(
+      `${url}?page=${page}&pageSize=${pageSize}`
+    );
+    return {
+      data: response.data,
+      hasMore: response.data.length === pageSize,
+    };
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      const axiosError: AxiosError = error;
-
-      if (axiosError.response) {
-        // Błąd z odpowiedzią od serwera (np. status HTTP nie w zakresie 2xx)
-        throw new Error(
-          (axiosError.response.data as { message?: string })?.message ||
-            "Wystąpił błąd zapytania."
-        );
-      } else if (axiosError.request) {
-        // Błąd dotyczący samego zapytania (np. brak odpowiedzi)
-        throw new Error("Brak odpowiedzi od serwera.");
-      }
-    }
-
-    // Inny błąd
-    throw new Error("Wystąpił nieznany błąd.");
+    throw handleAxiosError(error);
   }
 };
+
+export const fetchData = async <T>(
+  url: string,
+  options?: FetchDataOptions
+): Promise<T> => {
+  try {
+    const { method = "get", data = null } = options || {};
+    const response: AxiosResponse<T> = await axios({ method, url, data });
+    return response.data;
+  } catch (error) {
+    throw handleAxiosError(error);
+  }
+};
+
+function handleAxiosError(error: unknown) {
+  if (axios.isAxiosError(error)) {
+    const axiosError = error as AxiosError<{ message?: string }>;
+
+    if (axiosError.response) {
+      const message =
+        axiosError.response.data?.message || "Wystąpił błąd zapytania.";
+      const status = axiosError.response.status;
+      throw new Error(`${message} (Status: ${status})`);
+    } else if (axiosError.request) {
+      throw new Error("Brak odpowiedzi od serwera.");
+    }
+  }
+
+  throw new Error("Wystąpił nieznany błąd.");
+}

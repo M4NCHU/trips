@@ -1,5 +1,5 @@
 export type Participant = {
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
   dateOfBirth: string;
@@ -13,5 +13,5 @@ export type Participant = {
   modifiedAt?: string | null;
   photoUrl: string;
   imageFile?: File | null;
-  tripId: number;
+  tripId: string;
 };
