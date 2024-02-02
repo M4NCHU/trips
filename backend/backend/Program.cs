@@ -1,6 +1,7 @@
-using backend.Authentication;
+using backend.Infrastructure.Authentication;
 using backend.Controllers;
-using backend.Services;
+using backend.Application.Services;
+using backend.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using System.Configuration;
 using System.Text;
+using backend.Application.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 var provider = builder.Services.BuildServiceProvider();

@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using backend.DTOs;
-using backend.Services;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using backend.Models;
 using Microsoft.Extensions.Hosting;
+using backend.Domain.DTOs;
+using backend.Application.Services;
 
 namespace backend.Controllers
 {

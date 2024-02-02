@@ -572,3 +572,11 @@ C:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\refint\backend.dll
 C:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\backend.pdb
 C:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\backend.genruntimeconfig.cache
 C:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\ref\backend.dll
+C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\FluentValidation.dll
+C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\backend.Application.dll
+C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\backend.Domain.dll
+C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\backend.Infrastructure.dll
+C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\backend.Application.pdb
+C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\backend.Domain.pdb
+C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\backend.Infrastructure.pdb

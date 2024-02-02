@@ -1,4 +1,5 @@
-﻿using backend.Authentication;
+﻿using backend.Application.Authentication;
+using backend.Authentication;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;

@@ -1,0 +1,16 @@
+C:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.csproj.AssemblyReference.cache
+C:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.AssemblyInfoInputs.cache
+C:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.AssemblyInfo.cs
+C:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.csproj.CoreCompileInputs.cache
+C:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.sourcelink.json
+C:\Projects\Trips\trips\backend\backend.Application\bin\Debug\net8.0\backend.Application.deps.json
+C:\Projects\Trips\trips\backend\backend.Application\bin\Debug\net8.0\backend.Application.dll
+C:\Projects\Trips\trips\backend\backend.Application\bin\Debug\net8.0\backend.Application.pdb
+C:\Projects\Trips\trips\backend\backend.Application\bin\Debug\net8.0\backend.Domain.dll
+C:\Projects\Trips\trips\backend\backend.Application\bin\Debug\net8.0\backend.Domain.pdb
+C:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.csproj.CopyComplete
+C:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.dll
+C:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\refint\backend.Application.dll
+C:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.pdb
+C:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\ref\backend.Application.dll

@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\Context",
+    "\\backend\\Respository"
+  ],
+  "SelectedNode": "\\backend\\Context\\TripsDbContext.cs",
+  "PreviewInSolutionExplorer": false
+}
