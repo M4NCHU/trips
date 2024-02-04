@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useContext, useState } from "react";
 import { Button } from "../../../components/ui/button";
 
 import { useMutation } from "@tanstack/react-query";
@@ -6,6 +6,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import FormHeader from "../../../components/Forms/FormHeader";
 import Input from "../../../components/Forms/Input";
+import { UseLoginUser } from "src/api/AuthenticationAPI";
+import { useAuth } from "src/context/UserContext";
 
 interface LoginProps {}
 
@@ -20,6 +22,7 @@ const initialFieldValues: FormValues = {
 };
 
 const Login: FC<LoginProps> = ({}) => {
+  const { setUser } = useAuth();
   const [values, setValues] = useState(initialFieldValues);
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,24 +32,22 @@ const Login: FC<LoginProps> = ({}) => {
     });
   };
 
-  const { mutate: CreateAccount } = useMutation({
-    mutationFn: async () => {
-      const payload = {
-        username: values.username,
-        password: values.password,
-      };
+  const LoginUser = async () => {
+    const formData = new FormData();
+    formData.append("username", values.username);
+    formData.append("password", values.password);
 
-      console.log("payload", payload);
+    try {
+      const user = await UseLoginUser(formData);
 
-      const { data } = await axios.post(
-        "https://localhost:7154/api/Authenticate/login ",
-        payload
-      );
-
-      console.log(data);
-      return data;
-    },
-  });
+      if (user.token && user.user) {
+        // Store the token with the user data
+        setUser({ ...user.user, token: user.token });
+      }
+    } catch (error: any) {
+      console.error("Error submitting form:", error);
+    }
+  };
 
   return (
     <div className="container px-4">
@@ -77,7 +78,7 @@ const Login: FC<LoginProps> = ({}) => {
           </div>
           <Button
             className="mt-4 w-full bg-red-400 "
-            onClick={() => CreateAccount()}
+            onClick={() => LoginUser()}
           >
             Login
           </Button>

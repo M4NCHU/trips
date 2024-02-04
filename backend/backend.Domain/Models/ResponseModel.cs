@@ -1,4 +1,4 @@
-﻿namespace backend.Authentication
+﻿namespace backend.Domain.Authentication
 {
     public class ResponseModel
     {

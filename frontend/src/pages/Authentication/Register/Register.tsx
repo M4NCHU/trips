@@ -1,9 +1,8 @@
 import { FC, useState } from "react";
 import { Button } from "../../../components/ui/button";
 
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import { UseCreateUser } from "src/api/AuthenticationAPI";
 import FormHeader from "../../../components/Forms/FormHeader";
 import Input from "../../../components/Forms/Input";
 
@@ -13,12 +12,16 @@ interface FormValues {
   username: string;
   email: string;
   password: string;
+  firstName: string;
+  lastName: string;
 }
 
 const initialFieldValues: FormValues = {
   username: "",
   email: "",
   password: "",
+  firstName: "",
+  lastName: "",
 };
 
 const Register: FC<RegisterProps> = ({}) => {
@@ -31,25 +34,20 @@ const Register: FC<RegisterProps> = ({}) => {
     });
   };
 
-  const { mutate: CreateAccount } = useMutation({
-    mutationFn: async () => {
-      const payload = {
-        username: values.username,
-        email: values.email,
-        password: values.password,
-      };
+  const CreateUser = async () => {
+    const formData = new FormData();
+    formData.append("firstName", values.firstName);
+    formData.append("lastName", values.lastName);
+    formData.append("username", values.username);
+    formData.append("email", values.email);
+    formData.append("password", values.password);
 
-      console.log("payload", payload);
-
-      const { data } = await axios.post(
-        "https://localhost:7154/api/Authenticate/register",
-        payload
-      );
-
-      console.log(data);
-      return data;
-    },
-  });
+    try {
+      await UseCreateUser(formData);
+    } catch (error: any) {
+      console.error("Error submitting form:", error);
+    }
+  };
 
   return (
     <div className="container px-4">
@@ -61,6 +59,22 @@ const Register: FC<RegisterProps> = ({}) => {
               <h2 className="text-xl font-bold border-b-2 py-2 mb-4 ">
                 Register
               </h2>
+              <Input
+                placeholder="Enter first name"
+                label="first name"
+                name="firstName"
+                type="text"
+                value={values.firstName}
+                onChange={handleInputChange}
+              />
+              <Input
+                placeholder="Enter last name"
+                label="Last name"
+                name="lastName"
+                type="text"
+                value={values.lastName}
+                onChange={handleInputChange}
+              />
               <Input
                 placeholder="Enter username"
                 label="Username"
@@ -89,7 +103,7 @@ const Register: FC<RegisterProps> = ({}) => {
           </div>
           <Button
             className="mt-4 w-full bg-red-400 "
-            onClick={() => CreateAccount()}
+            onClick={() => CreateUser()}
           >
             Register
           </Button>

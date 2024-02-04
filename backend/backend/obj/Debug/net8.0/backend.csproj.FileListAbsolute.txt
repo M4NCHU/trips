@@ -555,7 +555,6 @@ C:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\backend.GeneratedMSBuil
 C:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\backend.AssemblyInfoInputs.cache
 C:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\backend.AssemblyInfo.cs
 C:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\backend.csproj.CoreCompileInputs.cache
-C:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\backend.MvcApplicationPartsAssemblyInfo.cs
 C:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\backend.MvcApplicationPartsAssemblyInfo.cache
 C:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\backend.sourcelink.json
 C:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\staticwebassets.build.json

@@ -6,8 +6,15 @@ import SearchModal from "../Modals/SearchModal";
 import Switcher from "../ui/Switcher";
 import Navlink from "./Navlink";
 import { UseTripDestinationCount } from "src/api/TripDestinationAPI";
+import { useAuth } from "src/context/UserContext";
+
+import CustomDropdownMenu from "../ui/Dropdown/CustomDropdownMenu";
+import CustomDropdownMenuItem from "../ui/Dropdown/CustomDropdownMenuItem";
+import UserTrigger from "./UserTrigger";
 
 const Header = () => {
+  const { user, logout } = useAuth();
+
   const { data: TripDestinationCount } = UseTripDestinationCount(
     "670f17bb-320b-46a4-b739-f17678df7c3a"
   );
@@ -48,12 +55,29 @@ const Header = () => {
             Planning
           </Link>
           <Switcher />
-          <button>
+          <button className="p-1">
             <PiHeartLight className="cursor-pointer" />
           </button>
-          <div className="w-12 h-12 flex items-center">
-            <img src={Logo} alt="site logo" className="object-contain" />
-          </div>
+
+          {user ? (
+            <CustomDropdownMenu dropDownButton={<UserTrigger />}>
+              <CustomDropdownMenuItem label="Home" href="/" />
+              <CustomDropdownMenuItem label="Contact" href="/contact" />
+              <CustomDropdownMenuItem label="About" href="/about" />
+              <CustomDropdownMenuItem
+                label="Logout"
+                variant="danger"
+                onClick={logout}
+              />
+            </CustomDropdownMenu>
+          ) : (
+            <Link
+              to={"/login"}
+              className="px-4 py-2 font-semibold text-base bg-secondary rounded-lg"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </nav>

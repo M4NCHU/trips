@@ -2,10 +2,11 @@
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
 using backend.Application.Authentication;
+using backend.Domain.Authentication;
 
 namespace backend.Infrastructure.Authentication
 {
-    public class TripsDbContext : IdentityDbContext<ApplicationUser>
+    public class TripsDbContext : IdentityDbContext<UserModel>
     {
         public TripsDbContext(DbContextOptions<TripsDbContext> options)
             : base(options)

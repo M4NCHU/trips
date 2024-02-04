@@ -10,7 +10,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using System.Configuration;
 using System.Text;
-using backend.Application.Authentication;
+using backend.Domain.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 var provider = builder.Services.BuildServiceProvider();
@@ -27,6 +27,7 @@ builder.Services.AddScoped<ImageService>(provider =>
     return new ImageService(hostingEnvironment, "Images");
 });
 
+builder.Services.AddScoped<IAuthService, AuthenticationService>();
 builder.Services.AddScoped<IDestinationService, DestinationService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IVisitPlaceService, VisitPlaceService>();
@@ -49,30 +50,46 @@ builder.Services.AddDbContext<TripsDbContext>(options =>
 });
 
 
-// For Identity
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+/*// For Identity
+builder.Services.AddIdentity<UserModel, IdentityRole>()
     .AddEntityFrameworkStores<TripsDbContext>()
     .AddDefaultTokenProviders();
 
 // Adding Authentication
-builder.Services.AddAuthentication(options =>
+*/
+
+builder.Services.AddScoped<JWTService>();
+
+
+builder.Services.AddIdentityCore<UserModel>(options =>
 {
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
+    options.Password.RequiredLength = 6;
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.SignIn.RequireConfirmedEmail = true;
+})
+.AddRoles<IdentityRole>()
+.AddRoleManager<RoleManager<IdentityRole>>()
+.AddEntityFrameworkStores<TripsDbContext>()
+.AddSignInManager<SignInManager<UserModel>>()
+.AddUserManager<UserManager<UserModel>>()
+.AddDefaultTokenProviders();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
-    options.SaveToken = true;
-    options.RequireHttpsMetadata = false;
-    options.TokenValidationParameters = new TokenValidationParameters()
+    options.TokenValidationParameters = new TokenValidationParameters
     {
+        ValidateIssuerSigningKey = true,
         ValidateIssuer = true,
-        ValidateAudience = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])),
         ValidAudience = configuration["JWT:ValidAudience"],
         ValidIssuer = configuration["JWT:ValidIssuer"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
     };
 });
+
+
 
 
 
