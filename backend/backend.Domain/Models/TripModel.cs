@@ -1,4 +1,5 @@
-﻿using backend.Domain.Enums;
+﻿using backend.Domain.Authentication;
+using backend.Domain.Enums;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,6 +13,8 @@ namespace backend.Models
 
         public TripStatus Status { get; set; }
 
+        public string Title { get; set; }
+
         public DateTime? StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
@@ -20,6 +23,10 @@ namespace backend.Models
 
         public DateTime? ModifiedAt { get; set; } = DateTime.Now;
 
+        public string CreatedBy { get; set; }
+
+        [ForeignKey("CreatedBy")]
+        public UserModel User { get; set; }
 
         public List<TripDestinationModel>? TripDestinations { get; set; }
 

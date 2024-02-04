@@ -12,15 +12,26 @@ import { useVisitPlacesByDestination } from "../../api/VisitPlaceAPI";
 import { Button } from "../ui/button";
 import { UseCreateTripDestination } from "../../api/TripDestinationAPI";
 import { SelectedPlace } from "src/types/SelectedPlaceTypes";
+import { useAuth } from "src/context/UserContext";
+import { UseUserTripsList } from "src/api/TripAPI";
+import { User } from "src/types/UserTypes";
+import { Trip } from "src/types/TripTypes";
 
 interface DestinationDetailsProps {}
 
 const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
+  const { user } = useAuth();
+
+  const { data: tripsData } = UseUserTripsList(user?.id);
+
+  console.log(tripsData);
   const { id } = useParams<{ id: string | undefined }>();
   const [selectedPlaces, setSelectedPlaces] = useState<
     { id: string; price: number }[]
   >([]);
+  const [activeTrips, setActiveTrips] = useState<Trip[]>([]);
   const [totalPrice, setTotalPrice] = useState(24);
+  const [tripDestinationId, setTripDestinationId] = useState<string>("");
 
   const {
     data: destination,
@@ -34,11 +45,22 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
   } = useVisitPlacesByDestination(id);
 
   useEffect(() => {
+    if (tripsData) {
+      const filteredActiveTrips = tripsData.filter((trip) => trip.status === 1);
+      setActiveTrips(filteredActiveTrips);
+    }
+  }, [tripsData]);
+
+  useEffect(() => {
     if (!id) {
       setSelectedPlaces([]);
       setTotalPrice(24);
     }
-  }, [id]);
+
+    if (tripsData && tripsData.length > 0 && !tripDestinationId) {
+      setTripDestinationId(tripsData[0].id);
+    }
+  }, [id, tripsData, tripDestinationId]);
 
   const handleAddToTrip = (placeId: string, placePrice: number) => {
     // Sprawdź, czy element o danym id już istnieje na liście
@@ -85,8 +107,16 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
       console.error("Error: No destination ID provided");
       return;
     }
+
+    if (!tripsData) {
+      console.error("Error: No destination ID provided");
+      return;
+    }
     const formData = new FormData();
-    formData.append("TripId", "670f17bb-320b-46a4-b739-f17678df7c3a");
+    formData.append(
+      "TripId",
+      tripDestinationId ? tripDestinationId : tripsData[0].id
+    );
     formData.append("DestinationId", id);
     selectedPlaces.forEach((place, index) => {
       formData.append(`selectedPlaces[${index}].visitPlaceId`, place.id);
@@ -231,12 +261,27 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
               <CiCircleInfo className="text-xl cursor-pointer" />
             </div>
 
-            <Button
-              className="bg-pink-700 text-white font-semibold text-lg p-6"
-              onClick={handleFormSubmit}
-            >
-              Add to your trip plan
-            </Button>
+            {activeTrips && activeTrips.length > 1 ? (
+              <select
+                className="bg-pink-700 text-white font-semibold text-lg p-4 rounded-lg"
+                value={tripDestinationId}
+                onChange={(e) => setTripDestinationId(e.target.value)}
+              >
+                {activeTrips.map((trip, i) => (
+                  <option className="bg-pink-700" key={i} value={trip.id}>
+                    {trip.title}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <Button
+                className="bg-pink-700 text-white font-semibold text-lg p-6"
+                onClick={handleFormSubmit}
+              >
+                {" "}
+                Add to your trip plan
+              </Button>
+            )}
 
             <div className="flex justify-center">
               <p className="">You won't be charged yet</p>

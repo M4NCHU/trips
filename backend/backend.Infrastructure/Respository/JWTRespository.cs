@@ -2,6 +2,7 @@
 using backend.Domain.Authentication;
 using backend.Infrastructure.Authentication;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -22,21 +23,23 @@ namespace backend.Infrastructure.Services
         private readonly BaseUrlService _baseUrlService;
         private readonly string _baseUrl;
         private readonly SymmetricSecurityKey _jwtKey;
+        private readonly UserManager<UserModel> _userManager;
 
-        public JWTService(ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService, IConfiguration configuration)
+        public JWTService(ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService, IConfiguration configuration, UserManager<UserModel> userManager)
         {
-            
+
             _imageService = imageService;
             _hostEnvironment = hostEnvironment;
             _baseUrlService = baseUrlService;
             _baseUrl = _baseUrlService.GetBaseUrl();
             _configuration = configuration;
             _jwtKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
+            _userManager = userManager;
         }
 
-        
 
-       public string CreateJWT(UserModel User) 
+
+        public async Task<string> CreateJWT(UserModel User)
         {
             var userClaims = new List<Claim>
             {
@@ -46,13 +49,20 @@ namespace backend.Infrastructure.Services
                 new Claim(ClaimTypes.Surname, User.LastName)
             };
 
+            var userRoles = await _userManager.GetRolesAsync(User);
+            foreach (var userRole in userRoles)
+            {
+                userClaims.Add(new Claim(ClaimTypes.Role, userRole));
+            }
+
             var credentials = new SigningCredentials(_jwtKey, SecurityAlgorithms.HmacSha256Signature);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(userClaims),
                 Expires = DateTime.UtcNow.AddDays(int.Parse(_configuration["JWT:ExpiresInDays"])),
                 SigningCredentials = credentials,
-                Issuer = _configuration["JWT:ValidIssuer"]
+                Issuer = _configuration["JWT:ValidIssuer"],
+                /*Audience = _configuration["JWT:ValidAudience"],*/
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();

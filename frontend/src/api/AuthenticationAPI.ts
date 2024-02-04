@@ -88,7 +88,7 @@ export const authorizedFetch = async <T>(
 
   const headers = new Headers(options.headers);
   if (token) {
-    headers.append("Authorization", `Bearer ${token}`);
+    headers.append("Authorization", `${token}`);
   }
 
   const response = await fetch(url, { ...options, headers });

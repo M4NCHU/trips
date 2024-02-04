@@ -38,19 +38,15 @@ namespace backend.Infrastructure.Services
                 return new NotFoundResult();
             }
 
+            // Pobierz kategorie z bazy danych
             var categories = await _context.Category
                 .OrderBy(x => x.Id)
-                .Select(x => new CategoryDTO
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description,        
-                    PhotoUrl = $"{_baseUrl}/Images/Category/{x.PhotoUrl}",
-
-                })
                 .ToListAsync();
 
-            return categories;
+            // Mapuj encje na DTO
+            var categoryDTOs = categories.Select(x => MapToCategoryDTO(x)).ToList();
+
+            return categoryDTOs;
         }
 
 
@@ -68,12 +64,7 @@ namespace backend.Infrastructure.Services
                 return new NotFoundResult();
             }
 
-            var CategoryDTO = new CategoryDTO
-            {
-                Name = category.Name,
-                Description = category.Description,
-                PhotoUrl = category.PhotoUrl
-            };
+            var CategoryDTO = MapToCategoryDTO(category);
 
             return CategoryDTO;
         }
@@ -133,14 +124,9 @@ namespace backend.Infrastructure.Services
 
             var currentDate = DateTime.Now.ToUniversalTime();
 
-            var category = new CategoryModel
-            {
-                Name = CategoryDTO.Name,
-                Description = CategoryDTO.Description,
-                PhotoUrl = CategoryDTO.PhotoUrl,
-                CreatedAt = currentDate,
-                ModifiedAt = currentDate,   
-            };
+            var category = MapToCategoryModel(CategoryDTO);
+            category.CreatedAt = currentDate;
+            category.ModifiedAt = currentDate;
 
             _context.Category.Add(category);
             await _context.SaveChangesAsync();
@@ -170,6 +156,29 @@ namespace backend.Infrastructure.Services
         private bool CategoryExists(Guid id)
         {
             return (_context.Category?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        public CategoryDTO MapToCategoryDTO(CategoryModel category)
+        {
+            return new CategoryDTO
+            {
+                Id = category.Id,
+                Name = category.Name,
+                Description = category.Description,
+                PhotoUrl = $"{_baseUrl}/Images/Category/{category.PhotoUrl}"
+            };
+        }
+
+
+        private CategoryModel MapToCategoryModel(CategoryDTO categoryDTO, CategoryModel existingCategory = null)
+        {
+            var category = existingCategory ?? new CategoryModel();
+
+            category.Name = categoryDTO.Name;
+            category.Description = categoryDTO.Description;
+            category.PhotoUrl = categoryDTO.PhotoUrl;
+
+            return category;
         }
     }
 }

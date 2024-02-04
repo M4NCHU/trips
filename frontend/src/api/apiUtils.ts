@@ -3,8 +3,9 @@ import axios, { AxiosResponse, AxiosError } from "axios";
 axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
 
 interface FetchDataOptions {
-  method?: "get" | "post" | "put" | "delete";
+  method?: "get" | "post" | "put" | "delete" | "patch";
   data?: any;
+  headers?: { [key: string]: string };
 }
 
 export const fetchDataPaginated = async <T>(
@@ -30,8 +31,13 @@ export const fetchData = async <T>(
   options?: FetchDataOptions
 ): Promise<T> => {
   try {
-    const { method = "get", data = null } = options || {};
-    const response: AxiosResponse<T> = await axios({ method, url, data });
+    const { method = "get", data = null, headers = {} } = options || {};
+    const response: AxiosResponse<T> = await axios({
+      method,
+      url,
+      data,
+      headers,
+    });
     return response.data;
   } catch (error) {
     throw handleAxiosError(error);

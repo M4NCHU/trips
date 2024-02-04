@@ -11,6 +11,7 @@ import { useAuth } from "src/context/UserContext";
 import CustomDropdownMenu from "../ui/Dropdown/CustomDropdownMenu";
 import CustomDropdownMenuItem from "../ui/Dropdown/CustomDropdownMenuItem";
 import UserTrigger from "./UserTrigger";
+import { TbLogout2 } from "react-icons/tb";
 
 const Header = () => {
   const { user, logout } = useAuth();
@@ -46,7 +47,7 @@ const Header = () => {
         </ul>
         <div className="user-panel flex items-center gap-4 text-2xl font-bold">
           <Link
-            to={`/planning/${"670f17bb-320b-46a4-b739-f17678df7c3a"}`}
+            to={`/planning`}
             className="bg-pink-600 p-2 rounded-lg text-base text-white relative"
           >
             <div className="absolute -top-2 -right-2 bg-green-400 rounded-full p-1 w-6 h-6 flex items-center justify-center">
@@ -61,13 +62,18 @@ const Header = () => {
 
           {user ? (
             <CustomDropdownMenu dropDownButton={<UserTrigger />}>
+              <div className="bg-background rounded-lg p-2 text-base">
+                <span>{user.lastName}</span>
+              </div>
               <CustomDropdownMenuItem label="Home" href="/" />
               <CustomDropdownMenuItem label="Contact" href="/contact" />
               <CustomDropdownMenuItem label="About" href="/about" />
+              <div className="my-2 h-[1px] bg-gray-800"></div>
               <CustomDropdownMenuItem
                 label="Logout"
                 variant="danger"
                 onClick={logout}
+                icon={<TbLogout2 />}
               />
             </CustomDropdownMenu>
           ) : (

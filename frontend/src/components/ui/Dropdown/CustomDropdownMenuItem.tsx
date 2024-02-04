@@ -21,10 +21,10 @@ const CustomDropdownMenuItem: React.FC<CustomDropdownMenuItemProps> = ({
   const variantClasses = {
     default: "hover:bg-background text-gray-400",
     primary: "hover:bg-blue-500 hover:text-white text-blue-700",
-    danger: "hover:bg-red-500 hover:text-white bg-red-400",
+    danger: "hover:bg-red-400 hover:text-white bg-red-500",
   };
 
-  const itemClasses = `p-2 w-full flex justify-start text-base rounded-lg ${variantClasses[variant]} ${className}`;
+  const itemClasses = `p-2 w-full flex justify-start items-center gap-2 text-base rounded-lg ${variantClasses[variant]} ${className}`;
 
   // Renderowanie jako przycisk lub link w zależności od dostarczonych propsów
   return href ? (

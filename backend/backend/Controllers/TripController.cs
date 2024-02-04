@@ -22,7 +22,7 @@ namespace backend.Controllers
             _tripService = tripService;
         }
 
-        // GET: api/Trip/GetAllTrips
+        // GET: api/Trip
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<TripDTO>>> GetTrip()
         {
@@ -31,7 +31,7 @@ namespace backend.Controllers
         }
 
 
-        // GET: api/Trip/GetTripById/5
+        // GET: api/Trip/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TripDTO>> GetTripById(Guid id)
         {
@@ -42,8 +42,15 @@ namespace backend.Controllers
             return trip;
         }
 
-       
-        
+        // GET: api/Trip/UserId/5
+        [HttpGet("UserId/{userId}")]
+        public async Task<ActionResult<IEnumerable<TripDTO>>> GetUserTripsList(string userId)
+        {
+            var trip = await _tripService.GetUserTripsList(userId);
+
+            return trip;
+        }
+
 
         // GET: api/Trip/5/VisitPlaces
         [HttpGet("{id}/VisitPlaces")]
@@ -67,8 +74,17 @@ namespace backend.Controllers
             return await _tripService.PutTrip(id, trip);
         }
 
+
+        // PATCH: api/Trip/{tripId}/Title/{newTitle}
+
+        [HttpPatch("{tripId}/Title/{newTitle}")]
+        public async Task<IActionResult> ChangeTripTitle(Guid tripId, string newTitle)
+        {
+            return await _tripService.ChangeTripTitle(tripId, newTitle);
+        }
+
         // POST: api/Trip
-        
+
         [HttpPost()]
         public async Task<ActionResult<TripDTO>> PostTrip([FromForm] TripDTO trip)
         {

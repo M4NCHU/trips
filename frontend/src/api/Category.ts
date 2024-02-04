@@ -2,6 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Category } from "../types/Category";
 import { fetchData } from "./apiUtils";
+import { useRoleChecker } from "src/hooks/useRoleChecker";
 
 // Get Categories with pagination
 export const UseCategoryList = () => {
@@ -15,9 +16,17 @@ export const UseCategoryList = () => {
 
 export const UseCreateCategory = async (formData: FormData) => {
   try {
+    // Pobierz token JWT
+    const userDataJson = localStorage.getItem("user_data");
+    const userData = userDataJson ? JSON.parse(userDataJson) : null;
+    const token = userData?.jwt;
+
     const response = await fetchData<Category>("/api/Category", {
       method: "post",
       data: formData,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     return response;

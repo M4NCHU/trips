@@ -1,27 +1,17 @@
 import { FC, useEffect, useState } from "react";
-import { BsThreeDotsVertical } from "react-icons/bs";
 import { CiCircleInfo } from "react-icons/ci";
 import { FaArrowLeft } from "react-icons/fa";
-import { IoMdClose } from "react-icons/io";
-import { Link, useParams } from "react-router-dom";
-import { UseTripById } from "../../api/TripAPI";
-import { fetchData } from "../../api/apiUtils";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { UseChangeTripTitle, UseTripById } from "../../api/TripAPI";
 
-import CreateParticipantModal from "../../components/TripParticipants/CreateParticipantModal";
-import { Button } from "../../components/ui/button";
-import { DestinationCategory } from "../../types/Destination";
-import { TripParticipant } from "../../types/TripParticipantTypes";
-import { VisitPlace } from "../../types/VisitPlaceTypes";
-import Card from "../../components/Planning/Card";
-import ParticipantCard from "../../components/Planning/ParticipantCard";
-import DestinationCard from "../../components/Planning/DestinationCard";
-import { TripDestinationInterface } from "../../types/TripDestinationTypes";
-import VisitPlaceCard from "../../components/Planning/VisitPlaceCard";
-import { useDestinationById } from "src/api/Destinations";
-import { useVisitPlacesByDestination } from "src/api/VisitPlaceAPI";
+import PlanningHeader from "src/components/Planning/PlanningHeader";
 import TripDestinationComponent from "src/components/Planning/TripDestination";
 import TripParticipants from "src/components/Planning/TripParticipants";
-import PlanningHeader from "src/components/Planning/PlanningHeader";
+import { Button } from "../../components/ui/button";
+import { TripParticipant } from "../../types/TripParticipantTypes";
+import { VisitPlace } from "../../types/VisitPlaceTypes";
+import { MdClose } from "react-icons/md";
+import { GoPencil } from "react-icons/go";
 
 interface PlanningProps {}
 
@@ -34,15 +24,61 @@ interface SelectedPlace {
 
 const Planning: FC<PlanningProps> = ({}) => {
   const { id } = useParams<{ id: string | undefined }>();
-  const [numberOfPeople, setNumberOfPeople] = useState<number>(1);
-  const [participantsListData, setParticipantsListData] =
-    useState<TripParticipant[]>();
-
+  const navigate = useNavigate();
   const {
     data: trip,
     isLoading: isLoadingTrip,
     isError: isErrorTrip,
   } = UseTripById(id);
+
+  const [numberOfPeople, setNumberOfPeople] = useState<number>(1);
+  const [participantsListData, setParticipantsListData] =
+    useState<TripParticipant[]>();
+  const [isTitleEditable, setIsTitleEditable] = useState(false);
+  const [editableTitle, setEditableTitle] = useState(trip ? trip?.title : "");
+
+  useEffect(() => {
+    // Redirect to home page if id is not available
+    if (!id) {
+      navigate("/");
+    }
+  }, [id]);
+
+  const handleTitleClick = () => {
+    setIsTitleEditable(true);
+  };
+
+  const handleTitleChange = (e: any) => {
+    setEditableTitle(e.target.value);
+  };
+
+  const handleSaveClick = async (e: any) => {
+    e.preventDefault();
+    console.log(id, editableTitle);
+    try {
+      if (id) {
+        const ChangeTitleResult = await UseChangeTripTitle(id, editableTitle);
+        if (ChangeTitleResult) {
+          setIsTitleEditable(false);
+        }
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
+  const handleCancelClick = () => {
+    if (trip) {
+      setEditableTitle(trip.title);
+    }
+    setIsTitleEditable(false);
+  };
+
+  useEffect(() => {
+    if (trip) {
+      setEditableTitle(trip.title);
+    }
+  }, [trip]);
 
   if (isLoadingTrip) {
     return <div>Loading...</div>;
@@ -73,14 +109,62 @@ const Planning: FC<PlanningProps> = ({}) => {
   return (
     <div className="container px-4 mt-6 flex flex-col md:flex-row gap-4">
       <div className="w-full md:w-3/5 flex flex-col gap-6">
-        <div className="destination-header flex flex-row items-center gap-2 mb-4">
+        <div className="destination-header flex flex-row items-center gap-4 mb-4">
           <Link to={`/`} className="flex flex-row items-center gap-2">
             <FaArrowLeft />
-            Back to home{" "}
+            <p className="hidden md:block">Back to home</p>
           </Link>
           <span>/</span>
-          <h1 className="text-2xl font-bold">Plan your trip</h1>
+          <Link
+            to={`/planning`}
+            className="flex flex-row items-center gap-2 text-sm md:text-base"
+          >
+            Trip schemes
+          </Link>
+          <span>/</span>
+          <h1 className="text-xl md:text-2xl font-bold">Plan your trip</h1>
         </div>
+        <div className="w-full bg-secondary p-4 flex items-center gap-8 justify-between rounded-lg">
+          <div className="grow">
+            {isTitleEditable ? (
+              <div className="flex flex-row gap-2">
+                <input
+                  type="text"
+                  value={editableTitle}
+                  onChange={handleTitleChange}
+                  className="white rounded-lg bg-background outline-none w-full h-full  p-2"
+                  autoFocus
+                />
+
+                <button
+                  onClick={handleCancelClick}
+                  className=" bg-red-500 rounded-md p-2"
+                >
+                  <MdClose />
+                </button>
+                <button
+                  onClick={(e) => handleSaveClick(e)}
+                  className=" bg-green-500 rounded-md p-2"
+                >
+                  <GoPencil />
+                </button>
+              </div>
+            ) : (
+              <div
+                className="flex flex-row items-center gap-1 p-2 cursor-pointer hover:bg-background rounded-lg "
+                onClick={handleTitleClick}
+              >
+                <p className="bg-transparent m-0">{editableTitle}</p>
+              </div>
+            )}
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="text-gray-500">Created by:</span>
+            <p className="font-semibold">{trip.user?.firstName}</p>
+          </div>
+        </div>
+
         <div className="flex flex-col gap-4">
           <PlanningHeader title="Chosen trip destinations" />
           <hr />

@@ -72,11 +72,11 @@ namespace backend.Infrastructure.Services
 
 
 
-            var token = _jwtService.CreateJWT(user);
+            var token = await _jwtService.CreateJWT(user);
 
             await _userManager.SetAuthenticationTokenAsync(user, "JWT", "RefreshToken", token);
 
-            return new LoginResultDTO { Success = true, Token = token, User = CreateUserDto(user, token) };
+            return new LoginResultDTO { Success = true, Token = token, User = await CreateUserDto(user, token) };
         }
 
 
@@ -178,18 +178,19 @@ namespace backend.Infrastructure.Services
             }
 
             // Generate a new JWT token for the user
-            var newToken = _jwtService.CreateJWT(user);
+            var newToken = await _jwtService.CreateJWT(user);
 
 
             // Create the AccountDTO with the new token
             var accountDto = CreateUserDto(user, newToken);
 
-            return new LoginResultDTO { Success = true, Token = newToken, User = CreateUserDto(user, newToken) };
+            return new LoginResultDTO { Success = true, Token = newToken, User = await CreateUserDto(user, newToken) };
         }
 
 
-        private AccountDTO CreateUserDto(UserModel user, string token)
+        private async Task<AccountDTO> CreateUserDto(UserModel user, string token)
         {
+            var roles = await _userManager.GetRolesAsync(user);
             return new AccountDTO()
             {
                 FirstName = user.FirstName,
@@ -198,6 +199,7 @@ namespace backend.Infrastructure.Services
                 UserName = user.UserName,
                 Email = user.Email,
                 Id = user.Id,
+                Roles = roles.ToList()
             };
         }
     }

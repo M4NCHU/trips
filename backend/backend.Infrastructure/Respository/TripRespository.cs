@@ -30,78 +30,95 @@ namespace backend.Infrastructure.Services
         public async Task<ActionResult<IEnumerable<TripDTO>>> GetTrips()
         {
             var trips = await _context.Trip
-                .OrderBy(x => x.Id)
-                .Select(x => new TripDTO
-                {
-                    Id = x.Id,
-                    Status = x.Status,
-                    StartDate = x.StartDate,
-                    EndDate = x.EndDate,
-                    TotalPrice = x.TotalPrice,
-                    TripDestinations = x.TripDestinations.Select(td => new TripDestinationDTO
-                    {
-                        DestinationId = td.DestinationId,
-                        TripId = td.TripId,
-                        
-                        SelectedPlaces = td.SelectedPlace.Select(sp => new SelectedPlaceDTO
-                        {
-                            Id = sp.Id,
-                            TripDestinationId = sp.TripDestinationId,
-                            VisitPlaceId = sp.VisitPlaceId,
-                            
-                        }).ToList()
-                    }).ToList(),
-                    SelectedPlaces = x.SelectedPlaces.Select(sp => new SelectedPlaceDTO
-                    {
-                        VisitPlaceId = sp.VisitPlaceId,
-                        
-                    }).ToList()
-                })
-                .ToListAsync();
+            .Include(t => t.User)
+            .Include(t => t.TripDestinations)
+            .ThenInclude(td => td.SelectedPlace)
+            .OrderBy(x => x.Id)
+            .Select(x => MapToTripDTO(x))
+            .ToListAsync();
 
             return trips;
         }
 
         public async Task<ActionResult<TripDTO>> GetTripById(Guid id)
         {
-            var tripModel = await _context.Trip.FindAsync(id);
+            var tripModel = await _context.Trip
+            .Include(t => t.User)
+            .Include(t => t.TripDestinations)
+            .ThenInclude(td => td.SelectedPlace)
+            .FirstOrDefaultAsync(t => t.Id == id);
 
             if (tripModel == null)
             {
-                return new NotFoundResult(); 
+                return new NotFoundResult();
             }
 
-            var tripDTO = new TripDTO
-            {
-                Id = tripModel.Id,
-                Status = tripModel.Status,
-                StartDate = tripModel.StartDate,
-                EndDate = tripModel.EndDate,
-                TotalPrice = tripModel.TotalPrice,
-                TripDestinations = _context.TripDestination
-        .Where(td => td.TripId == tripModel.Id)
-        .Select(td => new TripDestinationDTO
-        {
-            TripId = td.TripId,
-            DestinationId = td.DestinationId,
-            
-            SelectedPlaces = _context.SelectedPlace
-                .Where(sp => sp.TripDestinationId == td.Id)
-                .Select(sp => new SelectedPlaceDTO
-                {
-                    Id = sp.Id,
-                    TripDestinationId = sp.TripDestinationId,
-                    VisitPlaceId = sp.VisitPlace.Id,
-                   
-                }).ToList() ?? new List<SelectedPlaceDTO>()
-        }).ToList(),
-            };
+            var tripDTO = MapToTripDTO(tripModel); 
 
             return tripDTO;
-           
+
         }
 
-        
+        public async Task<IActionResult> ChangeTripTitle(Guid tripId, string newTitle)
+        {
+            // Check if the new title is not null or empty
+            if (string.IsNullOrWhiteSpace(newTitle))
+            {
+                return new BadRequestResult();
+            }
+
+            // Find the trip by its ID
+            var trip = await _context.Trip.FirstOrDefaultAsync(t => t.Id == tripId);
+
+            // If no trip found, return NotFound
+            if (trip == null)
+            {
+                return new NotFoundResult();
+            }
+
+            // Update the title of the trip
+            trip.Title = newTitle;
+
+            // Mark the entity as modified
+            _context.Entry(trip).State = EntityState.Modified;
+
+            try
+            {
+                // Save changes to the database
+                await _context.SaveChangesAsync();
+                return new OkObjectResult($"Title of trip ID {tripId} updated successfully to {newTitle}");
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TripExists(tripId))
+                {
+                    return new NotFoundResult();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        public async Task<ActionResult<IEnumerable<TripDTO>>> GetUserTripsList(string userId)
+        {
+            var tripModels = await _context.Trip
+                .Include(t => t.User)
+                .Where(t => t.User.Id == userId) 
+                .ToListAsync();
+
+            if (!tripModels.Any()) 
+            {
+                return new NotFoundResult();
+            }
+
+            var tripDTOs = tripModels.Select(tripModel => MapToTripDTO(tripModel)).ToList(); 
+
+            return tripDTOs;
+        }
+
+
 
         public async Task<List<VisitPlaceDTO>> GetVisitPlacesForTrip(Guid tripId)
         {
@@ -131,27 +148,13 @@ namespace backend.Infrastructure.Services
                 return new BadRequestResult();
             }
 
-            var trip = new TripModel
+            var tripModel = await _context.Trip.FindAsync(id);
+            if (tripModel == null)
             {
-                Id = id,
-                Status = tripDTO.Status,
-                StartDate = tripDTO.StartDate,
-                EndDate = tripDTO.EndDate,
-                TotalPrice = tripDTO.TotalPrice,
-                TripDestinations = tripDTO.TripDestinations.Select(td => new TripDestinationModel
-                {
-                    DestinationId = td.DestinationId,
-                    SelectedPlace = td.SelectedPlaces.Select(sp => new SelectedPlaceModel
-                    {
-                        VisitPlaceId = sp.VisitPlaceId
-                    }).ToList()
-                }).ToList(),
-                SelectedPlaces = tripDTO.SelectedPlaces.Select(sp => new SelectedPlaceModel
-                {
-                    VisitPlaceId = sp.VisitPlaceId
-                }).ToList()
-            };
+                return new NotFoundResult();
+            }
 
+            var trip = MapToTripModel(tripDTO, tripModel); // Use mapping method
             _context.Entry(trip).State = EntityState.Modified;
 
             try
@@ -186,6 +189,7 @@ namespace backend.Infrastructure.Services
                 TotalPrice = tripDTO.TotalPrice,
                 CreatedAt = currentDate,
                 ModifiedAt = currentDate,
+                CreatedBy = tripDTO.CreatedBy,
 
                 TripDestinations = tripDTO.TripDestinations.Select(td => new TripDestinationModel
                 {
@@ -226,7 +230,89 @@ namespace backend.Infrastructure.Services
             return (_context.Trip?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
+        private TripDTO MapToTripDTO(TripModel tripModel)
+        {
+            return new TripDTO
+            {
+                Id = tripModel.Id,
+                Status = tripModel.Status,
+                StartDate = tripModel.StartDate,
+                EndDate = tripModel.EndDate,
+                TotalPrice = tripModel.TotalPrice,
+                CreatedBy = tripModel.CreatedBy,
+                Title = tripModel.Title,
+                User = tripModel.User != null ? new UserDTO
+                {
+                    
+                    FirstName = tripModel.User.FirstName, 
+                    Id = tripModel.User.Id
+                } : null,
+                TripDestinations = tripModel.TripDestinations?.Select(td => new TripDestinationDTO
+                {
+                    DestinationId = td.DestinationId,
+                    TripId = td.TripId,
+                    SelectedPlaces = td.SelectedPlace?.Select(sp => new SelectedPlaceDTO
+                    {
+                        Id = sp.Id,
+                        TripDestinationId = sp.TripDestinationId,
+                        VisitPlaceId = sp.VisitPlaceId,
+                    }).ToList()
+                }).ToList(),
+                SelectedPlaces = tripModel.SelectedPlaces?.Select(sp => new SelectedPlaceDTO
+                {
+                    Id = sp.Id,
+                    VisitPlaceId = sp.VisitPlaceId,
+                }).ToList(),
+                
+            };
+        }
 
+        private TripDTO MapToListTripDTO(TripModel tripModel)
+        {
+            return new TripDTO
+            {
+                Id = tripModel.Id,
+                Status = tripModel.Status,
+                TotalPrice = tripModel.TotalPrice,
+                User = tripModel.User != null ? new UserDTO
+                {
+
+                    FirstName = tripModel.User.FirstName,
+                    Id = tripModel.User.Id
+                } : null,
+
+            };
+        }
+
+        private TripModel MapToTripModel(TripDTO tripDTO, TripModel existingTrip = null)
+        {
+            var trip = existingTrip ?? new TripModel();
+
+            trip.Status = tripDTO.Status;
+            trip.StartDate = tripDTO.StartDate;
+            trip.EndDate = tripDTO.EndDate;
+            trip.TotalPrice = tripDTO.TotalPrice;
+            trip.CreatedBy = tripDTO.CreatedBy; 
+            trip.TripDestinations = tripDTO.TripDestinations?.Select(td => new TripDestinationModel
+            {
+                DestinationId = td.DestinationId,
+                TripId = td.TripId,
+                SelectedPlace = td.SelectedPlaces?.Select(sp => new SelectedPlaceModel
+                {
+                    Id = sp.Id,
+                    TripDestinationId = sp.TripDestinationId,
+                    VisitPlaceId = sp.VisitPlaceId,
+                }).ToList()
+            }).ToList();
+            trip.SelectedPlaces = tripDTO.SelectedPlaces?.Select(sp => new SelectedPlaceModel
+            {
+                Id = sp.Id,
+                VisitPlaceId = sp.VisitPlaceId,
+            }).ToList();
+            
+
+            return trip;
+        }
 
     }
 }

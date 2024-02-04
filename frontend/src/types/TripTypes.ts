@@ -1,5 +1,6 @@
 import { TripDestination } from "./TripDestinationTypes";
 import { TripStatus } from "./enums/TripStatusEnum";
+import { UserDTOTypes } from "./user/UserDTOTypes";
 
 export type Trip = {
   id: string;
@@ -8,4 +9,7 @@ export type Trip = {
   endDate?: Date | null;
   tripDestinations: TripDestination[];
   totalPrice: number;
+  createdBy: string;
+  user: UserDTOTypes | null;
+  title: string;
 };

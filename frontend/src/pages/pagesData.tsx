@@ -6,6 +6,7 @@ import UseCreateCategory from "./Categories/Create";
 import Contact from "./Contact/Contact";
 import CreateDestination from "./Destinations/Create";
 import Home from "./Home/Home";
+import ChooseTripScheme from "./Planning/ChooseTripScheme";
 import Planning from "./Planning/Planning";
 import CreateVisitPlace from "./VisitPlaces/Create";
 
@@ -51,6 +52,14 @@ const pagesData: routerType[] = [
     element: <Planning />,
     title: "Plan your trip",
     isProtected: true,
+    roles: ["admin"],
+  },
+  {
+    path: "planning",
+    element: <ChooseTripScheme />,
+    title: "Choose trip scheme",
+    isProtected: true,
+    roles: ["admin"],
   },
   {
     path: "login",

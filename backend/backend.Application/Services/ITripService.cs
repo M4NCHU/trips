@@ -11,6 +11,8 @@ namespace backend.Application.Services
 
         Task<ActionResult<TripDTO>> GetTripById(Guid id);
 
+        Task<ActionResult<IEnumerable<TripDTO>>> GetUserTripsList(string userId);
+
         Task<List<VisitPlaceDTO>> GetVisitPlacesForTrip(Guid tripId);
 
 
@@ -19,5 +21,7 @@ namespace backend.Application.Services
         Task<ActionResult<TripDTO>> PostTrip([FromForm] TripDTO trip);
 
         Task<IActionResult> DeleteTrip(Guid id);
+
+        Task<IActionResult> ChangeTripTitle(Guid tripId, string newTitle);
     }
 }

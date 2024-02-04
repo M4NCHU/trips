@@ -70,7 +70,14 @@ namespace backend.Infrastructure.Authentication
                 .HasOne(tp => tp.Participant)
                 .WithMany(p => p.TripParticipants)
                 .HasForeignKey(tp => tp.ParticipantId)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Configure the one-to-many relationship between UserModel and TripModel
+            modelBuilder.Entity<TripModel>()
+                .HasOne<UserModel>(t => t.User) // Trip has one User
+                .WithMany(u => u.Trips) // User has many Trips
+                .HasForeignKey(t => t.CreatedBy) // Foreign key
+                .OnDelete(DeleteBehavior.Cascade); // Cascade delete
         }
     }
 }

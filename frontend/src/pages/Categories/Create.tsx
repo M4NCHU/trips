@@ -4,6 +4,7 @@ import FormHeader from "../../components/Forms/FormHeader";
 import Input from "../../components/Forms/Input";
 import { Button } from "../../components/ui/button";
 import useImagePreview from "../../hooks/useImagePreview";
+import { useRoleChecker } from "src/hooks/useRoleChecker";
 
 interface CreateProps {}
 
@@ -24,6 +25,7 @@ const initialFieldValues: FormValues = {
 const CreateCategory: FC<CreateProps> = ({}) => {
   const [values, setValues] = useState(initialFieldValues);
   const { showPreview, imagePreview } = useImagePreview();
+  const { hasRole } = useRoleChecker();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -47,6 +49,9 @@ const CreateCategory: FC<CreateProps> = ({}) => {
     }
 
     try {
+      if (!hasRole("admin")) {
+        return console.log("Access denied.");
+      }
       await UseCreateCategory(formData);
     } catch (error) {
       console.error("Error submitting form:", error);

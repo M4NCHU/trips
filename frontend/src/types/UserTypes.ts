@@ -5,6 +5,7 @@ export type User = {
   email: string;
   token?: string;
   id: string;
+  roles: string[];
 } | null;
 
 export type RegisterUser = {

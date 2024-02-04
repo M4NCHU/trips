@@ -12,5 +12,6 @@ namespace backend.Domain.DTO.Authentication
         public string? Email { get; set; }
         public string JWT { get; set; }
         public string Id { get; set; }
+        public List<string> Roles { get; set; }
     }
 }

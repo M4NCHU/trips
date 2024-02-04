@@ -26,5 +26,6 @@ namespace backend.Domain.DTOs
         public ICollection<DestinationDTO>? Destinations { get; set; } = new List<DestinationDTO>();
 
 
+
     }
 }

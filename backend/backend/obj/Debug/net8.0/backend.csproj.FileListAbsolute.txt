@@ -579,3 +579,4 @@ C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\backend.Infrastructure.
 C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\backend.Application.pdb
 C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\backend.Domain.pdb
 C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\backend.Infrastructure.pdb
+C:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\backend.MvcApplicationPartsAssemblyInfo.cs

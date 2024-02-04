@@ -24,7 +24,6 @@ const CustomDropdownMenu = ({ dropDownButton, children }: any) => {
       window.addEventListener("click", pageClickEvent);
     }
 
-    // Oczyść listener
     return () => {
       window.removeEventListener("click", pageClickEvent);
     };
@@ -34,13 +33,18 @@ const CustomDropdownMenu = ({ dropDownButton, children }: any) => {
     setIsOpen(false);
   };
 
+  const toggleDropdown = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="dropdown relative" ref={dropdownRef}>
-      <button onClick={() => setIsOpen(!isOpen)}>{dropDownButton}</button>
+      <button onClick={toggleDropdown}>{dropDownButton}</button>
 
       {isOpen && (
-        <div className="absolute right-0 z-50 mt-2 min-w-[12rem] rounded-md shadow-lg bg-secondary p-2 ">
-          <div className="flex flex-col rounded-lg" onClick={closeDropdown}>
+        <div className="absolute right-0 z-50 min-w-[12rem] rounded-md shadow-lg bg-secondary p-2 border-[1px] border-gray-800">
+          <div className="flex flex-col rounded-lg " onClick={closeDropdown}>
             {children}
           </div>
         </div>

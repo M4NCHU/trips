@@ -6,9 +6,9 @@ import ProtectedRoute from "./ProtectedRoute";
 
 const Router = () => {
   const pageRoutes = pagesData.map(
-    ({ path, title, element, isProtected }: routerType) => {
+    ({ path, title, element, isProtected, roles }: routerType) => {
       const routeElement = isProtected ? (
-        <ProtectedRoute>{element}</ProtectedRoute>
+        <ProtectedRoute roles={roles}>{element}</ProtectedRoute>
       ) : (
         element
       );

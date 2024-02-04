@@ -42,28 +42,14 @@ namespace backend.Infrastructure.Services
 
 
             var destinations = await _context.Destination
-                .OrderBy(x => x.Id)
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .Select(x => new DestinationDTO
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description,
-                    Location = x.Location,
-                    PhotoUrl = $"{_baseUrl}/Images/Destinations/{x.PhotoUrl}",
-                    Price = x.Price,
-                    CategoryId = x.CategoryId, // Assign CategoryId
-                    Category = x.Category != null ? new CategoryDTO // Check if Category is not null
-                    {
-                        Id = x.Category.Id,
-                        Name = x.Category.Name,
-                        PhotoUrl = x.Category.PhotoUrl
-                    } : null
-                })
-                .ToListAsync();
+            .OrderBy(x => x.Id)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
 
-            return destinations;
+            var destinationDTOs = destinations.Select(d => MapToDestinationDTO(d)).ToList();
+
+            return destinationDTOs;
         }
 
 
@@ -82,25 +68,7 @@ namespace backend.Infrastructure.Services
 
                 var currentDate = DateTime.Now.ToUniversalTime();
 
-                var destinationDTO = new DestinationDTO
-                {
-                    Id = destination.Id,
-                    Name = destination.Name,
-                    Description = destination.Description,
-                    Location = destination.Location,
-                    PhotoUrl = $"{_baseUrl}/Images/Destinations/{destination.PhotoUrl}",
-                    Price = destination.Price,
-                    CategoryId = destination.CategoryId, 
-                    CreatedAt = currentDate,
-                    ModifiedAt = currentDate,
-                    Category = destination.Category != null ? new CategoryDTO
-                    {
-                        Id = destination.Category.Id,
-                        Name = destination.Category.Name,
-                        PhotoUrl = destination.Category.PhotoUrl
-                    } : null
-                };
-
+                var destinationDTO = MapToDestinationDTO(destination); 
                 return destinationDTO;
             }
             catch (Exception ex)
@@ -186,17 +154,9 @@ namespace backend.Infrastructure.Services
 
             var currentDate = DateTime.Now.ToUniversalTime();
 
-            var destination = new DestinationModel
-            {
-                Name = destinationDTO.Name,
-                Description = destinationDTO.Description,
-                Location = destinationDTO.Location,
-                PhotoUrl = destinationDTO.PhotoUrl,
-                CategoryId = destinationDTO.CategoryId,
-                CreatedAt = currentDate,
-                ModifiedAt = currentDate,
-                Price = destinationDTO.Price,
-            };
+            var destination = MapToDestinationModel(destinationDTO);
+            destination.CreatedAt = currentDate;
+            destination.ModifiedAt = currentDate;
 
             _context.Destination.Add(destination);
             await _context.SaveChangesAsync();
@@ -226,6 +186,40 @@ namespace backend.Infrastructure.Services
         private bool DestinationExists(Guid id)
         {
             return (_context.Destination?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        private DestinationDTO MapToDestinationDTO(DestinationModel destination)
+        {
+            return new DestinationDTO
+            {
+                Id = destination.Id,
+                Name = destination.Name,
+                Description = destination.Description,
+                Location = destination.Location,
+                PhotoUrl = $"{_baseUrl}/Images/Destinations/{destination.PhotoUrl}",
+                Price = destination.Price,
+                CategoryId = destination.CategoryId,
+                Category = destination.Category != null ? new CategoryDTO
+                {
+                    Id = destination.Category.Id,
+                    Name = destination.Category.Name,
+                    PhotoUrl = destination.Category.PhotoUrl
+                } : null
+            };
+        }
+
+        private DestinationModel MapToDestinationModel(DestinationDTO destinationDTO, DestinationModel existingDestination = null)
+        {
+            var destination = existingDestination ?? new DestinationModel();
+
+            destination.Name = destinationDTO.Name;
+            destination.Description = destinationDTO.Description;
+            destination.Location = destinationDTO.Location;
+            destination.PhotoUrl = destinationDTO.PhotoUrl; 
+            destination.Price = destinationDTO.Price;
+            destination.CategoryId = destinationDTO.CategoryId;
+
+            return destination;
         }
     }
 }

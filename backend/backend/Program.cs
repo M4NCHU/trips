@@ -11,6 +11,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Configuration;
 using System.Text;
 using backend.Domain.Authentication;
+using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using backend.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 var provider = builder.Services.BuildServiceProvider();
@@ -59,6 +62,9 @@ builder.Services.AddIdentity<UserModel, IdentityRole>()
 */
 
 builder.Services.AddScoped<JWTService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 
 
 builder.Services.AddIdentityCore<UserModel>(options =>
@@ -83,10 +89,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     {
         ValidateIssuerSigningKey = true,
         ValidateIssuer = true,
+        ValidateAudience = false,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])),
-        ValidAudience = configuration["JWT:ValidAudience"],
+        /*ValidAudience = configuration["JWT:ValidAudience"],*/
         ValidIssuer = configuration["JWT:ValidIssuer"],
     };
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("admin"));
 });
 
 
@@ -101,7 +113,7 @@ builder.Services.AddHttpContextAccessor();
 
 
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
 
 builder.Services.AddCors(options =>

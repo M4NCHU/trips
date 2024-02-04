@@ -8,6 +8,7 @@ using backend.Models;
 using Microsoft.Extensions.Hosting;
 using backend.Domain.DTOs;
 using backend.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Controllers
 {
@@ -47,7 +48,7 @@ namespace backend.Controllers
         }
 
         // POST: api/Category
-
+        [Authorize(Roles = "admin")]
         [HttpPost()]
         public async Task<ActionResult<CategoryDTO>> PostCategory([FromForm] CategoryDTO category)
         {

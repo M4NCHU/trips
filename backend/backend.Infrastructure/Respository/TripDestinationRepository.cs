@@ -166,6 +166,8 @@ namespace backend.Infrastructure.Services
             return new NoContentResult();
         }
 
+        
+
         public async Task<ActionResult<TripDestinationDTO>> PostTripDestination([FromForm] TripDestinationDTO tripDestinationDTO)
         {
             if (_context.TripDestination == null)

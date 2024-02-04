@@ -12,8 +12,8 @@ using backend.Infrastructure.Authentication;
 namespace backend.Infrastructure.Migrations
 {
     [DbContext(typeof(TripsDbContext))]
-    [Migration("20240203144032_init")]
-    partial class init
+    [Migration("20240204164211_triptitle")]
+    partial class triptitle
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -470,6 +470,10 @@ namespace backend.Infrastructure.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("timestamp with time zone");
 
@@ -482,10 +486,16 @@ namespace backend.Infrastructure.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<double>("TotalPrice")
                         .HasColumnType("double precision");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CreatedBy");
 
                     b.ToTable("Trip");
                 });
@@ -665,6 +675,17 @@ namespace backend.Infrastructure.Migrations
                     b.Navigation("Trip");
                 });
 
+            modelBuilder.Entity("backend.Models.TripModel", b =>
+                {
+                    b.HasOne("backend.Domain.Authentication.UserModel", "User")
+                        .WithMany("Trips")
+                        .HasForeignKey("CreatedBy")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("backend.Models.TripParticipantModel", b =>
                 {
                     b.HasOne("backend.Models.ParticipantModel", "Participant")
@@ -693,6 +714,11 @@ namespace backend.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Destination");
+                });
+
+            modelBuilder.Entity("backend.Domain.Authentication.UserModel", b =>
+                {
+                    b.Navigation("Trips");
                 });
 
             modelBuilder.Entity("backend.Models.CategoryModel", b =>

@@ -1,5 +1,7 @@
-﻿using backend.Domain.Enums;
+﻿using backend.Domain.Authentication;
+using backend.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend.Domain.DTOs
 {
@@ -12,6 +14,8 @@ namespace backend.Domain.DTOs
 
         [DataType(DataType.Date, ErrorMessage = "Invalid date format on start date.")]
         public DateTime? StartDate { get; set; }
+
+        public string? Title { get; set; }
 
         [DataType(DataType.Date, ErrorMessage = "Invalid date format on end date.")]
         public DateTime? EndDate { get; set; }
@@ -26,5 +30,9 @@ namespace backend.Domain.DTOs
         public DateTime? CreatedAt { get; set; }
 
         public DateTime? ModifiedAt { get; set; }
+
+        public string CreatedBy { get; set; }
+
+        public UserDTO User { get; set; }
     }
 }
