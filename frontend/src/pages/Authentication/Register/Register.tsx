@@ -1,10 +1,17 @@
 import { FC, useState } from "react";
 import { Button } from "../../../components/ui/button";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UseCreateUser } from "src/api/AuthenticationAPI";
 import FormHeader from "../../../components/Forms/FormHeader";
 import Input from "../../../components/Forms/Input";
+import {
+  UserLoginValidator,
+  UserRegistrationValidator,
+} from "src/lib/validators/UserValidator";
+import { ZodError } from "zod";
+import toast from "react-hot-toast";
+import useForm from "src/hooks/useForm";
 
 interface RegisterProps {}
 
@@ -25,27 +32,24 @@ const initialFieldValues: FormValues = {
 };
 
 const Register: FC<RegisterProps> = ({}) => {
-  const [values, setValues] = useState(initialFieldValues);
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
+  const { values, errors, handleChange, validate, getFormData } = useForm(
+    initialFieldValues,
+    UserRegistrationValidator
+  );
 
-  const CreateUser = async () => {
-    const formData = new FormData();
-    formData.append("firstName", values.firstName);
-    formData.append("lastName", values.lastName);
-    formData.append("username", values.username);
-    formData.append("email", values.email);
-    formData.append("password", values.password);
+  const navigate = useNavigate();
 
-    try {
-      await UseCreateUser(formData);
-    } catch (error: any) {
-      console.error("Error submitting form:", error);
+  const CreateUser = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validate()) {
+      const formData = getFormData();
+      try {
+        await UseCreateUser(formData);
+        toast.success(`Successfully registered!`);
+        navigate("/login");
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      }
     }
   };
 
@@ -65,7 +69,8 @@ const Register: FC<RegisterProps> = ({}) => {
                 name="firstName"
                 type="text"
                 value={values.firstName}
-                onChange={handleInputChange}
+                onChange={handleChange}
+                errorMessage={errors.firstName}
               />
               <Input
                 placeholder="Enter last name"
@@ -73,7 +78,8 @@ const Register: FC<RegisterProps> = ({}) => {
                 name="lastName"
                 type="text"
                 value={values.lastName}
-                onChange={handleInputChange}
+                onChange={handleChange}
+                errorMessage={errors.lastName}
               />
               <Input
                 placeholder="Enter username"
@@ -81,7 +87,8 @@ const Register: FC<RegisterProps> = ({}) => {
                 name="username"
                 type="text"
                 value={values.username}
-                onChange={handleInputChange}
+                onChange={handleChange}
+                errorMessage={errors.username}
               />
               <Input
                 placeholder="Enter email"
@@ -89,7 +96,8 @@ const Register: FC<RegisterProps> = ({}) => {
                 name="email"
                 type="email"
                 value={values.email}
-                onChange={handleInputChange}
+                onChange={handleChange}
+                errorMessage={errors.email}
               />
               <Input
                 placeholder="Enter password"
@@ -97,13 +105,14 @@ const Register: FC<RegisterProps> = ({}) => {
                 type="password"
                 name="password"
                 value={values.password}
-                onChange={handleInputChange}
+                onChange={handleChange}
+                errorMessage={errors.password}
               />
             </div>
           </div>
           <Button
             className="mt-4 w-full bg-red-400 "
-            onClick={() => CreateUser()}
+            onClick={(e) => CreateUser(e)}
           >
             Register
           </Button>

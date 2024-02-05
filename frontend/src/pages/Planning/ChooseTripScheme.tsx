@@ -14,25 +14,42 @@ const ChooseTripScheme: FC<ChooseTripSchemeProps> = ({}) => {
 
   const { data: trips } = UseUserTripsList(user?.id);
 
-  useEffect(() => {
-    if (trips) {
-      const filteredActiveTrips = trips.filter((trip) => trip.status === 1);
-      setActiveTrips(filteredActiveTrips);
-    }
-  }, [trips]);
+  const planning = trips?.filter((t) => t.status === 0);
+  const inProgress = trips?.filter((t) => t.status === 1);
+  const finished = trips?.filter((t) => t.status === 2);
 
   return (
     <div className="container flex flex-col py-6 px-2 md:px-6">
       <PlanningHeader />
       <div className="flex flex-col gap-2">
-        {activeTrips ? (
+        {planning ? (
           <div>
-            {activeTrips.map((trip, i) => (
+            {planning.map((trip, i) => (
               <TripCard key={i} data={trip} />
             ))}
           </div>
         ) : (
           "Nothing to see here"
+        )}
+
+        {inProgress ? (
+          <div>
+            {inProgress.map((trip, i) => (
+              <TripCard key={i} data={trip} />
+            ))}
+          </div>
+        ) : (
+          <p>Nothing to see here</p>
+        )}
+
+        {finished ? (
+          <div>
+            {finished.map((trip, i) => (
+              <TripCard key={i} data={trip} />
+            ))}
+          </div>
+        ) : (
+          <p>Nothing to see here</p>
         )}
       </div>
     </div>

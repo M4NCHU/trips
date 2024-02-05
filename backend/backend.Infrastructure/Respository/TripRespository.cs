@@ -8,6 +8,7 @@ using backend.Models;
 using backend.Infrastructure.Authentication;
 using backend.Application.Services;
 using Microsoft.AspNetCore.Hosting;
+using backend.Domain.Enums;
 
 
 namespace backend.Infrastructure.Services
@@ -209,6 +210,19 @@ namespace backend.Infrastructure.Services
             await _context.SaveChangesAsync();
 
             return new CreatedAtActionResult("GetTrip", "Trip", new { id = trip.Id }, tripDTO);
+        }
+
+        public async Task<ActionResult<int>> CountUserTrips(string userId, TripStatus status)
+        {
+            var user = await _context.Users.Where(u => u.Id == userId).FirstOrDefaultAsync();
+
+            if (user == null) return new NotFoundResult();
+ 
+            var result = await _context.Trip.Where(t => t.User.Id == userId && t.Status == status).CountAsync();
+
+            if (result == null) return new NotFoundResult();
+
+            return result;
         }
 
         public async Task<IActionResult> DeleteTrip(Guid id)

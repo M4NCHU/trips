@@ -40,6 +40,22 @@ export const UseUserTripsList = (userId: string | undefined) => {
   });
 };
 
+// Get user trips count
+export const UseUserTripsCount = (
+  userId: string | undefined,
+  status: number
+) => {
+  return useQuery<number, Error>({
+    queryKey: ["userTripsCount"],
+    queryFn: async () => {
+      return fetchData<number>(
+        `/api/Trip/count/userId/${userId}/status/${status}`
+      );
+    },
+    enabled: !!userId,
+  });
+};
+
 // Change trip title
 export const UseChangeTripTitle = async (tripId: string, newTitle: string) => {
   try {

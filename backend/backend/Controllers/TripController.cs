@@ -8,6 +8,7 @@ using backend.Models;
 using Microsoft.Extensions.Hosting;
 using backend.Application.Services;
 using backend.Domain.DTOs;
+using backend.Domain.Enums;
 
 namespace backend.Controllers
 {
@@ -47,6 +48,15 @@ namespace backend.Controllers
         public async Task<ActionResult<IEnumerable<TripDTO>>> GetUserTripsList(string userId)
         {
             var trip = await _tripService.GetUserTripsList(userId);
+
+            return trip;
+        }
+
+        // GET: api/count/userId/5
+        [HttpGet("count/userId/{userId}/status/{status}")]
+        public async Task<ActionResult<int>> CountUserTrips(string userId, TripStatus status)
+        {
+            var trip = await _tripService.CountUserTrips(userId, status);
 
             return trip;
         }

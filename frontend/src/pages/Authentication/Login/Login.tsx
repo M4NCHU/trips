@@ -3,11 +3,15 @@ import { Button } from "../../../components/ui/button";
 
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FormHeader from "../../../components/Forms/FormHeader";
 import Input from "../../../components/Forms/Input";
 import { UseLoginUser } from "src/api/AuthenticationAPI";
 import { useAuth } from "src/context/UserContext";
+import { UserLoginValidator } from "src/lib/validators/UserValidator";
+import toast from "react-hot-toast";
+import { ZodError } from "zod";
+import useForm from "src/hooks/useForm";
 
 interface LoginProps {}
 
@@ -23,29 +27,26 @@ const initialFieldValues: FormValues = {
 
 const Login: FC<LoginProps> = ({}) => {
   const { setUser } = useAuth();
-  const [values, setValues] = useState(initialFieldValues);
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
+  const { values, errors, handleChange, validate, getFormData } = useForm(
+    initialFieldValues,
+    UserLoginValidator
+  );
 
-  const LoginUser = async () => {
-    const formData = new FormData();
-    formData.append("username", values.username);
-    formData.append("password", values.password);
+  const navigate = useNavigate();
 
-    try {
-      const user = await UseLoginUser(formData);
-
-      if (user.token && user.user) {
-        // Store the token with the user data
-        setUser({ ...user.user, token: user.token });
+  const LoginUser = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validate()) {
+      const formData = getFormData();
+      try {
+        const user = await UseLoginUser(formData);
+        if (user.token && user.user) {
+          setUser({ ...user.user, token: user.token });
+        }
+        toast.success(`Successfully logged in!`);
+      } catch (error) {
+        console.error("Error submitting form:", error);
       }
-    } catch (error: any) {
-      console.error("Error submitting form:", error);
     }
   };
 
@@ -63,7 +64,8 @@ const Login: FC<LoginProps> = ({}) => {
                 name="username"
                 type="text"
                 value={values.username}
-                onChange={handleInputChange}
+                onChange={handleChange}
+                errorMessage={errors.username}
               />
 
               <Input
@@ -72,13 +74,14 @@ const Login: FC<LoginProps> = ({}) => {
                 type="password"
                 name="password"
                 value={values.password}
-                onChange={handleInputChange}
+                onChange={handleChange}
+                errorMessage={errors.password}
               />
             </div>
           </div>
           <Button
             className="mt-4 w-full bg-red-400 "
-            onClick={() => LoginUser()}
+            onClick={(e) => LoginUser(e)}
           >
             Login
           </Button>

@@ -12,13 +12,12 @@ import CustomDropdownMenu from "../ui/Dropdown/CustomDropdownMenu";
 import CustomDropdownMenuItem from "../ui/Dropdown/CustomDropdownMenuItem";
 import UserTrigger from "./UserTrigger";
 import { TbLogout2 } from "react-icons/tb";
+import { UseUserTripsCount } from "src/api/TripAPI";
 
 const Header = () => {
   const { user, logout } = useAuth();
 
-  const { data: TripDestinationCount } = UseTripDestinationCount(
-    "670f17bb-320b-46a4-b739-f17678df7c3a"
-  );
+  const { data: UserTripsCount } = UseUserTripsCount(user?.id, 0);
 
   return (
     <nav className="w-full flex justify-center border-b-[1px] border-secondary">
@@ -51,7 +50,7 @@ const Header = () => {
             className="bg-pink-600 p-2 rounded-lg text-base text-white relative"
           >
             <div className="absolute -top-2 -right-2 bg-green-400 rounded-full p-1 w-6 h-6 flex items-center justify-center">
-              {TripDestinationCount}
+              {UserTripsCount}
             </div>
             Planning
           </Link>

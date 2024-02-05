@@ -1,4 +1,5 @@
 ﻿using backend.Domain.DTOs;
+using backend.Domain.Enums;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -23,5 +24,7 @@ namespace backend.Application.Services
         Task<IActionResult> DeleteTrip(Guid id);
 
         Task<IActionResult> ChangeTripTitle(Guid tripId, string newTitle);
+
+        Task<ActionResult<int>> CountUserTrips(string userId, TripStatus status);
     }
 }
