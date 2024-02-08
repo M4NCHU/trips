@@ -168,6 +168,7 @@ namespace backend.Infrastructure.Services
 
         public async Task<ActionResult<ParticipantDTO>> PostParticipant([FromForm] ParticipantDTO participantDTO)
         {
+            
             if (_context.Participant == null)
             {
                 return new ObjectResult("Entity set 'TripsDbContext.Participant' is null.")
@@ -184,6 +185,8 @@ namespace backend.Infrastructure.Services
             participantDTO.PhotoUrl = await _imageService.SaveImage(participantDTO.ImageFile, "Participant");
 
             var currentDate = DateTime.Now.ToUniversalTime();
+
+
 
             var participant = new ParticipantModel
             {

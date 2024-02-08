@@ -15,7 +15,12 @@ const TripParticipants: FC<TripParticipantsProps> = ({ tripId }) => {
     data: TripParticipantsData,
     isLoading,
     isError,
+    refetch,
   } = UseTripParticipant(tripId);
+
+  const onParticipantAdded = () => {
+    refetch();
+  };
 
   if (isLoading) {
     return (
@@ -47,7 +52,10 @@ const TripParticipants: FC<TripParticipantsProps> = ({ tripId }) => {
             ))
           : "No participants"}
       </div>
-      <CreateParticipantModal tripId={tripId} />
+      <CreateParticipantModal
+        tripId={tripId}
+        onParticipantAdded={onParticipantAdded}
+      />
     </div>
   );
 };

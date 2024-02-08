@@ -1,4 +1,5 @@
 import { useState, ChangeEvent } from "react";
+import toast from "react-hot-toast";
 import { ZodError, ZodSchema } from "zod";
 
 // Define a generic type for the useForm hook
@@ -8,6 +9,8 @@ type UseForm<T> = {
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   validate: () => boolean;
   getFormData: () => FormData;
+  setValue: (name: keyof T, value: any) => void;
+  reset: () => void;
 };
 
 // useForm hook
@@ -35,6 +38,13 @@ const useForm = <T extends Record<string, any>>(
     }
   };
 
+  const setValue = (name: keyof T, value: any) => {
+    setValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
   const validate = () => {
     try {
       validator.parse(values);
@@ -52,6 +62,7 @@ const useForm = <T extends Record<string, any>>(
           }
         }
         setErrors(newErrors);
+        toast.error("Some error occurred!");
       }
       return false;
     }
@@ -65,12 +76,19 @@ const useForm = <T extends Record<string, any>>(
     return formData;
   };
 
+  const reset = () => {
+    setValues(initialValues);
+    setErrors({} as Record<keyof T, string>);
+  };
+
   return {
     values,
     errors,
     handleChange,
     validate,
     getFormData,
+    setValue,
+    reset,
   };
 };
 

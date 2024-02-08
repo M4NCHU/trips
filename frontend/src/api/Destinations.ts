@@ -1,9 +1,9 @@
 // api/destinations.timport { useQuery } from "@tanstack/react-query";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { usePagination } from "../hooks/usePagination";
 import { Destination, DestinationCategory } from "../types/Destination";
 import { fetchData } from "./apiUtils";
-import { DestinationValidator } from "../lib/validators/destination";
+import { DestinationValidator } from "../lib/validators/DestinationValidator";
 import toast from "react-hot-toast";
 import { ZodError, z } from "zod";
 
@@ -52,18 +52,31 @@ export const useDestinationById = (id: string | undefined) => {
   });
 };
 
-// Adding destination
-export const UseCreateDestination = async (formData: FormData) => {
-  try {
-    const response = await fetchData<Destination>("/api/Destination", {
-      method: "post",
-      data: formData,
-    });
+export const useSearchDestinations = (searchTerm: string) => {
+  return useQuery<Destination[], Error>({
+    queryKey: ["searchDestinations", searchTerm],
+    queryFn: () =>
+      fetchData<Destination[]>(
+        `/api/Destination/Search?searchTerm=${encodeURIComponent(searchTerm)}`
+      ),
+    enabled: !!searchTerm,
+  });
+};
 
-    toast.success("Destination created successfully!");
-    return response;
-  } catch (error: any) {
-    toast.error(error.message || "An unexpected error occurred.");
-    throw new Error("Failed to create destination. Please try again.");
-  }
+// Adding destination
+export const UseCreateDestination = () => {
+  const mutation = useMutation({
+    mutationFn: async (formData: FormData) => {
+      try {
+        const response = await fetchData<Destination>("/api/Destination", {
+          method: "post",
+          data: formData,
+        });
+        return response;
+      } catch (error: any) {
+        throw new Error("Failed to create destination. Please try again.");
+      }
+    },
+  });
+  return mutation;
 };

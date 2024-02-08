@@ -54,8 +54,22 @@ namespace backend.Controllers
             return await _destinationService.GetDestination(destinationId);
         }
 
+        [HttpGet("Search")]
+        public async Task<ActionResult<IEnumerable<DestinationDTO>>> Search(string searchTerm)
+        {
+            var results = await _destinationService.SearchDestinations(searchTerm);
+
+            if (results == null || !results.Any())
+            {
+                return NotFound("No destinations found matching the search term.");
+            }
+
+            return Ok(results);
+        }
+
+
         // PUT: api/Destinations/5
-        
+
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDestination(Guid id, DestinationDTO destination)
         {

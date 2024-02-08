@@ -78,6 +78,30 @@ namespace backend.Infrastructure.Services
             }
         }
 
+        public async Task<IEnumerable<DestinationDTO>> SearchDestinations(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+               
+                return Enumerable.Empty<DestinationDTO>();
+            }
+
+            var destinations = await _context.Destination
+                .Where(d => d.Name.Contains(searchTerm))
+                .Select(d => new DestinationDTO
+                {
+                    Id = d.Id,
+                    Name = d.Name,
+                    Description = d.Description,
+                   
+                })
+                .ToListAsync();
+
+            return destinations;
+        }
+
+
+
         public async Task<List<DestinationDTO>> GetDestinationsForTrip(Guid tripId)
         {
             var destinations = await _context.TripDestination

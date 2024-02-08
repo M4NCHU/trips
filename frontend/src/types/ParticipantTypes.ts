@@ -7,7 +7,7 @@ export type Participant = {
   phoneNumber: string;
   address: string;
   emergencyContactName: string;
-  emergencyContactPhone: string;
+  emergencyContact: string;
   medicalConditions: string;
   createdAt: string;
   modifiedAt?: string | null;

@@ -12,6 +12,7 @@ import {
 import { ZodError } from "zod";
 import toast from "react-hot-toast";
 import useForm from "src/hooks/useForm";
+import SubmitButton from "src/components/ui/SubmitButton";
 
 interface RegisterProps {}
 
@@ -32,10 +33,17 @@ const initialFieldValues: FormValues = {
 };
 
 const Register: FC<RegisterProps> = ({}) => {
-  const { values, errors, handleChange, validate, getFormData } = useForm(
-    initialFieldValues,
-    UserRegistrationValidator
-  );
+  const { values, errors, handleChange, validate, getFormData, reset } =
+    useForm(initialFieldValues, UserRegistrationValidator);
+
+  const {
+    mutate: createCategory,
+    status,
+    isPending,
+    isError,
+    isSuccess,
+    error,
+  } = UseCreateUser();
 
   const navigate = useNavigate();
 
@@ -44,9 +52,17 @@ const Register: FC<RegisterProps> = ({}) => {
     if (validate()) {
       const formData = getFormData();
       try {
-        await UseCreateUser(formData);
-        toast.success(`Successfully registered!`);
-        navigate("/login");
+        createCategory(formData, {
+          onSuccess: () => {
+            toast.success("Account created successfully!, please login");
+            reset();
+            navigate("/login");
+          },
+          onError: (error) => {
+            console.error("Error submitting form:", error);
+            toast.error("Failed to create account.");
+          },
+        });
       } catch (error) {
         console.error("Error submitting form:", error);
       }
@@ -110,12 +126,11 @@ const Register: FC<RegisterProps> = ({}) => {
               />
             </div>
           </div>
-          <Button
-            className="mt-4 w-full bg-red-400 "
-            onClick={(e) => CreateUser(e)}
-          >
-            Register
-          </Button>
+          <SubmitButton
+            isPending={isPending}
+            isSuccess={isSuccess}
+            onSubmit={(e) => CreateUser(e)}
+          />
           <p className="py-2 mt-2 text-foreground">
             Already have an account? <Link to="/login">Login</Link>
           </p>

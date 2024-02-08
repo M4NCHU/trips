@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { CiCirclePlus } from "react-icons/ci";
 import { UseCreateParticipant } from "../../api/ParticipantAPI";
 import { Participant } from "../../types/ParticipantTypes";
@@ -14,73 +14,79 @@ import { ParticipantValidator } from "src/lib/validators/TripParticipantValidati
 import { ZodError } from "zod";
 import { useNavigate } from "react-router-dom";
 import { UseCreateTripParticipant } from "src/api/TripParticipantAPI";
+import toast from "react-hot-toast";
+import useForm from "src/hooks/useForm";
+import SubmitButton from "../ui/SubmitButton";
 
 interface CreateParticipantModalProps {
   tripId: string;
+  onParticipantAdded: () => void;
 }
 
-const initialFieldValues: Participant = {
-  id: "",
+export type ParticipantDTO = {
+  firstName: string;
+  lastName: string;
+  dateOfBirth: string;
+  email: string;
+  phoneNumber: string;
+  address: string;
+  emergencyContact: string;
+  emergencyContactPhone: string;
+  medicalConditions: string;
+  createdAt: string;
+  modifiedAt?: string | null;
+  tripId: string;
+};
+
+const initialFieldValues: ParticipantDTO = {
   firstName: "",
   lastName: "",
   dateOfBirth: "",
   email: "",
   phoneNumber: "",
   address: "",
-  emergencyContactName: "",
+  emergencyContact: "",
   emergencyContactPhone: "",
   medicalConditions: "",
-  createdAt: "",
-  photoUrl: "",
-  imageFile: null,
+  createdAt: "2024-02-04 16:32:47.03+01",
   tripId: "",
 };
 
 const CreateParticipantModal: FC<CreateParticipantModalProps> = ({
   tripId,
+  onParticipantAdded,
 }) => {
-  const [values, setValues] = useState<Participant>(initialFieldValues);
-  const [validationErrors, setValidationErrors] = useState<
-    Record<string, string>
-  >({});
-  const { showPreview, imagePreview } = useImagePreview();
+  const {
+    values,
+    errors,
+    handleChange,
+    validate,
+    getFormData,
+    setValue,
+    reset,
+  } = useForm(initialFieldValues, ParticipantValidator);
+
+  const {
+    mutate: createParticipant,
+    status: createParticipantStatus,
+    isPending: createParticipantIsPending,
+    isError: createParticipantIsError,
+    isSuccess: createParticipantIsSuccess,
+    error: createParticipantError,
+  } = UseCreateParticipant();
   const navigate = useNavigate();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
+  const { showPreview, imagePreview } = useImagePreview();
+
+  useEffect(() => {
+    setValue("tripId", tripId);
+  }, [tripId]);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const formDataObject = {
-      firstName: values.firstName,
-      lastName: values.lastName,
-      dateOfBirth: values.dateOfBirth,
-      email: values.email,
-      phoneNumber: values.phoneNumber.toString(),
-      address: values.address,
-      emergencyContactName: values.emergencyContactName,
-      emergencyContactPhone: values.emergencyContactPhone,
-      medicalConditions: values.medicalConditions,
-    };
-
-    const formData = new FormData();
-    formData.append("firstName", values.firstName);
-    formData.append("lastName", values.lastName);
-    formData.append("dateOfBirth", values.dateOfBirth);
-    formData.append("email", values.email);
-    formData.append("phoneNumber", values.phoneNumber.toString());
-    formData.append("address", values.address);
-    formData.append("emergencyContact", values.emergencyContactName);
-    formData.append("emergencyContactPhone", values.emergencyContactPhone);
-    formData.append("medicalConditions", values.medicalConditions);
+    const formData = getFormData();
     formData.append("photoUrl", imagePreview.imageSrc || "");
-    formData.append("tripId", tripId);
 
     if (
       imagePreview.imageFile !== null &&
@@ -89,25 +95,21 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({
       formData.append("imageFile", imagePreview.imageFile);
     }
 
-    try {
-      ParticipantValidator.parse(formDataObject);
-
-      const participant = await UseCreateParticipant(formData);
-      console.log(participant);
-
-      setValues(initialFieldValues);
-      setValidationErrors({});
-      imagePreview.imageSrc = "";
-      imagePreview.imageFile = null;
-      navigate(0);
-    } catch (error) {
-      if (error instanceof ZodError) {
-        const newErrors: Record<string, string> = {};
-        for (const issue of error.issues) {
-          newErrors[issue.path[0]] = issue.message;
-        }
-        setValidationErrors(newErrors);
-      } else {
+    console.log(formData);
+    if (validate()) {
+      try {
+        createParticipant(formData, {
+          onSuccess: () => {
+            toast.success("Trip participant created successfully!");
+            onParticipantAdded();
+            reset();
+          },
+          onError: (error: any) => {
+            console.error("Error submitting form:", error);
+            toast.error("Failed to create trip participant.");
+          },
+        });
+      } catch (error) {
         console.error("Error submitting form:", error);
       }
     }
@@ -133,18 +135,18 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({
                   name="firstName"
                   type="text"
                   value={values.firstName}
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                   className="p-2 rounded-lg bg-secondary"
-                  errorMessage={validationErrors.firstName}
+                  errorMessage={errors.firstName}
                 />
                 <Input
                   placeholder="Enter last name"
                   label="Last Name"
                   name="lastName"
                   value={values.lastName}
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                   className="p-2 rounded-lg bg-secondary"
-                  errorMessage={validationErrors.lastName}
+                  errorMessage={errors.lastName}
                 />
                 <Input
                   placeholder="Enter date of birth"
@@ -152,27 +154,27 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({
                   name="dateOfBirth"
                   type="date"
                   value={values.dateOfBirth}
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                   className="p-2 rounded-lg bg-secondary"
-                  errorMessage={validationErrors.dateOfBirth}
+                  errorMessage={errors.dateOfBirth}
                 />
                 <Input
                   placeholder="Enter email"
                   label="Email"
                   name="email"
                   value={values.email}
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                   className="p-2 rounded-lg bg-secondary"
-                  errorMessage={validationErrors.email}
+                  errorMessage={errors.email}
                 />
                 <Input
                   placeholder="Enter phone number"
                   label="Phone Number"
                   name="phoneNumber"
                   value={values.phoneNumber}
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                   className="p-2 rounded-lg bg-secondary"
-                  errorMessage={validationErrors.phoneNumber}
+                  errorMessage={errors.phoneNumber}
                 />
               </div>
 
@@ -182,37 +184,38 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({
                   label="Address"
                   name="address"
                   value={values.address}
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                   className="p-2 rounded-lg bg-secondary"
-                  errorMessage={validationErrors.address}
+                  errorMessage={errors.address}
                 />
                 <Input
                   placeholder="Enter emergency contact name"
                   label="Emergency Contact Name"
-                  name="emergencyContactName"
-                  value={values.emergencyContactName}
-                  onChange={handleInputChange}
+                  name="emergencyContact"
+                  value={values.emergencyContact}
+                  onChange={handleChange}
                   className="p-2 rounded-lg bg-secondary"
-                  errorMessage={validationErrors.emergencyContactName}
+                  errorMessage={errors.emergencyContact}
                 />
                 <Input
                   placeholder="Enter emergency contact phone"
                   label="Emergency Contact Phone"
                   name="emergencyContactPhone"
                   value={values.emergencyContactPhone}
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                   className="p-2 rounded-lg bg-secondary"
-                  errorMessage={validationErrors.emergencyContactPhone}
+                  errorMessage={errors.emergencyContactPhone}
                 />
                 <Input
                   placeholder="Enter medical conditions"
                   label="Medical Conditions"
                   name="medicalConditions"
                   value={values.medicalConditions}
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                   className="p-2 rounded-lg bg-secondary"
-                  errorMessage={validationErrors.medicalConditions}
+                  errorMessage={errors.medicalConditions}
                 />
+
                 <Input
                   placeholder="Choose photo"
                   label="Choose photo"
@@ -233,12 +236,11 @@ const CreateParticipantModal: FC<CreateParticipantModalProps> = ({
 
             <div className="w-full flex justify-end mt-4 gap-4">
               <AlertDialogCancel className="p-4">Cancel</AlertDialogCancel>
-              <button
-                type="submit"
-                className="bg-pink-600 rounded-lg min-w-[8rem]"
-              >
-                Submit
-              </button>
+              <SubmitButton
+                isPending={createParticipantIsPending}
+                isSuccess={createParticipantIsSuccess}
+                onSubmit={(e) => handleFormSubmit(e)}
+              />
             </div>
           </form>
         </div>

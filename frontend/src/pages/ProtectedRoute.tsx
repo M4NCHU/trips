@@ -1,5 +1,4 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "src/context/UserContext";
 import { useRoleChecker } from "src/hooks/useRoleChecker";
 
@@ -12,14 +11,14 @@ const ProtectedRoute = ({
 }) => {
   const { user } = useAuth();
   const { hasRole } = useRoleChecker();
+  const navigate = useNavigate();
 
   if (!user) {
     return <Navigate to="/login" />;
   }
 
-  // Jeśli trasa wymaga określonych ról, sprawdź, czy użytkownik je posiada
   if (roles && !roles.some((role) => hasRole(role))) {
-    return <div>Access Denied</div>; // Możesz tu przekierować na inną stronę, jeśli chcesz
+    return <Navigate to="/" />;
   }
 
   return children;

@@ -4,90 +4,83 @@ import { UseCreateDestination } from "../../api/Destinations";
 import FormHeader from "../../components/Forms/FormHeader";
 import Input from "../../components/Forms/Input";
 import { Button } from "../../components/ui/button";
-import { DestinationValidator } from "../../lib/validators/destination";
+import { DestinationValidator } from "../../lib/validators/DestinationValidator";
 import { ZodError } from "zod";
 import useImagePreview from "src/hooks/useImagePreview";
+import { useNavigate } from "react-router-dom";
+import useForm from "src/hooks/useForm";
+import toast from "react-hot-toast";
+import SubmitButton from "src/components/ui/SubmitButton";
 
 interface CreateProps {}
 
 interface FormValues {
-  destinationName: string;
-  destinationLocation: string;
-  destinationDesc: string;
-  imageSrc: string;
-  imageFile: File | null;
-  selectedCategory: string;
+  name: string;
+  description: string;
+  location: string;
+  categoryId: string;
   price: string;
 }
 
 const initialFieldValues: FormValues = {
-  destinationName: "",
-  destinationLocation: "",
-  destinationDesc: "",
-  imageSrc: "",
-  imageFile: null,
-  selectedCategory: "",
+  name: "",
+  description: "",
+  location: "",
+  categoryId: "",
   price: "",
 };
 
 const CreateDestination: FC<CreateProps> = ({}) => {
-  const [values, setValues] = useState(initialFieldValues);
-  const { data: categories, isLoading, isError } = UseCategoryList();
-  const [validationErrors, setValidationErrors] = useState<
-    Record<string, string>
-  >({});
+  const {
+    values,
+    errors,
+    handleChange,
+    validate,
+    getFormData,
+    setValue,
+    reset,
+  } = useForm(initialFieldValues, DestinationValidator);
   const { showPreview, imagePreview } = useImagePreview();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
+  const {
+    mutate: CreateDestination,
+    status: CreateDestinationStatus,
+    isPending: CreateDestinationIsPending,
+    isError: CreateDestinationIsError,
+    isSuccess: CreateDestinationIsSuccess,
+    error: CreateDestinationError,
+    data: destinationData,
+  } = UseCreateDestination();
+  const { data: categories, isLoading, isError } = UseCategoryList();
+
+  const navigate = useNavigate();
 
   const handleCategoryToggle = (categoryId: string) => {
-    setValues({
-      ...values,
-      selectedCategory:
-        values.selectedCategory === categoryId ? "0" : categoryId,
-    });
+    setValue("categoryId", categoryId);
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const formDataObject = {
-      name: values.destinationName,
-      description: values.destinationDesc,
-      location: values.destinationLocation,
-      price: parseFloat(values.price),
-      categoryId: values.selectedCategory,
-    };
-
-    const formData = new FormData();
-    formData.append("name", values.destinationName);
-    formData.append("location", values.destinationLocation);
-    formData.append("description", values.destinationDesc);
-    formData.append("photoUrl", imagePreview.imageSrc);
-    formData.append("categoryId", String(values.selectedCategory));
-    formData.append("price", values.price);
+    const formData = getFormData();
 
     if (imagePreview.imageFile !== null) {
       formData.append("imageFile", imagePreview.imageFile);
     }
 
-    try {
-      DestinationValidator.parse(formDataObject);
-      await UseCreateDestination(formData);
-    } catch (error) {
-      if (error instanceof ZodError) {
-        const newErrors: Record<string, string> = {};
-        for (const issue of error.issues) {
-          newErrors[issue.path[0]] = issue.message;
-        }
-        setValidationErrors(newErrors);
-      } else {
+    if (validate()) {
+      try {
+        CreateDestination(formData, {
+          onSuccess: (destinationData) => {
+            toast.success("Destination created successfully!");
+            reset();
+          },
+          onError: (error: any) => {
+            console.error("Error submitting form:", error);
+            toast.error("Failed to create destination.");
+          },
+        });
+      } catch (error) {
         console.error("Error submitting form:", error);
       }
     }
@@ -108,26 +101,26 @@ const CreateDestination: FC<CreateProps> = ({}) => {
             <Input
               placeholder="Enter name"
               label="Name"
-              name="destinationName"
-              value={values.destinationName}
-              onChange={handleInputChange}
-              errorMessage={validationErrors.name}
+              name="name"
+              value={values.name}
+              onChange={handleChange}
+              errorMessage={errors.name}
             />
             <Input
               placeholder="Enter location"
               label="location"
-              name="destinationLocation"
-              value={values.destinationLocation}
-              onChange={handleInputChange}
-              errorMessage={validationErrors.location}
+              name="location"
+              value={values.location}
+              onChange={handleChange}
+              errorMessage={errors.location}
             />
             <Input
               placeholder="Enter description"
               label="description"
-              name="destinationDesc"
-              value={values.destinationDesc}
-              onChange={handleInputChange}
-              errorMessage={validationErrors.description}
+              name="description"
+              value={values.description}
+              onChange={handleChange}
+              errorMessage={errors.description}
             />
 
             <Input
@@ -136,8 +129,8 @@ const CreateDestination: FC<CreateProps> = ({}) => {
               name="price"
               type="number"
               value={values.price}
-              onChange={handleInputChange}
-              errorMessage={validationErrors.price}
+              onChange={handleChange}
+              errorMessage={errors.price}
             />
 
             <div className="flex flex-col gap-4 mb-2">
@@ -151,8 +144,8 @@ const CreateDestination: FC<CreateProps> = ({}) => {
                       <div
                         key={category.id}
                         className={`flex flex-col w-14 h-14 items-center justify-center relative gap-1 ${
-                          values.selectedCategory === category.id
-                            ? "border-2 border-blue-500" // Apply styling for the selected category
+                          values.categoryId === category.id
+                            ? "border-2 border-blue-500"
                             : ""
                         }`}
                         onClick={() => handleCategoryToggle(category.id)}
@@ -191,9 +184,11 @@ const CreateDestination: FC<CreateProps> = ({}) => {
             )}
           </div>
         </div>
-        <Button className="mt-4 w-full bg-red-400 " type="submit">
-          Create +
-        </Button>
+        <SubmitButton
+          isPending={CreateDestinationIsPending}
+          isSuccess={CreateDestinationIsSuccess}
+          onSubmit={(e) => handleFormSubmit(e)}
+        />
       </form>
     </div>
   );

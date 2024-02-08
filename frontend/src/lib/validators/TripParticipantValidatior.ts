@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { guidRegex } from "./globalRegex";
 
 export const ParticipantValidator = z.object({
   firstName: z
@@ -22,7 +23,7 @@ export const ParticipantValidator = z.object({
     .string()
     .min(1, "Address is required")
     .max(200, "Address cannot exceed 200 characters"),
-  emergencyContactName: z
+  emergencyContact: z
     .string()
     .min(1, "Emergency contact name is required")
     .max(100, "Emergency contact name cannot exceed 100 characters"),
@@ -34,6 +35,8 @@ export const ParticipantValidator = z.object({
     .string()
     .max(500, "Medical conditions cannot exceed 500 characters")
     .optional(),
+  createdAt: z.string(),
+  tripId: z.string(),
 });
 
 export type ParticipantPayload = z.infer<typeof ParticipantValidator>;

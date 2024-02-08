@@ -14,10 +14,7 @@ export const DestinationValidator = z.object({
     .string()
     .min(3, "Location must be at least 3 characters long")
     .max(100, "Location must be no longer than 100 characters"),
-  price: z
-    .number()
-    .min(0, "Price must be a non-negative number")
-    .max(10000, "Price must be no more than 10000"),
+  price: z.string(),
   categoryId: z.string().regex(guidRegex, "categoryId must be a valid GUID"),
 });
 

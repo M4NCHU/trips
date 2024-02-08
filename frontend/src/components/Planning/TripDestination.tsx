@@ -26,7 +26,7 @@ const TripDestinationComponent: FC<TripDestinationData> = ({ data }) => {
   return (
     <div className="flex flex-col gap-2">
       <Card content={<DestinationCard data={destinationData} />} />
-      <div className="mt-2 px-0 pl-4 border-l-2 border-gray-500 flex flex-col">
+      <div className="mt-2 px-0 pl-4 border-l-2 border-gray-500 flex flex-col gap-4">
         {data.selectedPlaces.map((place, index) =>
           place.visitPlaceId ? (
             <Card

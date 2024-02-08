@@ -13,6 +13,8 @@ namespace backend.Application.Services
 
         Task<List<DestinationDTO>> GetDestinationsForTrip(Guid tripId);
 
+        Task<IEnumerable<DestinationDTO>> SearchDestinations(string searchTerm);
+
 
         Task<IActionResult> PutDestination(Guid id, DestinationDTO destination);
 

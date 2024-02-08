@@ -1,25 +1,30 @@
 // api/visitPlaces.timport { useQuery } from "@tanstack/react-query";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { VisitPlace } from "../types/VisitPlaceTypes";
 import { fetchData } from "./apiUtils";
 
 // // Get visitPlace by id
 
 // Adding visitPlace
-export const UseCreateVisitPlace = async (formData: FormData) => {
-  try {
-    const response = await fetchData<VisitPlace>("/api/VisitPlace", {
-      method: "post",
-      data: formData,
-    });
+export const UseCreateVisitPlace = () => {
+  const mutation = useMutation({
+    mutationFn: async (formData: FormData) => {
+      try {
+        const response = await fetchData<VisitPlace>("/api/VisitPlace", {
+          method: "post",
+          data: formData,
+        });
 
-    return response;
-  } catch (error) {
-    console.error("Error creating visit place:", error);
-    throw new Error("Failed to create visit place. Please try again.");
-  }
+        return response;
+      } catch (error) {
+        console.error("Error creating visit place:", error);
+        throw new Error("Failed to create visit place. Please try again.");
+      }
+    },
+    onSuccess: () => {},
+  });
+  return mutation;
 };
-
 // Get visitPlace by destination id
 export const useVisitPlacesByDestination = (id: string | undefined) => {
   return useQuery<VisitPlace[], Error>({

@@ -1,28 +1,30 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { TripParticipant } from "../types/TripParticipantTypes";
 import { Trip } from "../types/TripTypes";
 import { fetchData } from "./apiUtils";
 import toast from "react-hot-toast";
 
 // Adding trip participant
-export const UseCreateTripParticipant = async (
-  tripId: string,
-  participantId: string
-) => {
-  try {
-    const response = await fetchData<TripParticipant>("/api/TripParticipant", {
-      method: "post",
-      data: {
-        tripId: tripId,
-        participantId: participantId,
-      },
-    });
-    toast.success("Trip participant created successfully!");
-    return response;
-  } catch (error: any) {
-    toast.error(error.message || "An unexpected error occurred.");
-    throw new Error("Failed to create trip participant. Please try again.");
-  }
+export const UseCreateTripParticipant = () => {
+  const mutation = useMutation({
+    mutationFn: async (formData: FormData) => {
+      try {
+        const response = await fetchData<TripParticipant>(
+          "/api/TripParticipant",
+          {
+            method: "post",
+            data: {
+              formData,
+            },
+          }
+        );
+        return response;
+      } catch (error: any) {
+        throw new Error("Failed to create trip participant. Please try again.");
+      }
+    },
+  });
+  return mutation;
 };
 
 // Get trip participant by id

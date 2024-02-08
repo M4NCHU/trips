@@ -1,83 +1,97 @@
 import { FC, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDestinationById } from "../../api/Destinations";
-import { UseCreateVisitPlace } from "../../api/VisitPlaceAPI";
 import FormHeader from "../../components/Forms/FormHeader";
 import Input from "../../components/Forms/Input";
 import { Button } from "../../components/ui/button";
 import useImagePreview from "src/hooks/useImagePreview";
+import useForm from "src/hooks/useForm";
+import { VisitPlaceValidator } from "src/lib/validators/VisitPlaceValidator";
+import toast from "react-hot-toast";
+import { UseCreateVisitPlace } from "src/api/VisitPlaceAPI";
+import SubmitButton from "src/components/ui/SubmitButton";
 
 interface CreateProps {}
 
 interface FormValues {
-  visitPlaceName: string;
-  visitPlaceDesc: string;
-  imageSrc: string;
-  price: number;
-  imageFile: File | null;
+  name: string;
+  description: string;
+  price: string;
+  destinationId: string;
 }
 
 const initialFieldValues: FormValues = {
-  visitPlaceName: "",
-  visitPlaceDesc: "",
-  imageSrc: "",
-  price: 0,
-  imageFile: null,
+  name: "",
+  description: "",
+  price: "",
+  destinationId: "",
 };
 
 const CreateVisitPlace: FC<CreateProps> = ({}) => {
   const { id } = useParams<{ id: string | undefined }>();
-  const [values, setValues] = useState<FormValues>(initialFieldValues);
+  const {
+    values,
+    errors,
+    handleChange,
+    validate,
+    getFormData,
+    setValue,
+    reset,
+  } = useForm(initialFieldValues, VisitPlaceValidator);
+  const {
+    mutate: createCategory,
+    status: createCategoryStatus,
+    isPending: createCategoryIsPending,
+    isError: createCategoryIsError,
+    isSuccess: createCategoryIsSuccess,
+    error: createCategoryError,
+  } = UseCreateVisitPlace();
+  const navigate = useNavigate();
   const { data: destination, isLoading, isError } = useDestinationById(id);
   const { showPreview, imagePreview } = useImagePreview();
 
   useEffect(() => {
-    if (destination) {
-      setValues({
-        ...values,
-        visitPlaceName: destination.name,
-        visitPlaceDesc: destination.description,
-        price: destination.price,
-      });
-    }
+    setValue("destinationId", destination?.id);
   }, [destination]);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Sprawdź, czy destination jest dostępne
     if (!destination) {
       console.error("Error: No destination selected.");
       alert(
         "No destination selected. You cannot add a visit place without a destination."
       );
-      return; // Przerwanie wykonania funkcji, jeśli brakuje destination
+      return;
     }
+    const formData = getFormData();
+    formData.append("photoUrl", imagePreview.imageSrc || "");
 
-    const formData = new FormData();
-    formData.append("name", values.visitPlaceName);
-    formData.append("description", values.visitPlaceDesc);
-    formData.append("photoUrl", imagePreview.imageSrc);
-    formData.append("price", (values.price ?? 2).toString());
-    formData.append("destinationId", destination.id.toString());
-
-    if (imagePreview.imageFile !== null) {
+    if (
+      imagePreview.imageFile !== null &&
+      imagePreview.imageFile !== undefined
+    ) {
       formData.append("imageFile", imagePreview.imageFile);
     }
 
-    try {
-      await UseCreateVisitPlace(formData);
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("An error occurred while submitting the form. Please try again.");
+    console.log(formData);
+    if (validate()) {
+      try {
+        createCategory(formData, {
+          onSuccess: () => {
+            toast.success("Category created successfully!");
+            reset();
+            navigate(`/destination/${destination?.id}`);
+          },
+          onError: (error: any) => {
+            console.error("Error submitting form:", error);
+            toast.error("Failed to create category.");
+          },
+        });
+        reset();
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      }
     }
   };
 
@@ -91,7 +105,11 @@ const CreateVisitPlace: FC<CreateProps> = ({}) => {
 
   return (
     <div className="container px-4">
-      <FormHeader title="Create new visit place" />
+      <FormHeader
+        title="Create new visit place"
+        backLink={`/destination/${destination?.id}`}
+        backText={`Back to ${destination.name}`}
+      />
       <form
         className=" bg-secondary rounded-lg p-4 "
         onSubmit={handleFormSubmit}
@@ -113,23 +131,26 @@ const CreateVisitPlace: FC<CreateProps> = ({}) => {
             <Input
               placeholder="Enter name"
               label="Name"
-              name="visitPlaceName"
-              value={values.visitPlaceName}
-              onChange={handleInputChange}
+              name="name"
+              value={values.name}
+              onChange={handleChange}
+              errorMessage={errors.name}
             />
             <Input
               placeholder="Enter description"
-              label="description"
-              name="visitPlaceDesc"
-              value={values.visitPlaceDesc}
-              onChange={handleInputChange}
+              label="Description"
+              name="description"
+              value={values.description}
+              onChange={handleChange}
+              errorMessage={errors.name}
             />
             <Input
               placeholder="Enter description"
               label="Price/person"
               name="price"
               value={values.price}
-              onChange={handleInputChange}
+              onChange={handleChange}
+              errorMessage={errors.name}
             />
           </div>
 
@@ -154,9 +175,11 @@ const CreateVisitPlace: FC<CreateProps> = ({}) => {
             )}
           </div>
         </div>
-        <Button className="mt-4 w-full bg-red-400 " type="submit">
-          Create +
-        </Button>
+        <SubmitButton
+          isPending={createCategoryIsPending}
+          isSuccess={createCategoryIsSuccess}
+          onSubmit={(e) => handleFormSubmit(e)}
+        />
       </form>
     </div>
   );

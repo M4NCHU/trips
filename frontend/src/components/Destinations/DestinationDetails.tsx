@@ -99,8 +99,6 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
     return <div>Error or no destination found.</div>;
   }
 
-  console.log(selectedPlaces);
-
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!id) {
@@ -248,7 +246,7 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
           </div>
         </div>
         <div className="w-full md:w-2/5">
-          <div className="reservation-card w-full bg-secondary p-6 rounded-xl flex flex-col gap-4">
+          <div className="reservation-card w-full bg-secondary p-6 rounded-xl flex flex-col gap-4 sticky top-10">
             <div>
               <p className="text-sm">Initial Charge on this trip is 24 zł</p>
             </div>

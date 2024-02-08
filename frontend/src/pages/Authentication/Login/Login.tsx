@@ -12,6 +12,8 @@ import { UserLoginValidator } from "src/lib/validators/UserValidator";
 import toast from "react-hot-toast";
 import { ZodError } from "zod";
 import useForm from "src/hooks/useForm";
+import SubmitButton from "src/components/ui/SubmitButton";
+import { LoginResponse, User } from "src/types/UserTypes";
 
 interface LoginProps {}
 
@@ -27,10 +29,18 @@ const initialFieldValues: FormValues = {
 
 const Login: FC<LoginProps> = ({}) => {
   const { setUser } = useAuth();
-  const { values, errors, handleChange, validate, getFormData } = useForm(
-    initialFieldValues,
-    UserLoginValidator
-  );
+  const { values, errors, handleChange, validate, getFormData, reset } =
+    useForm(initialFieldValues, UserLoginValidator);
+
+  const {
+    mutate: LoginUserMutation,
+    status,
+    isPending,
+    isError,
+    isSuccess,
+    error,
+    data,
+  } = UseLoginUser();
 
   const navigate = useNavigate();
 
@@ -39,11 +49,19 @@ const Login: FC<LoginProps> = ({}) => {
     if (validate()) {
       const formData = getFormData();
       try {
-        const user = await UseLoginUser(formData);
-        if (user.token && user.user) {
-          setUser({ ...user.user, token: user.token });
-        }
-        toast.success(`Successfully logged in!`);
+        LoginUserMutation(formData, {
+          onSuccess: (data: LoginResponse) => {
+            if (data.token && data.user) {
+              setUser({ ...data.user, token: data.token });
+            }
+            toast.success(`Successfully logged in!`);
+            navigate("/");
+          },
+          onError: (error) => {
+            console.error("Error submitting form:", error);
+            toast.error("Failed to login.");
+          },
+        });
       } catch (error) {
         console.error("Error submitting form:", error);
       }
@@ -79,12 +97,11 @@ const Login: FC<LoginProps> = ({}) => {
               />
             </div>
           </div>
-          <Button
-            className="mt-4 w-full bg-red-400 "
-            onClick={(e) => LoginUser(e)}
-          >
-            Login
-          </Button>
+          <SubmitButton
+            isPending={isPending}
+            isSuccess={isSuccess}
+            onSubmit={(e) => LoginUser(e)}
+          />
           <p className="py-2 mt-2 text-foreground">
             You don't have an account? <Link to="/register">Register</Link>
           </p>

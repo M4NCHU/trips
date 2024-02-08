@@ -1,60 +1,85 @@
 import { FC, useState } from "react";
-import { UseCreateCategory } from "../../api/Category";
+import { useCreateCategory } from "../../api/Category";
 import FormHeader from "../../components/Forms/FormHeader";
 import Input from "../../components/Forms/Input";
 import { Button } from "../../components/ui/button";
 import useImagePreview from "../../hooks/useImagePreview";
 import { useRoleChecker } from "src/hooks/useRoleChecker";
+import useForm from "src/hooks/useForm";
+import { CategoryValidator } from "src/lib/validators/CategoryValidator";
+import toast from "react-hot-toast";
+import { FaSpinner, FaCheck } from "react-icons/fa";
+import SubmitButton from "src/components/ui/SubmitButton";
 
 interface CreateProps {}
 
 interface FormValues {
-  categoryName: string;
-  categoryDesc: string;
-  photoUrl: string;
-  imageFile: File | null;
+  name: string;
+  description: string;
 }
 
 const initialFieldValues: FormValues = {
-  categoryName: "",
-  categoryDesc: "",
-  photoUrl: "",
-  imageFile: null,
+  name: "",
+  description: "",
 };
 
 const CreateCategory: FC<CreateProps> = ({}) => {
-  const [values, setValues] = useState(initialFieldValues);
+  const {
+    values,
+    errors,
+    handleChange,
+    validate,
+    getFormData,
+    setValue,
+    reset,
+  } = useForm(initialFieldValues, CategoryValidator);
+  const {
+    mutate: createCategory,
+    status,
+    isPending,
+    isError,
+    isSuccess,
+    error,
+  } = useCreateCategory();
+
   const { showPreview, imagePreview } = useImagePreview();
   const { hasRole } = useRoleChecker();
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
-
-  console.log(values.photoUrl);
+  const [loading, setLoading] = useState(false);
+  const [showCheckmark, setShowCheckmark] = useState(false);
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("name", values.categoryName);
-    formData.append("description", values.categoryDesc);
-    formData.append("photoUrl", imagePreview.imageSrc);
+    if (validate()) {
+      setLoading(true);
+      try {
+        const formData = getFormData();
+        formData.append("photoUrl", imagePreview.imageSrc || "");
 
-    if (imagePreview.imageFile !== null) {
-      formData.append("imageFile", imagePreview.imageFile);
-    }
+        if (
+          imagePreview.imageFile !== null &&
+          imagePreview.imageFile !== undefined
+        ) {
+          formData.append("imageFile", imagePreview.imageFile);
+        }
+        createCategory(formData, {
+          onSuccess: () => {
+            toast.success("Category created successfully!");
+            setShowCheckmark(true);
+            setTimeout(() => setShowCheckmark(false), 2000);
+            reset();
+          },
+          onError: (error) => {
+            console.error("Error submitting form:", error);
+            toast.error("Failed to create category.");
+          },
+        });
 
-    try {
-      if (!hasRole("admin")) {
-        return console.log("Access denied.");
+        reset();
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        toast.error("Failed to create category.");
       }
-      await UseCreateCategory(formData);
-    } catch (error) {
-      console.error("Error submitting form:", error);
+      setLoading(false);
     }
   };
 
@@ -73,17 +98,19 @@ const CreateCategory: FC<CreateProps> = ({}) => {
             <Input
               placeholder="Enter name"
               label="Name"
-              name="categoryName"
-              value={values.categoryName}
-              onChange={handleInputChange}
+              name="name"
+              value={values.name}
+              onChange={handleChange}
+              errorMessage={errors.name}
             />
 
             <Input
               placeholder="Enter description"
               label="description"
-              name="categoryDesc"
-              value={values.categoryDesc}
-              onChange={handleInputChange}
+              name="description"
+              value={values.description}
+              onChange={handleChange}
+              errorMessage={errors.description}
             />
           </div>
 
@@ -108,9 +135,11 @@ const CreateCategory: FC<CreateProps> = ({}) => {
             )}
           </div>
         </div>
-        <Button className="mt-4 w-full bg-red-400 " type="submit">
-          Create +
-        </Button>
+        <SubmitButton
+          isPending={isPending}
+          isSuccess={isSuccess}
+          onSubmit={(e) => handleFormSubmit(e)}
+        />
       </form>
     </div>
   );

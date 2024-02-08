@@ -7,6 +7,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { Toaster } from "react-hot-toast";
 import { UserProvider } from "./context/UserContext";
+import { ModalProvider } from "./context/ModalContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -18,8 +19,10 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <UserProvider>
         <ThemeProvider>
-          <Toaster />
-          <App />
+          <ModalProvider>
+            <Toaster />
+            <App />
+          </ModalProvider>
         </ThemeProvider>
       </UserProvider>
     </QueryClientProvider>
