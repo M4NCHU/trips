@@ -13,9 +13,12 @@ import { Button } from "../ui/button";
 import { UseCreateTripDestination } from "../../api/TripDestinationAPI";
 import { SelectedPlace } from "src/types/SelectedPlaceTypes";
 import { useAuth } from "src/context/UserContext";
-import { UseUserTripsList } from "src/api/TripAPI";
+import { UseEnsureActiveTripExists, UseUserTripsList } from "src/api/TripAPI";
 import { User } from "src/types/UserTypes";
 import { Trip } from "src/types/TripTypes";
+import toast from "react-hot-toast";
+import SubmitButton from "../ui/SubmitButton";
+import CreateTripModal from "../Modals/CreateTripModal";
 
 interface DestinationDetailsProps {}
 
@@ -24,32 +27,67 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
 
   const { data: tripsData } = UseUserTripsList(user?.id);
 
-  console.log(tripsData);
+  const {
+    mutate: createTripDestination,
+    status,
+    isPending,
+    isError,
+    isSuccess,
+    error,
+  } = UseCreateTripDestination();
+
   const { id } = useParams<{ id: string | undefined }>();
   const [selectedPlaces, setSelectedPlaces] = useState<
     { id: string; price: number }[]
   >([]);
+
   const [activeTrips, setActiveTrips] = useState<Trip[]>([]);
   const [totalPrice, setTotalPrice] = useState(24);
   const [tripDestinationId, setTripDestinationId] = useState<string>("");
+  const [tripTitle, setTripTitle] = useState<string>("");
 
   const {
     data: destination,
     isLoading: isLoadingDestination,
     isError: isErrorDestination,
   } = useDestinationById(id);
-  const {
-    data: visitPlaces,
-    isLoading: isLoadingVisitPlaces,
-    isError: isErrorVisitPlaces,
-  } = useVisitPlacesByDestination(id);
 
   useEffect(() => {
     if (tripsData) {
-      const filteredActiveTrips = tripsData.filter((trip) => trip.status === 1);
+      const filteredActiveTrips = tripsData.filter((trip) => trip.status === 0);
       setActiveTrips(filteredActiveTrips);
+      console.log(filteredActiveTrips[0].tripDestinations);
+    }
+
+    if (tripsData) {
+      tripsData.forEach((trip) => {
+        trip.tripDestinations.forEach((destination) => {
+          if (destination.destinationId === id) {
+            destination.selectedPlaces.forEach((element) => {
+              setSelectedPlaces((prevSelectedPlaces) => {
+                const isAlreadyAdded = prevSelectedPlaces.some(
+                  (place) => place.id === element.visitPlaceId
+                );
+
+                if (!isAlreadyAdded) {
+                  return [
+                    ...prevSelectedPlaces,
+                    {
+                      id: element.visitPlaceId,
+                      price: element.visitPlace.price,
+                    },
+                  ];
+                }
+                return prevSelectedPlaces;
+              });
+            });
+          }
+        });
+      });
     }
   }, [tripsData]);
+
+  console.log(selectedPlaces);
 
   useEffect(() => {
     if (!id) {
@@ -66,6 +104,10 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
     // Sprawdź, czy element o danym id już istnieje na liście
     const existingPlaceIndex = selectedPlaces.findIndex(
       (selectedPlace) => selectedPlace.id === placeId
+    );
+
+    const isAlreadySelected = selectedPlaces.some(
+      (place) => place.id === placeId
     );
 
     if (existingPlaceIndex !== -1) {
@@ -91,37 +133,67 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
     }
   };
 
-  if (isLoadingDestination || isLoadingVisitPlaces) {
+  const handleNewTripCreated = (newTripTitle: string) => {
+    setTripTitle(newTripTitle);
+  };
+
+  useEffect(() => {
+    if (tripTitle) {
+      handleFormSubmit();
+    }
+  }, [tripTitle]);
+
+  if (isLoadingDestination) {
     return <div>Loading...</div>;
   }
 
-  if (isErrorDestination || isErrorVisitPlaces || !destination) {
+  if (isErrorDestination || !destination) {
     return <div>Error or no destination found.</div>;
   }
 
-  const handleFormSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleFormSubmit = async (e?: React.FormEvent) => {
+    // e.preventDefault();
+
     if (!id) {
       console.error("Error: No destination ID provided");
       return;
     }
 
-    if (!tripsData) {
-      console.error("Error: No destination ID provided");
+    if (!user) {
+      console.error("Error: Unauthenticated");
       return;
     }
+
     const formData = new FormData();
+
     formData.append(
       "TripId",
-      tripDestinationId ? tripDestinationId : tripsData[0].id
+      tripDestinationId
+        ? tripDestinationId
+        : "00000000-0000-0000-0000-000000000000"
     );
     formData.append("DestinationId", id);
+    formData.append("CreatedBy", user.id);
     selectedPlaces.forEach((place, index) => {
       formData.append(`selectedPlaces[${index}].visitPlaceId`, place.id);
     });
 
+    if (tripTitle !== "") {
+      formData.append(`title`, tripTitle);
+    }
+
+    console.log(formData);
+
     try {
-      await UseCreateTripDestination(formData);
+      createTripDestination(formData, {
+        onSuccess: () => {
+          toast.success("trip successfully added to your plan!");
+        },
+        onError: (error) => {
+          console.error("Error submitting form:", error);
+          toast.error("Adding to your trip plan failed.");
+        },
+      });
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -204,8 +276,8 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
             </div>
 
             <div className="flex flex-col gap-4 mt-4">
-              {visitPlaces
-                ? visitPlaces.map((place, i) => (
+              {destination.visitPlaces
+                ? destination.visitPlaces.map((place, i) => (
                     <div
                       className="flex flex-row justify-between items-center w-full bg-secondary p-2 rounded-xl"
                       key={i}
@@ -258,27 +330,49 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
               </h4>
               <CiCircleInfo className="text-xl cursor-pointer" />
             </div>
-
-            {activeTrips && activeTrips.length > 1 ? (
-              <select
-                className="bg-pink-700 text-white font-semibold text-lg p-4 rounded-lg"
-                value={tripDestinationId}
-                onChange={(e) => setTripDestinationId(e.target.value)}
-              >
-                {activeTrips.map((trip, i) => (
-                  <option className="bg-pink-700" key={i} value={trip.id}>
-                    {trip.title}
-                  </option>
-                ))}
-              </select>
+            {user ? (
+              activeTrips && activeTrips.length > 0 ? (
+                user && activeTrips.length > 1 ? (
+                  <select
+                    className="bg-pink-700 text-white font-semibold text-lg p-4 rounded-lg"
+                    value={tripDestinationId}
+                    onChange={(e) => setTripDestinationId(e.target.value)}
+                  >
+                    {activeTrips.map((trip, i) => (
+                      <option className="bg-pink-700" key={i} value={trip.id}>
+                        {trip.title}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <>
+                    <SubmitButton
+                      isPending={isPending}
+                      isSuccess={isSuccess}
+                      onSubmit={(e) => handleFormSubmit(e)}
+                    />
+                  </>
+                )
+              ) : user ? (
+                <CreateTripModal
+                  message="You don't have an existing planning trip scheme. Create new to continue."
+                  userId={user.id}
+                  onTripCreated={handleNewTripCreated}
+                  onSubmit={(e) => handleFormSubmit(e)}
+                />
+              ) : (
+                ""
+              )
             ) : (
-              <Button
-                className="bg-pink-700 text-white font-semibold text-lg p-6"
-                onClick={handleFormSubmit}
-              >
-                {" "}
-                Add to your trip plan
-              </Button>
+              <div className="flex flex-col gap-2">
+                <p>You have to be logged in to create trip plan</p>
+                <Link
+                  to={"/login"}
+                  className="p-2 bg-pink-500 rounded-lg flex justify-center"
+                >
+                  Go to login page
+                </Link>
+              </div>
             )}
 
             <div className="flex justify-center">

@@ -8565,19 +8565,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\macie\\.nuget\\packages\\": {}
+    "C:\\Users\\Maciek\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\Trips\\trips\\backend\\backend\\backend.csproj",
+      "projectUniqueName": "D:\\Projects\\Trips\\trips\\backend\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Projects\\Trips\\trips\\backend\\backend\\backend.csproj",
-      "packagesPath": "C:\\Users\\macie\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\Trips\\trips\\backend\\backend\\obj\\",
+      "projectPath": "D:\\Projects\\Trips\\trips\\backend\\backend\\backend.csproj",
+      "packagesPath": "C:\\Users\\Maciek\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\Trips\\trips\\backend\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\macie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Maciek\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8591,14 +8591,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Projects\\Trips\\trips\\backend\\backend.Application\\backend.Application.csproj": {
-              "projectPath": "C:\\Projects\\Trips\\trips\\backend\\backend.Application\\backend.Application.csproj"
+            "D:\\Projects\\Trips\\trips\\backend\\backend.Application\\backend.Application.csproj": {
+              "projectPath": "D:\\Projects\\Trips\\trips\\backend\\backend.Application\\backend.Application.csproj"
             },
-            "C:\\Projects\\Trips\\trips\\backend\\backend.Domain\\backend.Domain.csproj": {
-              "projectPath": "C:\\Projects\\Trips\\trips\\backend\\backend.Domain\\backend.Domain.csproj"
+            "D:\\Projects\\Trips\\trips\\backend\\backend.Domain\\backend.Domain.csproj": {
+              "projectPath": "D:\\Projects\\Trips\\trips\\backend\\backend.Domain\\backend.Domain.csproj"
             },
-            "C:\\Projects\\Trips\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj": {
-              "projectPath": "C:\\Projects\\Trips\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj"
+            "D:\\Projects\\Trips\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj": {
+              "projectPath": "D:\\Projects\\Trips\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj"
             }
           }
         }

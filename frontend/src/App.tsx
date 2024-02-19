@@ -4,9 +4,13 @@ import Router from "./pages/router";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <div className="min-h-screen">
+          <Router />
+        </div>
+      </BrowserRouter>
+    </>
   );
 }
 

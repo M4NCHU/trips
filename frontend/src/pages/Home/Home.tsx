@@ -17,7 +17,7 @@ const Home = () => {
     <>
       <CategoriesList />
       <div className="container my-5 px-4">
-        <div className="flex justify-end fixed bottom-4 right-4 z-[9999]">
+        <div className="hidden sm:flex justify-end fixed bottom-4 right-4 z-[9999]">
           <Link
             to="/destinations/create"
             className="bg-secondary p-5 text-xl font-bold rounded-full"

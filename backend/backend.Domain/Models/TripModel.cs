@@ -23,6 +23,9 @@ namespace backend.Models
 
         public DateTime? ModifiedAt { get; set; } = DateTime.Now;
 
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+
         public string CreatedBy { get; set; }
 
         [ForeignKey("CreatedBy")]

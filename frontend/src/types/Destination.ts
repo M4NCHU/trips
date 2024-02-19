@@ -1,4 +1,5 @@
 import { Category } from "./Category";
+import { VisitPlace } from "./VisitPlaceTypes";
 
 export type Destination = {
   id: string;
@@ -8,6 +9,7 @@ export type Destination = {
   photoUrl: string;
   price: number;
   categoryId: string;
+  visitPlaces: VisitPlace[];
 };
 
 export type DestinationCategory = Destination & { category: Category };

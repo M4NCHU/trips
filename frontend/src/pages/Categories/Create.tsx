@@ -61,6 +61,8 @@ const CreateCategory: FC<CreateProps> = ({}) => {
         ) {
           formData.append("imageFile", imagePreview.imageFile);
         }
+
+        console.log(formData);
         createCategory(formData, {
           onSuccess: () => {
             toast.success("Category created successfully!");
@@ -73,11 +75,8 @@ const CreateCategory: FC<CreateProps> = ({}) => {
             toast.error("Failed to create category.");
           },
         });
-
-        reset();
       } catch (error) {
         console.error("Error submitting form:", error);
-        toast.error("Failed to create category.");
       }
       setLoading(false);
     }

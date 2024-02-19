@@ -168,7 +168,7 @@ const Planning: FC<PlanningProps> = ({}) => {
         <div className="flex flex-col gap-4">
           <PlanningHeader title="Chosen trip destinations" />
           <hr />
-          {trip.tripDestinations.map((tripDestination, index) => (
+          {trip?.tripDestinations.map((tripDestination, index) => (
             <TripDestinationComponent key={index} data={tripDestination} />
           ))}
         </div>

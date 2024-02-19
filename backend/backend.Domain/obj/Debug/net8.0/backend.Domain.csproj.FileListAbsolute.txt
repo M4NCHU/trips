@@ -11,3 +11,16 @@ C:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.d
 C:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\refint\backend.Domain.dll
 C:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.pdb
 C:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\ref\backend.Domain.dll
+D:\Projects\Trips\trips\backend\backend.Domain\bin\Debug\net8.0\backend.Domain.deps.json
+D:\Projects\Trips\trips\backend\backend.Domain\bin\Debug\net8.0\backend.Domain.dll
+D:\Projects\Trips\trips\backend\backend.Domain\bin\Debug\net8.0\backend.Domain.pdb
+D:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.csproj.AssemblyReference.cache
+D:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.AssemblyInfoInputs.cache
+D:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.AssemblyInfo.cs
+D:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.csproj.CoreCompileInputs.cache
+D:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.sourcelink.json
+D:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.dll
+D:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\refint\backend.Domain.dll
+D:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.pdb
+D:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\ref\backend.Domain.dll

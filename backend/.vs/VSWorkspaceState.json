@@ -2,9 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\Context",
-    "\\backend\\Respository"
+    "\\backend.Infrastructure",
+    "\\backend.Infrastructure\\Migrations",
+    "\\backend.Infrastructure\\Respository",
+    "\\backend\\Controllers"
   ],
-  "SelectedNode": "\\backend\\Context\\TripsDbContext.cs",
+  "SelectedNode": "\\backend.Infrastructure\\Respository\\TripDestinationRepository.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -18,10 +18,12 @@ namespace backend.Application.Services
 
         Task<ActionResult<IEnumerable<TripDestinationDTO>>> GetTripDestinations(Guid TripId);
 
-        Task<ActionResult<TripDestinationDTO>> PostTripDestination([FromForm] TripDestinationDTO tripDestination);
+        /*Task<ActionResult<TripDestinationDTO>> PostTripDestination([FromForm] TripDestinationDTO tripDestination);*/
 
         Task<int> CountTripDestinations(Guid tripId);
 
         Task<IActionResult> DeleteTripDestination(Guid id);
+
+        Task<(bool IsNew, TripDestinationDTO)> PostTripDestinationAsync([FromForm] TripDestinationDTO tripDestinationDTO);
     }
 }

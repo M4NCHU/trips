@@ -59,6 +59,7 @@ namespace backend.Infrastructure.Services
             {
                 var destination = await _context.Destination
                     .Include(d => d.Category) // Include the Category information
+                    .Include(d => d.VisitPlaces)
                     .FirstOrDefaultAsync(d => d.Id == id);
 
                 if (destination == null)
@@ -228,7 +229,16 @@ namespace backend.Infrastructure.Services
                     Id = destination.Category.Id,
                     Name = destination.Category.Name,
                     PhotoUrl = destination.Category.PhotoUrl
-                } : null
+                } : null,
+                VisitPlaces = destination.VisitPlaces != null ? destination.VisitPlaces.Select(vp => new VisitPlaceDTO
+                {
+                    Id = vp.Id,
+                    Name = vp.Name,
+                    Description = vp.Description,
+                    PhotoUrl = $"{_baseUrl}/Images/VisitPlace/{vp.PhotoUrl}",
+                    Price = vp.Price,
+                    DestinationId = vp.DestinationId
+                }).ToList() : new List<VisitPlaceDTO>()
             };
         }
 

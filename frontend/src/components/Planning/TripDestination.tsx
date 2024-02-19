@@ -12,31 +12,23 @@ interface TripDestinationData {
 }
 
 const TripDestinationComponent: FC<TripDestinationData> = ({ data }) => {
-  const { data: destinationData, isLoading: isLoadingDestination } =
-    useDestinationById(data.destinationId);
-
-  if (isLoadingDestination) {
-    return <div>Loading destination details...</div>;
-  }
-
-  if (!destinationData) {
-    return <div>Failed to load destination or visit places</div>;
-  }
-
+  if (!data) return null;
   return (
-    <div className="flex flex-col gap-2">
-      <Card content={<DestinationCard data={destinationData} />} />
-      <div className="mt-2 px-0 pl-4 border-l-2 border-gray-500 flex flex-col gap-4">
-        {data.selectedPlaces.map((place, index) =>
-          place.visitPlaceId ? (
-            <Card
-              key={index}
-              content={<VisitPlaceCard key={index} data={place.visitPlaceId} />}
-            />
-          ) : null
-        )}
+    <>
+      <div className="flex flex-col border-b-2 pb-6">
+        <div className="mb-4">
+          <h1 className="text-2xl font-semibold">Day 1</h1>
+        </div>
+        <DestinationCard data={data.destination} />
+        <div className=" px-0 flex flex-col ">
+          {data.selectedPlaces.map((place, index) =>
+            place ? (
+              <VisitPlaceCard key={index} visitPlaces={place.visitPlace} />
+            ) : null
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

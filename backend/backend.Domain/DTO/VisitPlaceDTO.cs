@@ -23,6 +23,11 @@ namespace backend.Domain.DTOs
 
         public DateTime ModifiedAt { get; set; }
 
+        public float Duration { get; set; }
+
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+
         public IFormFile ImageFile { get; set; }
 
         [Required(ErrorMessage = "Destination ID is required.")]

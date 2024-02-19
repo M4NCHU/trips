@@ -1,20 +1,27 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { TripDestination } from "../types/TripDestinationTypes";
 import { fetchData } from "./apiUtils";
 
 // Adding trip participant
-export const UseCreateTripDestination = async (formData: FormData) => {
-  try {
-    const response = await fetchData<TripDestination>("/api/TripDestination", {
-      method: "post",
-      data: formData,
-    });
+export const UseCreateTripDestination = () => {
+  const mutation = useMutation({
+    mutationFn: async (formData: FormData) => {
+      try {
+        const response = await fetchData<TripDestination>(
+          "/api/TripDestination",
+          {
+            method: "post",
+            data: formData,
+          }
+        );
 
-    return response;
-  } catch (error) {
-    console.error("Error creating trip:", error);
-    throw new Error("Failed to create trip. Please try again.");
-  }
+        return response;
+      } catch (error: any) {
+        throw new Error("Failed to add trip destionation. Please try again.");
+      }
+    },
+  });
+  return mutation;
 };
 
 // Get trip participant by id
@@ -24,6 +31,16 @@ export const UseTripDestination = (id: string) => {
     queryFn: async () => {
       return fetchData<TripDestination>(`/api/TripDestination/${id}`);
     },
+  });
+};
+
+export const UseTripDestinationByTripId = (id: string | undefined) => {
+  return useQuery<TripDestination, Error>({
+    queryKey: ["ByTripDestinationId"],
+    queryFn: async () => {
+      return fetchData<TripDestination>(`/api/TripDestination/trip/${id}`);
+    },
+    enabled: !!id,
   });
 };
 

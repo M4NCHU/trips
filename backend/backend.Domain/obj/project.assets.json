@@ -536,19 +536,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\macie\\.nuget\\packages\\": {}
+    "C:\\Users\\Maciek\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\Trips\\trips\\backend\\backend.Domain\\backend.Domain.csproj",
+      "projectUniqueName": "D:\\Projects\\Trips\\trips\\backend\\backend.Domain\\backend.Domain.csproj",
       "projectName": "backend.Domain",
-      "projectPath": "C:\\Projects\\Trips\\trips\\backend\\backend.Domain\\backend.Domain.csproj",
-      "packagesPath": "C:\\Users\\macie\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\Trips\\trips\\backend\\backend.Domain\\obj\\",
+      "projectPath": "D:\\Projects\\Trips\\trips\\backend\\backend.Domain\\backend.Domain.csproj",
+      "packagesPath": "C:\\Users\\Maciek\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\Trips\\trips\\backend\\backend.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\macie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Maciek\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

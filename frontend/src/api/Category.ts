@@ -3,6 +3,13 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { Category } from "../types/Category";
 import { fetchData } from "./apiUtils";
 import { useRoleChecker } from "src/hooks/useRoleChecker";
+import {
+  SECRET_KEY,
+  USER_STORAGE_KEY,
+  decryptData,
+} from "src/context/UserContext";
+import CryptoJS from "crypto-js";
+import { User } from "src/types/UserTypes";
 
 // Get Categories with pagination
 export const UseCategoryList = () => {
@@ -17,19 +24,29 @@ export const UseCategoryList = () => {
 export const useCreateCategory = () => {
   const mutation = useMutation({
     mutationFn: async (formData: FormData) => {
-      const userDataJson = localStorage.getItem("user_data");
-      const userData = userDataJson ? JSON.parse(userDataJson) : null;
-      const token = userData?.jwt;
+      const encryptedUserData = localStorage.getItem(USER_STORAGE_KEY);
+      if (!encryptedUserData) {
+        throw new Error("No user data found in local storage.");
+      }
+      const userData = decryptData(encryptedUserData, SECRET_KEY);
 
-      return await fetchData<FormData>("/api/Category", {
-        method: "post",
-        data: formData,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      if (!userData || !userData.token) {
+        throw new Error("No JWT token found in user data.");
+      }
+
+      try {
+        return await fetchData("/api/Category", {
+          method: "post",
+          data: formData,
+          headers: {
+            Authorization: `Bearer ${userData.token}`,
+          },
+        });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
+      }
     },
-
     onSuccess: () => {},
   });
 

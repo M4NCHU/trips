@@ -11,6 +11,8 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http.HttpResults;
 using backend.Application.Services;
 using Microsoft.AspNetCore.Hosting;
+using backend.Domain.Enums;
+using backend.Domain.Mappings;
 
 namespace backend.Infrastructure.Services
 {
@@ -97,37 +99,24 @@ namespace backend.Infrastructure.Services
                 return new NotFoundResult();
             }
 
+            // Utworzenie instancji klasy mapującej, jeśli metody nie są statyczne
+            // DestinationMapping destinationMapping = new DestinationMapping();
+
             var tripDestinations = await _context.TripDestination
-        .Where(tp => tp.TripId == tripId)
-        .Select(tp => new TripDestinationDTO
-        {
-            Id = tp.Id,
-            TripId = tp.TripId,
-            DestinationId = tp.DestinationId,
-            Destination = _context.Destination
-                .Where(p => p.Id == tp.DestinationId)
-                .Select(p => new DestinationDTO
-                {
-                    
-                    Id = p.Id,
-                    PhotoUrl = $"{_baseUrl}/Images/Destination/{p.PhotoUrl}",
+                .Include(td => td.Destination)
+                .ThenInclude(d => d.VisitPlaces)
+                .Where(tp => tp.TripId == tripId)
+                .ToListAsync();
 
-                })
-                .FirstOrDefault()
-        })
-        .ToListAsync();
-
-            if (tripDestinations == null)
+            if (tripDestinations == null || !tripDestinations.Any())
             {
                 return new NotFoundResult();
             }
 
-            
-
-            return tripDestinations;
-
-
+            var tripDestinationDTOs = tripDestinations.Select(td => DestinationMapping.MapToTripDestinationDTO(td, _baseUrl)).ToList();
+            return new OkObjectResult(tripDestinationDTOs);
         }
+
 
 
 
@@ -168,54 +157,128 @@ namespace backend.Infrastructure.Services
 
         
 
-        public async Task<ActionResult<TripDestinationDTO>> PostTripDestination([FromForm] TripDestinationDTO tripDestinationDTO)
+        public async Task<(bool IsNew, TripDestinationDTO)> PostTripDestinationAsync([FromForm] TripDestinationDTO tripDestinationDTO)
         {
             if (_context.TripDestination == null)
             {
-                return new ObjectResult("Entity set 'TripsDbContext.TripDestination' is null.")
-                {
-                    StatusCode = 500
-                };
+                throw new InvalidOperationException("Entity set 'TripsDbContext.TripDestination' is null.");
             }
 
-            var currentDate = DateTime.Now.ToUniversalTime();
+            var currentDate = DateTime.UtcNow;
+            Guid tripId = tripDestinationDTO.TripId;
 
-
-            var tripDestination = new TripDestinationModel
+            // Logika tworzenia nowego Trip, jeśli jest to konieczne
+            if (tripId == Guid.Empty && !string.IsNullOrWhiteSpace(tripDestinationDTO.Title))
             {
-                Id = tripDestinationDTO.Id,
-                TripId = tripDestinationDTO.TripId,
-                DestinationId = tripDestinationDTO.DestinationId,
-                CreatedAt = currentDate,
-                ModifiedAt = currentDate,
-                SelectedPlace = new List<SelectedPlaceModel>()
-            };
-
-            
-
-            _context.TripDestination.Add(tripDestination);
-            await _context.SaveChangesAsync();
-
-            if (tripDestinationDTO.SelectedPlaces != null && tripDestinationDTO.SelectedPlaces.Any())
-            {
-                foreach (var selectedPlaceDTO in tripDestinationDTO.SelectedPlaces)
+                var newTrip = new TripModel
                 {
-                    
-                    var selectedPlace = new SelectedPlaceModel
-                    {
-                        VisitPlaceId = selectedPlaceDTO.VisitPlaceId,
-                        TripDestinationId = tripDestination.Id,
-                        CreatedAt = currentDate,
-                        ModifiedAt = currentDate,
+                    Title = tripDestinationDTO.Title,
+                    Status = TripStatus.Planning,
+                    StartDate = currentDate,
+                    EndDate = currentDate,
+                    CreatedAt = currentDate,
+                    ModifiedAt = currentDate,
+                    CreatedBy = tripDestinationDTO.CreatedBy,
+                    TotalPrice = 0 // Domyślna wartość, dostosuj w razie potrzeby
+                };
 
-                    };
-                    _context.SelectedPlace.Add(selectedPlace);
+                _context.Trip.Add(newTrip);
+                await _context.SaveChangesAsync();
+
+                tripId = newTrip.Id;
+            }
+            else if (tripId != Guid.Empty)
+            {
+                var existingTrip = await _context.Trip.FindAsync(tripId);
+                if (existingTrip == null || existingTrip.Status != TripStatus.Planning)
+                {
+                    throw new InvalidOperationException("Existing trip not found or not in planning status.");
+                }
+            }
+            else
+            {
+                throw new ArgumentException("TripId is empty and no title provided for new trip creation.");
+            }
+
+            var existingTripDestination = await _context.TripDestination
+                .Include(td => td.SelectedPlace)
+                .FirstOrDefaultAsync(td => td.DestinationId == tripDestinationDTO.DestinationId && td.TripId == tripId);
+
+            if (existingTripDestination != null)
+            {
+                existingTripDestination.ModifiedAt = currentDate;
+    
+                _context.SelectedPlace.RemoveRange(existingTripDestination.SelectedPlace);
+                await _context.SaveChangesAsync();
+
+                // Dodawanie nowych SelectedPlace tylko jeśli nie istnieją
+                foreach (var selectedPlaceDTO in tripDestinationDTO.SelectedPlaces ?? new List<SelectedPlaceDTO>())
+                {
+                    bool isSelectedPlaceExists = existingTripDestination.SelectedPlace.Any(sp => sp.VisitPlaceId == selectedPlaceDTO.VisitPlaceId);
+        
+                    if (!isSelectedPlaceExists)
+                    {
+                        var selectedPlace = new SelectedPlaceModel
+                        {
+                            VisitPlaceId = selectedPlaceDTO.VisitPlaceId,
+                            TripDestinationId = existingTripDestination.Id,
+                            CreatedAt = currentDate,
+                            ModifiedAt = currentDate,
+                        };
+                        _context.SelectedPlace.Add(selectedPlace);
+                    }
                 }
                 await _context.SaveChangesAsync();
-            }
 
-            return new CreatedAtActionResult("GetTripDestination", "TripDestination", new { id = tripDestination.Id }, tripDestinationDTO);
+                // Możesz zaktualizować tripDestinationDTO, jeśli jest to potrzebne
+                // Na przykład, możesz tutaj mapować existingTripDestination na tripDestinationDTO
+
+                return (false, tripDestinationDTO); // false, ponieważ aktualizujemy istniejący wpis
+            }
+            else
+            {
+                var newTripDestination = new TripDestinationModel
+                {
+                    TripId = tripId,
+                    DestinationId = tripDestinationDTO.DestinationId,
+                    CreatedAt = currentDate,
+                    ModifiedAt = currentDate,
+                    SelectedPlace = new List<SelectedPlaceModel>()
+                };
+
+                if (tripDestinationDTO.SelectedPlaces != null)
+                {
+                    foreach (var selectedPlaceDTO in tripDestinationDTO.SelectedPlaces)
+                    {
+                        var selectedPlace = new SelectedPlaceModel
+                        {
+                            VisitPlaceId = selectedPlaceDTO.VisitPlaceId,
+                            // TripDestinationId zostanie ustawione po zapisaniu newTripDestination
+                            CreatedAt = currentDate,
+                            ModifiedAt = currentDate,
+                        };
+                        newTripDestination.SelectedPlace.Add(selectedPlace);
+                    }
+                }
+
+                _context.TripDestination.Add(newTripDestination);
+                await _context.SaveChangesAsync();
+
+                foreach (var selectedPlace in newTripDestination.SelectedPlace)
+                {
+                    selectedPlace.TripDestinationId = newTripDestination.Id;
+                }
+
+                await _context.SaveChangesAsync();
+
+
+                // Aktualizacja tripDestinationDTO.Id na nowo utworzone ID
+                tripDestinationDTO.Id = newTripDestination.Id;
+
+                return (true, tripDestinationDTO); // true, ponieważ tworzymy nowy wpis
+            }
         }
+
 
         public async Task<IActionResult> DeleteTripDestination(Guid id)
         {
@@ -255,4 +318,6 @@ namespace backend.Infrastructure.Services
             return (_context.TripDestination?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
+
+    
 }

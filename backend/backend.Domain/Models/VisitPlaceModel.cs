@@ -20,6 +20,11 @@ namespace backend.Models
         [Required]
         public double Price { get; set; }
 
+        public float Duration { get; set; }
+
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+
         public DateTime CreatedAt { get; set; }
 
         public DateTime ModifiedAt { get; set; } = DateTime.Now;

@@ -93,10 +93,16 @@ namespace backend.Controllers
             return await _tripService.ChangeTripTitle(tripId, newTitle);
         }
 
+        [HttpGet("ensure/userId/{userId}")]
+        public async Task<(Guid, bool)> EnsureActiveTripExists(string userId)
+        {
+            return await _tripService.EnsureActiveTripExists(userId);
+        }
+
         // POST: api/Trip
 
         [HttpPost()]
-        public async Task<ActionResult<TripDTO>> PostTrip([FromForm] TripDTO trip)
+        public async Task<ActionResult<TripDTO>> PostTrip([FromForm] CreateTripDTO trip)
         {
             return await _tripService.PostTrip(trip);
         }

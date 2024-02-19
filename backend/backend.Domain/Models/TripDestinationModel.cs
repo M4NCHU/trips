@@ -17,8 +17,11 @@ namespace backend.Models
 
         public List<SelectedPlaceModel> SelectedPlace { get; set; }
 
+
         public DateTime CreatedAt { get; set; }
 
         public DateTime ModifiedAt { get; set; }
+
+        public int DayNumber { get; set; }
     }
 }

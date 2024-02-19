@@ -17,9 +17,9 @@ namespace backend.Domain.DTOs
 
         public string? PhotoUrl { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
 
-        public DateTime ModifiedAt { get; set; }
+        public DateTime? ModifiedAt { get; set; }
 
         public IFormFile ImageFile { get; set; }
 

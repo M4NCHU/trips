@@ -21,7 +21,7 @@ export const useDestinationList = () => {
     page,
     setPage,
   } = usePagination<Destination>("/api/Destination", {
-    pageSize: 2,
+    pageSize: 8,
   });
 
   return {

@@ -1,20 +1,26 @@
-import { debounce } from "lodash";
 import React, { FC, useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { debounce } from "lodash";
 import { useSearchDestinations } from "src/api/Destinations";
-import { useModal } from "src/context/ModalContext";
-import { Modal } from "../ui/Modal/Modal";
-import { ModalBody } from "../ui/Modal/ModalBody";
-import { ModalFooter } from "../ui/Modal/ModalFooter";
 import { Input } from "../ui/input";
+import { Button } from "src/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogTrigger,
+  DialogClose,
+} from "src/components/ui/dialog";
 
 interface SearchModalProps {}
 
-const SearchModal: FC<SearchModalProps> = ({}) => {
+const SearchModal: FC<SearchModalProps> = () => {
   const [inputValue, setInputValue] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  const { isOpen, openModal, closeModal } = useModal();
 
   const {
     data: destinations,
@@ -40,12 +46,21 @@ const SearchModal: FC<SearchModalProps> = ({}) => {
   };
 
   return (
-    <>
-      <IoSearch onClick={openModal} className="cursor-pointer" />
-
-      <Modal>
-        <ModalBody>
-          <h1 className="font-semibold">Search for something:</h1>
+    <Dialog>
+      <DialogTrigger asChild>
+        <button className="cursor-pointer">
+          <IoSearch />
+        </button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Search for something:</DialogTitle>
+          <DialogDescription>
+            Start typing to search for destinations. Click on a destination to
+            navigate.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="py-4">
           <Input
             placeholder="Search..."
             value={inputValue}
@@ -57,22 +72,21 @@ const SearchModal: FC<SearchModalProps> = ({}) => {
             <Link
               to={`/destination/${destination.id}`}
               key={destination.id}
-              onClick={closeModal}
+              className="block"
             >
               {destination.name}
             </Link>
           ))}
-        </ModalBody>
-        <ModalFooter>
-          <button
-            className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700"
-            onClick={closeModal}
-          >
-            Close
-          </button>
-        </ModalFooter>
-      </Modal>
-    </>
+        </div>
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button type="button" variant="secondary">
+              Close
+            </Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 };
 

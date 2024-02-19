@@ -20,6 +20,9 @@ namespace backend.Domain.DTOs
         [DataType(DataType.Date, ErrorMessage = "Invalid date format on end date.")]
         public DateTime? EndDate { get; set; }
 
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+
         public List<TripDestinationDTO>? TripDestinations { get; set; }
         public List<SelectedPlaceDTO>? SelectedPlaces { get; set; }
         public List<TripParticipantDTO>? TripParticipants { get; set; }

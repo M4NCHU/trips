@@ -1,17 +1,25 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using backend.Domain.Mappings;
+using Microsoft.AspNetCore.Http;
 
-public class BaseUrlService
+
+namespace backend.Infrastructure.Services
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
-
-    public BaseUrlService(IHttpContextAccessor httpContextAccessor)
+    public class BaseUrlService
     {
-        _httpContextAccessor = httpContextAccessor;
-    }
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public string GetBaseUrl()
-    {
-        var request = _httpContextAccessor.HttpContext.Request;
-        return $"{request.Scheme}://{request.Host}{request.PathBase}";
+        public BaseUrlService(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+           
+            
+        }
+
+        public string GetBaseUrl()
+        {
+            var request = _httpContextAccessor.HttpContext.Request;
+            return $"{request.Scheme}://{request.Host}{request.PathBase}";
+        }
     }
 }
+
