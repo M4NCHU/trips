@@ -1,6 +1,6 @@
 // api/visitPlaces.timport { useQuery } from "@tanstack/react-query";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { VisitPlace } from "../types/VisitPlaceTypes";
+import { CreateVisitPlace, VisitPlace } from "../types/VisitPlaceTypes";
 import { fetchData } from "./apiUtils";
 
 // // Get visitPlace by id
@@ -10,7 +10,7 @@ export const UseCreateVisitPlace = () => {
   const mutation = useMutation({
     mutationFn: async (formData: FormData) => {
       try {
-        const response = await fetchData<VisitPlace>("/api/VisitPlace", {
+        const response = await fetchData<CreateVisitPlace>("/api/VisitPlace", {
           method: "post",
           data: formData,
         });

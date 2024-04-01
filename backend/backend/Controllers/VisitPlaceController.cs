@@ -57,9 +57,9 @@ namespace backend.Controllers
         // POST: api/VisitPlaces
 
         [HttpPost()]
-        public async Task<ActionResult<VisitPlaceDTO>> PostVisitPlace([FromForm] VisitPlaceDTO visitPlace)
+        public async Task<CreateVisitPlaceDTO> PostVisitPlace(CreateVisitPlaceDTO visitPlaceDTO)
         {
-            return await _visitPlaceService.PostVisitPlace(visitPlace);
+            return await _visitPlaceService.PostVisitPlace(visitPlaceDTO);
         }
 
         // DELETE: api/VisitPlaces/5

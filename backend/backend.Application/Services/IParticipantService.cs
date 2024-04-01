@@ -16,7 +16,7 @@ namespace backend.Application.Services
 
         Task<IActionResult> PutParticipant(Guid id, ParticipantDTO participant);
 
-        Task<ActionResult<ParticipantDTO>> PostParticipant([FromForm] ParticipantDTO participant);
+        Task<CreateParticipantDTO> PostParticipant(CreateParticipantDTO participantDTO);
 
         Task<IActionResult> DeleteParticipant(Guid id);
     }

@@ -10,6 +10,8 @@ using Microsoft.Extensions.Hosting;
 using System.Net;
 using backend.Application.Services;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
+using backend.Domain.Filters;
 
 
 namespace backend.Infrastructure.Services
@@ -21,33 +23,65 @@ namespace backend.Infrastructure.Services
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly BaseUrlService _baseUrlService;
         private readonly string _baseUrl;
+        private readonly ILogger<DestinationService> _logger;
 
-        public DestinationService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService)
+        public DestinationService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService, ILogger<DestinationService> logger)
         {
             _context = context;
             _imageService = imageService;
             _hostEnvironment = hostEnvironment;
             _baseUrlService = baseUrlService;
             _baseUrl = _baseUrlService.GetBaseUrl();
+            _logger = logger;
         }
 
         
 
-        public async Task<ActionResult<IEnumerable<DestinationDTO>>> GetDestinations(int page = 1, int pageSize = 2)
+        public async Task<ActionResult<IEnumerable<ResponseDestinationDTO>>> GetDestinations([FromQuery] DestinationFilter filter, int page = 1, int pageSize = 2)
         {
             if (_context.Destination == null)
             {
+                _logger.LogWarning("Attempted to query Destinations, but the set was null.");
                 return new NotFoundResult();
             }
 
+            var query = _context.Destination.AsQueryable();
 
-            var destinations = await _context.Destination
-            .OrderBy(x => x.Id)
-            .Skip((page - 1) * pageSize)
-            .Take(pageSize)
-            .ToListAsync();
+            if (!string.IsNullOrWhiteSpace(filter.CategoryId) && Guid.TryParse(filter.CategoryId, out Guid parsedCategoryId))
+            {
+                _logger.LogInformation($"Applying category filter: {parsedCategoryId}");
+                query = query.Where(d => d.CategoryId == parsedCategoryId);
+            }
 
-            var destinationDTOs = destinations.Select(d => MapToDestinationDTO(d)).ToList();
+
+
+            var destinations = await query
+                .OrderBy(x => x.Id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            if (!destinations.Any())
+            {
+                _logger.LogInformation("No destinations found with the applied filters.");
+            }
+            else
+            {
+                _logger.LogInformation($"Retrieved {destinations.Count} destinations for page {page} with page size {pageSize}.");
+            }
+
+            var destinationDTOs = destinations.Select(d => new ResponseDestinationDTO
+            {
+                Id = d.Id,
+                Name = d.Name,
+                Description = d.Description,
+                CategoryId = d.CategoryId,
+                CreatedAt = d.CreatedAt,
+                ModifiedAt = d.ModifiedAt,
+                PhotoUrl = $"{_baseUrl}/Images/Destinations/{d.PhotoUrl}",
+                Price = d.Price,
+                Location = d.Location
+            }).ToList();
 
             return destinationDTOs;
         }
@@ -160,33 +194,50 @@ namespace backend.Infrastructure.Services
             return new NoContentResult();
         }
 
-        public async Task<ActionResult<DestinationDTO>> PostDestination([FromForm] DestinationDTO destinationDTO)
+        public async Task<CreateDestinationDTO> PostDestination(CreateDestinationDTO destinationDTO)
         {
-            if (_context.Destination == null)
+            try
             {
-                return new ObjectResult("Entity set 'TripsDbContext.Destinations' is null.")
+                if (_context.Destination == null)
                 {
-                    StatusCode = 500
+                    _logger.LogError("Entity set 'TripsDbContext.Destinations' is null.");
+                    throw new InvalidOperationException("Entity set 'TripsDbContext.Destinations' is null.");
+                }
+
+                if (destinationDTO.ImageFile == null)
+                {
+                    _logger.LogError("The 'ImageFileDTO' field is required.");
+                    throw new ArgumentException("The 'ImageFileDTO' field is required.");
+                }
+
+                destinationDTO.PhotoUrl = await _imageService.SaveImage(destinationDTO.ImageFile, "Destinations");
+
+                var currentDate = DateTime.Now.ToUniversalTime();
+
+                var destination = new DestinationModel
+                {
+                    Id = new Guid(),
+                    Name = destinationDTO.Name,
+                    Description = destinationDTO.Description,
+                    Location = destinationDTO.Location,
+                    PhotoUrl = destinationDTO.PhotoUrl,
+                    CategoryId = destinationDTO.CategoryId,
+                    Price = destinationDTO.Price,
+                    CreatedAt = currentDate,
+                    ModifiedAt = currentDate,
+                    ImageFile = destinationDTO.ImageFile,
                 };
-            }
+                _context.Destination.Add(destination);
+                await _context.SaveChangesAsync();
+                _logger.LogInformation($"Destination '{destination.Name}' was successfully created at {currentDate}.");
 
-            if (destinationDTO.ImageFile == null)
+                return destinationDTO;
+            }
+            catch (Exception ex)
             {
-                return new BadRequestObjectResult("The 'ImageFileDTO' field is required.");
+                _logger.LogError(ex, "An error occurred while posting a new destination.");
+                throw; 
             }
-
-            destinationDTO.PhotoUrl = await _imageService.SaveImage(destinationDTO.ImageFile, "Destinations");
-
-            var currentDate = DateTime.Now.ToUniversalTime();
-
-            var destination = MapToDestinationModel(destinationDTO);
-            destination.CreatedAt = currentDate;
-            destination.ModifiedAt = currentDate;
-
-            _context.Destination.Add(destination);
-            await _context.SaveChangesAsync();
-
-            return new CreatedAtActionResult("GetDestination", "Destinations", new { id = destination.Id }, destinationDTO);
         }
 
         public async Task<IActionResult> DeleteDestination(Guid id)

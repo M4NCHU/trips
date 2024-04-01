@@ -8,6 +8,7 @@ using backend.Models;
 using backend.Infrastructure.Authentication;
 using backend.Application.Services;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 
 
 namespace backend.Infrastructure.Services
@@ -19,15 +20,17 @@ namespace backend.Infrastructure.Services
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly BaseUrlService _baseUrlService;
         private readonly string _baseUrl;
+        private readonly ILogger<VisitPlaceService> _logger;
 
 
-        public VisitPlaceService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService)
+        public VisitPlaceService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService, ILogger<VisitPlaceService> logger)
         {
             _context = context;
             _imageService = imageService;
             _hostEnvironment = hostEnvironment;
             _baseUrlService = baseUrlService;
             _baseUrl = _baseUrlService.GetBaseUrl();
+            _logger = logger;
         }
 
         public async Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlaces()
@@ -145,39 +148,40 @@ namespace backend.Infrastructure.Services
             return new NoContentResult();
         }
 
-        public async Task<ActionResult<VisitPlaceDTO>> PostVisitPlace([FromForm] VisitPlaceDTO VisitPlaceDTO)
+        public async Task<CreateVisitPlaceDTO> PostVisitPlace(CreateVisitPlaceDTO visitPlaceDTO)
         {
             if (_context.VisitPlace == null)
             {
-                return new ObjectResult("Entity set 'TripsDbContext.VisitPlace' is null.")
-                {
-                    StatusCode = 500
-                };
+                _logger.LogError("Entity set 'TripsDbContext.VisitPlace' is null.");
+                throw new InvalidOperationException("Entity set 'TripsDbContext.VisitPlace' is null.");
             }
 
-            if (VisitPlaceDTO.ImageFile == null)
+            if (visitPlaceDTO.ImageFile == null)
             {
-                return new BadRequestObjectResult("The 'ImageFileDTO' field is required.");
+                _logger.LogError("The 'ImageFileDTO' field is required.");
+                throw new ArgumentException("The 'ImageFileDTO' field is required.");
             }
 
-            VisitPlaceDTO.PhotoUrl = await _imageService.SaveImage(VisitPlaceDTO.ImageFile, "VisitPlace");
-
-            var currentDate = DateTime.Now.ToUniversalTime();
+            visitPlaceDTO.PhotoUrl = await _imageService.SaveImage(visitPlaceDTO.ImageFile, "VisitPlace");
+            var currentDate = DateTime.UtcNow;
 
             var visitPlace = new VisitPlace
             {
-                Name = VisitPlaceDTO.Name,
-                Description = VisitPlaceDTO.Description,
-                PhotoUrl = VisitPlaceDTO.PhotoUrl,
-                DestinationId = VisitPlaceDTO.DestinationId,
+                Id = Guid.NewGuid(),
+                Name = visitPlaceDTO.Name,
+                Description = visitPlaceDTO.Description,
+                PhotoUrl = visitPlaceDTO.PhotoUrl,
+                DestinationId = visitPlaceDTO.DestinationId,
                 CreatedAt = currentDate,
                 ModifiedAt = currentDate,
             };
 
             _context.VisitPlace.Add(visitPlace);
             await _context.SaveChangesAsync();
+            _logger.LogInformation($"New visit place '{visitPlace.Name}' added successfully.");
 
-            return new CreatedAtActionResult("GetVisitPlace", "VisitPlace", new { id = visitPlace.Id }, VisitPlaceDTO);
+            
+            return visitPlaceDTO;
         }
 
         public async Task<IActionResult> DeleteVisitPlace(Guid id)

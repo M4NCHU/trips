@@ -65,9 +65,9 @@ namespace backend.Controllers
         // POST: api/Participant
         
         [HttpPost]
-        public async Task<ActionResult<ParticipantDTO>> PostParticipant([FromForm] ParticipantDTO participant)
+        public async Task<CreateParticipantDTO> PostParticipant(CreateParticipantDTO participantDTO)
         {
-            return await _participantService.PostParticipant(participant);
+            return await _participantService.PostParticipant(participantDTO);
         }
 
         // DELETE: api/Participant/5

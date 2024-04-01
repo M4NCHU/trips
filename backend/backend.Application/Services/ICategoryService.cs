@@ -12,7 +12,7 @@ namespace backend.Application.Services
 
         Task<IActionResult> PutCategory(Guid id, CategoryDTO category);
 
-        Task<ActionResult<CategoryDTO>> PostCategory([FromForm] CategoryDTO category);
+        Task<CreateCategoryRequestDTO> PostCategory([FromForm]CreateCategoryRequestDTO categoryDTO);
 
         Task<IActionResult> DeleteCategory(Guid id);
     }

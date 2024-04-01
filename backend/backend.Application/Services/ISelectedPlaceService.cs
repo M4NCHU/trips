@@ -18,7 +18,7 @@ namespace backend.Application.Services
 
         Task<ActionResult<IEnumerable<SelectedPlaceDTO>>> GetSelectedPlaces(Guid destinationId);
 
-        Task<ActionResult<SelectedPlaceDTO>> PostSelectedPlace([FromForm] SelectedPlaceDTO selectedPlace);
+        Task<CreateSelectedPlaceDTO> PostSelectedPlace(CreateSelectedPlaceDTO selectedPlaceDTO);
 
         Task<IActionResult> DeleteSelectedPlace(Guid id);
     }

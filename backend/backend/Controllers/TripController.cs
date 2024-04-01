@@ -102,9 +102,9 @@ namespace backend.Controllers
         // POST: api/Trip
 
         [HttpPost()]
-        public async Task<ActionResult<TripDTO>> PostTrip([FromForm] CreateTripDTO trip)
+        public async Task<CreateTripDTO> PostTrip([FromForm] CreateTripDTO tripDTO)
         {
-            return await _tripService.PostTrip(trip);
+            return await _tripService.PostTrip(tripDTO);
         }
 
         // DELETE: api/Trip/5

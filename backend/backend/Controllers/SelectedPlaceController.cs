@@ -65,9 +65,9 @@ namespace backend.Controllers
         // POST: api/SelectedPlace
 
         [HttpPost()]
-        public async Task<ActionResult<SelectedPlaceDTO>> PostSelectedPlace([FromForm] SelectedPlaceDTO selectedPlace)
+        public async Task<CreateSelectedPlaceDTO> PostSelectedPlace(CreateSelectedPlaceDTO selectedPlaceDTO)
         {
-            return await _selectedPlaceService.PostSelectedPlace(selectedPlace);
+            return await _selectedPlaceService.PostSelectedPlace(selectedPlaceDTO);
         }
 
         // DELETE: api/SelectedPlace/5

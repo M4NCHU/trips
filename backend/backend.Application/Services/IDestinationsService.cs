@@ -1,4 +1,5 @@
 ﻿using backend.Domain.DTOs;
+using backend.Domain.Filters;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ namespace backend.Application.Services
 { 
     public interface IDestinationService
     {
-        Task<ActionResult<IEnumerable<DestinationDTO>>> GetDestinations(int page = 1, int pageSize = 2);
+        Task<ActionResult<IEnumerable<ResponseDestinationDTO>>> GetDestinations([FromQuery] DestinationFilter filter, int page = 1, int pageSize = 2);
 
         Task<ActionResult<DestinationDTO>> GetDestination(Guid id);
 
@@ -18,7 +19,7 @@ namespace backend.Application.Services
 
         Task<IActionResult> PutDestination(Guid id, DestinationDTO destination);
 
-        Task<ActionResult<DestinationDTO>> PostDestination([FromForm] DestinationDTO destination);
+        Task<CreateDestinationDTO> PostDestination(CreateDestinationDTO destinationDTO);
 
         Task<IActionResult> DeleteDestination(Guid id);
     }

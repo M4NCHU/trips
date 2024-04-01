@@ -16,7 +16,7 @@ namespace backend.Application.Services
 
         Task<IActionResult> PutVisitPlace(Guid id, VisitPlaceDTO visitPlace);
 
-        Task<ActionResult<VisitPlaceDTO>> PostVisitPlace([FromForm] VisitPlaceDTO visitPlace);
+        Task<CreateVisitPlaceDTO> PostVisitPlace(CreateVisitPlaceDTO visitPlaceDTO);
 
         Task<IActionResult> DeleteVisitPlace(Guid id);
     }

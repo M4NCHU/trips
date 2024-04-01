@@ -8,6 +8,7 @@ using backend.Models;
 using Microsoft.Extensions.Hosting;
 using backend.Application.Services;
 using backend.Domain.DTOs;
+using backend.Domain.Filters;
 
 namespace backend.Controllers
 {
@@ -26,9 +27,9 @@ namespace backend.Controllers
 
         // GET: api/Destinations
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<DestinationDTO>>> GetDestinations(int page = 1, int pageSize = 2)
+        public async Task<ActionResult<IEnumerable<ResponseDestinationDTO>>> GetDestinations([FromQuery] DestinationFilter filter, int page = 1, int pageSize = 2)
         {
-            var destinations = await _destinationService.GetDestinations(page, pageSize);
+            var destinations = await _destinationService.GetDestinations(filter, page, pageSize);
             return destinations;
         }
 
@@ -79,9 +80,9 @@ namespace backend.Controllers
         // POST: api/Destinations
         
         [HttpPost()]
-        public async Task<ActionResult<DestinationDTO>> PostDestination([FromForm] DestinationDTO destination)
+        public async Task<CreateDestinationDTO> PostDestination(CreateDestinationDTO destinationDTO)
         {
-            return await _destinationService.PostDestination(destination);
+            return await _destinationService.PostDestination(destinationDTO);
         }
 
         // DELETE: api/Destinations/5

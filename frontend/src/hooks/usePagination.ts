@@ -1,8 +1,7 @@
-// hooks/usePagination.ts
 import {
-  keepPreviousData,
   useQuery,
   useQueryClient,
+  keepPreviousData,
 } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -10,6 +9,7 @@ import { fetchDataPaginated } from "../api/apiUtils";
 
 interface PaginationOptions {
   pageSize: number;
+  queryParameters?: any;
 }
 
 interface PaginatedData<T> {
@@ -19,12 +19,11 @@ interface PaginatedData<T> {
 
 export const usePagination = <T>(url: string, options?: PaginationOptions) => {
   const queryClient = useQueryClient();
-  const { pageSize = 2 } = options || {};
+  const { pageSize = 2, queryParameters = {} } = options || {};
   const [page, setPage] = useState(1);
   const location = useLocation();
   const history = useNavigate();
 
-  // Aktualizacja numeru strony na podstawie adresu URL
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const pageParam = parseInt(searchParams.get("page") || "1", 10);
@@ -35,7 +34,12 @@ export const usePagination = <T>(url: string, options?: PaginationOptions) => {
     page: number,
     pageSize: number
   ): Promise<PaginatedData<T>> => {
-    const data = await fetchDataPaginated<T>(url, page, pageSize);
+    const data = await fetchDataPaginated<T>(
+      url,
+      page,
+      pageSize,
+      queryParameters
+    );
     return { data: data.data, hasMore: data.hasMore };
   };
 
@@ -55,7 +59,7 @@ export const usePagination = <T>(url: string, options?: PaginationOptions) => {
 
   const { isPending, isError, error, data, isFetching, isPlaceholderData } =
     useQuery<PaginatedData<T>>({
-      queryKey: [url, page, pageSize],
+      queryKey: [url, page, pageSize, queryParameters],
       queryFn: () => fetchPage(page, pageSize),
       placeholderData: keepPreviousData,
       staleTime: 5000,

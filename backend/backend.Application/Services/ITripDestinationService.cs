@@ -24,6 +24,6 @@ namespace backend.Application.Services
 
         Task<IActionResult> DeleteTripDestination(Guid id);
 
-        Task<(bool IsNew, TripDestinationDTO)> PostTripDestinationAsync([FromForm] TripDestinationDTO tripDestinationDTO);
+        Task<TripDestinationDTO> PostTripDestinationAsync([FromForm] TripDestinationDTO tripDestinationDTO);
     }
 }

@@ -15,6 +15,7 @@ import {
   DialogTrigger,
   DialogClose,
 } from "src/components/ui/dialog";
+import { ButtonWithIcon } from "../ui/Buttons/ButtonWithIcon";
 
 interface SearchModalProps {}
 
@@ -48,9 +49,17 @@ const SearchModal: FC<SearchModalProps> = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="cursor-pointer">
-          <IoSearch />
-        </button>
+        <div className="px-0 md:px-2 flex items-center rounded-full h-full cursor-pointer gap-2">
+          <input
+            type="text"
+            className="hidden md:block rounded-full bg-background p-2 text-base placeholder:text-sm"
+            placeholder="search for something ..."
+          />
+          <ButtonWithIcon
+            icon={<IoSearch />}
+            className="rounded-full bg-transparent md:bg-pink-600 text-white text-2xl md:text-xl hover:text-black"
+          />
+        </div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

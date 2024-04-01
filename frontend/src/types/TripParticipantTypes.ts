@@ -8,3 +8,8 @@ export type TripParticipant = {
   ParticipantId: string;
   participants: Participant;
 };
+
+export type CreateTripParticipant = {
+  tripId: string;
+  ParticipantId: string;
+};

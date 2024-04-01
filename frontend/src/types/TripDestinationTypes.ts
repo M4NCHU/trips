@@ -18,3 +18,9 @@ export type TripDestinationInterface = {
   destination: DestinationCategory;
   selectedPlaces: SelectedPlace[];
 };
+
+export type CreateTripDestination = {
+  tripId: string;
+  destinationId: string;
+  selectedPlaces: SelectedPlace[];
+};

@@ -11,11 +11,18 @@ interface FetchDataOptions {
 export const fetchDataPaginated = async <T>(
   url: string,
   page: number,
-  pageSize: number
+  pageSize: number,
+  queryParameters: Record<string, string | number> = {}
 ): Promise<{ data: T[]; hasMore: boolean }> => {
   try {
+    const queryParams = new URLSearchParams(
+      queryParameters as Record<string, string>
+    );
+    queryParams.append("page", page.toString());
+    queryParams.append("pageSize", pageSize.toString());
+
     const response: AxiosResponse<T[]> = await axios.get<T[]>(
-      `${url}?page=${page}&pageSize=${pageSize}`
+      `${url}?${queryParams.toString()}`
     );
     return {
       data: response.data,
@@ -25,7 +32,6 @@ export const fetchDataPaginated = async <T>(
     throw handleAxiosError(error);
   }
 };
-
 export const fetchData = async <T>(
   url: string,
   options?: FetchDataOptions

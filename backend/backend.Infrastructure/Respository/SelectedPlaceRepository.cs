@@ -11,6 +11,7 @@ using backend.Application.Services;
 using Microsoft.AspNetCore.Hosting;
 
 using System.ComponentModel.DataAnnotations;
+using Microsoft.Extensions.Logging;
 
 namespace backend.Infrastructure.Services
 {
@@ -21,14 +22,16 @@ namespace backend.Infrastructure.Services
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly BaseUrlService _baseUrlService;
         private readonly string _baseUrl;
+        private readonly ILogger<SelectedPlaceService> _logger;
 
-        public SelectedPlaceService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService)
+        public SelectedPlaceService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService, ILogger<SelectedPlaceService> logger)
         {
             _context = context;
             _imageService = imageService;
             _hostEnvironment = hostEnvironment;
             _baseUrlService = baseUrlService;
             _baseUrl = _baseUrlService.GetBaseUrl();
+            _logger = logger;
         }
 
         
@@ -160,34 +163,37 @@ namespace backend.Infrastructure.Services
             return new NoContentResult();
         }
 
-        public async Task<ActionResult<SelectedPlaceDTO>> PostSelectedPlace([FromForm] SelectedPlaceDTO selectedPlaceDTO)
+       public async Task<CreateSelectedPlaceDTO> PostSelectedPlace(CreateSelectedPlaceDTO selectedPlaceDTO)
         {
-            if (_context.SelectedPlace == null)
+            try
             {
-                return new ObjectResult("Entity set 'TripsDbContext.SelectedPlace' is null.")
+                if (_context.SelectedPlace == null)
                 {
-                    StatusCode = 500
+                    _logger.LogError("Entity set 'TripsDbContext.SelectedPlace' is null.");
+                    throw new InvalidOperationException("Entity set 'TripsDbContext.SelectedPlace' is null.");
+                }
+
+                var selectedPlace = new SelectedPlaceModel
+                {
+                    Id = new Guid(),
+                    TripDestinationId = selectedPlaceDTO.TripDestinationId,
+                    VisitPlaceId = selectedPlaceDTO.VisitPlaceId,
+                    CreatedAt = DateTime.UtcNow,
+                    ModifiedAt = DateTime.UtcNow,
                 };
+
+                _context.SelectedPlace.Add(selectedPlace);
+                await _context.SaveChangesAsync();
+
+                _logger.LogInformation($"Selected place with ID '{selectedPlace.Id}' successfully added.");
+
+                return selectedPlaceDTO; 
             }
-
-            
-           
-
-            var selectedPlace = new SelectedPlaceModel
+            catch (Exception ex)
             {
-                Id = selectedPlaceDTO.Id,
-                TripDestinationId = selectedPlaceDTO.TripDestinationId,
-                VisitPlaceId = selectedPlaceDTO.VisitPlaceId,
-                CreatedAt = DateTime.UtcNow,
-                ModifiedAt = DateTime.UtcNow,
-            };
-
-            
-
-            _context.SelectedPlace.Add(selectedPlace);
-            await _context.SaveChangesAsync();
-
-            return new CreatedAtActionResult("GetSelectedPlace", "SelectedPlace", new { id = selectedPlace.Id }, selectedPlaceDTO);
+                _logger.LogError(ex, "An error occurred while adding a new selected place.");
+                throw; 
+            }
         }
 
         public async Task<IActionResult> DeleteSelectedPlace(Guid id)

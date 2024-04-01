@@ -12,4 +12,13 @@ export type Destination = {
   visitPlaces: VisitPlace[];
 };
 
+export type CreateDestination = {
+  name: string;
+  description: string;
+  location?: string;
+  photoUrl?: string;
+  price: number;
+  categoryId: string;
+};
+
 export type DestinationCategory = Destination & { category: Category };

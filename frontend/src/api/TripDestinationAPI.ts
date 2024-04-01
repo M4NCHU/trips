@@ -1,5 +1,8 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { TripDestination } from "../types/TripDestinationTypes";
+import {
+  CreateTripDestination,
+  TripDestination,
+} from "../types/TripDestinationTypes";
 import { fetchData } from "./apiUtils";
 
 // Adding trip participant
@@ -7,7 +10,7 @@ export const UseCreateTripDestination = () => {
   const mutation = useMutation({
     mutationFn: async (formData: FormData) => {
       try {
-        const response = await fetchData<TripDestination>(
+        const response = await fetchData<CreateTripDestination>(
           "/api/TripDestination",
           {
             method: "post",

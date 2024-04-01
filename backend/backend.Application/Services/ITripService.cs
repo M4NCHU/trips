@@ -19,7 +19,7 @@ namespace backend.Application.Services
 
         Task<IActionResult> PutTrip(Guid id, TripDTO trip);
 
-        Task<ActionResult<TripDTO>> PostTrip([FromForm] CreateTripDTO trip);
+        Task<CreateTripDTO> PostTrip([FromForm] CreateTripDTO tripDTO);
 
         Task<IActionResult> DeleteTrip(Guid id);
 

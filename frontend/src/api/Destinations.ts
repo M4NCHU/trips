@@ -1,14 +1,22 @@
 // api/destinations.timport { useQuery } from "@tanstack/react-query";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { usePagination } from "../hooks/usePagination";
-import { Destination, DestinationCategory } from "../types/Destination";
+import {
+  CreateDestination,
+  Destination,
+  DestinationCategory,
+} from "../types/Destination";
 import { fetchData } from "./apiUtils";
 import { DestinationValidator } from "../lib/validators/DestinationValidator";
 import toast from "react-hot-toast";
 import { ZodError, z } from "zod";
 
+export interface DestinationFilter {
+  categoryId?: string;
+}
+
 // Get destinations with pagination
-export const useDestinationList = () => {
+export const useDestinationList = (filter?: DestinationFilter) => {
   const {
     isPending,
     isError,
@@ -22,6 +30,7 @@ export const useDestinationList = () => {
     setPage,
   } = usePagination<Destination>("/api/Destination", {
     pageSize: 8,
+    queryParameters: filter,
   });
 
   return {
@@ -68,10 +77,13 @@ export const UseCreateDestination = () => {
   const mutation = useMutation({
     mutationFn: async (formData: FormData) => {
       try {
-        const response = await fetchData<Destination>("/api/Destination", {
-          method: "post",
-          data: formData,
-        });
+        const response = await fetchData<CreateDestination>(
+          "/api/Destination",
+          {
+            method: "post",
+            data: formData,
+          }
+        );
         return response;
       } catch (error: any) {
         throw new Error("Failed to create destination. Please try again.");

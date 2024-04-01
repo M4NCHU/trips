@@ -6,9 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using backend.Models;
 using Microsoft.Extensions.Hosting;
-using backend.Domain.DTOs;
 using backend.Application.Services;
 using Microsoft.AspNetCore.Authorization;
+using backend.Infrastructure.Services;
+using backend.Domain.DTOs;
 
 namespace backend.Controllers
 {
@@ -17,10 +18,12 @@ namespace backend.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
+        private readonly ILogger<CategoryService> _logger;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService, ILogger<CategoryService> logger)
         {
             _categoryService = categoryService;
+            _logger = logger;
         }
 
         // GET: api/Category/GetAllDestinations
@@ -48,9 +51,9 @@ namespace backend.Controllers
         }
 
         // POST: api/Category
-        [Authorize(Roles = "admin")]
+        /*[Authorize(Roles = "admin")]*/
         [HttpPost()]
-        public async Task<ActionResult<CategoryDTO>> PostCategory([FromForm] CategoryDTO category)
+        public async Task<ActionResult<CreateCategoryRequestDTO>> PostCategory([FromForm] CreateCategoryRequestDTO category)
         {
             return await _categoryService.PostCategory(category);
         }

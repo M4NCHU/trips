@@ -875,3 +875,5 @@ D:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\refint\backend.dll
 D:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\backend.pdb
 D:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\backend.genruntimeconfig.cache
 D:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\ref\backend.dll
+C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll

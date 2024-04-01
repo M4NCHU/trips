@@ -1,5 +1,4 @@
-﻿using backend.Domain.DTOs;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +8,11 @@ using backend.Infrastructure.Authentication;
 using Microsoft.Extensions.Hosting;
 using backend.Application.Services;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Build.Framework;
+using Microsoft.Extensions.Logging;
+using backend.Domain.DTOs;
+using backend.Infrastructure.Respository;
+using static backend.Infrastructure.Respository.ApplicationException;
 
 
 namespace backend.Infrastructure.Services
@@ -19,16 +23,18 @@ namespace backend.Infrastructure.Services
         private readonly ImageService _imageService;
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly BaseUrlService _baseUrlService;
+        private readonly ILogger<CategoryService> _logger;
         private readonly string _baseUrl;
 
 
-        public CategoryService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService)
+        public CategoryService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService, ILogger<CategoryService> logger)
         {
             _context = context;
             _imageService = imageService;
             _hostEnvironment = hostEnvironment;
             _baseUrlService = baseUrlService;
             _baseUrl = _baseUrlService.GetBaseUrl();
+            _logger = logger;
         }
 
         public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories()
@@ -38,12 +44,10 @@ namespace backend.Infrastructure.Services
                 return new NotFoundResult();
             }
 
-            // Pobierz kategorie z bazy danych
             var categories = await _context.Category
                 .OrderBy(x => x.Id)
                 .ToListAsync();
 
-            // Mapuj encje na DTO
             var categoryDTOs = categories.Select(x => MapToCategoryDTO(x)).ToList();
 
             return categoryDTOs;
@@ -54,7 +58,8 @@ namespace backend.Infrastructure.Services
         {
             if (_context.Category == null)
             {
-                return new NotFoundResult();
+                _logger.LogError("Entity set 'TripsDbContext.Category' is null.");
+                throw new InternalErrorException("Entity set 'TripsDbContext.Category' is null.");
             }
 
             var category = await _context.Category.FindAsync(id);
@@ -105,40 +110,56 @@ namespace backend.Infrastructure.Services
             return new NoContentResult();
         }
 
-        public async Task<ActionResult<CategoryDTO>> PostCategory([FromForm] CategoryDTO CategoryDTO)
+        public async Task<CreateCategoryRequestDTO> PostCategory([FromForm] CreateCategoryRequestDTO CategoryDTO)
         {
-            if (_context.Category == null)
+            try
             {
-                return new ObjectResult("Entity set 'TripsDbContext.Category' is null.")
+                if (_context.Category == null)
                 {
-                    StatusCode = 500
+                    _logger.LogError("Entity set 'TripsDbContext.Category' is null.");
+                    throw new InternalErrorException("Entity set 'TripsDbContext.Category' is null.");
+                }
+
+                if (CategoryDTO.ImageFile == null)
+                {
+                    _logger.LogError("The 'ImageFileDTO' field is required.");
+                    throw new ValidationException("The 'ImageFileDTO' field is required.");
+                }
+
+                var photoUrl = await _imageService.SaveImage(CategoryDTO.ImageFile, "Category", "category");
+
+                var currentDate = DateTime.Now.ToUniversalTime();
+
+                var category = new CategoryModel
+                {
+                    Id = Guid.NewGuid(),
+                    Name = CategoryDTO.Name,
+                    Description = CategoryDTO.Description,
+                    PhotoUrl = photoUrl,
+                    CreatedAt = currentDate,
+                    ModifiedAt = currentDate,
+                    ImageFile = CategoryDTO.ImageFile
                 };
-            }
 
-            if (CategoryDTO.ImageFile == null)
+                _context.Category.Add(category);
+                await _context.SaveChangesAsync();
+                _logger.LogInformation($"Successfully posted category '{CategoryDTO.Name}' at {currentDate}.");
+
+                return CategoryDTO;
+            }
+            catch (Exception ex)
             {
-                return new BadRequestObjectResult("The 'ImageFileDTO' field is required.");
+                _logger.LogError(ex, "An error occurred while posting a new category.");
+                throw; 
             }
-
-            CategoryDTO.PhotoUrl = await _imageService.SaveImage(CategoryDTO.ImageFile, "Category");
-
-            var currentDate = DateTime.Now.ToUniversalTime();
-
-            var category = MapToCategoryModel(CategoryDTO);
-            category.CreatedAt = currentDate;
-            category.ModifiedAt = currentDate;
-
-            _context.Category.Add(category);
-            await _context.SaveChangesAsync();
-
-            return new CreatedAtActionResult("GetCategory", "Category", new { id = category.Id }, CategoryDTO);
         }
 
         public async Task<IActionResult> DeleteCategory(Guid id)
         {
             if (_context.Category == null)
             {
-                return new NotFoundResult();
+                _logger.LogError("Entity set 'TripsDbContext.Category' is null.");
+                throw new InternalErrorException("Entity set 'TripsDbContext.Category' is null.");
             }
 
             var category = await _context.Category.FindAsync(id);

@@ -5,6 +5,7 @@ import Register from "./Authentication/Register/Register";
 import UseCreateCategory from "./Categories/Create";
 import Contact from "./Contact/Contact";
 import CreateDestination from "./Destinations/Create";
+import Destinations from "./Destinations/Destinations";
 import Home from "./Home/Home";
 import ChooseTripScheme from "./Planning/ChooseTripScheme";
 import Planning from "./Planning/Planning";
@@ -21,6 +22,12 @@ const pagesData: routerType[] = [
     path: "contact",
     element: <Contact />,
     title: "contact",
+    isProtected: false,
+  },
+  {
+    path: "destinations",
+    element: <Destinations />,
+    title: "Destinations",
     isProtected: false,
   },
   {
@@ -52,14 +59,12 @@ const pagesData: routerType[] = [
     element: <Planning />,
     title: "Plan your trip",
     isProtected: true,
-    roles: ["admin"],
   },
   {
     path: "planning",
     element: <ChooseTripScheme />,
     title: "Choose trip scheme",
     isProtected: true,
-    roles: ["admin"],
   },
   {
     path: "login",

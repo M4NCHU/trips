@@ -1,11 +1,22 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
 
-interface NavlinkProps {
-  children: React.ReactNode;
+interface NavLinkProps {
+  link: string;
+  children?: React.ReactNode;
+  title?: string;
 }
 
-const Navlink: FC<NavlinkProps> = ({ children }) => {
-  return <li className="cursor-pointer">{children}</li>;
+const NavLink: FC<NavLinkProps> = ({ link, title, children }) => {
+  return (
+    <Link
+      to={link}
+      className="px-6 hover:bg-pink-600 flex items-center rounded-full h-full"
+    >
+      {title && title}
+      {children && children}
+    </Link>
+  );
 };
 
-export default Navlink;
+export default NavLink;

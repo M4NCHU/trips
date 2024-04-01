@@ -1,4 +1,4 @@
-﻿
+﻿using backend.Domain.DTOs;
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 

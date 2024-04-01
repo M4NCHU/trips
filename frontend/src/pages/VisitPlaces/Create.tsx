@@ -51,7 +51,7 @@ const CreateVisitPlace: FC<CreateProps> = ({}) => {
   const { showPreview, imagePreview } = useImagePreview();
 
   useEffect(() => {
-    setValue("destinationId", destination?.id);
+    setValue("destinationId", id);
   }, [destination]);
 
   const handleFormSubmit = async (e: React.FormEvent) => {

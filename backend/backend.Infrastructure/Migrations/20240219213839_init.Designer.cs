@@ -12,8 +12,8 @@ using backend.Infrastructure.Authentication;
 namespace backend.Infrastructure.Migrations
 {
     [DbContext(typeof(TripsDbContext))]
-    [Migration("20240213194946_trips")]
-    partial class trips
+    [Migration("20240219213839_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

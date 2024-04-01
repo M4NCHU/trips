@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using System.ComponentModel.DataAnnotations;
 using backend.Application.Services;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace backend.Infrastructure.Services
 {
@@ -20,14 +21,16 @@ namespace backend.Infrastructure.Services
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly BaseUrlService _baseUrlService;
         private readonly string _baseUrl;
+        private readonly ILogger<ParticipantService> _logger;
 
-        public ParticipantService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService)
+        public ParticipantService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService, ILogger<ParticipantService> logger)
         {
             _context = context;
             _imageService = imageService;
             _hostEnvironment = hostEnvironment;
             _baseUrlService = baseUrlService;
             _baseUrl = _baseUrlService.GetBaseUrl();
+            _logger = logger;
         }
 
         
@@ -166,73 +169,67 @@ namespace backend.Infrastructure.Services
             return new NoContentResult();
         }
 
-        public async Task<ActionResult<ParticipantDTO>> PostParticipant([FromForm] ParticipantDTO participantDTO)
+        public async Task<CreateParticipantDTO> PostParticipant(CreateParticipantDTO participantDTO)
         {
-            
-            if (_context.Participant == null)
+            try
             {
-                return new ObjectResult("Entity set 'TripsDbContext.Participant' is null.")
+                if (_context.Participant == null)
                 {
-                    StatusCode = 500
-                };
-            }
+                    _logger.LogError("Entity set 'TripsDbContext.Participant' is null.");
+                    throw new InvalidOperationException("Entity set 'TripsDbContext.Participant' is null.");
+                }
 
-            if (participantDTO.ImageFile == null)
-            {
-                return new BadRequestObjectResult("The 'ImageFileDTO' field is required.");
-            }
-
-            participantDTO.PhotoUrl = await _imageService.SaveImage(participantDTO.ImageFile, "Participant");
-
-            var currentDate = DateTime.Now.ToUniversalTime();
-
-
-
-            var participant = new ParticipantModel
-            {
-                Id = participantDTO.Id,
-                FirstName = participantDTO.FirstName,
-                LastName = participantDTO.LastName,
-                Address = participantDTO.Address,
-                CreatedAt = currentDate,
-                DateOfBirth = currentDate,
-                Email = participantDTO.Email,
-                EmergencyContact = participantDTO.EmergencyContact,
-                EmergencyContactPhone = participantDTO.EmergencyContactPhone,
-                MedicalConditions = participantDTO.MedicalConditions,
-                ModifiedAt = currentDate,
-                PhoneNumber = participantDTO.PhoneNumber,
-                
-                PhotoUrl = participantDTO.PhotoUrl,
-            };
-
-            
-
-            _context.Participant.Add(participant);
-            await _context.SaveChangesAsync();
-
-            // Sprawdź, czy TripId jest różne od pustego GUID
-            if (participantDTO.TripId != Guid.Empty)
-            {
-                var tripParticipant = new TripParticipantModel
+                if (participantDTO.ImageFile == null)
                 {
-                    TripId = participantDTO.TripId,
-                    ParticipantId = participant.Id
+                    _logger.LogError("The 'ImageFileDTO' field is required.");
+                    throw new ArgumentException("The 'ImageFileDTO' field is required.");
+                }
+
+                participantDTO.PhotoUrl = await _imageService.SaveImage(participantDTO.ImageFile, "Participant");
+
+                var currentDate = DateTime.Now.ToUniversalTime();
+
+                var participant = new ParticipantModel
+                {
+                    Id = participantDTO.Id,
+                    FirstName = participantDTO.FirstName,
+                    LastName = participantDTO.LastName,
+                    Address = participantDTO.Address,
+                    CreatedAt = currentDate,
+                    DateOfBirth = currentDate, 
+                    Email = participantDTO.Email,
+                    EmergencyContact = participantDTO.EmergencyContact,
+                    EmergencyContactPhone = participantDTO.EmergencyContactPhone,
+                    MedicalConditions = participantDTO.MedicalConditions,
+                    ModifiedAt = currentDate,
+                    PhoneNumber = participantDTO.PhoneNumber,
+                    PhotoUrl = participantDTO.PhotoUrl,
                 };
 
-                _context.TripParticipant.Add(tripParticipant);
+                _context.Participant.Add(participant);
                 await _context.SaveChangesAsync();
+
+                if (participantDTO.TripId != Guid.Empty)
+                {
+                    var tripParticipant = new TripParticipantModel
+                    {
+                        TripId = participantDTO.TripId,
+                        ParticipantId = participant.Id
+                    };
+
+                    _context.TripParticipant.Add(tripParticipant);
+                    await _context.SaveChangesAsync();
+                }
+
+                _logger.LogInformation($"Participant '{participant.FirstName} {participant.LastName}' successfully added.");
+
+                return participantDTO; 
             }
-
-            var responseDTO = new ParticipantDTO
+            catch (Exception ex)
             {
-                Id = participant.Id,
-                FirstName = participant.FirstName,
-                // Uzupełnij pozostałe pola...
-                PhotoUrl = participant.PhotoUrl
-            };
-
-            return new CreatedAtActionResult("GetParticipant", "Participant", new { id = participant.Id }, responseDTO);
+                _logger.LogError(ex, "An error occurred while posting a new participant.");
+                throw; 
+            }
         }
 
         public async Task<IActionResult> DeleteParticipant(Guid id)

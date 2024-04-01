@@ -10,6 +10,9 @@ using backend.Application.Services;
 using Microsoft.AspNetCore.Hosting;
 using backend.Domain.Enums;
 using backend.Domain.Mappings;
+using Microsoft.Extensions.Logging;
+using Microsoft.CodeAnalysis.Elfie.Diagnostics;
+using static backend.Infrastructure.Respository.ApplicationException;
 
 
 namespace backend.Infrastructure.Services
@@ -22,9 +25,10 @@ namespace backend.Infrastructure.Services
         private readonly IDestinationService _destinationService;
         private readonly BaseUrlService _baseUrlService;
         private readonly string _baseUrl;
+        private readonly ILogger<TripService> _logger;
 
 
-        public TripService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, IDestinationService destinationService, BaseUrlService baseUrlService)
+        public TripService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, IDestinationService destinationService, BaseUrlService baseUrlService, ILogger<TripService> logger)
         {
             _context = context;
             _imageService = imageService;
@@ -32,6 +36,7 @@ namespace backend.Infrastructure.Services
             _destinationService = destinationService;
             _baseUrlService = baseUrlService;
             _baseUrl = _baseUrlService.GetBaseUrl();
+            _logger = logger;
         }   
 
         public async Task<ActionResult<IEnumerable<TripDTO>>> GetTrips()
@@ -193,35 +198,49 @@ namespace backend.Infrastructure.Services
             return new NoContentResult();
         }
 
-        public async Task<ActionResult<TripDTO>> PostTrip([FromForm] CreateTripDTO tripDTO)
+        public async Task<CreateTripDTO> PostTrip([FromForm]CreateTripDTO tripDTO)
         {
-            var currentDate = DateTime.Now.ToUniversalTime();
-
-
-            var trip = new TripModel
+            try
             {
-               
-                Title = tripDTO.Title,
-                Status = TripStatus.Planning,
-                StartDate = currentDate,
-                EndDate = currentDate,
-                CreatedAt = currentDate,
-                ModifiedAt = currentDate,
-                CreatedBy = tripDTO.CreatedBy,
-                TotalPrice = 0
-            };
+                if (_context.Trip == null)
+                {
+                    _logger.LogError("Entity set 'TripsDbContext.Trip' is null.");
+                    throw new InternalErrorException("Entity set 'TripsDbContext.Category' is null.");
+                }
 
-            _context.Trip.Add(trip);
-            await _context.SaveChangesAsync();
+                var userExists = await _context.Users.AnyAsync(u => u.Id == tripDTO.CreatedBy);
+                if (!userExists)
+                {
+                    _logger.LogError($"User with ID {tripDTO.CreatedBy} does not exist.");
+                    throw new ArgumentException($"User with ID {tripDTO.CreatedBy} does not exist.");
+                }
 
-            var responseDTO = new CreateTripDTO
+                var currentDate = DateTime.Now.ToUniversalTime();
+
+                var trip = new TripModel
+                {
+                    Id = Guid.NewGuid(),
+                    Title = tripDTO.Title,
+                    Status = TripStatus.Planning,
+                    StartDate = currentDate,
+                    EndDate = currentDate,
+                    CreatedAt = currentDate,
+                    ModifiedAt = currentDate,
+                    CreatedBy = tripDTO.CreatedBy,
+                    TotalPrice = 0
+                };
+
+                _context.Trip.Add(trip);
+                await _context.SaveChangesAsync();
+                _logger.LogInformation($"Trip titled '{trip.Title}' created by {trip.CreatedBy} on {currentDate}.");
+
+                return tripDTO;
+            }
+            catch (Exception ex)
             {
-                Title = tripDTO.Title,
-                TripId = trip.Id,
-                CreatedBy = tripDTO.CreatedBy,
-            };
-
-            return new CreatedAtActionResult("GetTrip", "Trip", new { id = trip.Id }, responseDTO);
+                _logger.LogError(ex, "An error occurred while creating a new trip.");
+                throw; 
+            }
         }
 
         public async Task<ActionResult<int>> CountUserTrips(string userId, TripStatus status)
@@ -288,63 +307,7 @@ namespace backend.Infrastructure.Services
             return (_context.Trip?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        private TripDTO MapToTripDTO(TripModel tripModel)
-        {
-            return new TripDTO
-            {
-                Id = tripModel.Id,
-                Status = tripModel.Status,
-                StartDate = tripModel.StartDate,
-                EndDate = tripModel.EndDate,
-                TotalPrice = tripModel.TotalPrice,
-                CreatedBy = tripModel.CreatedBy,
-                Title = tripModel.Title,
-                User = tripModel.User != null ? new UserDTO
-                {
-                    
-                    FirstName = tripModel.User.FirstName, 
-                    Id = tripModel.User.Id
-                } : null,
-                TripDestinations = tripModel.TripDestinations?.Select(td => new TripDestinationDTO
-                {
-                    DestinationId = td.DestinationId,
-                    TripId = td.TripId,
-                    SelectedPlaces = td.SelectedPlace?.Select(sp => new SelectedPlaceDTO
-                    {
-                        Id = sp.Id,
-                        TripDestinationId = sp.TripDestinationId,
-                        VisitPlaceId = sp.VisitPlaceId,
-                        // Tutaj dodajemy mapowanie dla VisitPlace
-                        VisitPlace = sp.VisitPlace != null ? new VisitPlaceDTO
-                        {
-                            Id = sp.VisitPlace.Id,
-                            Name = sp.VisitPlace.Name,
-                            Description = sp.VisitPlace.Description,
-                            PhotoUrl = sp.VisitPlace.PhotoUrl,
-                            Price = sp.VisitPlace.Price
-                        } : null
-                    }).ToList()
-                }).ToList(),
-
-            };
-        }
-
-        private TripDTO MapToListTripDTO(TripModel tripModel)
-        {
-            return new TripDTO
-            {
-                Id = tripModel.Id,
-                Status = tripModel.Status,
-                TotalPrice = tripModel.TotalPrice,
-                User = tripModel.User != null ? new UserDTO
-                {
-
-                    FirstName = tripModel.User.FirstName,
-                    Id = tripModel.User.Id
-                } : null,
-
-            };
-        }
+        
 
         public TripModel MapToTripModel(TripDTO tripDTO, TripModel existingTrip = null)
         {

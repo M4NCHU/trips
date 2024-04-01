@@ -32,10 +32,13 @@ namespace backend.Application.Services
             }
         }
 
-        public async Task<string> SaveImage(IFormFile imageFile, string folder)
+        public async Task<string> SaveImage(IFormFile imageFile, string folder, string prefix = "")
         {
-            string imageName = new String(Path.GetFileNameWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace(' ', '-');
-            imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(imageFile.FileName);
+            if (string.IsNullOrEmpty(prefix))
+            {
+                prefix = folder;
+            }
+            string imageName = GenerateRandomImageName(prefix) + Path.GetExtension(imageFile.FileName);
             var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, _imageFolder, folder, imageName);
             // Use the 'folder' parameter in the Path.Combine method
             using (var fileStream = new FileStream(imagePath, FileMode.Create))
@@ -52,5 +55,15 @@ namespace backend.Application.Services
             if (System.IO.File.Exists(imagePath))
                 System.IO.File.Delete(imagePath);
         }
+
+        private string GenerateRandomImageName(string prefix)
+        {
+            
+            var timestamp = DateTime.UtcNow.ToString("yyyyMMddHHmmss");
+            var guid = Guid.NewGuid().ToString();
+            var randomImageName = $"{prefix}_{timestamp}_{guid}";
+            return randomImageName;
+        }
+
     }
 }

@@ -71,28 +71,14 @@ namespace backend.Controllers
         }*/
 
         [HttpPost]
-        public async Task<IActionResult> PostTripDestination([FromForm] TripDestinationDTO tripDestinationDTO)
+        public async Task<TripDestinationDTO> PostTripDestinationAsync([FromForm] TripDestinationDTO tripDestinationDTO)
         {
-            try
-            {
-                var (isNew, updatedTripDestinationDTO) = await _tripDestinationService.PostTripDestinationAsync(tripDestinationDTO);
 
-                if (isNew)
-                {
-                    // Stworzono nowy TripDestination
-                    return CreatedAtAction(nameof(GetTripDestination), new { id = updatedTripDestinationDTO.Id }, updatedTripDestinationDTO);
-                }
-                else
-                {
-                    // Zaktualizowano istniejący TripDestination
-                    return Ok(updatedTripDestinationDTO);
-                }
-            }
-            catch (Exception ex)
-            {
-                // Obsługa wyjątków, np. BadRequest dla błędów walidacji
-                return BadRequest(ex.Message);
-            }
+             return await _tripDestinationService.PostTripDestinationAsync(tripDestinationDTO);
+
+               
+            
+           
         }
 
         // GET: api/TripDestination/trip/5
