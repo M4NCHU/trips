@@ -4,4 +4,5 @@ export interface routerType {
   element: JSX.Element;
   isProtected: boolean;
   roles?: string[];
+  isAdminPage?: boolean;
 }
