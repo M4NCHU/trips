@@ -1,10 +1,11 @@
 import DestinationDetails from "../components/Destinations/DestinationDetails";
 import { routerType } from "../types/Router";
+import Admin from "./Admin/Admin";
+import CreateDestination from "./Admin/Destinations/Create";
 import Login from "./Authentication/Login/Login";
 import Register from "./Authentication/Register/Register";
 import UseCreateCategory from "./Categories/Create";
 import Contact from "./Contact/Contact";
-import CreateDestination from "./Destinations/Create";
 import Destinations from "./Destinations/Destinations";
 import Home from "./Home/Home";
 import ChooseTripScheme from "./Planning/ChooseTripScheme";
@@ -12,6 +13,13 @@ import Planning from "./Planning/Planning";
 import CreateVisitPlace from "./VisitPlaces/Create";
 
 const pagesData: routerType[] = [
+  {
+    path: "/admin",
+    element: <Admin />,
+    title: "home",
+    isProtected: true,
+    isAdminPage: true,
+  },
   {
     path: "",
     element: <Home />,
@@ -31,10 +39,11 @@ const pagesData: routerType[] = [
     isProtected: false,
   },
   {
-    path: "destinations/create",
+    path: "admin/destinations/create",
     element: <CreateDestination />,
     title: "Create trip destination",
     isProtected: false,
+    isAdminPage: true,
   },
   {
     path: "destination/:id",

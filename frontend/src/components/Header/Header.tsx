@@ -71,6 +71,7 @@ const Header = () => {
                 <CustomDropdownMenuItem label="Home" href="/" />
                 <CustomDropdownMenuItem label="Contact" href="/contact" />
                 <CustomDropdownMenuItem label="About" href="/about" />
+                <CustomDropdownMenuItem label="Admin" href="/admin" />
                 <div className="my-2 h-[1px] bg-gray-800"></div>
                 <CustomDropdownMenuItem
                   label="Logout"
