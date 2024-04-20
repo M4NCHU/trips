@@ -11,6 +11,13 @@ import { useNavigate } from "react-router-dom";
 import useForm from "src/hooks/useForm";
 import toast from "react-hot-toast";
 import SubmitButton from "src/components/ui/SubmitButton";
+import FormLayout from "src/components/Admin/Form/FormLayout";
+import FormContent from "src/components/Admin/Form/FormContent";
+import FormSection from "src/components/Admin/Form/FormSection";
+import FormImagePreview from "src/components/Admin/Form/FormImagePreview";
+import CategoriesListModal from "src/components/Admin/Category/CategoriesListModal";
+import FormTitle from "src/components/Admin/Form/FormTitle";
+import FormLabel from "src/components/Admin/Form/FormLabel";
 
 interface CreateProps {}
 
@@ -44,14 +51,9 @@ const CreateDestination: FC<CreateProps> = ({}) => {
 
   const {
     mutate: CreateDestination,
-    status: CreateDestinationStatus,
     isPending: CreateDestinationIsPending,
-    isError: CreateDestinationIsError,
     isSuccess: CreateDestinationIsSuccess,
-    error: CreateDestinationError,
-    data: destinationData,
   } = UseCreateDestination();
-  const { data: categories, isLoading, isError } = UseCategoryList();
 
   const navigate = useNavigate();
 
@@ -87,110 +89,81 @@ const CreateDestination: FC<CreateProps> = ({}) => {
   };
 
   return (
-    <>
-      {/* <FormHeader title="Create new Destination" /> */}
-      <form
-        className=" bg-secondary rounded-lg p-4 flex flex-col h-[12rem] grow"
-        onSubmit={handleFormSubmit}
-      >
-        <div className="flex flex-col md:flex-row gap-4 overflow-auto">
-          <div className="flex flex-col  gap-2">
-            <h2 className="text-xl font-bold border-b-2 py-2 mb-4 ">
-              General information
-            </h2>
-            <Input
-              placeholder="Enter name"
-              label="Name"
-              name="name"
-              value={values.name}
-              onChange={handleChange}
-              errorMessage={errors.name}
-            />
-            <Input
-              placeholder="Enter location"
-              label="location"
-              name="location"
-              value={values.location}
-              onChange={handleChange}
-              errorMessage={errors.location}
-            />
-            <Input
-              placeholder="Enter description"
-              label="description"
-              name="description"
-              value={values.description}
-              onChange={handleChange}
-              errorMessage={errors.description}
-            />
+    <FormLayout>
+      <FormContent>
+        <FormSection
+          className="flex flex-col  gap-2 grow"
+          title="General information"
+        >
+          <Input
+            placeholder="Enter name"
+            label="Name"
+            name="name"
+            value={values.name}
+            onChange={handleChange}
+            errorMessage={errors.name}
+          />
+          <Input
+            placeholder="Enter location"
+            label="location"
+            name="location"
+            value={values.location}
+            onChange={handleChange}
+            errorMessage={errors.location}
+          />
+          <Input
+            placeholder="Enter description"
+            label="description"
+            name="description"
+            value={values.description}
+            onChange={handleChange}
+            errorMessage={errors.description}
+          />
 
-            <Input
-              placeholder="Enter Price"
-              label="Price"
-              name="price"
-              type="number"
-              value={values.price}
-              onChange={handleChange}
-              errorMessage={errors.price}
-            />
+          <Input
+            placeholder="Enter Price"
+            label="Price"
+            name="price"
+            type="number"
+            value={values.price}
+            onChange={handleChange}
+            errorMessage={errors.price}
+          />
+        </FormSection>
 
-            <div className="flex flex-col gap-4 mb-2">
-              <label className="font-bold mb-2" htmlFor="">
-                Choose category
-              </label>
+        <FormSection
+          className="w-full gap-2 md:w-1/3 flex flex-col"
+          title="Destination photo"
+        >
+          <FormLabel title="Choose category" />
+          <CategoriesListModal
+            action={handleCategoryToggle}
+            categoryId={values.categoryId}
+          />
+          <Input
+            placeholder="Choose photo"
+            label="Choose photo"
+            type="file"
+            name="photoUrl"
+            accept="image/*"
+            onChange={showPreview}
+            id="image-uploader"
+          />
 
-              <div>
-                {categories
-                  ? categories.map((category, i) => (
-                      <div
-                        key={category.id}
-                        className={`flex flex-col w-14 h-14 items-center justify-center relative gap-1 ${
-                          values.categoryId === category.id
-                            ? "border-2 border-blue-500"
-                            : ""
-                        }`}
-                        onClick={() => handleCategoryToggle(category.id)}
-                      >
-                        <img
-                          src={category.photoUrl}
-                          alt={`${category.name}`}
-                          className="object-cover"
-                        />
-                        <div>{category.name}</div>
-                      </div>
-                    ))
-                  : "There is no categories"}
-              </div>
-            </div>
-          </div>
-
-          <div className="w-full md:w-1/3 flex flex-col">
-            <h2 className="text-xl font-bold border-b-2 py-2 mb-4">
-              Destination photo
-            </h2>
-            <Input
-              placeholder="Choose photo"
-              label="Choose photo"
-              type="file"
-              name="photoUrl"
-              accept="image/*"
-              onChange={showPreview}
-              id="image-uploader"
-            />
-            {imagePreview.imageSrc && (
-              <div className="img-preview">
-                <p>Image Preview</p>
-                <img src={imagePreview.imageSrc} alt="" />
-              </div>
-            )}
-          </div>
-        </div>
-        <SubmitButton
-          isPending={CreateDestinationIsPending}
-          isSuccess={CreateDestinationIsSuccess}
-          onSubmit={(e) => handleFormSubmit(e)}
-        />
-      </form>
-    </>
+          <FormImagePreview
+            imagePreview={imagePreview.imageSrc}
+            isLoading={imagePreview.isLoading}
+          />
+        </FormSection>
+      </FormContent>
+      <SubmitButton
+        isPending={CreateDestinationIsPending}
+        isSuccess={CreateDestinationIsSuccess}
+        isLoading={imagePreview.isLoading}
+        onSubmit={(e) => handleFormSubmit(e)}
+        type="submit"
+      />
+    </FormLayout>
   );
 };
 

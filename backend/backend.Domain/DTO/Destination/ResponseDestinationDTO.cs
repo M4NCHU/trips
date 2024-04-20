@@ -18,8 +18,5 @@ namespace backend.Domain.DTOs
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
         public Guid CategoryId { get; set; }
-        public List<VisitPlaceDTO>? VisitPlaces { get; set; }
-        public List<TripDestinationDTO>? TripDestinations { get; set; }
-
     }
 }

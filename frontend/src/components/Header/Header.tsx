@@ -13,7 +13,7 @@ import { ButtonWithIcon } from "../ui/Buttons/ButtonWithIcon";
 import CustomDropdownMenu from "../ui/Dropdown/CustomDropdownMenu";
 import CustomDropdownMenuItem from "../ui/Dropdown/CustomDropdownMenuItem";
 import UserTrigger from "./UserTrigger";
-import NavLink from "./NavLink";
+import NavLink from "./Navlink";
 import { MdTravelExplore } from "react-icons/md";
 
 const Header = () => {
@@ -30,7 +30,7 @@ const Header = () => {
             className="flex flex-row items-center nav-logo bg-secondary px-4 rounded-full"
           >
             <img src={Logo} alt="site logo" className="w-12 " />
-            <span className="text-xl font-bold">Travel</span>
+            <span className="text-xl font-bold hidden lg:block">Travel</span>
           </Link>
           <div className="hidden md:flex flex-row bg-secondary grow rounded-full justify-between">
             <ul className="hidden md:flex flex-row  gap-4 bg-secondary rounded-full justify-between">

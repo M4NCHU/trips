@@ -15,6 +15,8 @@ using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using backend.Swagger;
 using backend.Infrastructure.Respository;
+using backend.Domain.Mappings;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 var provider = builder.Services.BuildServiceProvider();
@@ -106,7 +108,8 @@ builder.Services.AddAuthorization(options =>
 
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles); ;
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpContextAccessor();
 
@@ -114,6 +117,9 @@ builder.Services.AddHttpContextAccessor();
 
 
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
 
@@ -129,7 +135,11 @@ builder.Services.AddCors(options =>
 
 
 
+
+
 var app = builder.Build();
+
+
 
 app.UseStaticFiles(new StaticFileOptions
 {

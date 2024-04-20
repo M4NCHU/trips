@@ -6,9 +6,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="min-h-screen flex flex-col">
-          <Router />
-        </div>
+        <Router />
       </BrowserRouter>
     </>
   );

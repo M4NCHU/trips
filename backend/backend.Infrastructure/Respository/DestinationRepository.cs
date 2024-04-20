@@ -12,6 +12,9 @@ using backend.Application.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using backend.Domain.Filters;
+using AutoMapper;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Drawing.Printing;
 
 
 namespace backend.Infrastructure.Services
@@ -24,8 +27,9 @@ namespace backend.Infrastructure.Services
         private readonly BaseUrlService _baseUrlService;
         private readonly string _baseUrl;
         private readonly ILogger<DestinationService> _logger;
+        private readonly IMapper _mapper;
 
-        public DestinationService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService, ILogger<DestinationService> logger)
+        public DestinationService(TripsDbContext context, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService, ILogger<DestinationService> logger, IMapper mapper)
         {
             _context = context;
             _imageService = imageService;
@@ -33,9 +37,10 @@ namespace backend.Infrastructure.Services
             _baseUrlService = baseUrlService;
             _baseUrl = _baseUrlService.GetBaseUrl();
             _logger = logger;
+            _mapper = mapper;
         }
 
-        
+
 
         public async Task<ActionResult<IEnumerable<ResponseDestinationDTO>>> GetDestinations([FromQuery] DestinationFilter filter, int page = 1, int pageSize = 2)
         {
@@ -53,8 +58,6 @@ namespace backend.Infrastructure.Services
                 query = query.Where(d => d.CategoryId == parsedCategoryId);
             }
 
-
-
             var destinations = await query
                 .OrderBy(x => x.Id)
                 .Skip((page - 1) * pageSize)
@@ -64,24 +67,15 @@ namespace backend.Infrastructure.Services
             if (!destinations.Any())
             {
                 _logger.LogInformation("No destinations found with the applied filters.");
-            }
-            else
-            {
-                _logger.LogInformation($"Retrieved {destinations.Count} destinations for page {page} with page size {pageSize}.");
+               
             }
 
-            var destinationDTOs = destinations.Select(d => new ResponseDestinationDTO
-            {
-                Id = d.Id,
-                Name = d.Name,
-                Description = d.Description,
-                CategoryId = d.CategoryId,
-                CreatedAt = d.CreatedAt,
-                ModifiedAt = d.ModifiedAt,
-                PhotoUrl = $"{_baseUrl}/Images/Destinations/{d.PhotoUrl}",
-                Price = d.Price,
-                Location = d.Location
-            }).ToList();
+            _logger.LogInformation($"Retrieved {destinations.Count} destinations for page {page} with page size {pageSize}.");
+
+            
+            var destinationDTOs = _mapper.Map<List<ResponseDestinationDTO>>(destinations, opts => {
+                opts.Items["BaseUrl"] = _baseUrl;
+            });
 
             return destinationDTOs;
         }
@@ -92,19 +86,28 @@ namespace backend.Infrastructure.Services
             try
             {
                 var destination = await _context.Destination
-                    .Include(d => d.Category) // Include the Category information
+                    .Include(d => d.Category) 
                     .Include(d => d.VisitPlaces)
                     .FirstOrDefaultAsync(d => d.Id == id);
 
                 if (destination == null)
                 {
-                    return new NotFoundResult();
+                    _logger.LogInformation("No destinations found with the applied filters.");
                 }
+                else
+                {
+                    _logger.LogInformation($"Retrieved '{destination.Name}' destination");
+                }
+
 
                 var currentDate = DateTime.Now.ToUniversalTime();
 
-                var destinationDTO = MapToDestinationDTO(destination); 
-                return destinationDTO;
+                var destinationDto = _mapper.Map<DestinationDTO>(destination, opts => {
+                    opts.Items["BaseUrl"] = _baseUrl; 
+                });
+
+                return new ActionResult<DestinationDTO>(destinationDto);
+
             }
             catch (Exception ex)
             {
@@ -144,7 +147,7 @@ namespace backend.Infrastructure.Services
                 .Select(td => new DestinationDTO
                 {
                     Id = td.DestinationId,
-                    Name = td.Destination.Name, // Assuming Destination has a Name property
+                    Name = td.Destination.Name,
                     Description = td.Destination.Description,
                     Location = td.Destination.Location,
                     PhotoUrl = td.Destination.PhotoUrl,
@@ -214,19 +217,8 @@ namespace backend.Infrastructure.Services
 
                 var currentDate = DateTime.Now.ToUniversalTime();
 
-                var destination = new DestinationModel
-                {
-                    Id = new Guid(),
-                    Name = destinationDTO.Name,
-                    Description = destinationDTO.Description,
-                    Location = destinationDTO.Location,
-                    PhotoUrl = destinationDTO.PhotoUrl,
-                    CategoryId = destinationDTO.CategoryId,
-                    Price = destinationDTO.Price,
-                    CreatedAt = currentDate,
-                    ModifiedAt = currentDate,
-                    ImageFile = destinationDTO.ImageFile,
-                };
+                var destination = _mapper.Map<DestinationModel>(destinationDTO);
+
                 _context.Destination.Add(destination);
                 await _context.SaveChangesAsync();
                 _logger.LogInformation($"Destination '{destination.Name}' was successfully created at {currentDate}.");
@@ -262,49 +254,6 @@ namespace backend.Infrastructure.Services
         private bool DestinationExists(Guid id)
         {
             return (_context.Destination?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
-
-        private DestinationDTO MapToDestinationDTO(DestinationModel destination)
-        {
-            return new DestinationDTO
-            {
-                Id = destination.Id,
-                Name = destination.Name,
-                Description = destination.Description,
-                Location = destination.Location,
-                PhotoUrl = $"{_baseUrl}/Images/Destinations/{destination.PhotoUrl}",
-                Price = destination.Price,
-                CategoryId = destination.CategoryId,
-                Category = destination.Category != null ? new CategoryDTO
-                {
-                    Id = destination.Category.Id,
-                    Name = destination.Category.Name,
-                    PhotoUrl = destination.Category.PhotoUrl
-                } : null,
-                VisitPlaces = destination.VisitPlaces != null ? destination.VisitPlaces.Select(vp => new VisitPlaceDTO
-                {
-                    Id = vp.Id,
-                    Name = vp.Name,
-                    Description = vp.Description,
-                    PhotoUrl = $"{_baseUrl}/Images/VisitPlace/{vp.PhotoUrl}",
-                    Price = vp.Price,
-                    DestinationId = vp.DestinationId
-                }).ToList() : new List<VisitPlaceDTO>()
-            };
-        }
-
-        private DestinationModel MapToDestinationModel(DestinationDTO destinationDTO, DestinationModel existingDestination = null)
-        {
-            var destination = existingDestination ?? new DestinationModel();
-
-            destination.Name = destinationDTO.Name;
-            destination.Description = destinationDTO.Description;
-            destination.Location = destinationDTO.Location;
-            destination.PhotoUrl = destinationDTO.PhotoUrl; 
-            destination.Price = destinationDTO.Price;
-            destination.CategoryId = destinationDTO.CategoryId;
-
-            return destination;
         }
     }
 }

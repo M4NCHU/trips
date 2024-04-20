@@ -877,3 +877,7 @@ D:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\backend.genruntimeconfi
 D:\Projects\Trips\trips\backend\backend\obj\Debug\net8.0\ref\backend.dll
 C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\AutoMapper.dll
+D:\Projects\Trips\trips\backend\backend\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
