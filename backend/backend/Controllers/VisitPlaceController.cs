@@ -15,9 +15,9 @@ namespace backend.Controllers
     [ApiController]
     public class VisitPlaceController : ControllerBase
     {
-        private readonly IVisitPlaceService _visitPlaceService;
+        private readonly VisitPlaceService _visitPlaceService;
 
-        public VisitPlaceController(IVisitPlaceService visitPlaceService)
+        public VisitPlaceController(VisitPlaceService visitPlaceService)
         {
             _visitPlaceService = visitPlaceService;
         }

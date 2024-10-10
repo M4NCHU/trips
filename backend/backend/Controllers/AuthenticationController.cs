@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using backend.Application.Services;
 using Microsoft.AspNetCore.Identity;
 using backend.Domain.Authentication;
-using backend.Infrastructure.Services;
 using System.Security.Claims;
 
 namespace backend.Controllers

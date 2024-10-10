@@ -15,9 +15,9 @@ namespace backend.Controllers
     [ApiController]
     public class SelectedPlaceController : ControllerBase
     {
-        private readonly ISelectedPlaceService _selectedPlaceService;
+        private readonly SelectedPlaceService _selectedPlaceService;
 
-        public SelectedPlaceController(ISelectedPlaceService selectedPlaceService)
+        public SelectedPlaceController(SelectedPlaceService selectedPlaceService)
         {
             _selectedPlaceService = selectedPlaceService;
         }

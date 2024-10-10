@@ -1,16 +1,14 @@
-import { FC, useState } from "react";
+import { FC } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import SubmitButton from "src/components/ui/SubmitButton";
+import useForm from "src/hooks/useForm";
+import useImagePreview from "src/hooks/useImagePreview";
 import { UseCategoryList } from "../../../api/Category";
 import { UseCreateDestination } from "../../../api/Destinations";
+import { DestinationValidator } from "../../../lib/validators/DestinationValidator";
 import FormHeader from "../../Forms/FormHeader";
 import Input from "../../Forms/Input";
-import { Button } from "../../ui/button";
-import { DestinationValidator } from "../../../lib/validators/DestinationValidator";
-import { ZodError } from "zod";
-import useImagePreview from "src/hooks/useImagePreview";
-import { useNavigate } from "react-router-dom";
-import useForm from "src/hooks/useForm";
-import toast from "react-hot-toast";
-import SubmitButton from "src/components/ui/SubmitButton";
 
 interface CreateProps {}
 
@@ -44,14 +42,10 @@ const CreateDestinationForm: FC<CreateProps> = ({}) => {
 
   const {
     mutate: CreateDestination,
-    status: CreateDestinationStatus,
     isPending: CreateDestinationIsPending,
-    isError: CreateDestinationIsError,
     isSuccess: CreateDestinationIsSuccess,
-    error: CreateDestinationError,
-    data: destinationData,
   } = UseCreateDestination();
-  const { data: categories, isLoading, isError } = UseCategoryList();
+  const { data: categories } = UseCategoryList();
 
   const navigate = useNavigate();
 
@@ -74,6 +68,7 @@ const CreateDestinationForm: FC<CreateProps> = ({}) => {
           onSuccess: (destinationData) => {
             toast.success("Destination created successfully!");
             reset();
+            navigate(0);
           },
           onError: (error: any) => {
             console.error("Error submitting form:", error);

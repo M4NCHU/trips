@@ -38,23 +38,21 @@ D:\Projects\Trips\trips\backend\backend.Infrastructure\obj\Debug\net8.0\refint\b
 D:\Projects\Trips\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend.Infrastructure.pdb
 D:\Projects\Trips\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend.Infrastructure.genruntimeconfig.cache
 D:\Projects\Trips\trips\backend\backend.Infrastructure\obj\Debug\net8.0\ref\backend.Infrastructure.dll
-G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\bin\Debug\net8.0\backend.Application.dll
-G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\bin\Debug\net8.0\backend.Domain.dll
-G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\bin\Debug\net8.0\backend.Application.pdb
-G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\bin\Debug\net8.0\backend.Domain.pdb
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend.Infrastructure.csproj.AssemblyReference.cache
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend.Infrastructure.AssemblyInfoInputs.cache
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend.Infrastructure.AssemblyInfo.cs
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend.Infrastructure.csproj.CoreCompileInputs.cache
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend.Infrastructure.sourcelink.json
-G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend..D0EE365B.Up2Date
-G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend.Infrastructure.dll
-G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\refint\backend.Infrastructure.dll
-G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend.Infrastructure.pdb
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\bin\Debug\net8.0\backend.Infrastructure.deps.json
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\bin\Debug\net8.0\backend.Infrastructure.runtimeconfig.json
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\bin\Debug\net8.0\backend.Infrastructure.dll
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\bin\Debug\net8.0\backend.Infrastructure.pdb
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\bin\Debug\net8.0\backend.Domain.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\bin\Debug\net8.0\backend.Domain.pdb
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend..D0EE365B.Up2Date
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend.Infrastructure.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\refint\backend.Infrastructure.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend.Infrastructure.pdb
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\backend.Infrastructure.genruntimeconfig.cache
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Infrastructure\obj\Debug\net8.0\ref\backend.Infrastructure.dll

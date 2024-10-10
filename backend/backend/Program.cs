@@ -1,7 +1,8 @@
+using Serilog;
+
 using backend.Infrastructure.Authentication;
 using backend.Controllers;
 using backend.Application.Services;
-using backend.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -19,31 +20,50 @@ using backend.Domain.Mappings;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("logs/log-.txt", rollingInterval: Serilog.RollingInterval.Day)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
+
+
 var provider = builder.Services.BuildServiceProvider();
 var configuration = provider.GetRequiredService<IConfiguration>();
-
-// Add services to the container.
 
 builder.Services.AddScoped<ImageService>(provider =>
 {
     var hostingEnvironment = provider.GetRequiredService<IWebHostEnvironment>();
-    return new ImageService(hostingEnvironment, "Images");
+    var logger = provider.GetRequiredService<ILogger<ImageService>>();
+    return new ImageService(hostingEnvironment, "Images", logger);
 });
+
+builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
+builder.Services.AddScoped<IAccommodationRepository, AccommodationRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IDestinationRepository, DestinationRepository>();
+builder.Services.AddScoped<IParticipantRepository, ParticipantRepository>();
+builder.Services.AddScoped<ISelectedPlaceRepository, SelectedPlaceRepository>();
+builder.Services.AddScoped<ITripDestinationRepository, TripDestinationRepository>();
+builder.Services.AddScoped<ITripParticipantRepository, TripParticipantRepository>();
+builder.Services.AddScoped<ITripRepository, TripRepository>();
+builder.Services.AddScoped<IVisitPlaceRepository, VisitPlaceRepository>();
+
 
 builder.Services.AddScoped<IAuthService, AuthenticationService>();
 builder.Services.AddScoped<IDestinationService, DestinationService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IVisitPlaceService, VisitPlaceService>();
-builder.Services.AddScoped<ITripService, TripService>();
+builder.Services.AddScoped<ITripService,TripService >();
 builder.Services.AddScoped<IAccommodationService, AccommodationService>();
 builder.Services.AddScoped<ITripParticipantService, TripParticipantService>();
 builder.Services.AddScoped<IParticipantService, ParticipantService>();
 builder.Services.AddScoped<ITripDestinationService, TripDestinationService>();
 builder.Services.AddScoped<ISelectedPlaceService, SelectedPlaceService>();
 
-builder.Services.AddSingleton<BaseUrlService>();
+builder.Services.AddScoped<BaseUrlService>();
 
-// Register DBContext
 builder.Services.AddDbContext<TripsDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DBconnection") + ";Include Error Detail=true");
@@ -134,3 +154,5 @@ app.MapControllerRoute(
 
 
 app.Run();
+
+Log.CloseAndFlush();

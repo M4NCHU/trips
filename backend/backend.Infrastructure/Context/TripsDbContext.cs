@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
-using backend.Application.Authentication;
 using backend.Domain.Authentication;
 
 namespace backend.Infrastructure.Authentication
@@ -72,12 +71,11 @@ namespace backend.Infrastructure.Authentication
                 .HasForeignKey(tp => tp.ParticipantId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Configure the one-to-many relationship between UserModel and TripModel
             modelBuilder.Entity<TripModel>()
-                .HasOne<UserModel>(t => t.User) // Trip has one User
-                .WithMany(u => u.Trips) // User has many Trips
-                .HasForeignKey(t => t.CreatedBy) // Foreign key
-                .OnDelete(DeleteBehavior.Cascade); // Cascade delete
+                .HasOne<UserModel>(t => t.User)
+                .WithMany(u => u.Trips) 
+                .HasForeignKey(t => t.CreatedBy) 
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -28,6 +28,7 @@ const Home = () => {
           <LandingButton text="Plan your trip" link="/destinations" />
           <LandingButton text="Accommodations" link="/" />
         </div>
+
         <div
           className="w-full h-[18rem] md:h-[24rem] rounded-lg mt-4 bg-cover bg-center relative"
           style={{ backgroundImage: `url(${Image})` }}

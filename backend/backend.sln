@@ -4,11 +4,14 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "backend", "backend\backend.csproj", "{2F998587-0CA2-456C-8C1B-0CF41827FAF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backend.Application", "backend.Application\backend.Application.csproj", "{026110F4-8A0E-4354-B577-07E7120B58B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "backend.Application", "backend.Application\backend.Application.csproj", "{026110F4-8A0E-4354-B577-07E7120B58B0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{71403F81-5574-454C-9112-6680E117F61E} = {71403F81-5574-454C-9112-6680E117F61E}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backend.Infrastructure", "backend.Infrastructure\backend.Infrastructure.csproj", "{71403F81-5574-454C-9112-6680E117F61E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "backend.Infrastructure", "backend.Infrastructure\backend.Infrastructure.csproj", "{71403F81-5574-454C-9112-6680E117F61E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backend.Domain", "backend.Domain\backend.Domain.csproj", "{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "backend.Domain", "backend.Domain\backend.Domain.csproj", "{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import {
   CiCircleInfo,
   CiCirclePlus,
@@ -7,18 +8,13 @@ import {
 } from "react-icons/ci";
 import { FaArrowLeft, FaRegHeart } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
-import { useDestinationById } from "../../api/Destinations";
-import { useVisitPlacesByDestination } from "../../api/VisitPlaceAPI";
-import { Button } from "../ui/button";
-import { UseCreateTripDestination } from "../../api/TripDestinationAPI";
-import { SelectedPlace } from "src/types/SelectedPlaceTypes";
+import { UseUserTripsList } from "src/api/TripAPI";
 import { useAuth } from "src/context/UserContext";
-import { UseEnsureActiveTripExists, UseUserTripsList } from "src/api/TripAPI";
-import { User } from "src/types/UserTypes";
 import { Trip } from "src/types/TripTypes";
-import toast from "react-hot-toast";
-import SubmitButton from "../ui/SubmitButton";
+import { useDestinationById } from "../../api/Destinations";
+import { UseCreateTripDestination } from "../../api/TripDestinationAPI";
 import CreateTripModal from "../Modals/CreateTripModal";
+import SubmitButton from "../ui/SubmitButton";
 
 interface DestinationDetailsProps {}
 
@@ -29,11 +25,8 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
 
   const {
     mutate: createTripDestination,
-    status,
     isPending,
-    isError,
     isSuccess,
-    error,
   } = UseCreateTripDestination();
 
   const { id } = useParams<{ id: string | undefined }>();

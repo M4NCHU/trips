@@ -13,7 +13,8 @@ namespace backend.Domain.DTOs
         public string Name { get; set; }
 
         [StringLength(500, ErrorMessage = "Description cannot exceed 500 characters.")]
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
+        public string Icon { get; set; } = string.Empty;
 
         public string? PhotoUrl { get; set; }
 

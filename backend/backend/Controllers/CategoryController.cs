@@ -8,7 +8,6 @@ using backend.Models;
 using Microsoft.Extensions.Hosting;
 using backend.Application.Services;
 using Microsoft.AspNetCore.Authorization;
-using backend.Infrastructure.Services;
 using backend.Domain.DTOs;
 
 namespace backend.Controllers

@@ -886,7 +886,6 @@ G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\obj\Debug\net8.0\
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\obj\Debug\net8.0\backend.AssemblyInfoInputs.cache
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\obj\Debug\net8.0\backend.AssemblyInfo.cs
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\obj\Debug\net8.0\backend.csproj.CoreCompileInputs.cache
-G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\obj\Debug\net8.0\backend.MvcApplicationPartsAssemblyInfo.cs
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\obj\Debug\net8.0\backend.MvcApplicationPartsAssemblyInfo.cache
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\obj\Debug\net8.0\backend.sourcelink.json
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\obj\Debug\net8.0\backend.dll
@@ -1179,4 +1178,17 @@ G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\obj\Debug\net8.0\
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\obj\Debug\net8.0\backend.csproj.Up2Date
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\obj\Debug\net8.0\backend.genruntimeconfig.cache
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\obj\Debug\net8.0\ref\backend.dll
-G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\System.Text.Json.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\obj\Debug\net8.0\backend.MvcApplicationPartsAssemblyInfo.cs
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\Serilog.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\Serilog.AspNetCore.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\Serilog.Sinks.File.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\System.Formats.Asn1.dll

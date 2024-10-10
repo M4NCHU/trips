@@ -18,7 +18,7 @@ import { MdTravelExplore } from "react-icons/md";
 const Header = () => {
   const { user, logout } = useAuth();
 
-  const { data: UserTripsCount } = UseUserTripsCount(user?.id, 0);
+  //const { data: UserTripsCount } = UseUserTripsCount(user?.id, 0);
 
   return (
     <>
@@ -26,18 +26,6 @@ const Header = () => {
         <div className="p-2 flex flex-row justify-between gap-4 w-full">
           <SearchModal />
           <div className="user-panel flex items-center gap-[1rem] text-sm md:text-2xl font-bold px-[.5rem] md:px-[2rem]   rounded-full">
-            {UserTripsCount && UserTripsCount > 0 ? (
-              <ButtonWithIcon
-                icon={<MdTravelExplore />}
-                className="bg-pink-600 rounded-full p-2 text-white hover:text-black text-2xl"
-              />
-            ) : (
-              <ButtonWithIcon
-                icon={<PiPlusCircle />}
-                className="bg-pink-600 rounded-full p-2 text-white hover:text-black text-2xl"
-              />
-            )}
-
             <div className="hidden md:block">
               <Switcher />
             </div>

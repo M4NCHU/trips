@@ -1,18 +1,15 @@
 import { FC, useState } from "react";
-import { UseCategoryList, useCreateCategory } from "../../../api/Category";
-import { UseCreateDestination } from "../../../api/Destinations";
-import FormHeader from "../../Forms/FormHeader";
-import Input from "../../Forms/Input";
-import { Button } from "../../ui/button";
-import { DestinationValidator } from "../../../lib/validators/DestinationValidator";
-import { ZodError } from "zod";
-import useImagePreview from "src/hooks/useImagePreview";
-import { useNavigate } from "react-router-dom";
-import useForm from "src/hooks/useForm";
 import toast from "react-hot-toast";
 import SubmitButton from "src/components/ui/SubmitButton";
+import useForm from "src/hooks/useForm";
+import useImagePreview from "src/hooks/useImagePreview";
 import { useRoleChecker } from "src/hooks/useRoleChecker";
 import { CategoryValidator } from "src/lib/validators/CategoryValidator";
+import { useCreateCategory } from "../../../api/Category";
+import FormHeader from "../../Forms/FormHeader";
+import Input from "../../Forms/Input";
+import { useNavigate } from "react-router-dom";
+import IconPicker from "src/components/Icons/IconPicker";
 
 interface CreateProps {}
 
@@ -36,19 +33,15 @@ const CreateCategoryForm: FC<CreateProps> = ({}) => {
     setValue,
     reset,
   } = useForm(initialFieldValues, CategoryValidator);
-  const {
-    mutate: createCategory,
-    status,
-    isPending,
-    isError,
-    isSuccess,
-    error,
-  } = useCreateCategory();
+  const { mutate: createCategory, isPending, isSuccess } = useCreateCategory();
 
   const { showPreview, imagePreview } = useImagePreview();
   const { hasRole } = useRoleChecker();
   const [loading, setLoading] = useState(false);
   const [showCheckmark, setShowCheckmark] = useState(false);
+
+  const navigate = useNavigate();
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -72,6 +65,7 @@ const CreateCategoryForm: FC<CreateProps> = ({}) => {
             setShowCheckmark(true);
             setTimeout(() => setShowCheckmark(false), 2000);
             reset();
+            navigate(0);
           },
           onError: (error) => {
             console.error("Error submitting form:", error);
@@ -111,6 +105,8 @@ const CreateCategoryForm: FC<CreateProps> = ({}) => {
               onChange={handleChange}
               errorMessage={errors.description}
             />
+
+            <IconPicker />
           </div>
 
           <div className="w-full md:w-1/3 flex flex-col">

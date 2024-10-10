@@ -15,9 +15,9 @@ namespace backend.Controllers
     [ApiController]
     public class ParticipantController : ControllerBase
     {
-        private readonly IParticipantService _participantService;
+        private readonly ParticipantService _participantService;
 
-        public ParticipantController(IParticipantService participantService)
+        public ParticipantController(ParticipantService participantService)
         {
             _participantService = participantService;
         }

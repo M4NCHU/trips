@@ -12,9 +12,11 @@ namespace backend.Models
         [Required]
         public string Name { get; set; }
 
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
         public string PhotoUrl { get; set; }
+
+        public string Icon { get; set; } = string.Empty;
 
         public DateTime? CreatedAt { get; set; }
 

@@ -15,9 +15,9 @@ namespace backend.Controllers
     [ApiController]
     public class TripDestinationController : ControllerBase
     {
-        private readonly ITripDestinationService _tripDestinationService;
+        private readonly TripDestinationService _tripDestinationService;
 
-        public TripDestinationController(ITripDestinationService tripDestinationService)
+        public TripDestinationController(TripDestinationService tripDestinationService)
         {
             _tripDestinationService = tripDestinationService;
         }
