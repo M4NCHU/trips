@@ -106,8 +106,7 @@
               "RelativeToolTip": "backend.Domain\\Filters\\DestinationFilter.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T20:22:58.537Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T20:22:58.537Z"
             },
             {
               "$type": "Document",
@@ -119,8 +118,7 @@
               "RelativeToolTip": "backend\\Program.cs",
               "ViewState": "AQIAAAcAAAAAAAAAAAAawA0AAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T20:15:55.822Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T20:15:55.822Z"
             },
             {
               "$type": "Document",
@@ -132,8 +130,7 @@
               "RelativeToolTip": "backend.Infrastructure\\Respository\\AccommodationRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T20:11:06.06Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T20:11:06.06Z"
             },
             {
               "$type": "Document",
@@ -145,8 +142,7 @@
               "RelativeToolTip": "backend.Application\\Services\\UserService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T20:08:27.734Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T20:08:27.734Z"
             },
             {
               "$type": "Document",
@@ -158,8 +154,7 @@
               "RelativeToolTip": "backend.Application\\Services\\TripService.cs",
               "ViewState": "AQIAAHcAAAAAAAAAAAAnwKYAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T20:08:27.135Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T20:08:27.135Z"
             },
             {
               "$type": "Document",
@@ -171,8 +166,7 @@
               "RelativeToolTip": "backend.Application\\Services\\TripParticipantService.cs",
               "ViewState": "AQIAAKoAAAAAAAAAAAAqwOQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T20:08:11.745Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T20:08:11.745Z"
             },
             {
               "$type": "Document",
@@ -184,8 +178,7 @@
               "RelativeToolTip": "backend.Application\\Services\\TripDestinationService.cs",
               "ViewState": "AQIAAD8AAAAAAAAAAAAqwHkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T20:07:05.192Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T20:07:05.192Z"
             },
             {
               "$type": "Document",
@@ -197,8 +190,7 @@
               "RelativeToolTip": "backend.Application\\Services\\SelectedPlaceService.cs",
               "ViewState": "AQIAAFEAAAAAAAAAAAAqwIsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T20:04:12.858Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T20:04:12.858Z"
             },
             {
               "$type": "Document",
@@ -210,8 +202,7 @@
               "RelativeToolTip": "backend.Application\\Services\\RoleService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T20:04:08.77Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T20:04:08.77Z"
             },
             {
               "$type": "Document",
@@ -223,8 +214,7 @@
               "RelativeToolTip": "backend.Application\\Services\\ParticipantService.cs",
               "ViewState": "AQIAAGAAAAAAAAAAAAAqwJoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T20:04:06.684Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T20:04:06.684Z"
             },
             {
               "$type": "Document",
@@ -236,8 +226,7 @@
               "RelativeToolTip": "backend.Application\\Services\\JWTService.cs",
               "ViewState": "AQIAABQAAAAAAAAAAAAQwDoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T20:03:10.397Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T20:03:10.397Z"
             },
             {
               "$type": "Document",
@@ -249,8 +238,7 @@
               "RelativeToolTip": "backend.Application\\Services\\ImageService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwA8AAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T20:03:09.663Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T20:03:09.663Z"
             },
             {
               "$type": "Document",
@@ -260,7 +248,7 @@
               "RelativeDocumentMoniker": "backend.Application\\Services\\DestinationsService.cs",
               "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\DestinationsService.cs",
               "RelativeToolTip": "backend.Application\\Services\\DestinationsService.cs",
-              "ViewState": "AQIAADAAAAAAAAAAAAAmwE0AAAA9AAAA",
+              "ViewState": "AQIAADAAAAAAAAAAAAAmwFEAAABgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-10T20:03:09.129Z",
               "EditorCaption": ""
@@ -275,8 +263,7 @@
               "RelativeToolTip": "backend\\Controllers\\TripController.cs",
               "ViewState": "AQIAABsAAAAAAAAAAAAnwDoAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T20:43:38.449Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T20:43:38.449Z"
             },
             {
               "$type": "Document",
@@ -288,8 +275,7 @@
               "RelativeToolTip": "backend.Application\\Services\\AccommodationService.cs",
               "ViewState": "AQIAABkAAAAAAAAAAAAgwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T19:59:44.817Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T19:59:44.817Z"
             },
             {
               "$type": "Document",
@@ -301,8 +287,7 @@
               "RelativeToolTip": "backend.Application\\Services\\VisitPlaceService.cs",
               "ViewState": "AQIAACMAAAAAAAAAAAAcwD8AAAB4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T20:12:20.974Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T20:12:20.974Z"
             },
             {
               "$type": "Document",
@@ -314,8 +299,7 @@
               "RelativeToolTip": "backend.Application\\Services\\AuthenticationService.cs",
               "ViewState": "AQIAAJwAAAAAAAAAAAAAAMEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T19:59:45.581Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T19:59:45.581Z"
             },
             {
               "$type": "Document",
@@ -327,8 +311,7 @@
               "RelativeToolTip": "backend.Application\\Services\\BaseUrlService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T19:59:39.276Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T19:59:39.276Z"
             },
             {
               "$type": "Document",
@@ -340,8 +323,7 @@
               "RelativeToolTip": "backend.Application\\Services\\CategoryService.cs",
               "ViewState": "AQIAAGAAAAAAAAAAAAAqwJoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T19:57:59.764Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T19:57:59.764Z"
             }
           ]
         }
