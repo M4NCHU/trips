@@ -18,6 +18,8 @@ import FormImagePreview from "src/components/Admin/Form/FormImagePreview";
 import CategoriesListModal from "src/components/Admin/Category/CategoriesListModal";
 import FormTitle from "src/components/Admin/Form/FormTitle";
 import FormLabel from "src/components/Admin/Form/FormLabel";
+import CreateDestinationModal from "src/components/Destinations/Modals/CreateDestinationModal";
+import CreateDestinationForm from "src/components/Destinations/Forms/CreateDestinationForm";
 
 interface CreateProps {}
 
@@ -89,81 +91,10 @@ const CreateDestination: FC<CreateProps> = ({}) => {
   };
 
   return (
-    <FormLayout>
-      <FormContent>
-        <FormSection
-          className="flex flex-col  gap-2 grow"
-          title="General information"
-        >
-          <Input
-            placeholder="Enter name"
-            label="Name"
-            name="name"
-            value={values.name}
-            onChange={handleChange}
-            errorMessage={errors.name}
-          />
-          <Input
-            placeholder="Enter location"
-            label="location"
-            name="location"
-            value={values.location}
-            onChange={handleChange}
-            errorMessage={errors.location}
-          />
-          <Input
-            placeholder="Enter description"
-            label="description"
-            name="description"
-            value={values.description}
-            onChange={handleChange}
-            errorMessage={errors.description}
-          />
-
-          <Input
-            placeholder="Enter Price"
-            label="Price"
-            name="price"
-            type="number"
-            value={values.price}
-            onChange={handleChange}
-            errorMessage={errors.price}
-          />
-        </FormSection>
-
-        <FormSection
-          className="w-full gap-2 md:w-1/3 flex flex-col"
-          title="Destination photo"
-        >
-          <FormLabel title="Choose category" />
-          <CategoriesListModal
-            action={handleCategoryToggle}
-            categoryId={values.categoryId}
-          />
-          <Input
-            placeholder="Choose photo"
-            label="Choose photo"
-            type="file"
-            name="photoUrl"
-            accept="image/*"
-            onChange={showPreview}
-            id="image-uploader"
-          />
-
-          <FormImagePreview
-            imagePreview={imagePreview.imageSrc}
-            isLoading={imagePreview.isLoading}
-          />
-        </FormSection>
-      </FormContent>
-      <SubmitButton
-        isPending={CreateDestinationIsPending}
-        isSuccess={CreateDestinationIsSuccess}
-        isLoading={imagePreview.isLoading}
-        onSubmit={(e) => handleFormSubmit(e)}
-        type="submit"
-      />
-    </FormLayout>
+    <>
+      <CreateDestinationModal />
+      <CreateDestinationForm />
+    </>
   );
 };
 

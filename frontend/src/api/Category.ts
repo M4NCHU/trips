@@ -11,7 +11,6 @@ import {
 import CryptoJS from "crypto-js";
 import { User } from "src/types/UserTypes";
 
-// Get Categories with pagination
 export const UseCategoryList = () => {
   return useQuery<Category[], Error>({
     queryKey: ["categories"],

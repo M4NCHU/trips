@@ -10,7 +10,7 @@ const Input: FC<InputProps> = ({ label, errorMessage, ...inputProps }) => {
   return (
     <div className="flex flex-col gap-1">
       {label && <FormLabel title={label} />}
-      <input className="p-3 rounded-lg bg-background" {...inputProps} />
+      <input className="p-3 rounded-lg bg-secondary" {...inputProps} />
       {errorMessage && (
         <div className="error-message text-red-500">{errorMessage}</div>
       )}

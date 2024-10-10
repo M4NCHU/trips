@@ -14,11 +14,8 @@ const Router = () => {
         element
       );
 
-      // Owrapowanie komponentu w odpowiedni layout
-      const wrappedRouteElement = isAdminPage ? (
-        <AdminLayout>{routeElement}</AdminLayout>
-      ) : (
-        <Layout>{routeElement}</Layout>
+      const wrappedRouteElement = (
+        <Layout isAdmin={isAdminPage}>{routeElement}</Layout>
       );
 
       return (

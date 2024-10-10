@@ -1,25 +1,21 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
 import AdminNavTitle from "./AdminNavTitle";
-import AdminNavSearch from "./AdminNavSearch";
-import AdminNavIconsSection from "./AdminNavIconsSection";
-import AdminNavIcon from "./AdminNavIcon";
-import { BsSun } from "react-icons/bs";
-import UserIconWithDropdown from "src/components/User/UserIconWithDropdown";
+import AdminLink from "./AdminLink";
 
 interface AdminNavProps {}
 
 const AdminNav: FC<AdminNavProps> = ({}) => {
   return (
-    <div className="flex flex-row justify-between">
-      <AdminNavTitle title="Dashboard" date="01-04-2024" />
-      <div className="flex flex-row items-center gap-2">
-        <AdminNavSearch />
-        <AdminNavIconsSection>
-          <AdminNavIcon icon={<BsSun />} />
-          <AdminNavIcon icon={<BsSun />} />
-          <AdminNavIcon icon={<BsSun />} />
-          <UserIconWithDropdown />
-        </AdminNavIconsSection>
+    <div className="flex flex-row justify-between py-2 border-b-[1px] border-background">
+      <AdminNavTitle title="Admin Panel" date="01-04-2024" />
+      <div className="flex flex-row items-center gap-2 py-2">
+        <ul className="admin-link-ul flex flex-row">
+          <AdminLink link={"/admin/destinations"} title={"Destinations"} />
+          <AdminLink link={"/admin/categories"} title={"Categories"} />
+          <AdminLink link={"/admin/trips"} title={"Trips"} />
+          <AdminLink link={"/admin/settings"} title={"Settings"} />
+        </ul>
       </div>
     </div>
   );

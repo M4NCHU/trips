@@ -15,7 +15,7 @@ type DestinationType = {
 
 const Home = () => {
   return (
-    <div className="container px-4">
+    <>
       <div className="flex flex-col justify-center items-center py-12 gap-4">
         <h1 className="text-2xl md:text-4xl font-semibold">
           Travel Smarter, Dream bigger
@@ -35,22 +35,9 @@ const Home = () => {
       </div>
       <div className="flex flex-col mt-12 gap-12">
         <LandingDestinationList />
-
         <LandingCategoriesList />
       </div>
-      {/* <CategoriesList />
-      <div className="container my-5 px-4">
-        <div className="hidden sm:flex justify-end fixed bottom-4 right-4 z-[9999]">
-          <Link
-            to="/destinations/create"
-            className="bg-secondary p-5 text-xl font-bold rounded-full"
-          >
-            <GoPlus />
-          </Link>
-        </div>
-        <DestinationsList />
-      </div> */}
-    </div>
+    </>
   );
 };
 

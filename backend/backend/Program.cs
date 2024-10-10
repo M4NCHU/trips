@@ -24,9 +24,6 @@ var configuration = provider.GetRequiredService<IConfiguration>();
 
 // Add services to the container.
 
-
-
-
 builder.Services.AddScoped<ImageService>(provider =>
 {
     var hostingEnvironment = provider.GetRequiredService<IWebHostEnvironment>();
@@ -46,29 +43,15 @@ builder.Services.AddScoped<ISelectedPlaceService, SelectedPlaceService>();
 
 builder.Services.AddSingleton<BaseUrlService>();
 
-
-
-
 // Register DBContext
 builder.Services.AddDbContext<TripsDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DBconnection") + ";Include Error Detail=true");
 });
 
-
-/*// For Identity
-builder.Services.AddIdentity<UserModel, IdentityRole>()
-    .AddEntityFrameworkStores<TripsDbContext>()
-    .AddDefaultTokenProviders();
-
-// Adding Authentication
-*/
-
 builder.Services.AddScoped<JWTService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IUserService, UserService>();
-
-
 
 builder.Services.AddIdentityCore<UserModel>(options =>
 {
@@ -94,7 +77,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateIssuer = true,
         ValidateAudience = false,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])),
-        /*ValidAudience = configuration["JWT:ValidAudience"],*/
         ValidIssuer = configuration["JWT:ValidIssuer"],
     };
 });
@@ -105,20 +87,13 @@ builder.Services.AddAuthorization(options =>
 });
 
 
-
-
-
 builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles); ;
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpContextAccessor();
 
-
-
-
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
 
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
@@ -133,13 +108,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-
-
-
-
 var app = builder.Build();
-
-
 
 app.UseStaticFiles(new StaticFileOptions
 {
@@ -147,7 +116,6 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = "/Images"
 });
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

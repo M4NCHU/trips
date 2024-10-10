@@ -1,7 +1,9 @@
 import DestinationDetails from "../components/Destinations/DestinationDetails";
 import { routerType } from "../types/Router";
 import Admin from "./Admin/Admin";
+import CategoryAdmin from "./Admin/Categories/Categories";
 import CreateDestination from "./Admin/Destinations/Create";
+import DestinationsAdmin from "./Admin/Destinations/Destinations";
 import Login from "./Authentication/Login/Login";
 import Register from "./Authentication/Register/Register";
 import UseCreateCategory from "./Categories/Create";
@@ -14,13 +16,6 @@ import CreateVisitPlace from "./VisitPlaces/Create";
 
 const pagesData: routerType[] = [
   {
-    path: "/admin",
-    element: <Admin />,
-    title: "home",
-    isProtected: true,
-    isAdminPage: true,
-  },
-  {
     path: "",
     element: <Home />,
     title: "home",
@@ -32,37 +27,29 @@ const pagesData: routerType[] = [
     title: "contact",
     isProtected: false,
   },
+
+  // Destinations
   {
     path: "destinations",
     element: <Destinations />,
     title: "Destinations",
     isProtected: false,
   },
-  {
-    path: "admin/destinations/create",
-    element: <CreateDestination />,
-    title: "Create trip destination",
-    isProtected: false,
-    isAdminPage: true,
-  },
+
   {
     path: "destination/:id",
     element: <DestinationDetails />,
     title: "Destination Details",
     isProtected: false,
   },
-  {
-    path: "categories/create",
-    element: <UseCreateCategory />,
-    title: "Create destination category",
-    isProtected: false,
-  },
+
   {
     path: "destination/:id/visit-place/create",
     element: <CreateVisitPlace />,
     title: "Create visit place",
     isProtected: false,
   },
+
   {
     path: "planning/:id",
     element: <Planning />,
@@ -86,6 +73,48 @@ const pagesData: routerType[] = [
     element: <Register />,
     title: "register",
     isProtected: false,
+  },
+
+  // admin
+
+  {
+    path: "/admin",
+    element: <Admin />,
+    title: "home",
+    isProtected: true,
+    isAdminPage: true,
+  },
+
+  // Destinations admin
+  {
+    path: "admin/destinations",
+    element: <DestinationsAdmin />,
+    title: "View admin destinations",
+    isProtected: false,
+    isAdminPage: true,
+  },
+  {
+    path: "admin/destinations/create",
+    element: <CreateDestination />,
+    title: "Create trip destination",
+    isProtected: false,
+    isAdminPage: true,
+  },
+
+  {
+    path: "admin/categories",
+    element: <CategoryAdmin />,
+    title: "Categories list",
+    isProtected: false,
+    isAdminPage: true,
+  },
+
+  {
+    path: "admin/categories/create",
+    element: <UseCreateCategory />,
+    title: "Create destination category",
+    isProtected: false,
+    isAdminPage: true,
   },
 ];
 

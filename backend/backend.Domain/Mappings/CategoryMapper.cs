@@ -9,7 +9,6 @@ namespace backend.Domain.Mappings
     {
         public CategoryMapper()
         {
-            
             // Map CategoryModel to CategoryDTO
             CreateMap<CategoryModel, CategoryDTO>();
         }

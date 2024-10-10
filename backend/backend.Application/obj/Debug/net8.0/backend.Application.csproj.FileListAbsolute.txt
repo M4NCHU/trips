@@ -30,3 +30,19 @@ D:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\backend.App
 D:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\refint\backend.Application.dll
 D:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.pdb
 D:\Projects\Trips\trips\backend\backend.Application\obj\Debug\net8.0\ref\backend.Application.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\bin\Debug\net8.0\backend.Domain.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\bin\Debug\net8.0\backend.Domain.pdb
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.csproj.AssemblyReference.cache
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.AssemblyInfoInputs.cache
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.AssemblyInfo.cs
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.csproj.CoreCompileInputs.cache
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.sourcelink.json
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\obj\Debug\net8.0\backend..39599843.Up2Date
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\obj\Debug\net8.0\refint\backend.Application.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\obj\Debug\net8.0\backend.Application.pdb
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\bin\Debug\net8.0\backend.Application.deps.json
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\bin\Debug\net8.0\backend.Application.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\bin\Debug\net8.0\backend.Application.pdb
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Application\obj\Debug\net8.0\ref\backend.Application.dll

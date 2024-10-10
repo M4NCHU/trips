@@ -6,49 +6,79 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   theme: {
     container: {
       center: true,
       padding: "2rem",
       screens: {
         "2xl": "1400px",
+        xl: "1280px",
+        lg: "1024px",
+        md: "768px",
+        sm: "640px",
       },
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        border: "var(--border)", // Zmienna CSS
+        input: "var(--input)", // Zmienna CSS
+        ring: "var(--ring)", // Zmienna CSS
+        background: "var(--background)", // Zmienna CSS
+        foreground: "var(--foreground)", // Zmienna CSS
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "var(--primary)", // Zmienna CSS
+          foreground: "var(--primary-foreground)", // Zmienna CSS
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "var(--secondary)", // Zmienna CSS
+          foreground: "var(--secondary-foreground)", // Zmienna CSS
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "var(--destructive)", // Zmienna CSS
+          foreground: "var(--destructive-foreground)", // Zmienna CSS
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "var(--muted)", // Zmienna CSS
+          foreground: "var(--muted-foreground)", // Zmienna CSS
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "var(--accent)", // Zmienna CSS
+          foreground: "var(--accent-foreground)", // Zmienna CSS
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "var(--popover)", // Zmienna CSS
+          foreground: "var(--popover-foreground)", // Zmienna CSS
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "var(--card)", // Zmienna CSS
+          foreground: "var(--card-foreground)", // Zmienna CSS
+        },
+        // Admin theme colors
+        admin: {
+          background: "var(--background)", // Zmienna CSS
+          foreground: "var(--foreground)", // Zmienna CSS
+          primary: {
+            DEFAULT: "var(--primary)", // Zmienna CSS
+            foreground: "var(--primary-foreground)", // Zmienna CSS
+          },
+          secondary: {
+            DEFAULT: "var(--secondary)", // Zmienna CSS
+            foreground: "var(--secondary-foreground)", // Zmienna CSS
+          },
+          accent: {
+            DEFAULT: "var(--accent)", // Zmienna CSS
+            foreground: "var(--accent-foreground)", // Zmienna CSS
+          },
+          muted: {
+            DEFAULT: "var(--muted)", // Zmienna CSS
+            foreground: "var(--muted-foreground)", // Zmienna CSS
+          },
+        },
+        // New custom color for central section
+        centralSection: {
+          foreground: "var(--central-section-foreground)", // Zmienna CSS
+          background: "var(--central-section-background)", // Zmienna CSS
         },
       },
       borderRadius: {

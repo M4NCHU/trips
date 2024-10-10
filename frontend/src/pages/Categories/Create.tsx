@@ -83,7 +83,7 @@ const CreateCategory: FC<CreateProps> = ({}) => {
   };
 
   return (
-    <div className="container px-4">
+    <>
       <FormHeader title="Create new Category" />
       <form
         className=" bg-secondary rounded-lg p-4 "
@@ -140,7 +140,7 @@ const CreateCategory: FC<CreateProps> = ({}) => {
           onSubmit={(e) => handleFormSubmit(e)}
         />
       </form>
-    </div>
+    </>
   );
 };
 

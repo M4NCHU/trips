@@ -24,3 +24,16 @@ D:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.d
 D:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\refint\backend.Domain.dll
 D:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.pdb
 D:\Projects\Trips\trips\backend\backend.Domain\obj\Debug\net8.0\ref\backend.Domain.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\obj\Debug\net8.0\refint\backend.Domain.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.pdb
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\bin\Debug\net8.0\backend.Domain.deps.json
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\bin\Debug\net8.0\backend.Domain.dll
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\bin\Debug\net8.0\backend.Domain.pdb
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.csproj.AssemblyReference.cache
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.AssemblyInfoInputs.cache
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.AssemblyInfo.cs
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.csproj.CoreCompileInputs.cache
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.sourcelink.json
+G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\obj\Debug\net8.0\ref\backend.Domain.dll

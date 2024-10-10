@@ -49,15 +49,11 @@ const SearchModal: FC<SearchModalProps> = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="px-0 md:px-2 flex items-center rounded-full h-full cursor-pointer gap-2">
+        <div className="px-0 md:px-2 flex items-center rounded-full h-full cursor-pointer gap-2 grow max-w-[24rem]">
           <input
             type="text"
-            className="hidden md:block rounded-full bg-background p-2 text-base placeholder:text-sm"
+            className="hidden md:block rounded-full text-base placeholder:text-sm w-full h-full px-[2rem] bg-secondary"
             placeholder="search for something ..."
-          />
-          <ButtonWithIcon
-            icon={<IoSearch />}
-            className="rounded-full bg-transparent md:bg-pink-600 text-white text-2xl md:text-xl hover:text-black"
           />
         </div>
       </DialogTrigger>
