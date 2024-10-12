@@ -6,63 +6,77 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
+using backend.Models;
 
 namespace backend.Application.Services
 {
     public class VisitPlaceService : IVisitPlaceService
     {
-        private readonly IVisitPlaceRepository _visitPlaceRepository;
-        private readonly ImageService _imageService;
-        private readonly BaseUrlService _baseUrlService;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IImageService _imageService;
+        private readonly IBaseUrlService _baseUrlService;
         private readonly ILogger<VisitPlaceService> _logger;
+        private readonly IMapper _mapper;
         private readonly string _baseUrl;
 
-        public VisitPlaceService(IVisitPlaceRepository visitPlaceRepository, ImageService imageService, BaseUrlService baseUrlService, ILogger<VisitPlaceService> logger)
+        public VisitPlaceService(
+            IUnitOfWork unitOfWork,
+            IImageService imageService,
+            IBaseUrlService baseUrlService,
+            ILogger<VisitPlaceService> logger,
+            IMapper mapper)
         {
-            _visitPlaceRepository = visitPlaceRepository;
+            _unitOfWork = unitOfWork;
             _imageService = imageService;
             _baseUrlService = baseUrlService;
             _logger = logger;
+            _mapper = mapper;
             _baseUrl = _baseUrlService.GetBaseUrl();
         }
 
         public async Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlaces()
         {
             _logger.LogInformation("Fetching all visit places.");
-            var visitPlaces = await _visitPlaceRepository.GetVisitPlacesAsync();
-            foreach (var place in visitPlaces)
+            var visitPlaces = await _unitOfWork.VisitPlaces.GetAllAsync();
+            var visitPlaceDTOs = _mapper.Map<IEnumerable<VisitPlaceDTO>>(visitPlaces);
+
+            foreach (var place in visitPlaceDTOs)
             {
                 place.PhotoUrl = $"{_baseUrl}/Images/VisitPlace/{place.PhotoUrl}";
             }
-            _logger.LogInformation("Fetched {Count} visit places.", visitPlaces.Count());
-            return new OkObjectResult(visitPlaces);
+            _logger.LogInformation("Fetched {Count} visit places.", visitPlaceDTOs.Count());
+            return new OkObjectResult(visitPlaceDTOs);
         }
 
         public async Task<ActionResult<VisitPlaceDTO>> GetVisitPlace(Guid id)
         {
             _logger.LogInformation("Fetching visit place with ID {VisitPlaceId}.", id.ToString());
-            var visitPlace = await _visitPlaceRepository.GetVisitPlaceByIdAsync(id);
+            var visitPlace = await _unitOfWork.VisitPlaces.GetByIdAsync(id);
             if (visitPlace == null)
             {
                 _logger.LogWarning("Visit place with ID {VisitPlaceId} not found.", id.ToString());
                 return new NotFoundResult();
             }
 
-            visitPlace.PhotoUrl = $"{_baseUrl}/Images/VisitPlace/{visitPlace.PhotoUrl}";
+            var visitPlaceDTO = _mapper.Map<VisitPlaceDTO>(visitPlace);
+            visitPlaceDTO.PhotoUrl = $"{_baseUrl}/Images/VisitPlace/{visitPlaceDTO.PhotoUrl}";
             _logger.LogInformation("Fetched visit place with ID {VisitPlaceId}.", id.ToString());
-            return new OkObjectResult(visitPlace);
+            return new OkObjectResult(visitPlaceDTO);
         }
 
         public async Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlacesByDestination(Guid destinationId)
         {
             _logger.LogInformation("Fetching visit places for destination ID {DestinationId}.", destinationId.ToString());
-            var visitPlaces = await _visitPlaceRepository.GetVisitPlacesByDestinationAsync(destinationId);
-            foreach (var place in visitPlaces)
+            var visitPlaces = await _unitOfWork.VisitPlaces.GetVisitPlacesByDestinationAsync(destinationId);
+            var visitPlaceDTOs = _mapper.Map<IEnumerable<VisitPlaceDTO>>(visitPlaces);
+
+            foreach (var place in visitPlaceDTOs)
             {
                 place.PhotoUrl = $"{_baseUrl}/Images/VisitPlace/{place.PhotoUrl}";
             }
-            _logger.LogInformation("Fetched {Count} visit places for destination ID {DestinationId}.", visitPlaces.Count(), destinationId.ToString());
-            return new OkObjectResult(visitPlaces);
+            _logger.LogInformation("Fetched {Count} visit places for destination ID {DestinationId}.", visitPlaceDTOs.Count(), destinationId.ToString());
+            return new OkObjectResult(visitPlaceDTOs);
         }
 
         public async Task<IActionResult> PutVisitPlace(Guid id, VisitPlaceDTO visitPlaceDTO)
@@ -74,20 +88,17 @@ namespace backend.Application.Services
                 return new BadRequestResult();
             }
 
-            var result = await _visitPlaceRepository.UpdateVisitPlaceAsync(visitPlaceDTO);
-            if (result)
-            {
-                _logger.LogInformation("Successfully updated visit place with ID {VisitPlaceId}.", id.ToString());
-                return new NoContentResult();
-            }
-
-            _logger.LogWarning("Visit place with ID {VisitPlaceId} not found.", id.ToString());
-            return new NotFoundResult();
+            var visitPlaceModel = _mapper.Map<VisitPlaceModel>(visitPlaceDTO);
+            await _unitOfWork.VisitPlaces.UpdateAsync(visitPlaceModel);
+            await _unitOfWork.SaveChangesAsync();
+            _logger.LogInformation("Successfully updated visit place with ID {VisitPlaceId}.", id.ToString());
+            return new NoContentResult();
         }
 
-        public async Task<CreateVisitPlaceDTO> PostVisitPlace(CreateVisitPlaceDTO visitPlaceDTO)
+        public async Task<IActionResult> PostVisitPlace(CreateVisitPlaceDTO visitPlaceDTO)
         {
             _logger.LogInformation("Creating new visit place with name {Name}.", visitPlaceDTO.Name);
+
             if (visitPlaceDTO.ImageFile == null)
             {
                 _logger.LogError("The 'ImageFileDTO' field is required.");
@@ -95,23 +106,34 @@ namespace backend.Application.Services
             }
 
             visitPlaceDTO.PhotoUrl = await _imageService.SaveImage(visitPlaceDTO.ImageFile, "VisitPlace");
-            var createdVisitPlace = await _visitPlaceRepository.CreateVisitPlaceAsync(visitPlaceDTO);
-            _logger.LogInformation("Successfully created visit place with name {Name}.", createdVisitPlace.Name);
-            return createdVisitPlace;
+            var visitPlaceModel = _mapper.Map<VisitPlaceModel>(visitPlaceDTO);
+            await _unitOfWork.VisitPlaces.AddAsync(visitPlaceModel);
+            await _unitOfWork.SaveChangesAsync();
+
+            var visitPlaceDTOResult = _mapper.Map<VisitPlaceDTO>(visitPlaceModel);
+            _logger.LogInformation("Successfully created visit place with name {Name}.", visitPlaceDTO.Name);
+
+            return new CreatedAtActionResult(nameof(GetVisitPlace), "VisitPlaces", new { id = visitPlaceDTOResult.Id }, visitPlaceDTOResult);
         }
+
 
         public async Task<IActionResult> DeleteVisitPlace(Guid id)
         {
-            _logger.LogInformation("Deleting visit place with ID {VisitPlaceId}.", id.ToString());
-            var result = await _visitPlaceRepository.DeleteVisitPlaceAsync(id);
-            if (result)
+            _logger.LogInformation("Attempting to delete visit place with ID {VisitPlaceId}.", id.ToString());
+
+            var visitPlace = await _unitOfWork.VisitPlaces.GetByIdAsync(id);
+            if (visitPlace == null)
             {
-                _logger.LogInformation("Successfully deleted visit place with ID {VisitPlaceId}.", id.ToString());
-                return new NoContentResult();
+                _logger.LogWarning("Visit place with ID {VisitPlaceId} not found.", id.ToString());
+                return new NotFoundResult();  
             }
 
-            _logger.LogWarning("Visit place with ID {VisitPlaceId} not found.", id.ToString());
-            return new NotFoundResult();
+            await _unitOfWork.VisitPlaces.DeleteAsync(id);
+            await _unitOfWork.SaveChangesAsync();
+
+            _logger.LogInformation("Successfully deleted visit place with ID {VisitPlaceId}.", id.ToString());
+            return new NoContentResult();
         }
+
     }
 }

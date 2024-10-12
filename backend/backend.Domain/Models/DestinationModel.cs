@@ -33,7 +33,7 @@ namespace backend.Models
 
         public CategoryModel? Category { get; set; }
 
-        public List<VisitPlace>? VisitPlaces { get; set; }
+        public List<VisitPlaceModel>? VisitPlaces { get; set; }
 
         public List<TripDestinationModel>? TripDestinations { get; set; }
 

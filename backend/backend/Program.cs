@@ -32,24 +32,16 @@ builder.Host.UseSerilog();
 var provider = builder.Services.BuildServiceProvider();
 var configuration = provider.GetRequiredService<IConfiguration>();
 
-builder.Services.AddScoped<ImageService>(provider =>
+builder.Services.AddScoped<IImageService>(provider =>
 {
     var hostingEnvironment = provider.GetRequiredService<IWebHostEnvironment>();
     var logger = provider.GetRequiredService<ILogger<ImageService>>();
     return new ImageService(hostingEnvironment, "Images", logger);
 });
 
-builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
-builder.Services.AddScoped<IAccommodationRepository, AccommodationRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IDestinationRepository, DestinationRepository>();
-builder.Services.AddScoped<IParticipantRepository, ParticipantRepository>();
-builder.Services.AddScoped<ISelectedPlaceRepository, SelectedPlaceRepository>();
-builder.Services.AddScoped<ITripDestinationRepository, TripDestinationRepository>();
-builder.Services.AddScoped<ITripParticipantRepository, TripParticipantRepository>();
-builder.Services.AddScoped<ITripRepository, TripRepository>();
-builder.Services.AddScoped<IVisitPlaceRepository, VisitPlaceRepository>();
+builder.Services.AddScoped<IBaseUrlService, BaseUrlService>();
 
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddScoped<IAuthService, AuthenticationService>();
 builder.Services.AddScoped<IDestinationService, DestinationService>();
@@ -61,8 +53,6 @@ builder.Services.AddScoped<ITripParticipantService, TripParticipantService>();
 builder.Services.AddScoped<IParticipantService, ParticipantService>();
 builder.Services.AddScoped<ITripDestinationService, TripDestinationService>();
 builder.Services.AddScoped<ISelectedPlaceService, SelectedPlaceService>();
-
-builder.Services.AddScoped<BaseUrlService>();
 
 builder.Services.AddDbContext<TripsDbContext>(options =>
 {

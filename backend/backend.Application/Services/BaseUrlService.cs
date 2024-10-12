@@ -2,33 +2,30 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace backend.Application.Services
+public class BaseUrlService : IBaseUrlService
 {
-    public class BaseUrlService : IBaseUrlService
+    private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly ILogger<BaseUrlService> _logger;
+
+    public BaseUrlService(IHttpContextAccessor httpContextAccessor, ILogger<BaseUrlService> logger)
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly ILogger<BaseUrlService> _logger;
+        _httpContextAccessor = httpContextAccessor;
+        _logger = logger;
+    }
 
-        public BaseUrlService(IHttpContextAccessor httpContextAccessor, ILogger<BaseUrlService> logger)
+    public virtual string GetBaseUrl() // Make it virtual
+    {
+        var request = _httpContextAccessor.HttpContext?.Request;
+
+        if (request == null)
         {
-            _httpContextAccessor = httpContextAccessor;
-            _logger = logger;
+            _logger.LogWarning("No active HTTP request context found.");
+            return string.Empty;
         }
 
-        public string GetBaseUrl()
-        {
-            var request = _httpContextAccessor.HttpContext?.Request;
+        var baseUrl = $"{request.Scheme}://{request.Host}{request.PathBase}";
+        _logger.LogInformation("Base URL generated: {BaseUrl}", baseUrl);
 
-            if (request == null)
-            {
-                _logger.LogWarning("No active HTTP request context found.");
-                return string.Empty;
-            }
-
-            var baseUrl = $"{request.Scheme}://{request.Host}{request.PathBase}";
-            _logger.LogInformation("Base URL generated: {BaseUrl}", baseUrl);
-
-            return baseUrl;
-        }
+        return baseUrl;
     }
 }

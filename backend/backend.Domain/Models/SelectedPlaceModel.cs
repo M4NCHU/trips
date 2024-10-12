@@ -13,7 +13,7 @@ namespace backend.Models
 
         public Guid VisitPlaceId { get; set; }
 
-        public VisitPlace VisitPlace { get; set; }
+        public VisitPlaceModel VisitPlace { get; set; }
 
         public DateTime CreatedAt { get; set; }
 

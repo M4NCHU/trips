@@ -57,7 +57,7 @@ namespace backend.Controllers
         // POST: api/VisitPlaces
 
         [HttpPost()]
-        public async Task<CreateVisitPlaceDTO> PostVisitPlace(CreateVisitPlaceDTO visitPlaceDTO)
+        public async Task<IActionResult> PostVisitPlace(CreateVisitPlaceDTO visitPlaceDTO)
         {
             return await _visitPlaceService.PostVisitPlace(visitPlaceDTO);
         }

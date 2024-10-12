@@ -14,7 +14,7 @@ namespace backend.Infrastructure.Authentication
 
         public DbSet<TripModel> Trip { get; set; }
         public DbSet<CategoryModel> Category { get; set; }
-        public DbSet<VisitPlace> VisitPlace { get; set; }
+        public DbSet<VisitPlaceModel> VisitPlace { get; set; }
         public DbSet<DestinationModel> Destination { get; set; }
         public DbSet<TripDestinationModel> TripDestination { get; set; }
         public DbSet<SelectedPlaceModel> SelectedPlace { get; set; }
@@ -35,7 +35,7 @@ namespace backend.Infrastructure.Authentication
                 .HasForeignKey(d => d.CategoryId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<VisitPlace>()
+            modelBuilder.Entity<VisitPlaceModel>()
                 .HasOne(vp => vp.Destination)
                 .WithMany(d => d.VisitPlaces)
                 .HasForeignKey(vp => vp.DestinationId)

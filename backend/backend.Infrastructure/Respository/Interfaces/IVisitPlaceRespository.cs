@@ -1,17 +1,8 @@
 ﻿using backend.Domain.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using backend.Infrastructure.Respository;
+using backend.Models;
 
-namespace backend.Infrastructure.Respository
+public interface IVisitPlaceRepository : IRepository<VisitPlaceModel>
 {
-    public interface IVisitPlaceRepository
-    {
-        Task<IEnumerable<VisitPlaceDTO>> GetVisitPlacesAsync();
-        Task<VisitPlaceDTO> GetVisitPlaceByIdAsync(Guid id);
-        Task<IEnumerable<VisitPlaceDTO>> GetVisitPlacesByDestinationAsync(Guid destinationId);
-        Task<bool> UpdateVisitPlaceAsync(VisitPlaceDTO visitPlaceDTO);
-        Task<CreateVisitPlaceDTO> CreateVisitPlaceAsync(CreateVisitPlaceDTO visitPlaceDTO);
-        Task<bool> DeleteVisitPlaceAsync(Guid id);
-    }
+    Task<IEnumerable<VisitPlaceDTO>> GetVisitPlacesByDestinationAsync(Guid destinationId);
 }

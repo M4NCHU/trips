@@ -12,7 +12,7 @@ namespace backend.Application.Services
         Task<ActionResult<VisitPlaceDTO>> GetVisitPlace(Guid id);
         Task<ActionResult<IEnumerable<VisitPlaceDTO>>> GetVisitPlacesByDestination(Guid destinationId);
         Task<IActionResult> PutVisitPlace(Guid id, VisitPlaceDTO visitPlaceDTO);
-        Task<CreateVisitPlaceDTO> PostVisitPlace(CreateVisitPlaceDTO visitPlaceDTO);
+        Task<IActionResult> PostVisitPlace(CreateVisitPlaceDTO visitPlaceDTO);
         Task<IActionResult> DeleteVisitPlace(Guid id);
     }
 }

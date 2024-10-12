@@ -1,6 +1,7 @@
 ﻿using backend.Infrastructure.Authentication;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,15 @@ using System.Threading.Tasks;
 
 namespace backend.Infrastructure.Respository
 {
-    public class TripRepository : ITripRepository
+    public class TripRepository : Repository<TripModel>, ITripRepository
     {
         private readonly TripsDbContext _context;
+        private readonly ILogger<TripRepository> _logger;
 
-        public TripRepository(TripsDbContext context)
+        public TripRepository(TripsDbContext context, ILogger<TripRepository> logger) : base(context)
         {
             _context = context;
+            _logger = logger;
         }
 
         public async Task<IEnumerable<TripModel>> GetAllTripsAsync()
@@ -45,28 +48,6 @@ namespace backend.Infrastructure.Respository
                 .ThenInclude(td => td.SelectedPlace)
                 .ThenInclude(sp => sp.VisitPlace)
                 .ToListAsync();
-        }
-
-        public async Task AddTripAsync(TripModel trip)
-        {
-            await _context.Trip.AddAsync(trip);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task UpdateTripAsync(TripModel trip)
-        {
-            _context.Trip.Update(trip);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task DeleteTripAsync(Guid id)
-        {
-            var trip = await _context.Trip.FindAsync(id);
-            if (trip != null)
-            {
-                _context.Trip.Remove(trip);
-                await _context.SaveChangesAsync();
-            }
         }
 
         public async Task<bool> TripExistsAsync(Guid id)

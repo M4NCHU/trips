@@ -11,7 +11,7 @@ namespace backend.Domain.Mappings
         {
 
             // Map VisitPlace to VisitPlaceDTO
-            CreateMap<VisitPlace, VisitPlaceDTO>();
+            CreateMap<VisitPlaceModel, VisitPlaceDTO>();
         }
     }
 }

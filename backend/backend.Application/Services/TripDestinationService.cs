@@ -4,26 +4,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using backend.Application.Services;
+using backend.Infrastructure.Respository;
+using backend.Models;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
-using backend.Models;
-using backend.Infrastructure.Respository;
 
 namespace backend.Application.Services
 {
     public class TripDestinationService : ITripDestinationService
     {
-        private readonly ITripDestinationRepository _tripDestinationRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ILogger<TripDestinationService> _logger;
 
         public TripDestinationService(
-            ITripDestinationRepository tripDestinationRepository,
+            IUnitOfWork unitOfWork,
             IMapper mapper,
             ILogger<TripDestinationService> logger)
         {
-            _tripDestinationRepository = tripDestinationRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
         }
@@ -31,7 +30,7 @@ namespace backend.Application.Services
         public async Task<ActionResult<IEnumerable<TripDestinationDTO>>> GetTripDestinations()
         {
             _logger.LogInformation("Fetching all trip destinations.");
-            var tripDestinations = await _tripDestinationRepository.GetAllTripDestinationsAsync();
+            var tripDestinations = await _unitOfWork.TripDestinations.GetAllAsync();
             var tripDestinationDTOs = _mapper.Map<IEnumerable<TripDestinationDTO>>(tripDestinations);
 
             _logger.LogInformation("Fetched {Count} trip destinations.", tripDestinationDTOs.Count());
@@ -41,7 +40,7 @@ namespace backend.Application.Services
         public async Task<ActionResult<TripDestinationDTO>> GetTripDestination(Guid id)
         {
             _logger.LogInformation("Fetching trip destination with ID {TripDestinationId}", id);
-            var tripDestination = await _tripDestinationRepository.GetTripDestinationByIdAsync(id);
+            var tripDestination = await _unitOfWork.TripDestinations.GetByIdAsync(id);
             if (tripDestination == null)
             {
                 _logger.LogWarning("Trip destination with ID {TripDestinationId} not found.", id);
@@ -55,7 +54,7 @@ namespace backend.Application.Services
         public async Task<ActionResult<IEnumerable<TripDestinationDTO>>> GetTripDestinations(Guid tripId)
         {
             _logger.LogInformation("Fetching trip destinations for trip ID {TripId}", tripId);
-            var tripDestinations = await _tripDestinationRepository.GetTripDestinationsByTripIdAsync(tripId);
+            var tripDestinations = await _unitOfWork.TripDestinations.GetTripDestinationsByTripIdAsync(tripId);
             if (!tripDestinations.Any())
             {
                 _logger.LogWarning("No trip destinations found for trip ID {TripId}", tripId);
@@ -74,24 +73,30 @@ namespace backend.Application.Services
                 return new BadRequestResult();
             }
 
-            var tripDestination = _mapper.Map<TripDestinationModel>(tripDestinationDTO);
-            _logger.LogInformation("Updating trip destination with ID {TripDestinationId}", id);
-            var updated = await _tripDestinationRepository.UpdateTripDestinationAsync(tripDestination);
-            if (!updated)
+            var tripDestination = await _unitOfWork.TripDestinations.GetByIdAsync(id);
+            if (tripDestination == null)
             {
                 _logger.LogWarning("Trip destination with ID {TripDestinationId} not found.", id);
                 return new NotFoundResult();
             }
 
+            _mapper.Map(tripDestinationDTO, tripDestination);
+            _logger.LogInformation("Updating trip destination with ID {TripDestinationId}", id);
+            await _unitOfWork.TripDestinations.UpdateAsync(tripDestination);
+            await _unitOfWork.SaveChangesAsync();
+
             _logger.LogInformation("Successfully updated trip destination with ID {TripDestinationId}.", id);
             return new NoContentResult();
         }
+
 
         public async Task<TripDestinationDTO> PostTripDestinationAsync(TripDestinationDTO tripDestinationDTO)
         {
             var tripDestination = _mapper.Map<TripDestinationModel>(tripDestinationDTO);
             _logger.LogInformation("Adding new trip destination for trip ID {TripId}", tripDestination.TripId);
-            await _tripDestinationRepository.AddTripDestinationAsync(tripDestination);
+            await _unitOfWork.TripDestinations.AddAsync(tripDestination);
+            await _unitOfWork.SaveChangesAsync(); 
+
             _logger.LogInformation("Successfully added new trip destination with ID {TripDestinationId}", tripDestination.Id);
             return tripDestinationDTO;
         }
@@ -99,12 +104,8 @@ namespace backend.Application.Services
         public async Task<IActionResult> DeleteTripDestination(Guid id)
         {
             _logger.LogInformation("Deleting trip destination with ID {TripDestinationId}", id);
-            var deleted = await _tripDestinationRepository.DeleteTripDestinationAsync(id);
-            if (!deleted)
-            {
-                _logger.LogWarning("Trip destination with ID {TripDestinationId} not found.", id);
-                return new NotFoundResult();
-            }
+            await _unitOfWork.TripDestinations.DeleteAsync(id); 
+            await _unitOfWork.SaveChangesAsync(); 
 
             _logger.LogInformation("Successfully deleted trip destination with ID {TripDestinationId}", id);
             return new NoContentResult();
@@ -113,7 +114,7 @@ namespace backend.Application.Services
         public async Task<int> CountTripDestinations(Guid tripId)
         {
             _logger.LogInformation("Counting trip destinations for trip ID {TripId}", tripId);
-            var count = await _tripDestinationRepository.CountTripDestinationsByTripIdAsync(tripId);
+            var count = await _unitOfWork.TripDestinations.CountTripDestinationsByTripIdAsync(tripId); 
             _logger.LogInformation("Found {Count} trip destinations for trip ID {TripId}", count, tripId);
             return count;
         }

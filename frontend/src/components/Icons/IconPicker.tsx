@@ -58,20 +58,7 @@ const IconPicker: React.FC = () => {
     <div className="mt-8">
       <h2 className="text-xl font-bold mb-4">Pick an Icon for Category</h2>
 
-      {/* Wyszukiwarka */}
-      <div className="mb-4">
-        <label className="block text-gray-700">Search Icons:</label>
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search icons..."
-          className="p-3 rounded-lg bg-secondary"
-        />
-      </div>
-
       <div className="relative">
-        {/* Dropdown button */}
         <button
           type="button"
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -110,25 +97,36 @@ const IconPicker: React.FC = () => {
         </button>
 
         {isDropdownOpen && (
-          <div
-            className="absolute z-10 mt-2 w-full bg-secondary border text-foreground rounded-lg shadow-lg max-h-64 overflow-y-scroll"
-            onScroll={handleScroll}
-          >
-            <div className="grid grid-cols-6 gap-2 p-2">
-              {iconList.map((iconName) => (
-                <DynamicIcon
-                  key={iconName}
-                  iconName={iconName as keyof typeof FaIcons}
-                  onClick={handleIconClick}
+          <>
+            <div
+              className="absolute z-10 mt-2 w-full bg-secondary border text-foreground rounded-lg shadow-lg max-h-64 overflow-y-scroll"
+              onScroll={handleScroll}
+            >
+              <div className="p-2 w-full">
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search icons..."
+                  className="p-3 w-full rounded-lg bg-background"
                 />
-              ))}
-            </div>
-            {isLoading && (
-              <div className="w-full flex flex-row justify-center py-4">
-                <FaIcons.FaSpinner className="animate-spin h-5 w-5 mr-3 text-foreground" />
               </div>
-            )}
-          </div>
+              <div className="grid grid-cols-6 gap-2 p-2">
+                {iconList.map((iconName, i) => (
+                  <DynamicIcon
+                    key={i}
+                    iconName={iconName as keyof typeof FaIcons}
+                    onClick={handleIconClick}
+                  />
+                ))}
+              </div>
+              {isLoading && (
+                <div className="w-full flex flex-row justify-center py-4">
+                  <FaIcons.FaSpinner className="animate-spin h-5 w-5 mr-3 text-foreground" />
+                </div>
+              )}
+            </div>
+          </>
         )}
       </div>
 

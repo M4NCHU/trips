@@ -1,4 +1,5 @@
-﻿using backend.Application.Services;
+﻿using AutoMapper;
+using backend.Application.Services;
 using backend.Domain.DTOs;
 using backend.Infrastructure.Respository;
 using backend.Models;
@@ -13,21 +14,25 @@ namespace backend.Application.Services
 {
     public class ParticipantService : IParticipantService
     {
-        private readonly IParticipantRepository _participantRepository;
-        private readonly ImageService _imageService;
-        private readonly BaseUrlService _baseUrlService;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IImageService _imageService;
+        private readonly IBaseUrlService _baseUrlService;
+        private readonly IMapper _mapper;
         private readonly ILogger<ParticipantService> _logger;
         private readonly string _baseUrl;
 
         public ParticipantService(
-            IParticipantRepository participantRepository,
-            ImageService imageService,
-            BaseUrlService baseUrlService,
+            IUnitOfWork unitOfWork,
+            IImageService imageService,
+            IBaseUrlService baseUrlService,
+            IMapper mapper,
             ILogger<ParticipantService> logger)
+
         {
-            _participantRepository = participantRepository;
+            _unitOfWork = unitOfWork;
             _imageService = imageService;
             _baseUrlService = baseUrlService;
+            _mapper = mapper;
             _logger = logger;
             _baseUrl = _baseUrlService.GetBaseUrl();
         }
@@ -35,7 +40,7 @@ namespace backend.Application.Services
         public async Task<ActionResult<IEnumerable<ParticipantDTO>>> GetParticipants(int page = 1, int pageSize = 2)
         {
             _logger.LogInformation("Fetching participants: Page {Page}, PageSize {PageSize}", page, pageSize);
-            var participants = await _participantRepository.GetParticipantsAsync(page, pageSize);
+            var participants = await _unitOfWork.Participants.GetAllAsync(); 
             var participantDTOs = participants.Select(p => new ParticipantDTO
             {
                 Id = p.Id,
@@ -53,13 +58,13 @@ namespace backend.Application.Services
             }).ToList();
 
             _logger.LogInformation("Fetched {Count} participants", participantDTOs.Count);
-            return participantDTOs;
+            return new OkObjectResult(participantDTOs);
         }
 
         public async Task<ActionResult<ParticipantDTO>> GetParticipant(Guid id)
         {
             _logger.LogInformation("Fetching participant with ID {ParticipantId}", id);
-            var participant = await _participantRepository.GetParticipantByIdAsync(id);
+            var participant = await _unitOfWork.Participants.GetByIdAsync(id);
             if (participant == null)
             {
                 _logger.LogWarning("Participant with ID {ParticipantId} not found", id);
@@ -83,7 +88,7 @@ namespace backend.Application.Services
             };
 
             _logger.LogInformation("Fetched participant with ID {ParticipantId}", id);
-            return participantDTO;
+            return new OkObjectResult(participantDTO);
         }
 
         public async Task<IActionResult> PutParticipant(Guid id, ParticipantDTO participantDTO)
@@ -99,10 +104,19 @@ namespace backend.Application.Services
                 Id = id,
                 FirstName = participantDTO.FirstName,
                 LastName = participantDTO.LastName,
+                Address = participantDTO.Address,
+                DateOfBirth = participantDTO.DateOfBirth,
+                Email = participantDTO.Email,
+                EmergencyContact = participantDTO.EmergencyContact,
+                EmergencyContactPhone = participantDTO.EmergencyContactPhone,
+                MedicalConditions = participantDTO.MedicalConditions,
+                PhoneNumber = participantDTO.PhoneNumber,
+                ModifiedAt = DateTime.UtcNow
             };
 
             _logger.LogInformation("Updating participant with ID {ParticipantId}", id);
-            await _participantRepository.UpdateParticipantAsync(participant);
+            await _unitOfWork.Participants.UpdateAsync(participant);
+            await _unitOfWork.SaveChangesAsync();
 
             _logger.LogInformation("Successfully updated participant with ID {ParticipantId}", id);
             return new NoContentResult();
@@ -116,7 +130,7 @@ namespace backend.Application.Services
 
             var participant = new ParticipantModel
             {
-                Id = participantDTO.Id,
+                Id = Guid.NewGuid(),
                 FirstName = participantDTO.FirstName,
                 LastName = participantDTO.LastName,
                 Address = participantDTO.Address,
@@ -130,23 +144,26 @@ namespace backend.Application.Services
                 PhotoUrl = participantDTO.PhotoUrl,
             };
 
-            await _participantRepository.AddParticipantAsync(participant);
-            _logger.LogInformation("Successfully added participant {ParticipantName}", participantDTO.FirstName);
+            await _unitOfWork.Participants.AddAsync(participant);
+            await _unitOfWork.SaveChangesAsync();
 
+            _logger.LogInformation("Successfully added participant {ParticipantName}", participantDTO.FirstName);
             return participantDTO;
         }
 
         public async Task<IActionResult> DeleteParticipant(Guid id)
         {
             _logger.LogInformation("Deleting participant with ID {ParticipantId}", id);
-            var participant = await _participantRepository.GetParticipantByIdAsync(id);
+            var participant = await _unitOfWork.Participants.GetByIdAsync(id); 
             if (participant == null)
             {
                 _logger.LogWarning("Participant with ID {ParticipantId} not found", id);
                 return new NotFoundResult();
             }
 
-            await _participantRepository.DeleteParticipantAsync(id);
+            await _unitOfWork.Participants.DeleteAsync(id); 
+            await _unitOfWork.SaveChangesAsync();
+
             _logger.LogInformation("Successfully deleted participant with ID {ParticipantId}", id);
             return new NoContentResult();
         }

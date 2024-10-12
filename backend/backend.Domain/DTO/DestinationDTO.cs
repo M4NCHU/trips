@@ -33,8 +33,8 @@ namespace backend.Domain.DTOs
        
         public CategoryDTO? Category { get; set; }
 
-        public List<VisitPlaceDTO>? VisitPlaces { get; set; }
-        public List<TripDestinationDTO>? TripDestinations { get; set; }
+        public List<VisitPlaceDTO>? VisitPlaces { get; set; } = new List<VisitPlaceDTO>();
+        public List<TripDestinationDTO>? TripDestinations { get; set; } = new List<TripDestinationDTO>();
 
     }
 

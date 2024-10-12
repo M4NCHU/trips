@@ -1,21 +1,27 @@
 ﻿using backend.Infrastructure.Authentication;
 using backend.Models;
+using Microsoft.Extensions.Logging;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Infrastructure.Respository
 {
-  
-    public class AccommodationRepository : IAccommodationRepository
+    public class AccommodationRepository : Repository<AccommodationModel>, IAccommodationRepository
     {
         private readonly TripsDbContext _context;
+        private readonly ILogger<AccommodationRepository> _logger;
 
-        public AccommodationRepository(TripsDbContext context)
+        public AccommodationRepository(TripsDbContext context, ILogger<AccommodationRepository> logger) : base(context)
         {
             _context = context;
+            _logger = logger;
         }
+
 
         public async Task<IEnumerable<AccommodationModel>> GetAccommodations(int page, int pageSize)
         {
+            _logger.LogInformation("Fetching accommodations with pagination. Page: {Page}, PageSize: {PageSize}", page, pageSize);
             return await _context.Accommodation
                 .OrderBy(x => x.Id)
                 .Skip((page - 1) * pageSize)
@@ -23,35 +29,9 @@ namespace backend.Infrastructure.Respository
                 .ToListAsync();
         }
 
-        public async Task<AccommodationModel> GetAccommodationById(Guid id)
-        {
-            return await _context.Accommodation.FindAsync(id);
-        }
-
-        public async Task AddAccommodation(AccommodationModel accommodation)
-        {
-            _context.Accommodation.Add(accommodation);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task UpdateAccommodation(AccommodationModel accommodation)
-        {
-            _context.Entry(accommodation).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task DeleteAccommodation(Guid id)
-        {
-            var accommodation = await GetAccommodationById(id);
-            if (accommodation != null)
-            {
-                _context.Accommodation.Remove(accommodation);
-                await _context.SaveChangesAsync();
-            }
-        }
-
         public async Task<bool> AccommodationExists(Guid id)
         {
+            _logger.LogInformation("Checking if accommodation with ID {Id} exists", id);
             return await _context.Accommodation.AnyAsync(e => e.Id == id);
         }
     }

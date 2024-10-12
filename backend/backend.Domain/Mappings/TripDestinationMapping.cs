@@ -1,29 +1,19 @@
-﻿using backend.Domain.DTOs;
+﻿using AutoMapper;
+using backend.Domain.DTOs;
 using backend.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace backend.Domain.Mappings
 {
-    public class TripDestinationMapping
+    public class TripDestinationMapping : Profile
     {
-
-        public TripDestinationDTO MapToTripDestinationDTO(TripDestinationModel model)
+        public TripDestinationMapping()
         {
-            return new TripDestinationDTO
-            {
-                Id = model.Id,
-                TripId = model.TripId,
-                DestinationId = model.DestinationId,
-                /*CreatedBy = model.CreatedBy,*/
-               /* Title = model.Title,*/
-              /*  Destination = model.Destination != null ? MapToDestinationDTO(model.Destination) : null,
-                SelectedPlaces = model.SelectedPlace?.Select(MapToSelectedPlaceDTO).ToList(),*/
-                DayNumber = model.DayNumber,
-            };
+            // Configure mapping for TripDestinationModel to TripDestinationDTO
+            CreateMap<TripDestinationModel, TripDestinationDTO>()
+                .ForMember(dest => dest.DayNumber, opt => opt.MapFrom(src => src.DayNumber));
+
         }
+
+        
     }
 }

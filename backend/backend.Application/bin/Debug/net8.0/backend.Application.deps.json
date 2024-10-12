@@ -13,13 +13,15 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.10",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
+          "Moq": "4.20.72",
           "Serilog": "4.0.2",
           "Serilog.AspNetCore": "8.0.2",
           "Serilog.Sinks.Console": "6.0.0",
           "Serilog.Sinks.File": "6.0.0",
           "Swashbuckle.AspNetCore": "6.8.1",
           "backend.Domain": "1.0.0",
-          "backend.Infrastructure": "1.0.0"
+          "backend.Infrastructure": "1.0.0",
+          "xunit": "2.9.2"
         },
         "runtime": {
           "backend.Application.dll": {}
@@ -33,6 +35,17 @@
           "lib/net6.0/AutoMapper.dll": {
             "assemblyVersion": "13.0.0.0",
             "fileVersion": "13.0.1.0"
+          }
+        }
+      },
+      "Castle.Core/5.1.1": {
+        "dependencies": {
+          "System.Diagnostics.EventLog": "7.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Castle.Core.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.1.1.0"
           }
         }
       },
@@ -1499,6 +1512,17 @@
           }
         }
       },
+      "Moq/4.20.72": {
+        "dependencies": {
+          "Castle.Core": "5.1.1"
+        },
+        "runtime": {
+          "lib/net6.0/Moq.dll": {
+            "assemblyVersion": "4.20.72.0",
+            "fileVersion": "4.20.72.0"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "runtime": {
           "lib/net6.0/Newtonsoft.Json.dll": {
@@ -1983,16 +2007,70 @@
           }
         }
       },
+      "xunit/2.9.2": {
+        "dependencies": {
+          "xunit.analyzers": "1.16.0",
+          "xunit.assert": "2.9.2",
+          "xunit.core": "2.9.2"
+        }
+      },
+      "xunit.abstractions/2.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/xunit.abstractions.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "xunit.analyzers/1.16.0": {},
+      "xunit.assert/2.9.2": {
+        "runtime": {
+          "lib/net6.0/xunit.assert.dll": {
+            "assemblyVersion": "2.9.2.0",
+            "fileVersion": "2.9.2.0"
+          }
+        }
+      },
+      "xunit.core/2.9.2": {
+        "dependencies": {
+          "xunit.extensibility.core": "2.9.2",
+          "xunit.extensibility.execution": "2.9.2"
+        }
+      },
+      "xunit.extensibility.core/2.9.2": {
+        "dependencies": {
+          "xunit.abstractions": "2.0.3"
+        },
+        "runtime": {
+          "lib/netstandard1.1/xunit.core.dll": {
+            "assemblyVersion": "2.9.2.0",
+            "fileVersion": "2.9.2.0"
+          }
+        }
+      },
+      "xunit.extensibility.execution/2.9.2": {
+        "dependencies": {
+          "xunit.extensibility.core": "2.9.2"
+        },
+        "runtime": {
+          "lib/netstandard1.1/xunit.execution.dotnet.dll": {
+            "assemblyVersion": "2.9.2.0",
+            "fileVersion": "2.9.2.0"
+          }
+        }
+      },
       "backend.Domain/1.0.0": {
         "dependencies": {
           "AutoMapper": "13.0.1",
           "FluentValidation.DependencyInjectionExtensions": "11.10.0",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
+          "Moq": "4.20.72",
           "Serilog": "4.0.2",
           "Serilog.AspNetCore": "8.0.2",
           "Serilog.Sinks.Console": "6.0.0",
           "Serilog.Sinks.File": "6.0.0",
-          "Swashbuckle.AspNetCore": "6.8.1"
+          "Swashbuckle.AspNetCore": "6.8.1",
+          "xunit": "2.9.2"
         },
         "runtime": {
           "backend.Domain.dll": {}
@@ -2006,6 +2084,7 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.6",
+          "Moq": "4.20.72",
           "Newtonsoft.Json": "13.0.3",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.8",
           "Serilog": "4.0.2",
@@ -2013,7 +2092,8 @@
           "Serilog.Sinks.Console": "6.0.0",
           "Serilog.Sinks.File": "6.0.0",
           "Swashbuckle.AspNetCore": "6.8.1",
-          "backend.Domain": "1.0.0"
+          "backend.Domain": "1.0.0",
+          "xunit": "2.9.2"
         },
         "runtime": {
           "backend.Infrastructure.dll": {}
@@ -2033,6 +2113,13 @@
       "sha512": "sha512-/Fx1SbJ16qS7dU4i604Sle+U9VLX+WSNVJggk6MupKVkYvvBm4XqYaeFuf67diHefHKHs50uQIS2YEDFhPCakQ==",
       "path": "automapper/13.0.1",
       "hashPath": "automapper.13.0.1.nupkg.sha512"
+    },
+    "Castle.Core/5.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rpYtIczkzGpf+EkZgDr9CClTdemhsrwA/W5hMoPjLkRFnXzH44zDLoovXeKtmxb1ykXK9aJVODSpiJml8CTw2g==",
+      "path": "castle.core/5.1.1",
+      "hashPath": "castle.core.5.1.1.nupkg.sha512"
     },
     "FluentValidation/11.10.0": {
       "type": "package",
@@ -2811,6 +2898,13 @@
       "path": "mono.texttemplating/2.3.1",
       "hashPath": "mono.texttemplating.2.3.1.nupkg.sha512"
     },
+    "Moq/4.20.72": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EA55cjyNn8eTNWrgrdZJH5QLFp2L43oxl1tlkoYUKIE9pRwL784OWiTXeCV5ApS+AMYEAlt7Fo03A2XfouvHmQ==",
+      "path": "moq/4.20.72",
+      "hashPath": "moq.4.20.72.nupkg.sha512"
+    },
     "Newtonsoft.Json/13.0.3": {
       "type": "package",
       "serviceable": true,
@@ -3181,6 +3275,55 @@
       "sha512": "sha512-bR4qdCmssMMbo9Fatci49An5B1UaVJZHKNq70PRgzoLYIlitb8Tj7ns/Xt5Pz1CkERiTjcVBDU2y1AVrPBYkaw==",
       "path": "system.windows.extensions/7.0.0",
       "hashPath": "system.windows.extensions.7.0.0.nupkg.sha512"
+    },
+    "xunit/2.9.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7LhFS2N9Z6Xgg8aE5lY95cneYivRMfRI8v+4PATa4S64D5Z/Plkg0qa8dTRHSiGRgVZ/CL2gEfJDE5AUhOX+2Q==",
+      "path": "xunit/2.9.2",
+      "hashPath": "xunit.2.9.2.nupkg.sha512"
+    },
+    "xunit.abstractions/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pot1I4YOxlWjIb5jmwvvQNbTrZ3lJQ+jUGkGjWE3hEFM0l5gOnBWS+H3qsex68s5cO52g+44vpGzhAt+42vwKg==",
+      "path": "xunit.abstractions/2.0.3",
+      "hashPath": "xunit.abstractions.2.0.3.nupkg.sha512"
+    },
+    "xunit.analyzers/1.16.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hptYM7vGr46GUIgZt21YHO4rfuBAQS2eINbFo16CV/Dqq+24Tp+P5gDCACu1AbFfW4Sp/WRfDPSK8fmUUb8s0Q==",
+      "path": "xunit.analyzers/1.16.0",
+      "hashPath": "xunit.analyzers.1.16.0.nupkg.sha512"
+    },
+    "xunit.assert/2.9.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QkNBAQG4pa66cholm28AxijBjrmki98/vsEh4Sx5iplzotvPgpiotcxqJQMRC8d7RV7nIT8ozh97957hDnZwsQ==",
+      "path": "xunit.assert/2.9.2",
+      "hashPath": "xunit.assert.2.9.2.nupkg.sha512"
+    },
+    "xunit.core/2.9.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-O6RrNSdmZ0xgEn5kT927PNwog5vxTtKrWMihhhrT0Sg9jQ7iBDciYOwzBgP2krBEk5/GBXI18R1lKvmnxGcb4w==",
+      "path": "xunit.core/2.9.2",
+      "hashPath": "xunit.core.2.9.2.nupkg.sha512"
+    },
+    "xunit.extensibility.core/2.9.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ol+KlBJz1x8BrdnhN2DeOuLrr1I/cTwtHCggL9BvYqFuVd/TUSzxNT5O0NxCIXth30bsKxgMfdqLTcORtM52yQ==",
+      "path": "xunit.extensibility.core/2.9.2",
+      "hashPath": "xunit.extensibility.core.2.9.2.nupkg.sha512"
+    },
+    "xunit.extensibility.execution/2.9.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rKMpq4GsIUIJibXuZoZ8lYp5EpROlnYaRpwu9Zr0sRZXE7JqJfEEbCsUriZqB+ByXCLFBJyjkTRULMdC+U566g==",
+      "path": "xunit.extensibility.execution/2.9.2",
+      "hashPath": "xunit.extensibility.execution.2.9.2.nupkg.sha512"
     },
     "backend.Domain/1.0.0": {
       "type": "project",

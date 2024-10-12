@@ -2,6 +2,7 @@
 using backend.Infrastructure.Authentication;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,21 @@ using System.Threading.Tasks;
 
 namespace backend.Infrastructure.Respository
 {
-    public class DestinationRepository : IDestinationRepository
+    public class DestinationRepository : Repository<DestinationModel>, IDestinationRepository
     {
         private readonly TripsDbContext _context;
+        private readonly ILogger<DestinationRepository> _logger;
 
-        public DestinationRepository(TripsDbContext context)
+        public DestinationRepository(TripsDbContext context, ILogger<DestinationRepository> logger) : base(context)
         {
             _context = context;
+            _logger = logger;
         }
 
         public async Task<IEnumerable<DestinationModel>> GetDestinationsAsync(DestinationFilter filter, int page, int pageSize)
         {
+            _logger.LogInformation("Fetching destinations with filter and pagination. Page: {Page}, PageSize: {PageSize}", page, pageSize);
+
             var query = _context.Destination.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(filter.CategoryId) && Guid.TryParse(filter.CategoryId, out Guid parsedCategoryId))
@@ -34,16 +39,10 @@ namespace backend.Infrastructure.Respository
                 .ToListAsync();
         }
 
-        public async Task<DestinationModel> GetDestinationByIdAsync(Guid id)
-        {
-            return await _context.Destination
-                .Include(d => d.Category)
-                .Include(d => d.VisitPlaces)
-                .FirstOrDefaultAsync(d => d.Id == id);
-        }
-
         public async Task<IEnumerable<DestinationModel>> SearchDestinationsAsync(string searchTerm)
         {
+            _logger.LogInformation("Searching destinations with term: {SearchTerm}", searchTerm);
+
             return await _context.Destination
                 .Where(d => d.Name.Contains(searchTerm))
                 .ToListAsync();
@@ -51,37 +50,19 @@ namespace backend.Infrastructure.Respository
 
         public async Task<List<DestinationModel>> GetDestinationsForTripAsync(Guid tripId)
         {
+            _logger.LogInformation("Fetching destinations for trip ID {TripId}", tripId);
+
             return await _context.TripDestination
                 .Where(td => td.TripId == tripId)
                 .Select(td => td.Destination)
                 .ToListAsync();
         }
 
-        public async Task AddDestinationAsync(DestinationModel destination)
-        {
-            await _context.Destination.AddAsync(destination);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task UpdateDestinationAsync(DestinationModel destination)
-        {
-            _context.Entry(destination).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task DeleteDestinationAsync(Guid id)
-        {
-            var destination = await _context.Destination.FindAsync(id);
-            if (destination != null)
-            {
-                _context.Destination.Remove(destination);
-                await _context.SaveChangesAsync();
-            }
-        }
-
         public async Task<bool> DestinationExistsAsync(Guid id)
         {
+            _logger.LogInformation("Checking if destination with ID {Id} exists", id);
             return await _context.Destination.AnyAsync(d => d.Id == id);
         }
+
     }
 }

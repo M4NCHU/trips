@@ -10,8 +10,9 @@ namespace backend.Domain.Mappings
         public TripMapper()
         {
 
-            // Map TripModel to TripDTO
+            // W pliku konfiguracyjnym AutoMapper
             CreateMap<TripModel, TripDTO>();
+
         }
     }
 }

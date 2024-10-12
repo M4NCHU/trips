@@ -6,16 +6,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace backend.Infrastructure.Respository
 {
-    public class VisitPlaceRepository : IVisitPlaceRepository
+    public class VisitPlaceRepository : Repository<VisitPlaceModel>, IVisitPlaceRepository
     {
         private readonly TripsDbContext _context;
+        private readonly ILogger<VisitPlaceRepository> _logger;
 
-        public VisitPlaceRepository(TripsDbContext context)
+
+        public VisitPlaceRepository(TripsDbContext context, ILogger<VisitPlaceRepository> logger) : base(context)
         {
             _context = context;
+            _logger = logger;
         }
 
         public async Task<IEnumerable<VisitPlaceDTO>> GetVisitPlacesAsync()
@@ -88,7 +92,7 @@ namespace backend.Infrastructure.Respository
         public async Task<CreateVisitPlaceDTO> CreateVisitPlaceAsync(CreateVisitPlaceDTO visitPlaceDTO)
         {
             var currentDate = DateTime.UtcNow;
-            var visitPlace = new VisitPlace
+            var visitPlace = new VisitPlaceModel
             {
                 Id = Guid.NewGuid(),
                 Name = visitPlaceDTO.Name,

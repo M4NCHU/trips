@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend.Models
 {
-    public class VisitPlace
+    public class VisitPlaceModel
     {
         [Key]
         public Guid Id { get; set; }

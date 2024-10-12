@@ -1,4 +1,5 @@
-﻿using backend.Application.Services;
+﻿using AutoMapper;
+using backend.Application.Services;
 using backend.Domain.DTOs;
 using backend.Infrastructure.Respository;
 using backend.Models;
@@ -13,18 +14,21 @@ namespace backend.Application.Services
 {
     public class SelectedPlaceService : ISelectedPlaceService
     {
-        private readonly ISelectedPlaceRepository _selectedPlaceRepository;
-        private readonly BaseUrlService _baseUrlService;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IBaseUrlService _baseUrlService;
         private readonly ILogger<SelectedPlaceService> _logger;
+        private readonly IMapper _mapper;
         private readonly string _baseUrl;
 
         public SelectedPlaceService(
-            ISelectedPlaceRepository selectedPlaceRepository,
-            BaseUrlService baseUrlService,
+            IUnitOfWork unitOfWork,
+            IBaseUrlService baseUrlService,
+            IMapper mapper,
             ILogger<SelectedPlaceService> logger)
         {
-            _selectedPlaceRepository = selectedPlaceRepository;
+            _unitOfWork = unitOfWork;
             _baseUrlService = baseUrlService;
+            _mapper = mapper;
             _logger = logger;
             _baseUrl = _baseUrlService.GetBaseUrl();
         }
@@ -32,7 +36,7 @@ namespace backend.Application.Services
         public async Task<ActionResult<IEnumerable<SelectedPlaceDTO>>> GetSelectedPlaces()
         {
             _logger.LogInformation("Fetching all selected places.");
-            var selectedPlaces = await _selectedPlaceRepository.GetSelectedPlacesAsync();
+            var selectedPlaces = await _unitOfWork.SelectedPlaces.GetAllAsync();
             var selectedPlaceDTOs = selectedPlaces.Select(sp => new SelectedPlaceDTO
             {
                 Id = sp.Id,
@@ -41,13 +45,13 @@ namespace backend.Application.Services
             }).ToList();
 
             _logger.LogInformation("Fetched {Count} selected places.", selectedPlaceDTOs.Count);
-            return selectedPlaceDTOs;
+            return new OkObjectResult(selectedPlaceDTOs);
         }
 
         public async Task<ActionResult<SelectedPlaceDTO>> GetSelectedPlace(Guid id)
         {
             _logger.LogInformation("Fetching selected place with ID {SelectedPlaceId}", id);
-            var selectedPlace = await _selectedPlaceRepository.GetSelectedPlaceByIdAsync(id);
+            var selectedPlace = await _unitOfWork.SelectedPlaces.GetByIdAsync(id); 
             if (selectedPlace == null)
             {
                 _logger.LogWarning("Selected place with ID {SelectedPlaceId} not found.", id);
@@ -62,13 +66,13 @@ namespace backend.Application.Services
             };
 
             _logger.LogInformation("Fetched selected place with ID {SelectedPlaceId}", id);
-            return selectedPlaceDTO;
+            return new OkObjectResult(selectedPlaceDTO);
         }
 
         public async Task<ActionResult<IEnumerable<SelectedPlaceDTO>>> GetSelectedPlaces(Guid destinationId)
         {
             _logger.LogInformation("Fetching selected places for destination with ID {DestinationId}", destinationId);
-            var selectedPlaces = await _selectedPlaceRepository.GetSelectedPlacesByDestinationIdAsync(destinationId);
+            var selectedPlaces = await _unitOfWork.SelectedPlaces.GetSelectedPlacesByDestinationIdAsync(destinationId);
             var selectedPlaceDTOs = selectedPlaces.Select(sp => new SelectedPlaceDTO
             {
                 Id = sp.Id,
@@ -96,7 +100,8 @@ namespace backend.Application.Services
             };
 
             _logger.LogInformation("Updating selected place with ID {SelectedPlaceId}", id);
-            await _selectedPlaceRepository.UpdateSelectedPlaceAsync(selectedPlace);
+            await _unitOfWork.SelectedPlaces.UpdateAsync(selectedPlace);
+            await _unitOfWork.SaveChangesAsync();
 
             _logger.LogInformation("Successfully updated selected place with ID {SelectedPlaceId}", id);
             return new NoContentResult();
@@ -115,7 +120,8 @@ namespace backend.Application.Services
                 ModifiedAt = DateTime.UtcNow
             };
 
-            await _selectedPlaceRepository.AddSelectedPlaceAsync(selectedPlace);
+            await _unitOfWork.SelectedPlaces.AddAsync(selectedPlace);
+            await _unitOfWork.SaveChangesAsync();
 
             _logger.LogInformation("Successfully added new selected place with ID {SelectedPlaceId}", selectedPlace.Id);
             return selectedPlaceDTO;
@@ -124,14 +130,16 @@ namespace backend.Application.Services
         public async Task<IActionResult> DeleteSelectedPlace(Guid id)
         {
             _logger.LogInformation("Deleting selected place with ID {SelectedPlaceId}", id);
-            var selectedPlace = await _selectedPlaceRepository.GetSelectedPlaceByIdAsync(id);
+            var selectedPlace = await _unitOfWork.SelectedPlaces.GetByIdAsync(id);
             if (selectedPlace == null)
             {
                 _logger.LogWarning("Selected place with ID {SelectedPlaceId} not found.", id);
                 return new NotFoundResult();
             }
 
-            await _selectedPlaceRepository.DeleteSelectedPlaceAsync(id);
+            await _unitOfWork.SelectedPlaces.DeleteAsync(id);
+            await _unitOfWork.SaveChangesAsync();
+
             _logger.LogInformation("Successfully deleted selected place with ID {SelectedPlaceId}", id);
             return new NoContentResult();
         }

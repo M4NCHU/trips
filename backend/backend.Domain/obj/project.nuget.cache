@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "yqIKpfqOAg4=",
+  "dgSpecHash": "XUpIfk+NGRk=",
   "success": true,
   "projectFilePath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Domain\\backend.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\macie\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\macie\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\macie\\.nuget\\packages\\fluentvalidation\\11.10.0\\fluentvalidation.11.10.0.nupkg.sha512",
     "C:\\Users\\macie\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.10.0\\fluentvalidation.dependencyinjectionextensions.11.10.0.nupkg.sha512",
     "C:\\Users\\macie\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
@@ -21,6 +22,7 @@
     "C:\\Users\\macie\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
     "C:\\Users\\macie\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\macie\\.nuget\\packages\\microsoft.openapi\\1.6.14\\microsoft.openapi.1.6.14.nupkg.sha512",
+    "C:\\Users\\macie\\.nuget\\packages\\moq\\4.20.72\\moq.4.20.72.nupkg.sha512",
     "C:\\Users\\macie\\.nuget\\packages\\serilog\\4.0.2\\serilog.4.0.2.nupkg.sha512",
     "C:\\Users\\macie\\.nuget\\packages\\serilog.aspnetcore\\8.0.2\\serilog.aspnetcore.8.0.2.nupkg.sha512",
     "C:\\Users\\macie\\.nuget\\packages\\serilog.extensions.hosting\\8.0.0\\serilog.extensions.hosting.8.0.0.nupkg.sha512",
@@ -35,8 +37,16 @@
     "C:\\Users\\macie\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.8.1\\swashbuckle.aspnetcore.swaggergen.6.8.1.nupkg.sha512",
     "C:\\Users\\macie\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.8.1\\swashbuckle.aspnetcore.swaggerui.6.8.1.nupkg.sha512",
     "C:\\Users\\macie\\.nuget\\packages\\system.diagnostics.diagnosticsource\\8.0.0\\system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512",
+    "C:\\Users\\macie\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "C:\\Users\\macie\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
-    "C:\\Users\\macie\\.nuget\\packages\\system.text.json\\8.0.4\\system.text.json.8.0.4.nupkg.sha512"
+    "C:\\Users\\macie\\.nuget\\packages\\system.text.json\\8.0.4\\system.text.json.8.0.4.nupkg.sha512",
+    "C:\\Users\\macie\\.nuget\\packages\\xunit\\2.9.2\\xunit.2.9.2.nupkg.sha512",
+    "C:\\Users\\macie\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
+    "C:\\Users\\macie\\.nuget\\packages\\xunit.analyzers\\1.16.0\\xunit.analyzers.1.16.0.nupkg.sha512",
+    "C:\\Users\\macie\\.nuget\\packages\\xunit.assert\\2.9.2\\xunit.assert.2.9.2.nupkg.sha512",
+    "C:\\Users\\macie\\.nuget\\packages\\xunit.core\\2.9.2\\xunit.core.2.9.2.nupkg.sha512",
+    "C:\\Users\\macie\\.nuget\\packages\\xunit.extensibility.core\\2.9.2\\xunit.extensibility.core.2.9.2.nupkg.sha512",
+    "C:\\Users\\macie\\.nuget\\packages\\xunit.extensibility.execution\\2.9.2\\xunit.extensibility.execution.2.9.2.nupkg.sha512"
   ],
   "logs": []
 }

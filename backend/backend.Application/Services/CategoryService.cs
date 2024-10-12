@@ -1,154 +1,120 @@
 ﻿using backend.Application.Services;
 using backend.Domain.DTOs;
-using backend.Infrastructure.Authentication;
 using backend.Infrastructure.Respository;
 using backend.Models;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace backend.Application.Services
+public class CategoryService : ICategoryService
 {
-    public class CategoryService : ICategoryService
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly ILogger<CategoryService> _logger;
+
+    public CategoryService(IUnitOfWork unitOfWork, ILogger<CategoryService> logger)
     {
-        private readonly ICategoryRepository _categoryRepository;
-        private readonly ImageService _imageService;
-        private readonly IWebHostEnvironment _hostEnvironment;
-        private readonly BaseUrlService _baseUrlService;
-        private readonly ILogger<CategoryService> _logger;
-        private readonly string _baseUrl;
+        _unitOfWork = unitOfWork;
+        _logger = logger;
+    }
 
-        public CategoryService(ICategoryRepository categoryRepository, ImageService imageService, IWebHostEnvironment hostEnvironment, BaseUrlService baseUrlService, ILogger<CategoryService> logger)
+    public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories()
+    {
+        _logger.LogInformation("Fetching all categories");
+        var categories = await _unitOfWork.Categories.GetAllAsync();
+
+        if (!categories.Any())
         {
-            _categoryRepository = categoryRepository;
-            _imageService = imageService;
-            _hostEnvironment = hostEnvironment;
-            _baseUrlService = baseUrlService;
-            _baseUrl = _baseUrlService.GetBaseUrl();
-            _logger = logger;
+            _logger.LogWarning("No categories found");
         }
 
-        public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories()
+        var categoryDTOs = categories.Select(x => new CategoryDTO
         {
-            _logger.LogInformation("Fetching all categories.");
+            Id = x.Id,
+            Name = x.Name,
+            Description = x.Description,
+            PhotoUrl = x.PhotoUrl
+        }).ToList();
 
-            var categories = await _categoryRepository.GetCategoriesAsync();
-            if (!categories.Any())
-            {
-                _logger.LogWarning("No categories found.");
-            }
+        _logger.LogInformation("Successfully fetched {Count} categories", categoryDTOs.Count);
+        return new OkObjectResult(categoryDTOs);
+    }
 
-            var categoryDTOs = categories.Select(x => MapToCategoryDTO(x)).ToList();
-            _logger.LogInformation("Successfully fetched {count} categories.", categoryDTOs.Count);
+    public async Task<ActionResult<CategoryDTO>> GetCategory(Guid id)
+    {
+        _logger.LogInformation("Fetching category with ID: {Id}", id);
+        var category = await _unitOfWork.Categories.GetByIdAsync(id);
 
-            return categoryDTOs;
+        if (category == null)
+        {
+            _logger.LogWarning("Category with ID: {Id} not found", id);
+            return new NotFoundResult();
         }
 
-        public async Task<ActionResult<CategoryDTO>> GetCategory(Guid id)
+        var categoryDTO = new CategoryDTO
         {
-            _logger.LogInformation("Fetching category with ID: {id}", id);
+            Id = category.Id,
+            Name = category.Name,
+            Description = category.Description,
+            PhotoUrl = category.PhotoUrl
+        };
 
-            var category = await _categoryRepository.GetCategoryByIdAsync(id);
-            if (category == null)
-            {
-                _logger.LogWarning("Category with ID {id} not found.", id);
-                return new NotFoundResult();
-            }
+        _logger.LogInformation("Successfully fetched category with ID: {Id}", id);
+        return new OkObjectResult(categoryDTO);
+    }
 
-            var categoryDTO = MapToCategoryDTO(category);
-            _logger.LogInformation("Successfully fetched category with ID: {id}", id);
+    public async Task<IActionResult> PutCategory(Guid id, CategoryDTO categoryDTO)
+    {
+        _logger.LogInformation("Updating category with ID: {Id}", id);
 
-            return categoryDTO;
+        if (id != categoryDTO.Id)
+        {
+            _logger.LogWarning("Category ID mismatch. Provided ID: {Id}, DTO ID: {DTOId}", id, categoryDTO.Id);
+            return new BadRequestResult();
         }
 
-        public async Task<IActionResult> PutCategory(Guid id, CategoryDTO categoryDTO)
+        var category = new CategoryModel
         {
-            _logger.LogInformation("Updating category with ID: {id}", id);
+            Id = categoryDTO.Id,
+            Name = categoryDTO.Name,
+            Description = categoryDTO.Description,
+            PhotoUrl = categoryDTO.PhotoUrl
+        };
 
-            if (id != categoryDTO.Id)
-            {
-                _logger.LogWarning("Category ID mismatch. Provided ID: {id}, DTO ID: {dtoId}", id, categoryDTO.Id);
-                return new BadRequestResult();
-            }
+        await _unitOfWork.Categories.UpdateAsync(category);
+        await _unitOfWork.SaveChangesAsync();
 
-            var category = MapToCategoryModel(categoryDTO);
-            await _categoryRepository.UpdateCategoryAsync(category);
+        _logger.LogInformation("Successfully updated category with ID: {Id}", id);
+        return new NoContentResult();
+    }
 
-            _logger.LogInformation("Successfully updated category with ID: {id}", id);
-            return new NoContentResult();
-        }
+    public async Task<CreateCategoryRequestDTO> PostCategory([FromForm] CreateCategoryRequestDTO categoryDTO)
+    {
+        _logger.LogInformation("Creating new category with name: {Name}", categoryDTO.Name);
 
-        public async Task<CreateCategoryRequestDTO> PostCategory([FromForm] CreateCategoryRequestDTO categoryDTO)
+        var category = new CategoryModel
         {
-            _logger.LogInformation("Creating new category.");
+            Id = Guid.NewGuid(),
+            Name = categoryDTO.Name,
+            Description = categoryDTO.Description,
+            PhotoUrl = categoryDTO.PhotoUrl
+        };
 
-            if (categoryDTO.ImageFile == null)
-            {
-                _logger.LogError("The 'ImageFileDTO' field is required.");
-                throw new ValidationException("The 'ImageFileDTO' field is required.");
-            }
+        await _unitOfWork.Categories.AddAsync(category);
+        await _unitOfWork.SaveChangesAsync();
 
-            var photoUrl = await _imageService.SaveImage(categoryDTO.ImageFile, "Category", "category");
-            var currentDate = DateTime.UtcNow;
+        _logger.LogInformation("Successfully created category with ID: {Id}", category.Id);
+        return categoryDTO;
+    }
 
-            var category = new CategoryModel
-            {
-                Id = Guid.NewGuid(),
-                Name = categoryDTO.Name,
-                Description = categoryDTO.Description,
-                PhotoUrl = photoUrl,
-                CreatedAt = currentDate,
-                ModifiedAt = currentDate
-            };
+    public async Task<IActionResult> DeleteCategory(Guid id)
+    {
+        _logger.LogInformation("Deleting category with ID: {Id}", id);
+        await _unitOfWork.Categories.DeleteAsync(id);
+        await _unitOfWork.SaveChangesAsync();
 
-            await _categoryRepository.AddCategoryAsync(category);
-            _logger.LogInformation("Successfully posted category '{name}' at {currentDate}.", categoryDTO.Name, currentDate);
-
-            return categoryDTO;
-        }
-
-        public async Task<IActionResult> DeleteCategory(Guid id)
-        {
-            _logger.LogInformation("Deleting category with ID: {id}", id);
-
-            var categoryExists = await _categoryRepository.CategoryExistsAsync(id);
-            if (!categoryExists)
-            {
-                _logger.LogWarning("Attempted to delete category with ID {id}, but it does not exist.", id);
-                return new NotFoundResult();
-            }
-
-            await _categoryRepository.DeleteCategoryAsync(id);
-            _logger.LogInformation("Successfully deleted category with ID: {id}", id);
-
-            return new NoContentResult();
-        }
-
-        private CategoryDTO MapToCategoryDTO(CategoryModel category)
-        {
-            return new CategoryDTO
-            {
-                Id = category.Id,
-                Name = category.Name,
-                Description = category.Description,
-                PhotoUrl = $"{_baseUrl}/Images/Category/{category.PhotoUrl}"
-            };
-        }
-
-        private CategoryModel MapToCategoryModel(CategoryDTO categoryDTO)
-        {
-            return new CategoryModel
-            {
-                Id = categoryDTO.Id,
-                Name = categoryDTO.Name,
-                Description = categoryDTO.Description,
-                PhotoUrl = categoryDTO.PhotoUrl
-            };
-        }
+        _logger.LogInformation("Successfully deleted category with ID: {Id}", id);
+        return new NoContentResult();
     }
 }
