@@ -16,11 +16,13 @@ interface CreateProps {}
 interface FormValues {
   name: string;
   description: string;
+  icon: string;
 }
 
 const initialFieldValues: FormValues = {
   name: "",
   description: "",
+  icon: "",
 };
 
 const CreateCategoryForm: FC<CreateProps> = ({}) => {
@@ -106,7 +108,7 @@ const CreateCategoryForm: FC<CreateProps> = ({}) => {
               errorMessage={errors.description}
             />
 
-            <IconPicker />
+            <IconPicker setIcon={(icon) => setValue("icon", icon)} />
           </div>
 
           <div className="w-full md:w-1/3 flex flex-col">

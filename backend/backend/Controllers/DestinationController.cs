@@ -72,7 +72,7 @@ namespace backend.Controllers
         // PUT: api/Destinations/5
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDestination(Guid id, DestinationDTO destination)
+        public async Task<IActionResult> PutDestination(Guid id, CreateDestinationDTO destination)
         {
             return await _destinationService.PutDestination(id, destination);
         }
@@ -80,7 +80,7 @@ namespace backend.Controllers
         // POST: api/Destinations
         
         [HttpPost()]
-        public async Task<CreateDestinationDTO> PostDestination(CreateDestinationDTO destinationDTO)
+        public async Task<IActionResult> PostDestination(CreateDestinationDTO destinationDTO)
         {
             return await _destinationService.PostDestination(destinationDTO);
         }

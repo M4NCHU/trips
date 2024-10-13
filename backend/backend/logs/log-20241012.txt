@@ -350,3 +350,253 @@ LIMIT @__p_1 OFFSET @__p_0
 2024-10-12 20:13:01.404 +02:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 4184.174ms
 2024-10-12 20:13:01.412 +02:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
 2024-10-12 20:13:01.781 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=2 - 500 null application/json 4796.5152ms
+2024-10-12 20:16:51.286 +02:00 [INF] User profile is available. Using 'C:\Users\macie\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-12 20:16:51.663 +02:00 [INF] Now listening on: https://localhost:7154
+2024-10-12 20:16:51.664 +02:00 [INF] Now listening on: http://localhost:5219
+2024-10-12 20:16:51.670 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-12 20:16:51.673 +02:00 [INF] Hosting environment: Development
+2024-10-12 20:16:51.674 +02:00 [INF] Content root path: G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend
+2024-10-12 20:16:52.197 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2024-10-12 20:16:52.638 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 443.5474ms
+2024-10-12 20:16:52.673 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-12 20:16:52.673 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2024-10-12 20:16:52.695 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 22.9795ms
+2024-10-12 20:16:52.719 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 46.4254ms
+2024-10-12 20:16:52.747 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2024-10-12 20:16:52.862 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 114.3041ms
+2024-10-12 20:16:53.076 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2024-10-12 20:16:53.665 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 588.3424ms
+2024-10-12 20:17:01.271 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=2 - null null
+2024-10-12 20:17:01.403 +02:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2024-10-12 20:17:01.472 +02:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[backend.Domain.DTOs.ResponseDestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2024-10-12 20:17:03.821 +02:00 [INF] Base URL generated: https://localhost:7154
+2024-10-12 20:17:03.850 +02:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 2
+2024-10-12 20:17:03.861 +02:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 2
+2024-10-12 20:17:04.642 +02:00 [INF] Executed DbCommand (99ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+ORDER BY d."Id"
+LIMIT @__p_1 OFFSET @__p_0
+2024-10-12 20:17:05.061 +02:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 3575.5977ms
+2024-10-12 20:17:05.065 +02:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2024-10-12 20:17:05.393 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=2 - 500 null application/json 4121.2556ms
+2024-10-12 23:13:52.256 +02:00 [INF] User profile is available. Using 'C:\Users\macie\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-12 23:13:52.648 +02:00 [INF] Now listening on: https://localhost:7154
+2024-10-12 23:13:52.649 +02:00 [INF] Now listening on: http://localhost:5219
+2024-10-12 23:13:52.654 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-12 23:13:52.656 +02:00 [INF] Hosting environment: Development
+2024-10-12 23:13:52.657 +02:00 [INF] Content root path: G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend
+2024-10-12 23:13:53.515 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2024-10-12 23:13:54.100 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 548.9645ms
+2024-10-12 23:13:54.173 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2024-10-12 23:13:54.174 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2024-10-12 23:13:54.177 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-12 23:13:54.199 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 25.673ms
+2024-10-12 23:13:54.253 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 75.8122ms
+2024-10-12 23:13:54.294 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 120.4698ms
+2024-10-12 23:13:54.526 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2024-10-12 23:13:55.046 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 519.5534ms
+2024-10-12 23:14:29.412 +02:00 [INF] User profile is available. Using 'C:\Users\macie\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-12 23:14:29.724 +02:00 [INF] Now listening on: https://localhost:7154
+2024-10-12 23:14:29.725 +02:00 [INF] Now listening on: http://localhost:5219
+2024-10-12 23:14:29.729 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-12 23:14:29.732 +02:00 [INF] Hosting environment: Development
+2024-10-12 23:14:29.733 +02:00 [INF] Content root path: G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend
+2024-10-12 23:14:30.290 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2024-10-12 23:14:30.626 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 342.6704ms
+2024-10-12 23:14:30.674 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2024-10-12 23:14:30.674 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-12 23:14:30.691 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 17.1156ms
+2024-10-12 23:14:30.704 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2024-10-12 23:14:30.720 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 46.2475ms
+2024-10-12 23:14:30.787 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 83.1335ms
+2024-10-12 23:14:31.055 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2024-10-12 23:14:31.501 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 445.619ms
+2024-10-12 23:29:56.262 +02:00 [INF] User profile is available. Using 'C:\Users\macie\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-12 23:29:56.744 +02:00 [INF] Now listening on: https://localhost:7154
+2024-10-12 23:29:56.745 +02:00 [INF] Now listening on: http://localhost:5219
+2024-10-12 23:29:56.749 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-12 23:29:56.750 +02:00 [INF] Hosting environment: Development
+2024-10-12 23:29:56.752 +02:00 [INF] Content root path: G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend
+2024-10-12 23:29:57.439 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2024-10-12 23:29:57.821 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 386.6995ms
+2024-10-12 23:29:57.917 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-12 23:29:57.918 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2024-10-12 23:29:57.933 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 15.2047ms
+2024-10-12 23:29:57.948 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2024-10-12 23:29:57.951 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 33.4868ms
+2024-10-12 23:29:58.043 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 95.6751ms
+2024-10-12 23:29:58.276 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2024-10-12 23:29:58.825 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 549.3504ms
+2024-10-12 23:30:50.421 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7154/api/Destination?Name=test&Description=desc&Location=desc&Price=12&CategoryId=1cda9a02-5232-4e84-8fb1-8237b939c366 - multipart/form-data; boundary=----WebKitFormBoundarytjxeg8KTiRAKP64Z 18506
+2024-10-12 23:30:50.479 +02:00 [INF] CORS policy execution failed.
+2024-10-12 23:30:50.485 +02:00 [INF] Request origin https://localhost:7154 does not have permission to access the resource.
+2024-10-12 23:30:50.602 +02:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.PostDestination (backend)'
+2024-10-12 23:30:50.656 +02:00 [INF] Route matched with {action = "PostDestination", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PostDestination(backend.Domain.DTOs.CreateDestinationDTO) on controller backend.Controllers.DestinationController (backend).
+2024-10-12 23:30:52.941 +02:00 [INF] Base URL generated: https://localhost:7154
+2024-10-12 23:30:53.013 +02:00 [INF] Creating a new destination.
+2024-10-12 23:30:53.022 +02:00 [INF] Saving image Destinations_20241012213053_ccf144e8-9f66-4f18-b7bf-97987b04e566.png at path: G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\Images\Destinations\Destinations_20241012213053_ccf144e8-9f66-4f18-b7bf-97987b04e566.png
+2024-10-12 23:30:53.033 +02:00 [INF] Image Destinations_20241012213053_ccf144e8-9f66-4f18-b7bf-97987b04e566.png saved successfully.
+2024-10-12 23:30:54.627 +02:00 [INF] Executed DbCommand (545ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p2='?' (DbType = DateTime), @p3='?', @p4='?', @p5='?' (DbType = DateTime), @p6='?', @p7='?', @p8='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Destination" ("Id", "CategoryId", "CreatedAt", "Description", "Location", "ModifiedAt", "Name", "PhotoUrl", "Price")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2024-10-12 23:30:54.713 +02:00 [INF] Successfully created destination with ID: "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739"
+2024-10-12 23:30:54.747 +02:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.CreateDestinationDTO'.
+2024-10-12 23:30:54.936 +02:00 [INF] Executed action backend.Controllers.DestinationController.PostDestination (backend) in 4270.747ms
+2024-10-12 23:30:54.942 +02:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.PostDestination (backend)'
+2024-10-12 23:30:54.961 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7154/api/Destination?Name=test&Description=desc&Location=desc&Price=12&CategoryId=1cda9a02-5232-4e84-8fb1-8237b939c366 - 200 null application/json; charset=utf-8 4542.4251ms
+2024-10-12 23:32:22.459 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7154/api/Destination/88b50d6c-aaaa-4bec-ba9c-88e30b8cd739?Name=testedfit&Description=testedfit&Location=testedfit&Price=15&CategoryId=1cda9a02-5232-4e84-8fb1-8237b939c366 - multipart/form-data; boundary=----WebKitFormBoundaryxaRA1fqm1BFKE755 37760
+2024-10-12 23:32:22.522 +02:00 [INF] CORS policy execution failed.
+2024-10-12 23:32:22.526 +02:00 [INF] Request origin https://localhost:7154 does not have permission to access the resource.
+2024-10-12 23:32:22.537 +02:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.PutDestination (backend)'
+2024-10-12 23:32:22.548 +02:00 [INF] Route matched with {action = "PutDestination", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PutDestination(System.Guid, backend.Domain.DTOs.CreateDestinationDTO) on controller backend.Controllers.DestinationController (backend).
+2024-10-12 23:32:22.758 +02:00 [INF] Base URL generated: https://localhost:7154
+2024-10-12 23:32:22.769 +02:00 [INF] Updating destination with ID: "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739"
+2024-10-12 23:32:22.775 +02:00 [INF] Checking if destination with ID "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739" exists
+2024-10-12 23:32:23.199 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Destination" AS d
+    WHERE d."Id" = @__id_0)
+2024-10-12 23:32:23.252 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[@p8='?' (DbType = Guid), @p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?', @p7='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Destination" SET "CategoryId" = @p0, "CreatedAt" = @p1, "Description" = @p2, "Location" = @p3, "ModifiedAt" = @p4, "Name" = @p5, "PhotoUrl" = @p6, "Price" = @p7
+WHERE "Id" = @p8;
+2024-10-12 23:32:23.412 +02:00 [INF] Successfully updated destination with ID: "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739"
+2024-10-12 23:32:23.418 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2024-10-12 23:32:23.420 +02:00 [INF] Executed action backend.Controllers.DestinationController.PutDestination (backend) in 868.1889ms
+2024-10-12 23:32:23.422 +02:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.PutDestination (backend)'
+2024-10-12 23:32:23.423 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7154/api/Destination/88b50d6c-aaaa-4bec-ba9c-88e30b8cd739?Name=testedfit&Description=testedfit&Location=testedfit&Price=15&CategoryId=1cda9a02-5232-4e84-8fb1-8237b939c366 - 204 null null 963.8904ms
+2024-10-12 23:36:41.607 +02:00 [INF] User profile is available. Using 'C:\Users\macie\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-12 23:36:41.922 +02:00 [INF] Now listening on: https://localhost:7154
+2024-10-12 23:36:41.926 +02:00 [INF] Now listening on: http://localhost:5219
+2024-10-12 23:36:41.931 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-12 23:36:41.940 +02:00 [INF] Hosting environment: Development
+2024-10-12 23:36:41.941 +02:00 [INF] Content root path: G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend
+2024-10-12 23:36:42.602 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2024-10-12 23:36:43.001 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 415.895ms
+2024-10-12 23:36:43.059 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-12 23:36:43.059 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2024-10-12 23:36:43.079 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2024-10-12 23:36:43.108 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 48.5413ms
+2024-10-12 23:36:43.109 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 49.5678ms
+2024-10-12 23:36:43.167 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 87.4686ms
+2024-10-12 23:36:43.460 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2024-10-12 23:36:43.851 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 390.6801ms
+2024-10-12 23:38:14.617 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7154/api/Destination/88b50d6c-aaaa-4bec-ba9c-88e30b8cd739?Name=asdfas&Description=dfasdf&Location=asdfasdfas&Price=12&CategoryId=1cda9a02-5232-4e84-8fb1-8237b939c366 - multipart/form-data; boundary=----WebKitFormBoundaryg8HAUon4y3LFxIYF 37760
+2024-10-12 23:38:14.703 +02:00 [INF] CORS policy execution failed.
+2024-10-12 23:38:14.707 +02:00 [INF] Request origin https://localhost:7154 does not have permission to access the resource.
+2024-10-12 23:38:14.879 +02:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.PutDestination (backend)'
+2024-10-12 23:38:14.948 +02:00 [INF] Route matched with {action = "PutDestination", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PutDestination(System.Guid, backend.Domain.DTOs.CreateDestinationDTO) on controller backend.Controllers.DestinationController (backend).
+2024-10-12 23:38:17.491 +02:00 [INF] Base URL generated: https://localhost:7154
+2024-10-12 23:38:22.211 +02:00 [INF] Updating destination with ID: "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739"
+2024-10-12 23:38:22.733 +02:00 [INF] Checking if destination with ID "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739" exists
+2024-10-12 23:38:23.937 +02:00 [INF] Executed DbCommand (243ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Destination" AS d
+    WHERE d."Id" = @__id_0)
+2024-10-12 23:38:31.980 +02:00 [INF] Executed DbCommand (25ms) [Parameters=[@p8='?' (DbType = Guid), @p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?', @p7='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Destination" SET "CategoryId" = @p0, "CreatedAt" = @p1, "Description" = @p2, "Location" = @p3, "ModifiedAt" = @p4, "Name" = @p5, "PhotoUrl" = @p6, "Price" = @p7
+WHERE "Id" = @p8;
+2024-10-12 23:38:32.759 +02:00 [INF] Successfully updated destination with ID: "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739"
+2024-10-12 23:38:42.750 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2024-10-12 23:38:42.760 +02:00 [INF] Executed action backend.Controllers.DestinationController.PutDestination (backend) in 27794.8382ms
+2024-10-12 23:38:42.766 +02:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.PutDestination (backend)'
+2024-10-12 23:39:45.580 +02:00 [INF] User profile is available. Using 'C:\Users\macie\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-12 23:39:46.271 +02:00 [INF] Now listening on: https://localhost:7154
+2024-10-12 23:39:46.286 +02:00 [INF] Now listening on: http://localhost:5219
+2024-10-12 23:39:46.290 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-12 23:39:46.292 +02:00 [INF] Hosting environment: Development
+2024-10-12 23:39:46.294 +02:00 [INF] Content root path: G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend
+2024-10-12 23:39:46.807 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2024-10-12 23:39:47.287 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 486.3366ms
+2024-10-12 23:39:47.386 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-12 23:39:47.386 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2024-10-12 23:39:47.388 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2024-10-12 23:39:47.405 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 18.7202ms
+2024-10-12 23:39:47.422 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 36.3561ms
+2024-10-12 23:39:47.501 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 114.1039ms
+2024-10-12 23:39:47.748 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2024-10-12 23:39:48.279 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 533.0668ms
+2024-10-12 23:40:35.121 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7154/api/Destination/88b50d6c-aaaa-4bec-ba9c-88e30b8cd739?Name=asdfasdfasdf&Description=asdfasdfasd&Location=asdfasdfasd&Price=12&CategoryId=e0b1fd2a-90e6-4dc9-a6af-5a4bbdd4e626 - multipart/form-data; boundary=----WebKitFormBoundarysXH14ycvRzjXqWBw 37760
+2024-10-12 23:40:35.174 +02:00 [INF] CORS policy execution failed.
+2024-10-12 23:40:35.176 +02:00 [INF] Request origin https://localhost:7154 does not have permission to access the resource.
+2024-10-12 23:40:35.272 +02:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.PutDestination (backend)'
+2024-10-12 23:40:35.334 +02:00 [INF] Route matched with {action = "PutDestination", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PutDestination(System.Guid, backend.Domain.DTOs.CreateDestinationDTO) on controller backend.Controllers.DestinationController (backend).
+2024-10-12 23:40:37.802 +02:00 [INF] Base URL generated: https://localhost:7154
+2024-10-12 23:40:39.834 +02:00 [INF] Updating destination with ID: "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739"
+2024-10-12 23:40:40.208 +02:00 [INF] Checking if destination with ID "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739" exists
+2024-10-12 23:40:41.799 +02:00 [INF] Executed DbCommand (142ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Destination" AS d
+    WHERE d."Id" = @__id_0)
+2024-10-12 23:40:48.199 +02:00 [INF] Executed DbCommand (42ms) [Parameters=[@p8='?' (DbType = Guid), @p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?', @p7='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Destination" SET "CategoryId" = @p0, "CreatedAt" = @p1, "Description" = @p2, "Location" = @p3, "ModifiedAt" = @p4, "Name" = @p5, "PhotoUrl" = @p6, "Price" = @p7
+WHERE "Id" = @p8;
+2024-10-12 23:40:50.648 +02:00 [INF] Successfully updated destination with ID: "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739"
+2024-10-12 23:40:53.629 +02:00 [INF] Executing OkObjectResult, writing value of type 'backend.Models.DestinationModel'.
+2024-10-12 23:40:53.749 +02:00 [INF] Executed action backend.Controllers.DestinationController.PutDestination (backend) in 18404.0325ms
+2024-10-12 23:40:53.751 +02:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.PutDestination (backend)'
+2024-10-12 23:40:53.765 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7154/api/Destination/88b50d6c-aaaa-4bec-ba9c-88e30b8cd739?Name=asdfasdfasdf&Description=asdfasdfasd&Location=asdfasdfasd&Price=12&CategoryId=e0b1fd2a-90e6-4dc9-a6af-5a4bbdd4e626 - 200 null application/json; charset=utf-8 18643.7581ms
+2024-10-12 23:41:36.377 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7154/api/Destination/88b50d6c-aaaa-4bec-ba9c-88e30b8cd739?Name=asdfasdfasdf&Description=asdfasdfasd&Location=asdfasdfasd&Price=12&CategoryId=e0b1fd2a-90e6-4dc9-a6af-5a4bbdd4e626 - multipart/form-data; boundary=----WebKitFormBoundarylOzx2AhMEuLgBkfV 37760
+2024-10-12 23:41:36.735 +02:00 [INF] CORS policy execution failed.
+2024-10-12 23:41:36.742 +02:00 [INF] Request origin https://localhost:7154 does not have permission to access the resource.
+2024-10-12 23:41:36.745 +02:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.PutDestination (backend)'
+2024-10-12 23:41:36.756 +02:00 [INF] Route matched with {action = "PutDestination", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PutDestination(System.Guid, backend.Domain.DTOs.CreateDestinationDTO) on controller backend.Controllers.DestinationController (backend).
+2024-10-12 23:41:36.902 +02:00 [INF] Base URL generated: https://localhost:7154
+2024-10-12 23:41:42.092 +02:00 [INF] Updating destination with ID: "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739"
+2024-10-12 23:41:43.038 +02:00 [INF] Checking if destination with ID "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739" exists
+2024-10-12 23:41:43.069 +02:00 [INF] Executed DbCommand (21ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Destination" AS d
+    WHERE d."Id" = @__id_0)
+2024-10-12 23:42:41.322 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@p8='?' (DbType = Guid), @p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?', @p7='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Destination" SET "CategoryId" = @p0, "CreatedAt" = @p1, "Description" = @p2, "Location" = @p3, "ModifiedAt" = @p4, "Name" = @p5, "PhotoUrl" = @p6, "Price" = @p7
+WHERE "Id" = @p8;
+2024-10-12 23:42:43.567 +02:00 [INF] Successfully updated destination with ID: "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739"
+2024-10-12 23:42:48.929 +02:00 [INF] Executing OkObjectResult, writing value of type 'backend.Models.DestinationModel'.
+2024-10-12 23:42:48.937 +02:00 [INF] Executed action backend.Controllers.DestinationController.PutDestination (backend) in 72175.6195ms
+2024-10-12 23:42:48.948 +02:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.PutDestination (backend)'
+2024-10-12 23:42:48.949 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7154/api/Destination/88b50d6c-aaaa-4bec-ba9c-88e30b8cd739?Name=asdfasdfasdf&Description=asdfasdfasd&Location=asdfasdfasd&Price=12&CategoryId=e0b1fd2a-90e6-4dc9-a6af-5a4bbdd4e626 - 200 null application/json; charset=utf-8 72571.712ms
+2024-10-12 23:46:11.857 +02:00 [INF] User profile is available. Using 'C:\Users\macie\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-12 23:46:12.283 +02:00 [INF] Now listening on: https://localhost:7154
+2024-10-12 23:46:12.285 +02:00 [INF] Now listening on: http://localhost:5219
+2024-10-12 23:46:12.290 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-12 23:46:12.296 +02:00 [INF] Hosting environment: Development
+2024-10-12 23:46:12.297 +02:00 [INF] Content root path: G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend
+2024-10-12 23:46:12.831 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2024-10-12 23:46:13.272 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 444.0862ms
+2024-10-12 23:46:13.313 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2024-10-12 23:46:13.313 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-12 23:46:13.323 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 9.9761ms
+2024-10-12 23:46:13.342 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2024-10-12 23:46:13.345 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 32.0622ms
+2024-10-12 23:46:13.410 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 67.817ms
+2024-10-12 23:46:13.624 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2024-10-12 23:46:14.050 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 426.1965ms
+2024-10-12 23:47:20.748 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7154/api/Destination/88b50d6c-aaaa-4bec-ba9c-88e30b8cd739?Name=asdf&Description=asdf&Location=asdf&Price=12&CategoryId=1cda9a02-5232-4e84-8fb1-8237b939c366 - multipart/form-data; boundary=----WebKitFormBoundary5TwWysX8mlsBIIRT 37760
+2024-10-12 23:47:20.772 +02:00 [INF] CORS policy execution failed.
+2024-10-12 23:47:20.773 +02:00 [INF] Request origin https://localhost:7154 does not have permission to access the resource.
+2024-10-12 23:47:20.867 +02:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.PutDestination (backend)'
+2024-10-12 23:47:20.942 +02:00 [INF] Route matched with {action = "PutDestination", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PutDestination(System.Guid, backend.Domain.DTOs.CreateDestinationDTO) on controller backend.Controllers.DestinationController (backend).
+2024-10-12 23:47:25.184 +02:00 [INF] Base URL generated: https://localhost:7154
+2024-10-12 23:47:27.720 +02:00 [INF] Updating destination with ID: "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739"
+2024-10-12 23:47:28.467 +02:00 [INF] Checking if destination with ID "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739" exists
+2024-10-12 23:47:31.106 +02:00 [INF] Executed DbCommand (231ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Destination" AS d
+    WHERE d."Id" = @__id_0)
+2024-10-12 23:47:39.106 +02:00 [INF] Saving image Destinations_20241012214739_3a8327ef-64d1-4038-98f5-7fcc4839f692.png at path: G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\Images\Destinations\Destinations_20241012214739_3a8327ef-64d1-4038-98f5-7fcc4839f692.png
+2024-10-12 23:47:39.120 +02:00 [INF] Image Destinations_20241012214739_3a8327ef-64d1-4038-98f5-7fcc4839f692.png saved successfully.
+2024-10-12 23:47:45.106 +02:00 [WRN] Provided ID: "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739". Destination image changed to: Destinations_20241012214739_3a8327ef-64d1-4038-98f5-7fcc4839f692.png
+2024-10-12 23:47:50.075 +02:00 [INF] Executed DbCommand (22ms) [Parameters=[@p8='?' (DbType = Guid), @p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?', @p7='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Destination" SET "CategoryId" = @p0, "CreatedAt" = @p1, "Description" = @p2, "Location" = @p3, "ModifiedAt" = @p4, "Name" = @p5, "PhotoUrl" = @p6, "Price" = @p7
+WHERE "Id" = @p8;
+2024-10-12 23:47:50.863 +02:00 [INF] Successfully updated destination with ID: "88b50d6c-aaaa-4bec-ba9c-88e30b8cd739"
+2024-10-12 23:48:03.174 +02:00 [INF] Executing OkObjectResult, writing value of type 'backend.Models.DestinationModel'.
+2024-10-12 23:48:03.338 +02:00 [INF] Executed action backend.Controllers.DestinationController.PutDestination (backend) in 42384.2631ms
+2024-10-12 23:48:03.341 +02:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.PutDestination (backend)'
+2024-10-12 23:48:03.363 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7154/api/Destination/88b50d6c-aaaa-4bec-ba9c-88e30b8cd739?Name=asdf&Description=asdf&Location=asdf&Price=12&CategoryId=1cda9a02-5232-4e84-8fb1-8237b939c366 - 200 null application/json; charset=utf-8 42615.2675ms

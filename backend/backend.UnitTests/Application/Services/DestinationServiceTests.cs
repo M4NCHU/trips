@@ -19,6 +19,7 @@ public class DestinationServiceTests
     private readonly Mock<IWebHostEnvironment> _hostEnvironmentMock;
     private readonly Mock<IHttpContextAccessor> _httpContextAccessorMock;
     private readonly Mock<IBaseUrlService> _baseUrlServiceMock;
+    private readonly Mock<IMapper> _mapperMock;
     private readonly Mock<ILogger<DestinationService>> _loggerMock;
     private readonly IMapper _mapper;
     private readonly DestinationService _destinationService;
@@ -28,6 +29,7 @@ public class DestinationServiceTests
         _unitOfWorkMock = new Mock<IUnitOfWork>();
         _imageServiceMock = new Mock<IImageService>();
         _hostEnvironmentMock = new Mock<IWebHostEnvironment>();
+        _mapperMock = new Mock<IMapper>();
         _loggerMock = new Mock<ILogger<DestinationService>>();
 
         _httpContextAccessorMock = new Mock<IHttpContextAccessor>();
@@ -37,7 +39,6 @@ public class DestinationServiceTests
         _baseUrlServiceMock = new Mock<IBaseUrlService>();
         _baseUrlServiceMock.Setup(b => b.GetBaseUrl()).Returns("http://localhost");
 
-        // Konfiguracja AutoMappera
         var config = new MapperConfiguration(cfg => {
             cfg.AddProfile<backend.Domain.Mappings.DestinationMapper>();
         });
@@ -110,7 +111,7 @@ public class DestinationServiceTests
     }
 
     [Fact]
-    public async Task PostDestination_ShouldReturnDestinationDTO_WhenSuccessfullyCreated()
+    public async Task PostDestination_ShouldReturnOkObjectResult_WhenSuccessfullyCreated()
     {
         // Arrange
         var createDestinationDTO = new CreateDestinationDTO
@@ -131,8 +132,56 @@ public class DestinationServiceTests
         var result = await _destinationService.PostDestination(createDestinationDTO);
 
         // Assert
-        Assert.Equal(createDestinationDTO.Name, result.Name);
+        var okResult = Assert.IsType<OkObjectResult>(result);
         _unitOfWorkMock.Verify(u => u.Destinations.AddAsync(It.IsAny<DestinationModel>()), Times.Once);
+        _unitOfWorkMock.Verify(u => u.SaveChangesAsync(), Times.Once);
+    }
+
+    [Fact]
+    public async Task PutDestination_ShouldUpdateAndSaveDestination_WhenValidRequest()
+    {
+        // Arrange
+        var destinationId = Guid.NewGuid();
+        var createDestinationDTO = new CreateDestinationDTO
+        {
+            Name = "Updated Destination",
+            ImageFile = new Mock<IFormFile>().Object
+        };
+
+        var existingDestination = new DestinationModel
+        {
+            Id = destinationId,
+            Name = "Old Destination",
+            PhotoUrl = "oldPhoto.jpg",
+            CategoryId = Guid.NewGuid(),
+            Location = "Old Location",
+            Description = "Old Description",
+            Price = 20.0
+        };
+
+        _unitOfWorkMock.Setup(u => u.Destinations.GetByIdAsync(destinationId)).ReturnsAsync(existingDestination);
+
+        _unitOfWorkMock.Setup(u => u.Destinations.DestinationExistsAsync(destinationId)).ReturnsAsync(true);
+
+
+        _imageServiceMock.Setup(i => i.SaveImage(It.IsAny<IFormFile>(), "Destinations", It.IsAny<string>()))
+            .ReturnsAsync("newPhoto.jpg");
+
+        _unitOfWorkMock.Setup(u => u.Destinations.UpdateAsync(It.IsAny<DestinationModel>())).Returns(Task.CompletedTask);
+        _unitOfWorkMock.Setup(u => u.SaveChangesAsync()).ReturnsAsync(true);
+
+        // Act
+        var result = await _destinationService.PutDestination(destinationId, createDestinationDTO);
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(result);
+        var updatedDestination = Assert.IsType<DestinationModel>(okResult.Value);
+
+        Assert.Equal("Updated Destination", updatedDestination.Name);
+        Assert.Equal("newPhoto.jpg", updatedDestination.PhotoUrl);
+        Assert.NotEqual(DateTime.MinValue, updatedDestination.ModifiedAt);
+
+        _unitOfWorkMock.Verify(u => u.Destinations.UpdateAsync(It.IsAny<DestinationModel>()), Times.Once);
         _unitOfWorkMock.Verify(u => u.SaveChangesAsync(), Times.Once);
     }
 

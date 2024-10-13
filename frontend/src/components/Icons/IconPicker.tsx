@@ -3,7 +3,11 @@ import * as FaIcons from "react-icons/fa";
 import { IconType } from "react-icons";
 import DynamicIcon from "./DynamicIcon";
 
-const IconPicker: React.FC = () => {
+interface IconPickerProps {
+  setIcon: (icon: string) => void;
+}
+
+const IconPicker: React.FC<IconPickerProps> = ({ setIcon }) => {
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -15,6 +19,7 @@ const IconPicker: React.FC = () => {
   const handleIconClick = (iconName: string) => {
     setSelectedIcon(iconName);
     setIsDropdownOpen(false);
+    setIcon(iconName);
   };
 
   const loadIconsInChunks = () => {

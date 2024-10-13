@@ -5,7 +5,7 @@ namespace backend.Application.Services
 {
     public interface IImageService
     {
-        Task<string> SaveImage(IFormFile imageFile, string folder, string prefix = "");
+        public Task<string> SaveImage(IFormFile imageFile, string folder, string prefix = "");
         void DeleteImage(string imageName);
     }
 }

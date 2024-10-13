@@ -10,18 +10,48 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.AspNetCore.Hosting;
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
 
 public class CategoryServiceTests
 {
     private readonly Mock<IUnitOfWork> _unitOfWorkMock;
+    private readonly Mock<IImageService> _imageServiceMock;
+    private readonly Mock<IWebHostEnvironment> _hostEnvironmentMock;
+    private readonly Mock<IHttpContextAccessor> _httpContextAccessorMock;
+    private readonly Mock<IBaseUrlService> _baseUrlServiceMock;
+    private readonly Mock<IMapper> _mapperMock;
+    private readonly IMapper _mapper;
+    private readonly Mock<ILogger<CategoryService>> _loggerMock;
     private readonly CategoryService _categoryService;
 
     public CategoryServiceTests()
     {
         _unitOfWorkMock = new Mock<IUnitOfWork>();
-        var loggerMock = new Mock<ILogger<CategoryService>>();
+        _imageServiceMock = new Mock<IImageService>();
+        _hostEnvironmentMock = new Mock<IWebHostEnvironment>();
+        _mapperMock = new Mock<IMapper>();
+        _loggerMock = new Mock<ILogger<CategoryService>>();
 
-        _categoryService = new CategoryService(_unitOfWorkMock.Object, loggerMock.Object);
+        _httpContextAccessorMock = new Mock<IHttpContextAccessor>();
+        var httpContext = new DefaultHttpContext();
+        _httpContextAccessorMock.Setup(h => h.HttpContext).Returns(httpContext);
+
+        _baseUrlServiceMock = new Mock<IBaseUrlService>();
+        _baseUrlServiceMock.Setup(b => b.GetBaseUrl()).Returns("http://localhost");
+
+        var config = new MapperConfiguration(cfg => {
+            cfg.AddProfile<backend.Domain.Mappings.CategoryMapper>();
+        });
+        _mapper = config.CreateMapper();
+
+        _categoryService = new CategoryService(
+            _unitOfWorkMock.Object,
+            _mapper,
+            _imageServiceMock.Object,
+            _loggerMock.Object
+        );
     }
 
     [Fact]
@@ -63,7 +93,7 @@ public class CategoryServiceTests
     }
 
     [Fact]
-    public async Task PostCategory_ShouldReturnCreatedAtAction_WhenSuccessfullyCreated()
+    public async Task PostCategory_ShouldReturnOkObjectResult_WhenSuccessfullyCreated()
     {
         // Arrange
         var categoryDTO = new CreateCategoryRequestDTO
@@ -85,8 +115,9 @@ public class CategoryServiceTests
         var result = await _categoryService.PostCategory(categoryDTO);
 
         // Assert
-        Assert.Equal(categoryDTO.Name, result.Name);
+        var okResult = Assert.IsType<OkObjectResult>(result);
         _unitOfWorkMock.Verify(u => u.Categories.AddAsync(It.IsAny<CategoryModel>()), Times.Once);
+        _unitOfWorkMock.Verify(u => u.SaveChangesAsync(), Times.Once);
     }
 
     [Fact]
@@ -94,6 +125,10 @@ public class CategoryServiceTests
     {
         // Arrange
         var categoryId = Guid.NewGuid();
+        var category = new CategoryModel { Id = categoryId, Name = "Test Category" };
+
+        _unitOfWorkMock.Setup(u => u.Categories.GetByIdAsync(categoryId))
+            .ReturnsAsync(category);
 
         _unitOfWorkMock.Setup(u => u.Categories.DeleteAsync(categoryId))
             .Returns(Task.CompletedTask);
@@ -108,4 +143,5 @@ public class CategoryServiceTests
         Assert.IsType<NoContentResult>(result);
         _unitOfWorkMock.Verify(u => u.Categories.DeleteAsync(categoryId), Times.Once);
     }
+
 }

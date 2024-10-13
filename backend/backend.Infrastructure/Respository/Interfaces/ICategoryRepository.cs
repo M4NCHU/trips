@@ -7,5 +7,6 @@ namespace backend.Infrastructure.Respository
     public interface ICategoryRepository : IRepository<CategoryModel>
     {
         Task<bool> CategoryExistsAsync(Guid id);
+        Task<bool> CategoryExistsAsync(string name);
     }
 }

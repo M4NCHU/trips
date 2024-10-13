@@ -21,5 +21,11 @@ namespace backend.Infrastructure.Respository
             _logger.LogInformation("Checking if category with ID {Id} exists", id);
             return await _context.Category.AnyAsync(e => e.Id == id);
         }
+        public async Task<bool> CategoryExistsAsync(string name)
+        {
+            _logger.LogInformation("Checking if category with name {Name} exists", name);
+            return await _context.Category.AnyAsync(e => e.Name == name);
+        }
+
     }
 }

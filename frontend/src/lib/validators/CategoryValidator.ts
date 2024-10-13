@@ -25,6 +25,7 @@ export const CategoryValidator = z.object({
       maxNameLength,
       `Description must be no longer than ${maxNameLength} characters`
     ),
+  icon: z.string(),
 });
 
 export type CategoryPayload = z.infer<typeof CategoryValidator>;

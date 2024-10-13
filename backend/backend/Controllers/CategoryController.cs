@@ -52,7 +52,7 @@ namespace backend.Controllers
         // POST: api/Category
         /*[Authorize(Roles = "admin")]*/
         [HttpPost()]
-        public async Task<ActionResult<CreateCategoryRequestDTO>> PostCategory([FromForm] CreateCategoryRequestDTO category)
+        public async Task<ActionResult<CategoryModel>> PostCategory([FromForm] CreateCategoryRequestDTO category)
         {
             return await _categoryService.PostCategory(category);
         }

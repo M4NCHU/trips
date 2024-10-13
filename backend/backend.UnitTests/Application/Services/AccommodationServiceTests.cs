@@ -17,7 +17,8 @@ public class AccommodationServiceTests
 {
     private readonly Mock<IUnitOfWork> _unitOfWorkMock;
     private readonly Mock<IMapper> _mapperMock;
-    private readonly Mock<IImageService> _imageServiceMock; 
+    private readonly Mock<IImageService> _imageServiceMock;
+    private readonly Mock<ILogger<AccommodationService>> _loggerMock;
     private readonly AccommodationService _accommodationService;
 
     public AccommodationServiceTests()
@@ -25,12 +26,14 @@ public class AccommodationServiceTests
         _unitOfWorkMock = new Mock<IUnitOfWork>();
         _mapperMock = new Mock<IMapper>();
         _imageServiceMock = new Mock<IImageService>();  
+        _loggerMock = new Mock<ILogger<AccommodationService>>();  
 
         // Use the mock in the service constructor
         _accommodationService = new AccommodationService(
             _unitOfWorkMock.Object,
             _imageServiceMock.Object,
-            _mapperMock.Object
+            _mapperMock.Object,
+            _loggerMock.Object
         );
     }
 

@@ -11,6 +11,9 @@ namespace backend.Domain.Mappings
         {
             // Map CategoryModel to CategoryDTO
             CreateMap<CategoryModel, CategoryDTO>();
+            CreateMap<CreateCategoryRequestDTO, CategoryModel>()
+                .ForMember(dest => dest.ModifiedAt, opt => opt.MapFrom(src => DateTime.UtcNow))
+                .ForMember(dest => dest.ImageFile, opt => opt.Ignore());
         }
     }
 }

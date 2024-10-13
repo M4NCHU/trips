@@ -14,7 +14,7 @@ namespace backend.Models
 
         public string Description { get; set; } = string.Empty;
 
-        public string PhotoUrl { get; set; }
+        public string PhotoUrl { get; set; } = string.Empty;
 
         public string Icon { get; set; } = string.Empty;
 
@@ -23,7 +23,7 @@ namespace backend.Models
         public DateTime? ModifiedAt { get; set; } = DateTime.Now;
 
         [NotMapped]
-        public IFormFile ImageFile { get; set; }
+        public IFormFile? ImageFile { get; set; }
 
         public ICollection<DestinationModel> Destinations { get; set; } = new List<DestinationModel>();
 

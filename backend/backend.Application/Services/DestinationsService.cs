@@ -4,6 +4,7 @@ using backend.Domain.Filters;
 using backend.Infrastructure.Respository;
 using backend.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -42,125 +43,202 @@ namespace backend.Application.Services
 
         public async Task<ActionResult<DestinationDTO>> GetDestination(Guid id)
         {
-            var destination = await _unitOfWork.Destinations.GetByIdAsync(id);
-            if (destination == null)
+            try
             {
-                return new NotFoundResult();
+                var destination = await _unitOfWork.Destinations.GetByIdAsync(id);
+                if (destination == null)
+                {
+                    return new NotFoundResult();
+                }
+
+                var destinationDto = _mapper.Map<DestinationDTO>(destination, opts =>
+                {
+                    opts.Items["BaseUrl"] = _baseUrl;
+                });
+
+                return new OkObjectResult(destinationDto);
             }
-            
-            var baseUrl = _baseUrl;
-
-
-            var destinationDto = _mapper.Map<DestinationDTO>(destination, opts =>
+            catch (Exception ex)
             {
-                opts.Items["BaseUrl"] = _baseUrl;
-            });
-
-            return new OkObjectResult(destinationDto);
+                _logger.LogError(ex, "An error occurred while fetching the destination with ID: {id}", id);
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
         }
 
-
-
-        public async Task<CreateDestinationDTO> PostDestination(CreateDestinationDTO destinationDTO)
+        public async Task<IActionResult> PostDestination(CreateDestinationDTO destinationDTO)
         {
-            _logger.LogInformation("Creating a new destination.");
-
-            if (destinationDTO.ImageFile == null)
+            try
             {
-                _logger.LogError("The 'ImageFileDTO' field is required.");
-                throw new ArgumentException("The 'ImageFileDTO' field is required.");
+                _logger.LogInformation("Creating a new destination.");
+
+                if (destinationDTO.ImageFile == null)
+                {
+                    _logger.LogError("The 'ImageFileDTO' field is required.");
+                    return new BadRequestResult();
+                }
+
+                if (destinationDTO == null)
+                {
+                    _logger.LogWarning("Destination object is empty");
+                    return new BadRequestResult();
+                }
+
+                var photoUrl = await _imageService.SaveImage(destinationDTO.ImageFile, "Destinations");
+                var destination = _mapper.Map<DestinationModel>(destinationDTO);
+                destination.PhotoUrl = photoUrl;
+
+                await _unitOfWork.Destinations.AddAsync(destination);
+                await _unitOfWork.SaveChangesAsync();
+
+                _logger.LogInformation("Successfully created destination with ID: {id}", destination.Id);
+
+                return new OkObjectResult(destinationDTO);
             }
-
-            destinationDTO.PhotoUrl = await _imageService.SaveImage(destinationDTO.ImageFile, "Destinations");
-
-            var destination = _mapper.Map<DestinationModel>(destinationDTO);
-            await _unitOfWork.Destinations.AddAsync(destination); 
-            await _unitOfWork.SaveChangesAsync();
-
-            _logger.LogInformation("Successfully created destination with ID: {id}", destination.Id);
-            return destinationDTO;
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while creating the destination.");
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
         }
 
-        public async Task<IActionResult> PutDestination(Guid id, DestinationDTO destinationDTO)
+        public async Task<IActionResult> PutDestination(Guid id, CreateDestinationDTO destinationDTO)
         {
             _logger.LogInformation("Updating destination with ID: {id}", id);
 
-            if (id != destinationDTO.Id)
+            var destinationExists = await _unitOfWork.Destinations.DestinationExistsAsync(id);
+            if (!destinationExists)
             {
-                _logger.LogWarning("Mismatched ID during update. Provided ID: {id}, DTO ID: {dtoId}", id, destinationDTO.Id);
+                _logger.LogWarning("Provided ID: {id}. Destination doesn't exist", id);
+                return new NotFoundResult();
+            }
+
+            if (destinationDTO == null)
+            {
+                _logger.LogWarning("Destination object is empty");
                 return new BadRequestResult();
             }
 
-            var destination = _mapper.Map<DestinationModel>(destinationDTO);
-            await _unitOfWork.Destinations.UpdateAsync(destination);
+            var existingDestination = await _unitOfWork.Destinations.GetByIdAsync(id);
+            if (existingDestination == null)
+            {
+                return new NotFoundResult();
+            }
+
+            _mapper.Map(destinationDTO, existingDestination);
+
+
+            if (destinationDTO.ImageFile != null)
+            {
+                var photoUrl = await _imageService.SaveImage(destinationDTO.ImageFile, "Destinations");
+                existingDestination.PhotoUrl = photoUrl;
+                _logger.LogInformation("Destination image updated for ID: {id}. New photo URL: {photoUrl}", id, photoUrl);
+            }
+
+            existingDestination.ModifiedAt = DateTime.UtcNow;
+
+            await _unitOfWork.Destinations.UpdateAsync(existingDestination);
             await _unitOfWork.SaveChangesAsync();
 
             _logger.LogInformation("Successfully updated destination with ID: {id}", id);
-            return new NoContentResult();
+            return new OkObjectResult(existingDestination);
         }
 
         public async Task<IActionResult> DeleteDestination(Guid id)
         {
-            _logger.LogInformation("Deleting destination with ID: {id}", id);
-
-            var destinationExists = await _unitOfWork.Destinations.GetByIdAsync(id); 
-            if (destinationExists == null)
+            try
             {
-                _logger.LogWarning("Attempted to delete destination with ID: {id}, but it does not exist.", id);
-                return new NotFoundResult();
+                _logger.LogInformation("Deleting destination with ID: {id}", id);
+
+                var destinationExists = await _unitOfWork.Destinations.GetByIdAsync(id);
+                if (destinationExists == null)
+                {
+                    _logger.LogWarning("Attempted to delete destination with ID: {id}, but it does not exist.", id);
+                    return new NotFoundResult();
+                }
+
+                await _unitOfWork.Destinations.DeleteAsync(id);
+                await _unitOfWork.SaveChangesAsync();
+
+                _logger.LogInformation("Successfully deleted destination with ID: {id}", id);
+                return new NoContentResult();
             }
-
-            await _unitOfWork.Destinations.DeleteAsync(id); 
-            await _unitOfWork.SaveChangesAsync();
-
-            _logger.LogInformation("Successfully deleted destination with ID: {id}", id);
-            return new NoContentResult();
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while deleting the destination with ID: {id}", id);
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
         }
 
         public async Task<ActionResult<IEnumerable<ResponseDestinationDTO>>> GetDestinations(DestinationFilter filter, int page = 1, int pageSize = 2)
         {
-            _logger.LogInformation("Fetching destinations with filter and pagination. Page: {page}, PageSize: {pageSize}", page, pageSize);
-
-            var destinations = await _unitOfWork.Destinations.GetDestinationsAsync(filter, page, pageSize); 
-
-            if (destinations == null || !destinations.Any())
+            try
             {
-                _logger.LogWarning("No destinations found for the given filter.");
-                return new NotFoundResult();
+                _logger.LogInformation("Fetching destinations with filter and pagination. Page: {page}, PageSize: {pageSize}", page, pageSize);
+
+                var destinations = await _unitOfWork.Destinations.GetDestinationsAsync(filter, page, pageSize);
+
+                if (destinations == null || !destinations.Any())
+                {
+                    _logger.LogWarning("No destinations found for the given filter.");
+                    return new NotFoundResult();
+                }
+
+                var destinationDTOs = _mapper.Map<List<ResponseDestinationDTO>>(destinations, opts =>
+                {
+                    opts.Items["BaseUrl"] = _baseUrl;
+                });
+
+                _logger.LogInformation("Successfully fetched {count} destinations.", destinationDTOs.Count);
+                return new OkObjectResult(destinationDTOs);
             }
-
-            var destinationDTOs = _mapper.Map<List<ResponseDestinationDTO>>(destinations, opts => {
-                opts.Items["BaseUrl"] = _baseUrl;
-            });
-
-            _logger.LogInformation("Successfully fetched {count} destinations.", destinationDTOs.Count);
-            return new OkObjectResult(destinationDTOs);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while fetching destinations.");
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
         }
 
         public async Task<IEnumerable<DestinationDTO>> SearchDestinations(string searchTerm)
         {
-            _logger.LogInformation("Searching destinations with term: {searchTerm}", searchTerm);
-
-            var destinations = await _unitOfWork.Destinations.SearchDestinationsAsync(searchTerm);
-            if (!destinations.Any())
+            try
             {
-                _logger.LogWarning("No destinations found for the search term: {searchTerm}", searchTerm);
-            }
+                _logger.LogInformation("Searching destinations with term: {searchTerm}", searchTerm);
 
-            return _mapper.Map<IEnumerable<DestinationDTO>>(destinations);
+                var destinations = await _unitOfWork.Destinations.SearchDestinationsAsync(searchTerm);
+                if (!destinations.Any())
+                {
+                    _logger.LogWarning("No destinations found for the search term: {searchTerm}", searchTerm);
+                }
+
+                return _mapper.Map<IEnumerable<DestinationDTO>>(destinations);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while searching destinations.");
+                return new List<DestinationDTO>();
+            }
         }
 
         public async Task<List<DestinationDTO>> GetDestinationsForTrip(Guid tripId)
         {
-            _logger.LogInformation("Fetching destinations for trip with ID: {tripId}", tripId);
-
-            var destinations = await _unitOfWork.Destinations.GetDestinationsForTripAsync(tripId);
-            if (!destinations.Any())
+            try
             {
-                _logger.LogWarning("No destinations found for trip ID: {tripId}", tripId);
-            }
+                _logger.LogInformation("Fetching destinations for trip with ID: {tripId}", tripId);
 
-            return _mapper.Map<List<DestinationDTO>>(destinations);
+                var destinations = await _unitOfWork.Destinations.GetDestinationsForTripAsync(tripId);
+                if (!destinations.Any())
+                {
+                    _logger.LogWarning("No destinations found for trip ID: {tripId}", tripId);
+                }
+
+                return _mapper.Map<List<DestinationDTO>>(destinations);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while fetching destinations for trip ID: {tripId}", tripId);
+                return new List<DestinationDTO>(); 
+            }
         }
+
     }
 }

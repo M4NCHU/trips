@@ -17,7 +17,7 @@ namespace backend.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -537,7 +537,7 @@ namespace backend.Infrastructure.Migrations
                     b.ToTable("TripParticipant");
                 });
 
-            modelBuilder.Entity("backend.Models.VisitPlace", b =>
+            modelBuilder.Entity("backend.Models.VisitPlaceModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -664,7 +664,7 @@ namespace backend.Infrastructure.Migrations
                         .WithMany("SelectedPlaces")
                         .HasForeignKey("TripModelId");
 
-                    b.HasOne("backend.Models.VisitPlace", "VisitPlace")
+                    b.HasOne("backend.Models.VisitPlaceModel", "VisitPlace")
                         .WithMany()
                         .HasForeignKey("VisitPlaceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -724,7 +724,7 @@ namespace backend.Infrastructure.Migrations
                     b.Navigation("Trip");
                 });
 
-            modelBuilder.Entity("backend.Models.VisitPlace", b =>
+            modelBuilder.Entity("backend.Models.VisitPlaceModel", b =>
                 {
                     b.HasOne("backend.Models.DestinationModel", "Destination")
                         .WithMany("VisitPlaces")
