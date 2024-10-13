@@ -8,11 +8,13 @@ import {
   FaTrashAlt,
   FaFilter,
   FaSearch,
+  FaTrash,
 } from "react-icons/fa";
 import { Button } from "../button";
 import { IoCreate } from "react-icons/io5";
 import { FiFilter } from "react-icons/fi";
 import CreateDestinationModal from "src/components/Destinations/Modals/CreateDestinationModal";
+import { ButtonWithIcon } from "../Buttons/ButtonWithIcon";
 
 interface TableProps<T> {
   data: T[];
@@ -53,11 +55,9 @@ const Table = <T,>({
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Styl przycisków
   const buttonStyle =
     "hidden md:block rounded-full text-base placeholder:text-sm w-full h-full px-[2rem] min-w-[15rem] py-[.5rem] pr-[2.5rem] bg-secondary";
 
-  // Obsługa sortowania
   const handleSort = (column: keyof T) => {
     if (sortColumn === column) {
       setSortDirection(sortDirection === "asc" ? "desc" : "asc");
@@ -190,7 +190,7 @@ const Table = <T,>({
                   </button>
                 </th>
               ))}
-              <th className={headerClassName}>Actions</th>
+              <th className={`${headerClassName} flex justify-end`}>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -203,52 +203,26 @@ const Table = <T,>({
                       : (item[column] as React.ReactNode)}
                   </TableCell>
                 ))}
-                <td className={cellClassName}>
+                <td className={`${cellClassName} flex justify-end gap-2`}>
                   {onEdit && (
-                    <button
-                      className="text-foreground py-1 px-3 rounded mr-2"
+                    <ButtonWithIcon
+                      variant={"success"}
+                      icon={<FaEdit />}
                       onClick={() => onEdit(item)}
-                    >
-                      <FaEdit />
-                    </button>
+                    />
                   )}
                   {onDelete && (
-                    <button
-                      className="text-white py-1 px-3 rounded"
+                    <ButtonWithIcon
+                      variant={"danger"}
+                      icon={<FaTrash />}
                       onClick={() => onDelete(item)}
-                    >
-                      <FaTrashAlt />
-                    </button>
+                    />
                   )}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
-
-      <div className="table-footer flex p-[1.2rem] border-t-[1px] d-flex flex-row justify-between items-center w-full">
-        <div></div>
-        <div className="table-pagination flex flex-row items-center gap-2">
-          <Button className="bg-foreground-500 border-[2px] hover:bg-secondary transition-transform border-secondary text-foreground">
-            Previous
-          </Button>
-          <div className="flex gap-2">
-            {/* Przykładowe numery stron */}
-            <Button className="bg-foreground-500 hover:bg-secondary transition-transform text-foreground">
-              1
-            </Button>
-            <Button className="bg-foreground-500 hover:bg-secondary transition-transform text-foreground">
-              2
-            </Button>
-            <Button className="bg-foreground-500 hover:bg-secondary transition-transform text-foreground">
-              3
-            </Button>
-          </div>
-          <Button className="bg-foreground-500 border-[2px] hover:bg-secondary transition-transform border-secondary text-foreground">
-            Next
-          </Button>
-        </div>
       </div>
     </div>
   );

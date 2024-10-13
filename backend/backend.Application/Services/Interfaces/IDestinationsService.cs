@@ -9,7 +9,7 @@ namespace backend.Application.Services
 {
     public interface IDestinationService
     {
-        Task<ActionResult<IEnumerable<ResponseDestinationDTO>>> GetDestinations(DestinationFilter filter, int page = 1, int pageSize = 2);
+        Task<ActionResult<PagedResult<DestinationDTO>>> GetDestinations(DestinationFilter filter, int page = 1, int pageSize = 2);
         Task<ActionResult<DestinationDTO>> GetDestination(Guid id);
         Task<IEnumerable<DestinationDTO>> SearchDestinations(string searchTerm);
         Task<List<DestinationDTO>> GetDestinationsForTrip(Guid tripId);

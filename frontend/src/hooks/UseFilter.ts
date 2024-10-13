@@ -13,7 +13,6 @@ function useFilter(initialFilters: Filters = {}, delay: number = 500) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Używamy debounce, aby odroczyć aktualizację URL do momentu zakończenia wprowadzania filtrów
   const updateURLWithFilters = debounce((newFilters: Filters) => {
     const searchParams = new URLSearchParams();
 

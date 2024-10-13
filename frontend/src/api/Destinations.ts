@@ -16,32 +16,34 @@ export interface DestinationFilter {
 }
 
 // Get destinations with pagination
-export const useDestinationList = (filter?: DestinationFilter) => {
+
+export const useDestinationList = (
+  filter?: DestinationFilter,
+  pageSize = 2
+) => {
   const {
-    isPending,
+    isLoading,
     isError,
     error,
     data,
+    totalItems,
+    currentPage,
     isFetching,
-    isPlaceholderData,
-    fetchNextPage,
-    fetchPreviousPage,
     page,
     setPage,
   } = usePagination<Destination>("/api/Destination", {
-    pageSize: 8,
+    pageSize: pageSize,
     queryParameters: filter,
   });
 
   return {
-    isPending,
+    isLoading,
     isError,
     error,
     data,
+    totalItems,
+    currentPage,
     isFetching,
-    isPlaceholderData,
-    fetchNextPage,
-    fetchPreviousPage,
     page,
     setPage,
   };

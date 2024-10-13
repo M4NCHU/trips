@@ -5,6 +5,7 @@ using backend.Infrastructure.Respository;
 using backend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -25,31 +26,24 @@ public class CategoryService : ICategoryService
         _mapper = mapper;
         _imageService = imageService;
     }
-
-    public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories()
+    public async Task<PagedResult<CategoryDTO>> GetCategories(int page, int pageSize)
     {
-        try
+        var categoriesPaged = await _unitOfWork.Categories.GetPagedCategories(page, pageSize);
+
+        var categoryDTOs = _mapper.Map<List<CategoryDTO>>(categoriesPaged.Items);
+
+        return new PagedResult<CategoryDTO>
         {
-            _logger.LogInformation("Fetching all categories");
-            var categories = await _unitOfWork.Categories.GetAllAsync();
-
-            if (!categories.Any())
-            {
-                _logger.LogWarning("No categories found");
-                return new NotFoundResult();
-            }
-
-            var categoriesDTO = _mapper.Map<IEnumerable<CategoryDTO>>(categories);
-
-            _logger.LogInformation("Successfully fetched {Count} categories", categoriesDTO.Count());
-            return new OkObjectResult(categoriesDTO);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "An error occurred while fetching categories.");
-            return new StatusCodeResult(StatusCodes.Status500InternalServerError);
-        }
+            Items = categoryDTOs,
+            TotalItems = categoriesPaged.TotalItems,
+            PageSize = categoriesPaged.PageSize,
+            CurrentPage = categoriesPaged.CurrentPage
+        };
     }
+
+
+
+
 
     public async Task<ActionResult<CategoryDTO>> GetCategory(Guid id)
     {
@@ -77,7 +71,7 @@ public class CategoryService : ICategoryService
         }
     }
 
-    public async Task<IActionResult> PutCategory(Guid id, CategoryDTO categoryDTO)
+    public async Task<IActionResult> PutCategory(Guid id, CreateCategoryRequestDTO categoryDTO)
     {
         try
         {
@@ -93,7 +87,8 @@ public class CategoryService : ICategoryService
 
             _mapper.Map(categoryDTO, categoryExists);
 
-            categoryExists.CreatedAt = DateTime.UtcNow;
+            categoryExists.ModifiedAt = DateTime.UtcNow;
+            categoryExists.PhotoUrl = string.Empty;
 
             if (categoryDTO.ImageFile != null)
             {

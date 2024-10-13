@@ -9,10 +9,7 @@ interface DestinationsListProps {}
 const DestinationsList: FC<DestinationsListProps> = ({}) => {
   const {
     data: destinations,
-    isPending,
     isError,
-    fetchNextPage,
-    fetchPreviousPage,
     page,
     isFetching,
   } = useDestinationList();
@@ -26,7 +23,7 @@ const DestinationsList: FC<DestinationsListProps> = ({}) => {
             ))
           : "no data"}
 
-        {isPending ? (
+        {isFetching ? (
           <DestinationsListSkeleton />
         ) : isError ? (
           <div>Error loading destinations</div>
@@ -34,12 +31,6 @@ const DestinationsList: FC<DestinationsListProps> = ({}) => {
           <DestinationsListSkeleton />
         ) : null}
       </div>
-      <PaginationButtons
-        fetchPreviousPage={fetchPreviousPage}
-        fetchNextPage={fetchNextPage}
-        isFetching={isFetching}
-        page={page}
-      />
     </div>
   );
 };

@@ -1,47 +1,64 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Button } from "../../ui/button";
 import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "../../ui/dialog";
-import { Input } from "../../ui/input";
-import { IoCreate } from "react-icons/io5";
 import CreateCategoryForm from "../Forms/CreateCategoryForm";
+import { useGetCategoryById } from "../../../api/Category"; // API do pobrania kategorii
 
-interface CreateCategoryModalProps {}
+interface CreateCategoryModalProps {
+  categoryId?: string | null;
+  isEditMode?: boolean;
+  isOpen: boolean;
+  onClose: () => void; // Funkcja do zamknięcia modala
+}
 
-const CreateCategoryModal: FC<CreateCategoryModalProps> = () => {
-  const [title, setTitle] = useState("");
+const CreateCategoryModal: FC<CreateCategoryModalProps> = ({
+  categoryId,
+  isEditMode = false,
+  isOpen,
+  onClose,
+}) => {
+  const [title, setTitle] = useState(
+    isEditMode ? "Edit Category" : "Create Category"
+  );
+  const { data: categoryData, isLoading } = useGetCategoryById(
+    categoryId || ""
+  );
+
+  useEffect(() => {
+    if (isEditMode && categoryData) {
+      setTitle("Edit Category");
+    } else {
+      setTitle("Create Category");
+    }
+  }, [isEditMode, categoryData]);
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button className="bg-purple-500 text-foreground">
-          <IoCreate />
-          <span className="hidden md:block">Add category</span>
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="">
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent>
         <DialogHeader>
-          <DialogTitle>Create Destination</DialogTitle>
+          <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
         <div className="flex flex-col">
-          <CreateCategoryForm />
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <CreateCategoryForm
+              category={categoryData}
+              isEditMode={isEditMode}
+            />
+          )}
         </div>
 
         <DialogFooter>
           <DialogClose asChild>
-            <Button
-              type="button"
-              variant="secondary"
-              //   onClick={(e) => handleFormSubmit(e)}
-            >
+            <Button type="button" variant="secondary" onClick={onClose}>
               Close
             </Button>
           </DialogClose>

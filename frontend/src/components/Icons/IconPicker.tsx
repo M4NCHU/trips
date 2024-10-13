@@ -118,11 +118,13 @@ const IconPicker: React.FC<IconPickerProps> = ({ setIcon }) => {
               </div>
               <div className="grid grid-cols-6 gap-2 p-2">
                 {iconList.map((iconName, i) => (
-                  <DynamicIcon
+                  <div
                     key={i}
-                    iconName={iconName as keyof typeof FaIcons}
-                    onClick={handleIconClick}
-                  />
+                    className="cursor-pointer flex justify-center items-center p-2 border rounded-lg hover:bg-background"
+                    onClick={() => handleIconClick(iconName)}
+                  >
+                    <DynamicIcon iconName={iconName as keyof typeof FaIcons} />
+                  </div>
                 ))}
               </div>
               {isLoading && (

@@ -169,27 +169,35 @@ namespace backend.Application.Services
             }
         }
 
-        public async Task<ActionResult<IEnumerable<ResponseDestinationDTO>>> GetDestinations(DestinationFilter filter, int page = 1, int pageSize = 2)
+        public async Task<ActionResult<PagedResult<DestinationDTO>>> GetDestinations(DestinationFilter filter, int page = 1, int pageSize = 2)
         {
             try
             {
                 _logger.LogInformation("Fetching destinations with filter and pagination. Page: {page}, PageSize: {pageSize}", page, pageSize);
 
-                var destinations = await _unitOfWork.Destinations.GetDestinationsAsync(filter, page, pageSize);
+                var destinationsPaged = await _unitOfWork.Destinations.GetDestinationsAsync(filter, page, pageSize);
 
-                if (destinations == null || !destinations.Any())
-                {
-                    _logger.LogWarning("No destinations found for the given filter.");
-                    return new NotFoundResult();
-                }
-
-                var destinationDTOs = _mapper.Map<List<ResponseDestinationDTO>>(destinations, opts =>
+                var destinationDTOs = _mapper.Map<List<DestinationDTO>>(destinationsPaged.Items, opts =>
                 {
                     opts.Items["BaseUrl"] = _baseUrl;
                 });
 
+                if (destinationDTOs == null || !destinationDTOs.Any())
+                {
+                    _logger.LogWarning("No destinations found for the given filter.");
+                    return new NoContentResult();
+                }
+
+                var pagedResult = new PagedResult<DestinationDTO>
+                {
+                    Items = destinationDTOs,
+                    TotalItems = destinationsPaged.TotalItems,
+                    PageSize = destinationsPaged.PageSize,
+                    CurrentPage = destinationsPaged.CurrentPage
+                };
+
                 _logger.LogInformation("Successfully fetched {count} destinations.", destinationDTOs.Count);
-                return new OkObjectResult(destinationDTOs);
+                return new OkObjectResult(pagedResult);
             }
             catch (Exception ex)
             {
@@ -197,6 +205,7 @@ namespace backend.Application.Services
                 return new StatusCodeResult(StatusCodes.Status500InternalServerError);
             }
         }
+
 
         public async Task<IEnumerable<DestinationDTO>> SearchDestinations(string searchTerm)
         {

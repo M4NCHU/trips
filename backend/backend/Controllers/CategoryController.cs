@@ -25,13 +25,21 @@ namespace backend.Controllers
             _logger = logger;
         }
 
-        // GET: api/Category/GetAllDestinations
-        [HttpGet()]
-        public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories()
+        // GET: api/Category
+        [HttpGet]
+        public async Task<ActionResult<PagedResult<CategoryDTO>>> GetCategories(int page = 1, int pageSize = 10)
         {
-            var categories = await _categoryService.GetCategories();
-            return categories;
+            var result = await _categoryService.GetCategories(page, pageSize);
+
+            if (result == null || !result.Items.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
         }
+
+
 
 
         // GET: api/Category/GetCategoryById/5
@@ -44,7 +52,7 @@ namespace backend.Controllers
         // PUT: api/Category/5
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(Guid id, CategoryDTO category)
+        public async Task<IActionResult> PutCategory(Guid id, CreateCategoryRequestDTO category)
         {
             return await _categoryService.PutCategory(id, category);
         }

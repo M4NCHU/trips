@@ -11,11 +11,13 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ isAdmin, children }) => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-hidden">
       <div className="flex flex-col lg:flex-row w-full grow">
-        <Sidebar />
+        <div className="w-[20rem] hidden xl:block">
+          <Sidebar />
+        </div>
 
-        <div className="w-full flex flex-col h-screen">
+        <div className="flex flex-col h-screen grow w-full lg:w-[calc(100vw-20rem)]">
           <Header />
           <div className="p-4 rounded-2xl m-[.5rem] md:m-[1rem] flex flex-col bg-secondary text-centralSection-foreground grow px-[.2rem] md:px-[2rem] overflow-y-auto gap-2">
             {isAdmin && <AdminNav />}

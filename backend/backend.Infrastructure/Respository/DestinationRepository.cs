@@ -1,4 +1,5 @@
-﻿using backend.Domain.Filters;
+﻿using backend.Domain.DTOs;
+using backend.Domain.Filters;
 using backend.Infrastructure.Authentication;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,7 @@ namespace backend.Infrastructure.Respository
             _logger = logger;
         }
 
-        public async Task<IEnumerable<DestinationModel>> GetDestinationsAsync(DestinationFilter filter, int page, int pageSize)
+        public async Task<PagedResult<DestinationModel>> GetDestinationsAsync(DestinationFilter filter, int page, int pageSize)
         {
             _logger.LogInformation("Fetching destinations with filter and pagination. Page: {Page}, PageSize: {PageSize}", page, pageSize);
 
@@ -32,12 +33,23 @@ namespace backend.Infrastructure.Respository
                 query = query.Where(d => d.CategoryId == parsedCategoryId);
             }
 
-            return await query
+            var totalItems = await query.CountAsync();
+
+            var destinations = await query
                 .OrderBy(d => d.Id)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
+
+            return new PagedResult<DestinationModel>
+            {
+                Items = destinations,
+                TotalItems = totalItems,
+                PageSize = pageSize,
+                CurrentPage = page
+            };
         }
+
 
         public async Task<IEnumerable<DestinationModel>> SearchDestinationsAsync(string searchTerm)
         {

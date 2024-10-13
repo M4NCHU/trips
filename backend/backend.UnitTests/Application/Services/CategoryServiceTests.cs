@@ -68,7 +68,7 @@ public class CategoryServiceTests
             .ReturnsAsync(categories);
 
         // Act
-        var result = await _categoryService.GetCategories();
+        var result = await _categoryService.GetCategories(2, 10);
 
         // Assert
         var actionResult = Assert.IsType<ActionResult<IEnumerable<CategoryDTO>>>(result);  

@@ -27,11 +27,13 @@ namespace backend.Controllers
 
         // GET: api/Destinations
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<ResponseDestinationDTO>>> GetDestinations([FromQuery] DestinationFilter filter, int page = 1, int pageSize = 2)
+        public async Task<ActionResult<PagedResult<DestinationDTO>>> GetDestinations([FromQuery] DestinationFilter filter, int page = 1, int pageSize = 2)
         {
             var destinations = await _destinationService.GetDestinations(filter, page, pageSize);
             return destinations;
         }
+
+        
 
         // GET: api/Destinations/1
         [HttpGet("trip/{tripId}")]

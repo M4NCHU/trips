@@ -1,28 +1,20 @@
-import {
-  useQuery,
-  useQueryClient,
-  keepPreviousData,
-} from "@tanstack/react-query";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { fetchDataPaginated } from "../api/apiUtils";
+import { PagedResult } from "src/types/PagedResult";
 
+// Typowanie dla opcji paginacji
 interface PaginationOptions {
   pageSize: number;
-  queryParameters?: any;
-}
-
-interface PaginatedData<T> {
-  data: T[];
-  hasMore: boolean;
+  queryParameters?: Record<string, any>;
 }
 
 export const usePagination = <T>(url: string, options?: PaginationOptions) => {
-  const queryClient = useQueryClient();
-  const { pageSize = 2, queryParameters = {} } = options || {};
-  const [page, setPage] = useState(1);
+  const { pageSize = 10, queryParameters = {} } = options || {};
+  const [page, setPage] = useState<number>(1);
   const location = useLocation();
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -33,47 +25,49 @@ export const usePagination = <T>(url: string, options?: PaginationOptions) => {
   const fetchPage = async (
     page: number,
     pageSize: number
-  ): Promise<PaginatedData<T>> => {
+  ): Promise<PagedResult<T>> => {
     const data = await fetchDataPaginated<T>(
       url,
       page,
       pageSize,
       queryParameters
     );
-    return { data: data.data, hasMore: data.hasMore };
+
+    return {
+      items: data.items,
+      totalItems: data.totalItems,
+      pageSize: data.pageSize,
+      currentPage: data.currentPage,
+    };
   };
 
-  const fetchNextPage = async () => {
-    if (!isPlaceholderData && data?.hasMore) {
-      setPage((old) => old + 1);
-      history({ search: `?page=${page + 1}` });
-    }
-  };
-
-  const fetchPreviousPage = async () => {
-    if (page > 1) {
-      setPage((old) => old - 1);
-      history({ search: `?page=${page - 1}` });
-    }
-  };
-
-  const { isPending, isError, error, data, isFetching, isPlaceholderData } =
-    useQuery<PaginatedData<T>>({
-      queryKey: [url, page, pageSize, queryParameters],
-      queryFn: () => fetchPage(page, pageSize),
-      placeholderData: keepPreviousData,
-      staleTime: 5000,
-    });
-
-  return {
-    isPending,
+  const {
+    isLoading,
     isError,
     error,
-    data: data?.data || [],
+    data,
     isFetching,
-    isPlaceholderData,
-    fetchNextPage,
-    fetchPreviousPage,
+  }: UseQueryResult<PagedResult<T>, Error> = useQuery({
+    queryKey: [url, page, pageSize, queryParameters],
+    queryFn: () => fetchPage(page, pageSize),
+    staleTime: 5000,
+    placeholderData: {
+      items: [],
+      totalItems: 0,
+      pageSize: pageSize,
+      currentPage: page,
+    },
+  });
+
+  return {
+    isLoading,
+    isError,
+    error,
+    data: data?.items || [],
+    totalItems: data?.totalItems || 0,
+    pageSize: data?.pageSize || pageSize,
+    currentPage: data?.currentPage || page,
+    isFetching,
     page,
     setPage,
   };

@@ -1,37 +1,35 @@
 import { FC, useState } from "react";
-import Landing from "src/pages/Landing/Landing";
-import LandingCardItem from "./LandingCardItem";
-import LandingItemsSection from "./LandingItemsSection";
-import { UseCategoryList } from "src/api/Category";
 import { DestinationFilter, useDestinationList } from "src/api/Destinations";
-import { PiCarThin } from "react-icons/pi";
 import { BsCart } from "react-icons/bs";
 import { ButtonWithIcon } from "../ui/Buttons/ButtonWithIcon";
 import LandingSectionTitle from "./LandingSectionTitle";
 import LandingItemsLayout from "./LandingItemsLayout";
 import { Button } from "../ui/button";
+import ItemsGrid from "../ui/ItemsGrid";
+import CardItem from "../ui/CardItem";
 
 interface LandingDestinationListProps {}
 
-const LandingDestinationList: FC<LandingDestinationListProps> = ({}) => {
+const LandingDestinationList: FC<LandingDestinationListProps> = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const filter: DestinationFilter = {};
   if (selectedCategory) {
     filter.categoryId = selectedCategory;
   }
-  const { data: destination, isError } = useDestinationList(filter);
   const {
-    data: categories,
+    data: destinations,
     isLoading,
-    isError: CategoriesError,
-  } = UseCategoryList();
+    isError: DestinationsError,
+  } = useDestinationList(filter);
+
+  console.log(destinations);
 
   return (
     <LandingItemsLayout>
       <LandingSectionTitle
         title="Top Destinations"
         desc="lorem ipsuasd fasd fas df asdfasdf"
-        dataCount={destination.length ? destination.length : undefined}
+        dataCount={destinations.length ? destinations.length : undefined}
       />
       <div className="flex flex-row gap-2 flex-wrap">
         <Button
@@ -40,8 +38,8 @@ const LandingDestinationList: FC<LandingDestinationListProps> = ({}) => {
         >
           All
         </Button>
-        {categories
-          ? categories.map((item, i) => (
+        {destinations
+          ? destinations.map((item, i) => (
               <Button
                 key={item.id}
                 className="bg-secondary rounded-full text-sm md:text-base text-primary hover:bg-secondary/80"
@@ -52,34 +50,22 @@ const LandingDestinationList: FC<LandingDestinationListProps> = ({}) => {
             ))
           : ""}
       </div>
-      <LandingItemsSection>
-        {destination
-          ? destination.map((item, i) => (
-              <LandingCardItem key={i}>
-                <div className="flex flex-col gap-2">
-                  <div className="w-full h-32 overflow-hidden">
-                    <img
-                      src={item.photoUrl}
-                      alt=""
-                      className="w-full h-full object-cover rounded-lg"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2 p-2">
-                    <h4 className="text-lg font-semibold">{item.name}</h4>
-                    <p className="text-gray-400 text-sm">{item.description}</p>
-                    <div className="flex flex-row  justify-between items-center">
-                      <span className="font-bold">12 zł</span>
-                      <ButtonWithIcon
-                        icon={<BsCart />}
-                        className="p-2 rounded-full"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </LandingCardItem>
-            ))
-          : "No destinations"}
-      </LandingItemsSection>
+
+      <ItemsGrid
+        items={destinations || []}
+        renderItem={(item, index) => (
+          <CardItem
+            key={index}
+            imageUrl={item.photoUrl}
+            title={item.name}
+            description={item.description}
+            price="12 zł"
+            actions={
+              <ButtonWithIcon icon={<BsCart />} className="p-2 rounded-full" />
+            }
+          />
+        )}
+      />
     </LandingItemsLayout>
   );
 };

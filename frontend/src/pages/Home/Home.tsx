@@ -4,6 +4,7 @@ import LandingSectionTitle from "src/components/Landing/LandingSectionTitle";
 import LandingItemsSection from "src/components/Landing/LandingItemsSection";
 import LandingCategoriesList from "src/components/Landing/LandingCategoriesList";
 import LandingDestinationList from "src/components/Landing/LandingDestinationList";
+import CategorySlider from "src/components/Categories/Lists/CategorySlider";
 
 type DestinationType = {
   id: string;
@@ -16,24 +17,14 @@ type DestinationType = {
 const Home = () => {
   return (
     <>
-      <div className="flex flex-col justify-center items-center py-12 gap-4">
-        <h1 className="text-2xl md:text-4xl font-semibold">
-          Travel Smarter, Dream bigger
-        </h1>
-        <p className="text-base md:text-lg">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
-          assumenda consequatur
-        </p>
-        <div className="flex flex-row items-center gap-4">
-          <LandingButton text="Plan your trip" link="/destinations" />
-          <LandingButton text="Accommodations" link="/" />
-        </div>
-
-        <div
-          className="w-full h-[18rem] md:h-[24rem] rounded-lg mt-4 bg-cover bg-center relative"
-          style={{ backgroundImage: `url(${Image})` }}
-        ></div>
+      <div className="px-[.2rem] lg:px-[1rem] mx-0 flex justify-center pb-2 lg:pb-4 overflow-x-auto min-h-[10rem] w-full">
+        <CategorySlider />
       </div>
+      <div
+        className="w-full min-h-[18rem] h-[18rem] md:h-[24rem] rounded-lg mt-4 bg-cover bg-center relative"
+        style={{ backgroundImage: `url(${Image})` }}
+      ></div>
+
       <div className="flex flex-col mt-12 gap-12">
         <LandingDestinationList />
         <LandingCategoriesList />

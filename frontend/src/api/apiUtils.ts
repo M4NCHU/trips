@@ -1,4 +1,5 @@
 import axios, { AxiosResponse, AxiosError } from "axios";
+import { PagedResult } from "src/types/PagedResult";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
 
@@ -13,7 +14,7 @@ export const fetchDataPaginated = async <T>(
   page: number,
   pageSize: number,
   queryParameters: Record<string, string | number> = {}
-): Promise<{ data: T[]; hasMore: boolean }> => {
+): Promise<PagedResult<T>> => {
   try {
     const queryParams = new URLSearchParams(
       queryParameters as Record<string, string>
@@ -21,17 +22,17 @@ export const fetchDataPaginated = async <T>(
     queryParams.append("page", page.toString());
     queryParams.append("pageSize", pageSize.toString());
 
-    const response: AxiosResponse<T[]> = await axios.get<T[]>(
+    // Assuming API returns an object containing `items`, `totalItems`, etc.
+    const response: AxiosResponse<PagedResult<T>> = await axios.get(
       `${url}?${queryParams.toString()}`
     );
-    return {
-      data: response.data,
-      hasMore: response.data.length === pageSize,
-    };
+
+    return response.data; // Directly return the `PagedResult<T>` from the API.
   } catch (error) {
     throw handleAxiosError(error);
   }
 };
+
 export const fetchData = async <T>(
   url: string,
   options?: FetchDataOptions
