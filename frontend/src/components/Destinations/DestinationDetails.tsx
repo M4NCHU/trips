@@ -193,7 +193,7 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
   };
 
   return (
-    <div className="destination-details container my-6 flex flex-col px-4 md:px-16 gap-6">
+    <div className="destination-details my-6 flex flex-col px-4 md:px-16 gap-6">
       <div className="destination-header flex flex-row items-center gap-2">
         <Link to={`/`} className="flex flex-row items-center gap-2">
           <FaArrowLeft />

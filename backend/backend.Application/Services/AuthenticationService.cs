@@ -1,8 +1,6 @@
-﻿using backend.Application.Services;
-using backend.Domain.Authentication;
+﻿using backend.Domain.Authentication;
 using backend.Domain.DTO.Authentication;
-using backend.Infrastructure.Authentication;
-using Microsoft.AspNetCore.Identity;
+using backend.Infrastructure.Respository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Linq;
@@ -12,37 +10,35 @@ namespace backend.Application.Services
 {
     public class AuthenticationService : IAuthService
     {
-        private readonly UserManager<UserModel> _userManager;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IConfiguration _configuration;
         private readonly JWTService _jwtService;
         private readonly ILogger<AuthenticationService> _logger;
-        private readonly TripsDbContext _dbContext;
 
-        public AuthenticationService(UserManager<UserModel> userManager, IConfiguration configuration, JWTService jWTService, ILogger<AuthenticationService> logger, TripsDbContext context)
+        public AuthenticationService(IUnitOfWork unitOfWork, IConfiguration configuration, JWTService jwtService, ILogger<AuthenticationService> logger)
         {
-            _userManager = userManager;
+            _unitOfWork = unitOfWork;
             _configuration = configuration;
-            _jwtService = jWTService;
+            _jwtService = jwtService;
             _logger = logger;
-            _dbContext = context;
         }
 
         public async Task<LoginResultDTO> Login(LoginDTO model)
         {
             _logger.LogInformation("User {Username} attempting to log in.", model.Username);
 
-            var user = await _userManager.FindByNameAsync(model.Username);
+            var user = await _unitOfWork.Auth.FindByNameAsync(model.Username);
 
             var passwordVerificationResult = user != null
-                ? await _userManager.CheckPasswordAsync(user, model.Password)
+                ? await _unitOfWork.Auth.CheckPasswordAsync(user, model.Password)
                 : false;
 
             if (!passwordVerificationResult)
             {
                 if (user != null)
                 {
-                    await _userManager.AccessFailedAsync(user);
-                    if (await _userManager.IsLockedOutAsync(user))
+                    await _unitOfWork.Auth.AccessFailedAsync(user);
+                    if (await _unitOfWork.Auth.IsLockedOutAsync(user))
                     {
                         _logger.LogWarning("Account {Username} is locked due to multiple failed login attempts.", model.Username);
                         return new LoginResultDTO { Success = false, Error = "Account locked due to multiple failed login attempts. Please try again later or reset your password." };
@@ -53,17 +49,17 @@ namespace backend.Application.Services
                 return new LoginResultDTO { Success = false, Error = "Invalid username or password" };
             }
 
-            await _userManager.ResetAccessFailedCountAsync(user);
+            await _unitOfWork.Auth.ResetAccessFailedCountAsync(user);
             _logger.LogInformation("User {Username} logged in successfully.", model.Username);
 
-            if (!user.EmailConfirmed)
+            /*if (!user.EmailConfirmed)
             {
                 _logger.LogWarning("Email not confirmed for user {Username}.", model.Username);
                 return new LoginResultDTO { Success = false, Error = "Please confirm your email" };
-            }
+            }*/
 
             var token = await _jwtService.CreateJWT(user);
-            await _userManager.SetAuthenticationTokenAsync(user, "JWT", "RefreshToken", token);
+            await _unitOfWork.Auth.SetAuthenticationTokenAsync(user, "JWT", "RefreshToken", token);
 
             _logger.LogInformation("JWT generated for user {Username}.", model.Username);
 
@@ -74,7 +70,7 @@ namespace backend.Application.Services
         {
             _logger.LogInformation("Attempting to register new user: {Username}.", model.Username);
 
-            var userExists = await _userManager.FindByNameAsync(model.Username);
+            var userExists = await _unitOfWork.Auth.FindByNameAsync(model.Username);
             if (userExists != null)
             {
                 _logger.LogWarning("User {Username} already exists.", model.Username);
@@ -89,7 +85,7 @@ namespace backend.Application.Services
                 LastName = model.LastName
             };
 
-            var result = await _userManager.CreateAsync(user, model.Password);
+            var result = await _unitOfWork.Auth.CreateAsync(user, model.Password);
             if (!result.Succeeded)
             {
                 foreach (var error in result.Errors)
@@ -99,7 +95,6 @@ namespace backend.Application.Services
                 return new RegistrationResultDTO { Success = false, Error = "User registration failed! Please check user details and try again." };
             }
 
-            await _userManager.ConfirmEmailAsync(user, await _userManager.GenerateEmailConfirmationTokenAsync(user));
             _logger.LogInformation("User {Username} registered successfully.", model.Username);
 
             return new RegistrationResultDTO { Success = true, Message = "User registered successfully!" };
@@ -109,14 +104,14 @@ namespace backend.Application.Services
         {
             _logger.LogInformation("Validating refresh token for user ID: {UserId}.", userId);
 
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _unitOfWork.Auth.FindByIdAsync(userId);
             if (user == null)
             {
                 _logger.LogError("User not found with ID: {UserId}.", userId);
                 return false;
             }
 
-            var storedRefreshToken = await _userManager.GetAuthenticationTokenAsync(user, "JWT", "RefreshToken");
+            var storedRefreshToken = await _unitOfWork.Auth.GetAuthenticationTokenAsync(user, "JWT", "RefreshToken");
 
             if (storedRefreshToken != refreshToken)
             {
@@ -132,18 +127,18 @@ namespace backend.Application.Services
         {
             _logger.LogInformation("User {UserId} attempting to log out.", logoutData.userId);
 
-            var user = await _userManager.FindByIdAsync(logoutData.userId);
+            var user = await _unitOfWork.Auth.FindByIdAsync(logoutData.userId);
             if (user == null)
             {
                 _logger.LogError("User not found with ID: {UserId}.", logoutData.userId);
                 return false;
             }
 
-            var storedRefreshToken = await _userManager.GetAuthenticationTokenAsync(user, "JWT", "RefreshToken");
+            var storedRefreshToken = await _unitOfWork.Auth.GetAuthenticationTokenAsync(user, "JWT", "RefreshToken");
 
             if (storedRefreshToken == logoutData.RefreshToken)
             {
-                await _userManager.RemoveAuthenticationTokenAsync(user, "JWT", "RefreshToken");
+                await _unitOfWork.Auth.RemoveAuthenticationTokenAsync(user, "JWT", "RefreshToken");
                 _logger.LogInformation("User {UserId} logged out successfully.", logoutData.userId);
                 return true;
             }
@@ -162,7 +157,7 @@ namespace backend.Application.Services
                 return new LoginResultDTO { Success = false, Error = "Invalid or expired refresh token" };
             }
 
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _unitOfWork.Auth.FindByIdAsync(userId);
             if (user == null)
             {
                 _logger.LogError("User not found with ID: {UserId}.", userId);
@@ -177,7 +172,7 @@ namespace backend.Application.Services
 
         private async Task<AccountDTO> CreateUserDto(UserModel user, string token)
         {
-            var roles = await _userManager.GetRolesAsync(user);
+            var roles = await _unitOfWork.Auth.GetRolesAsync(user);
             return new AccountDTO()
             {
                 FirstName = user.FirstName,

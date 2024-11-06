@@ -5,6 +5,7 @@ namespace backend.Infrastructure.Respository
 {
     public interface IUnitOfWork : IDisposable
     {
+        IAuthenticationRepository Auth { get; }
         ICategoryRepository Categories { get; }
         IDestinationRepository Destinations { get; }
         IAccommodationRepository Accommodations { get; }

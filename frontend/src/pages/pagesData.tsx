@@ -28,7 +28,6 @@ const pagesData: routerType[] = [
     isProtected: false,
   },
 
-  // Destinations
   {
     path: "destinations",
     element: <Destinations />,
@@ -75,8 +74,6 @@ const pagesData: routerType[] = [
     isProtected: false,
   },
 
-  // admin
-
   {
     path: "/admin",
     element: <Admin />,
@@ -85,7 +82,6 @@ const pagesData: routerType[] = [
     isAdminPage: true,
   },
 
-  // Destinations admin
   {
     path: "admin/destinations",
     element: <DestinationsAdmin />,

@@ -17,10 +17,7 @@ export interface DestinationFilter {
 
 // Get destinations with pagination
 
-export const useDestinationList = (
-  filter?: DestinationFilter,
-  pageSize = 2
-) => {
+export const useDestinationList = (filter?: any, pageSize = 20) => {
   const {
     isLoading,
     isError,

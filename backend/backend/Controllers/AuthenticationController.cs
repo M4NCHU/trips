@@ -6,6 +6,7 @@ using backend.Application.Services;
 using Microsoft.AspNetCore.Identity;
 using backend.Domain.Authentication;
 using System.Security.Claims;
+using backend.Domain.DTOs;
 
 namespace backend.Controllers
 {
@@ -39,7 +40,28 @@ namespace backend.Controllers
                 return Unauthorized(new { message = result.Error });
             }
 
-            return Ok(new { token = result.Token, user = result.User });
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true, 
+                SameSite = SameSiteMode.None,
+                Expires = DateTime.UtcNow.AddDays(7)
+            };
+
+            var authCookieOptions = new CookieOptions
+            {
+                HttpOnly = false,
+                Secure = true,
+                SameSite = SameSiteMode.None,
+                Expires = DateTime.UtcNow.AddDays(15)
+            };
+
+            Response.Cookies.Append("jwt", result.User.JWT, cookieOptions);
+            Response.Cookies.Append("isAuthenticated", "true", authCookieOptions);
+
+            result.User.JWT = null;
+
+            return Ok(new { user = result.User });
         }
 
         [HttpPost]
@@ -55,27 +77,54 @@ namespace backend.Controllers
             return Ok();
         }
 
-
-
-        
-        [HttpGet("new-token")]
-        public async Task<ActionResult> RefreshUserToken(string refreshToken, string userId)
+        [HttpPost("refresh-token")]
+        public async Task<IActionResult> RefreshToken()
         {
-            var result = await _authService.RefreshUserToken(refreshToken, userId);
-            if (!result.Success)
+            // Sprawdź, czy użytkownik jest uwierzytelniony
+            if (User.Identity?.IsAuthenticated == true)
             {
-                return Unauthorized(new { message = result.Error });
-            }
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (userId == null)
+                {
+                    return Unauthorized(new { message = "User ID not found in claims." });
+                }
 
-            return Ok(new { token = result.Token, user = result.User });
+                var user = await _userManager.FindByIdAsync(userId);
+                if (user == null)
+                {
+                    return NotFound(new { message = "User not found." });
+                }
+
+                // Wygeneruj nowy token JWT
+                var newToken = await _jwtService.CreateJWT(user);
+
+                // Ustaw nowe ciasteczko z tokenem
+                var cookieOptions = new CookieOptions
+                {
+                    HttpOnly = true,
+                  /*  Secure = true, // Ustaw na true w środowisku produkcyjnym*/
+                    SameSite = SameSiteMode.Strict,
+                    Expires = DateTime.UtcNow.AddHours(1)
+                };
+
+                Response.Cookies.Append("jwt", newToken, cookieOptions);
+
+                return Ok(new { message = "Token refreshed successfully." });
+            }
+            else
+            {
+                return Unauthorized(new { message = "User is not authenticated." });
+            }
         }
+
 
         [HttpPost]
         [Route("logout")]
         public async Task<IActionResult> Logout([FromForm] LogoutDTO logoutData)
         {
-            
             var result = await _authService.Logout(logoutData);
+            Response.Cookies.Delete("jwt");
+            Response.Cookies.Delete("isAuthenticated");
             if (!result)
             {
                 return BadRequest(new { message = "Failed to logout." });
@@ -84,12 +133,43 @@ namespace backend.Controllers
             return Ok(new { message = "Logout successful." });
         }
 
-        /* [HttpPost]
-         [Route("register-admin")]
-         public async Task<IActionResult> RegisterAdmin([FromBody] RegisterDTO model)
-         {
-             var result = await _authService.RegisterAdmin(model);
-             return result;
-         }*/
+        [HttpGet("user")]
+        public async Task<IActionResult> GetCurrentUser()
+        {
+            if (User.Identity?.IsAuthenticated == true)
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (userId == null)
+                {
+                    return Ok(new { user = (AccountDTO)null });
+                }
+
+                var user = await _userManager.FindByIdAsync(userId);
+                if (user == null)
+                {
+                    return Ok(new { user = (AccountDTO)null });
+                }
+
+                var roles = await _userManager.GetRolesAsync(user);
+
+                var userDto = new AccountDTO
+                {
+                    Id = user.Id,
+                    UserName = user.UserName,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+                    Roles = roles.ToList()
+                };
+
+                return Ok(new { user = userDto });
+            }
+            else
+            {
+                return Ok(new { user = (AccountDTO)null });
+            }
+        }
+
     }
+
 }

@@ -982,7 +982,6 @@ G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\System.Composition.TypedParts.dll
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\System.Drawing.Common.dll
-G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\System.Formats.Asn1.dll
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\System.Memory.Data.dll
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend\bin\Debug\net8.0\System.Reflection.MetadataLoadContext.dll

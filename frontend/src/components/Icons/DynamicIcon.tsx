@@ -13,7 +13,7 @@ const DynamicIcon: FC<DynamicIconProps> = ({ iconName, iconClass }) => {
   return IconComponent ? (
     <IconComponent className={`text-foreground ${iconClass}`} />
   ) : (
-    <div>Icon not found</div>
+    <></>
   );
 };
 

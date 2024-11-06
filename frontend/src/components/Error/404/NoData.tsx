@@ -5,7 +5,7 @@ interface NoDataProps {}
 
 const NoData: FC<NoDataProps> = ({}) => {
   return (
-    <div className="flex flex-col container justify-center items-center min-h-[80vh]">
+    <div className="flex flex-col justify-center items-center min-h-[80vh]">
       <button className="bg-green-500 px-6 py-4 rounded-lg font-semibold">
         Create new Scheme +
       </button>

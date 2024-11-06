@@ -4,10 +4,6 @@ using backend.Infrastructure.Authentication;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace backend.Infrastructure.Respository
 {
@@ -50,7 +46,6 @@ namespace backend.Infrastructure.Respository
             };
         }
 
-
         public async Task<IEnumerable<DestinationModel>> SearchDestinationsAsync(string searchTerm)
         {
             _logger.LogInformation("Searching destinations with term: {SearchTerm}", searchTerm);
@@ -75,6 +70,5 @@ namespace backend.Infrastructure.Respository
             _logger.LogInformation("Checking if destination with ID {Id} exists", id);
             return await _context.Destination.AnyAsync(d => d.Id == id);
         }
-
     }
 }

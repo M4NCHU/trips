@@ -18,7 +18,6 @@ namespace backend.Infrastructure.Respository
             _logger = logger;
         }
 
-
         public async Task<IEnumerable<AccommodationModel>> GetAccommodations(int page, int pageSize)
         {
             _logger.LogInformation("Fetching accommodations with pagination. Page: {Page}, PageSize: {PageSize}", page, pageSize);

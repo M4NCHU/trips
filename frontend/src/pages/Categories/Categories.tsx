@@ -39,7 +39,7 @@ const Destinations: FC<DestinationsProps> = () => {
 
   return (
     <ProductsLayout>
-      <ProductsFilter>
+      <ProductsFilter applyFilter={applyFilters}>
         {/* Filtry */}
         <div className="flex flex-row gap-2 flex-wrap">
           <Button onClick={() => setSelectedCategory(null)}>All</Button>
@@ -74,9 +74,6 @@ const Destinations: FC<DestinationsProps> = () => {
             />
           </label>
         </div>
-
-        {/* Przycisk do zastosowania filtrów */}
-        <Button onClick={applyFilters}>Filtruj</Button>
       </ProductsFilter>
 
       <ProductsItemsSection>

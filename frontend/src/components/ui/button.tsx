@@ -1,8 +1,10 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-
 import { cn } from "../../lib/utils";
+import * as Icons from "react-icons/fa";
+import DynamicIcon from "../Icons/DynamicIcon";
+import { IconName, isValidIconName } from "../../types/Icons/IconTypes";
 
 const buttonVariants = cva(
   "inline-flex items-center gap-2 justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
@@ -10,6 +12,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        defaultSecondary:
+          "bg-background px-10 py-3 rounded-lg text-primary placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
@@ -36,18 +40,28 @@ const buttonVariants = cva(
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
+  icon?: IconName;
+  iconClass?: string;
   asChild?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  (
+    { icon, iconClass, className, variant, size, asChild = false, ...props },
+    ref
+  ) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
-      />
+      >
+        {icon && isValidIconName(icon) && (
+          <DynamicIcon iconName={icon} iconClass={iconClass} />
+        )}
+        {props.children}
+      </Comp>
     );
   }
 );

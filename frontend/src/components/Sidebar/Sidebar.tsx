@@ -8,19 +8,26 @@ import { IoMdInformationCircleOutline } from "react-icons/io";
 
 const Sidebar = () => {
   return (
-    <aside className="w-full lg:w-1/5 bg-background text-primary h-screen lg:block hidden min-w-[20rem]">
-      <div className="flex flex-col justify-between h-screen p-4">
-        <div className="sidebar-logo border-b-[1px] border-secondary">
+    <aside className="h-screen bg-background text-primary lg:w-20 xl:w-[20rem] transition-all duration-300">
+      <div className="flex flex-col justify-between h-full p-4">
+        <div className="sidebar-logo border-b-[1px] border-secondary mb-2 flex items-center justify-center xl:justify-center">
           <Link
-            to={"/"}
-            className="flex flex-row items-center py-[1rem] nav-logo hover:bg-secondary mb-2 px-4 rounded-lg"
+            to="/"
+            className="flex items-center nav-logo hover:bg-secondary rounded-lg"
           >
-            <img src={Logo} alt="site logo" className="w-24 " />
-            <span className="text-2xl font-bold hidden lg:block">Travel</span>
+            <img
+              src={Logo}
+              alt="site logo"
+              className="w-16 xl:w-24 transition-all"
+            />
+            <span className="text-2xl font-bold hidden xl:block ml-2">
+              Travel
+            </span>
           </Link>
         </div>
-        <div className="grow py-[4rem]">
-          <ul className="flex flex-col gap-4">
+
+        <div className="grow py-4">
+          <ul className="flex flex-col gap-4 mt-4">
             <NavLink
               link="/accommodations"
               title="Accommodations"
@@ -39,11 +46,9 @@ const Sidebar = () => {
           </ul>
         </div>
 
-        <div className="sidebar-footer w-full bg-secondary rounded-xl py-[1rem] px-[.6rem] flex flex-row justify-between">
-          <div>user</div>
-          <div className="sidebar-settings">
-            <CiSettings className="" />
-          </div>
+        <div className="sidebar-footer w-full bg-secondary rounded-xl py-3 px-4 flex items-center justify-center xl:justify-between">
+          <div className="hidden xl:block text-sm font-semibold">user</div>
+          <CiSettings className="text-2xl" />
         </div>
       </div>
     </aside>

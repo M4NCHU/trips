@@ -16,7 +16,7 @@ import NavLink from "./Navlink";
 import { MdTravelExplore } from "react-icons/md";
 
 const Header = () => {
-  const { user, logout } = useAuth();
+  const { isAuthenticated, user, logout } = useAuth();
 
   //const { data: UserTripsCount } = UseUserTripsCount(user?.id, 0);
 
@@ -33,7 +33,7 @@ const Header = () => {
               <PiHeartLight className="cursor-pointer" />
             </button>
 
-            {user ? (
+            {isAuthenticated() && user ? (
               <CustomDropdownMenu dropDownButton={<UserTrigger />}>
                 <div className="bg-background rounded-lg p-2 text-base">
                   <span>{user.lastName}</span>

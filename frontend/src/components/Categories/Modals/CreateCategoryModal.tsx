@@ -9,13 +9,13 @@ import {
   DialogTitle,
 } from "../../ui/dialog";
 import CreateCategoryForm from "../Forms/CreateCategoryForm";
-import { useGetCategoryById } from "../../../api/Category"; // API do pobrania kategorii
+import { useGetCategoryById } from "../../../api/Category";
 
 interface CreateCategoryModalProps {
   categoryId?: string | null;
   isEditMode?: boolean;
   isOpen: boolean;
-  onClose: () => void; // Funkcja do zamknięcia modala
+  onClose: () => void;
 }
 
 const CreateCategoryModal: FC<CreateCategoryModalProps> = ({

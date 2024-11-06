@@ -1,15 +1,24 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Category } from "../types/Category";
 import { fetchData } from "./apiUtils";
-import {
-  SECRET_KEY,
-  USER_STORAGE_KEY,
-  decryptData,
-} from "src/context/UserContext";
 import CryptoJS from "crypto-js";
 import { User } from "src/types/UserTypes";
 import { usePagination } from "src/hooks/usePagination";
-import { PagedResult } from "src/types/PagedResult";
+import useCookies from "src/hooks/useCookies";
+
+const SECRET_KEY = "your_secret_key"; // Upewnij się, że klucz jest bezpiecznie przechowywany
+
+// Funkcja do odszyfrowywania danych
+const decryptData = (encryptedData: string): User | null => {
+  try {
+    const bytes = CryptoJS.AES.decrypt(encryptedData, SECRET_KEY);
+    const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+    return JSON.parse(decryptedData) as User;
+  } catch (error) {
+    console.error("Error decrypting user data:", error);
+    return null;
+  }
+};
 
 export const UseCategoryList = (filterParams: any = {}, pageSize = 2) => {
   const {
@@ -42,6 +51,8 @@ export const UseCategoryList = (filterParams: any = {}, pageSize = 2) => {
 
 // Zapytanie o kategorię po ID
 export const useGetCategoryById = (id: string | undefined) => {
+  const { get } = useCookies();
+
   return useQuery<Category, Error>({
     queryKey: ["category", id],
     queryFn: async () => {
@@ -49,12 +60,12 @@ export const useGetCategoryById = (id: string | undefined) => {
         throw new Error("No ID provided");
       }
 
-      const encryptedUserData = localStorage.getItem(USER_STORAGE_KEY);
+      const encryptedUserData = get("user_data");
       if (!encryptedUserData) {
-        throw new Error("No user data found in local storage.");
+        throw new Error("No user data found in cookies.");
       }
 
-      const userData = decryptData(encryptedUserData, SECRET_KEY);
+      const userData = decryptData(encryptedUserData);
       if (!userData || !userData.token) {
         throw new Error("No JWT token found in user data.");
       }
@@ -71,47 +82,47 @@ export const useGetCategoryById = (id: string | undefined) => {
 };
 
 export const useCreateCategory = () => {
-  const mutation = useMutation({
+  const { get } = useCookies();
+
+  return useMutation({
     mutationFn: async (formData: FormData) => {
-      const encryptedUserData = localStorage.getItem(USER_STORAGE_KEY);
+      const encryptedUserData = get("user_data");
       if (!encryptedUserData) {
-        throw new Error("No user data found in local storage.");
+        throw new Error("No user data found in cookies.");
       }
-      const userData = decryptData(encryptedUserData, SECRET_KEY);
+
+      const userData = decryptData(encryptedUserData);
 
       if (!userData || !userData.token) {
         throw new Error("No JWT token found in user data.");
       }
 
-      try {
-        return await fetchData("/api/Category", {
-          method: "post",
-          data: formData,
-          headers: {
-            Authorization: `Bearer ${userData.token}`,
-          },
-        });
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        throw error;
-      }
+      return await fetchData("/api/Category", {
+        method: "post",
+        data: formData,
+        headers: {
+          Authorization: `Bearer ${userData.token}`,
+        },
+      });
     },
-    onSuccess: () => {},
+    onSuccess: () => {
+      console.log("Category created successfully");
+    },
   });
-
-  return mutation;
 };
 
 export const useUpdateCategory = () => {
+  const { get } = useCookies();
+
   return useMutation({
     mutationFn: async (updatedCategory: { id: string; formData: FormData }) => {
-      const encryptedUserData = localStorage.getItem(USER_STORAGE_KEY);
+      const encryptedUserData = get("user_data");
 
       if (!encryptedUserData) {
-        throw new Error("No user data found in local storage.");
+        throw new Error("No user data found in cookies.");
       }
 
-      const userData = decryptData(encryptedUserData, SECRET_KEY);
+      const userData = decryptData(encryptedUserData);
 
       if (!userData?.token) {
         throw new Error("No JWT token found in user data.");
@@ -129,15 +140,17 @@ export const useUpdateCategory = () => {
 };
 
 export const useDeleteCategory = () => {
+  const { get } = useCookies();
+
   return useMutation({
     mutationFn: async (updatedCategory: { id: string }) => {
-      const encryptedUserData = localStorage.getItem(USER_STORAGE_KEY);
+      const encryptedUserData = get("user_data");
 
       if (!encryptedUserData) {
-        throw new Error("No user data found in local storage.");
+        throw new Error("No user data found in cookies.");
       }
 
-      const userData = decryptData(encryptedUserData, SECRET_KEY);
+      const userData = decryptData(encryptedUserData);
 
       if (!userData?.token) {
         throw new Error("No JWT token found in user data.");

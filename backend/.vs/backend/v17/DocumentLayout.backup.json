@@ -1,0 +1,677 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend\\backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.application\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\macie\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.20.1\\build\\Container.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.application\\services\\interfaces\\iauthenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\interfaces\\iauthenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.infrastructure\\respository\\accommodationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\accommodationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.application\\services\\interfaces\\itripparticipantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\interfaces\\itripparticipantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.application\\services\\interfaces\\iimageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\interfaces\\iimageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.application\\services\\interfaces\\idestinationsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\interfaces\\idestinationsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.application\\services\\interfaces\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\interfaces\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.application\\services\\destinationsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\destinationsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.application\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.application\\services\\accommodationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\accommodationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend\\controllers\\destinationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\controllers\\destinationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.infrastructure\\respository\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\macie\\AppData\\Local\\SourceServer\\6d09353555246f5dab2ac62f8630448112f773612cc114879aa23143ce1175b5\\backend\\backend\\Controllers\\AuthenticationController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.infrastructure\\respository\\authenticationrespository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\authenticationrespository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.infrastructure\\respository\\interfaces\\iaccommodationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\interfaces\\iaccommodationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3BB5CF7-1116-4B34-B7BA-D0E889A4D5B7}|backend.UnitTests\\backend.UnitTests.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.unittests\\application\\services\\categoryservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3BB5CF7-1116-4B34-B7BA-D0E889A4D5B7}|backend.UnitTests\\backend.UnitTests.csproj|solutionrelative:backend.unittests\\application\\services\\categoryservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\macie\\AppData\\Local\\SourceServer\\d976d725c7cae7fd62eda000184662e791f6a246e79ae6227d9c8cd1d9f08c08\\backend\\backend.Application\\Services\\DestinationsService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.infrastructure\\respository\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.infrastructure\\respository\\tripparticipantrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\tripparticipantrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.application\\services\\interfaces\\ibaseurlservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\interfaces\\ibaseurlservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.infrastructure\\respository\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.infrastructure\\respository\\destinationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\destinationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.infrastructure\\respository\\participantrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\participantrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.domain\\mappings\\destinationmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\mappings\\destinationmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.domain\\dto\\destinationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\dto\\destinationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.infrastructure\\respository\\interfaces\\idestinationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\interfaces\\idestinationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.infrastructure\\respository\\interfaces\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\interfaces\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.domain\\dto\\category\\pagedresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\dto\\category\\pagedresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.infrastructure\\respository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.domain\\models\\categorymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\models\\categorymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.domain\\dto\\category\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\dto\\category\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|g:\\projects\\praca in\u017Cynierska\\aplikacja\\trips\\backend\\backend.domain\\mappings\\categorymapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\mappings\\categorymapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\macie\\AppData\\Local\\SourceServer\\af96886e84b5237ea2cdad470e9d7801aeedb9ad92d3df1e5c40bd764fffb829\\backend\\backend.Application\\Services\\Interfaces\\ICategoryService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Container.targets",
+              "DocumentMoniker": "C:\\Users\\macie\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.20.1\\build\\Container.targets",
+              "ToolTip": "C:\\Users\\macie\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.20.1\\build\\Container.targets",
+              "ViewState": "AQIAAMIAAAAAAAAAAAAUwOgAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2024-10-25T17:02:43.643Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "backend.csproj",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\backend.csproj",
+              "RelativeDocumentMoniker": "backend\\backend.csproj",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\backend.csproj",
+              "RelativeToolTip": "backend\\backend.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-10-25T17:01:47.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "backend\\Properties\\launchSettings.json",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\Properties\\launchSettings.json",
+              "RelativeToolTip": "backend\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-20T13:23:18.915Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "backend\\appsettings.Development.json",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\appsettings.Development.json",
+              "RelativeToolTip": "backend\\appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-20T13:22:56.607Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\appsettings.json",
+              "RelativeDocumentMoniker": "backend\\appsettings.json",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\appsettings.json",
+              "RelativeToolTip": "backend\\appsettings.json",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAcwCwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-20T11:48:51.429Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\AppData\\Local\\SourceServer\\6d09353555246f5dab2ac62f8630448112f773612cc114879aa23143ce1175b5\\backend\\backend\\Controllers\\AuthenticationController.cs",
+              "ToolTip": "C:\\Users\\macie\\AppData\\Local\\SourceServer\\6d09353555246f5dab2ac62f8630448112f773612cc114879aa23143ce1175b5\\backend\\backend\\Controllers\\AuthenticationController.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAIBZwCMAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T14:50:39.447Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AccommodationService.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\AccommodationService.cs",
+              "RelativeDocumentMoniker": "backend.Application\\Services\\AccommodationService.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\AccommodationService.cs",
+              "RelativeToolTip": "backend.Application\\Services\\AccommodationService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T14:07:55.684Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AuthenticationRespository.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\AuthenticationRespository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\AuthenticationRespository.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\AuthenticationRespository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\AuthenticationRespository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T13:57:37.213Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "IAccommodationRepository.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\Interfaces\\IAccommodationRepository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\Interfaces\\IAccommodationRepository.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\Interfaces\\IAccommodationRepository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\Interfaces\\IAccommodationRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T14:07:17.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\Interfaces\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\Interfaces\\IUnitOfWork.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\Interfaces\\IUnitOfWork.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\Interfaces\\IUnitOfWork.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T14:06:13.535Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ITripParticipantService.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\Interfaces\\ITripParticipantService.cs",
+              "RelativeDocumentMoniker": "backend.Application\\Services\\Interfaces\\ITripParticipantService.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\Interfaces\\ITripParticipantService.cs",
+              "RelativeToolTip": "backend.Application\\Services\\Interfaces\\ITripParticipantService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T14:04:57.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IImageService.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\Interfaces\\IImageService.cs",
+              "RelativeDocumentMoniker": "backend.Application\\Services\\Interfaces\\IImageService.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\Interfaces\\IImageService.cs",
+              "RelativeToolTip": "backend.Application\\Services\\Interfaces\\IImageService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T14:04:54.483Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IBaseUrlService.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\Interfaces\\IBaseUrlService.cs",
+              "RelativeDocumentMoniker": "backend.Application\\Services\\Interfaces\\IBaseUrlService.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\Interfaces\\IBaseUrlService.cs",
+              "RelativeToolTip": "backend.Application\\Services\\Interfaces\\IBaseUrlService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T14:04:51.656Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ParticipantRepository.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\ParticipantRepository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\ParticipantRepository.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\ParticipantRepository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\ParticipantRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T14:00:43.865Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\UnitOfWork.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\UnitOfWork.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\UnitOfWork.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T13:59:16.55Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\Program.cs",
+              "RelativeDocumentMoniker": "backend\\Program.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\Program.cs",
+              "RelativeToolTip": "backend\\Program.cs",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAgwGEAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T13:58:54.417Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\AuthenticationController.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "backend\\Controllers\\AuthenticationController.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAUwDUAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T13:58:24.26Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthenticationService.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\AuthenticationService.cs",
+              "RelativeDocumentMoniker": "backend.Application\\Services\\AuthenticationService.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\AuthenticationService.cs",
+              "RelativeToolTip": "backend.Application\\Services\\AuthenticationService.cs",
+              "ViewState": "AQIAAHgAAAAAAAAAAAAhwI0AAABkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T13:55:00.695Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IAuthenticationService.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\Interfaces\\IAuthenticationService.cs",
+              "RelativeDocumentMoniker": "backend.Application\\Services\\Interfaces\\IAuthenticationService.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\Interfaces\\IAuthenticationService.cs",
+              "RelativeToolTip": "backend.Application\\Services\\Interfaces\\IAuthenticationService.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAWwBIAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T13:54:53.468Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "DestinationDTO.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Domain\\DTO\\DestinationDTO.cs",
+              "RelativeDocumentMoniker": "backend.Domain\\DTO\\DestinationDTO.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Domain\\DTO\\DestinationDTO.cs",
+              "RelativeToolTip": "backend.Domain\\DTO\\DestinationDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T13:49:28.922Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "IDestinationRepository.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\Interfaces\\IDestinationRepository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\Interfaces\\IDestinationRepository.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\Interfaces\\IDestinationRepository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\Interfaces\\IDestinationRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T21:45:57.601Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "DestinationRepository.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\DestinationRepository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\DestinationRepository.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\DestinationRepository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\DestinationRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T21:43:25.856Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DestinationsService.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\DestinationsService.cs",
+              "RelativeDocumentMoniker": "backend.Application\\Services\\DestinationsService.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\DestinationsService.cs",
+              "RelativeToolTip": "backend.Application\\Services\\DestinationsService.cs",
+              "ViewState": "AQIAAKoAAAAAAAAAAAAIwLEAAABPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T21:37:27.788Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "CategoryServiceTests.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.UnitTests\\Application\\Services\\CategoryServiceTests.cs",
+              "RelativeDocumentMoniker": "backend.UnitTests\\Application\\Services\\CategoryServiceTests.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.UnitTests\\Application\\Services\\CategoryServiceTests.cs",
+              "RelativeToolTip": "backend.UnitTests\\Application\\Services\\CategoryServiceTests.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAAEwEYAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T21:36:52.594Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DestinationController.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\Controllers\\DestinationController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\DestinationController.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\Controllers\\DestinationController.cs",
+              "RelativeToolTip": "backend\\Controllers\\DestinationController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAMwBsAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T21:35:33.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "DestinationsService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\AppData\\Local\\SourceServer\\d976d725c7cae7fd62eda000184662e791f6a246e79ae6227d9c8cd1d9f08c08\\backend\\backend.Application\\Services\\DestinationsService.cs",
+              "ToolTip": "C:\\Users\\macie\\AppData\\Local\\SourceServer\\d976d725c7cae7fd62eda000184662e791f6a246e79ae6227d9c8cd1d9f08c08\\backend\\backend.Application\\Services\\DestinationsService.cs",
+              "ViewState": "AQIAAMsAAAAAAAAAAAAgwPQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T21:35:07.298Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ICategoryService.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\Interfaces\\ICategoryService.cs",
+              "RelativeDocumentMoniker": "backend.Application\\Services\\Interfaces\\ICategoryService.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\Interfaces\\ICategoryService.cs",
+              "RelativeToolTip": "backend.Application\\Services\\Interfaces\\ICategoryService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAsAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T13:00:15.604Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AccommodationRepository.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\AccommodationRepository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\AccommodationRepository.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\AccommodationRepository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\AccommodationRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T13:05:01.774Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "PagedResultDTO.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Domain\\DTO\\Category\\PagedResultDTO.cs",
+              "RelativeDocumentMoniker": "backend.Domain\\DTO\\Category\\PagedResultDTO.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Domain\\DTO\\Category\\PagedResultDTO.cs",
+              "RelativeToolTip": "backend.Domain\\DTO\\Category\\PagedResultDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T12:53:33.489Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "TripParticipantRepository.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\TripParticipantRepository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\TripParticipantRepository.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\TripParticipantRepository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\TripParticipantRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T12:54:04.421Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\Repository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\Repository.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\Repository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\Repository.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAEwCIAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T12:54:00.335Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\CategoryController.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "backend\\Controllers\\CategoryController.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAewBwAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-13T11:26:20.935Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CategoryService.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\CategoryService.cs",
+              "RelativeDocumentMoniker": "backend.Application\\Services\\CategoryService.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\CategoryService.cs",
+              "RelativeToolTip": "backend.Application\\Services\\CategoryService.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAwwFoAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T22:24:30.82Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "CategoryDTO.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Domain\\DTO\\Category\\CategoryDTO.cs",
+              "RelativeDocumentMoniker": "backend.Domain\\DTO\\Category\\CategoryDTO.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Domain\\DTO\\Category\\CategoryDTO.cs",
+              "RelativeToolTip": "backend.Domain\\DTO\\Category\\CategoryDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T23:34:06.137Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "CategoryModel.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Domain\\Models\\CategoryModel.cs",
+              "RelativeDocumentMoniker": "backend.Domain\\Models\\CategoryModel.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Domain\\Models\\CategoryModel.cs",
+              "RelativeToolTip": "backend.Domain\\Models\\CategoryModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T23:33:36.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "ICategoryRepository.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\Interfaces\\ICategoryRepository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\Interfaces\\ICategoryRepository.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\Interfaces\\ICategoryRepository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\Interfaces\\ICategoryRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAoAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T23:05:45.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "CategoryRepository.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\CategoryRepository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\CategoryRepository.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\Respository\\CategoryRepository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\CategoryRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T23:04:32.029Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "CategoryMapper.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Domain\\Mappings\\CategoryMapper.cs",
+              "RelativeDocumentMoniker": "backend.Domain\\Mappings\\CategoryMapper.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Domain\\Mappings\\CategoryMapper.cs",
+              "RelativeToolTip": "backend.Domain\\Mappings\\CategoryMapper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAABIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T22:53:07.505Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "ICategoryService.cs",
+              "DocumentMoniker": "C:\\Users\\macie\\AppData\\Local\\SourceServer\\af96886e84b5237ea2cdad470e9d7801aeedb9ad92d3df1e5c40bd764fffb829\\backend\\backend.Application\\Services\\Interfaces\\ICategoryService.cs",
+              "ToolTip": "C:\\Users\\macie\\AppData\\Local\\SourceServer\\af96886e84b5237ea2cdad470e9d7801aeedb9ad92d3df1e5c40bd764fffb829\\backend\\backend.Application\\Services\\Interfaces\\ICategoryService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T22:52:05.768Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IDestinationsService.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\Interfaces\\IDestinationsService.cs",
+              "RelativeDocumentMoniker": "backend.Application\\Services\\Interfaces\\IDestinationsService.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Application\\Services\\Interfaces\\IDestinationsService.cs",
+              "RelativeToolTip": "backend.Application\\Services\\Interfaces\\IDestinationsService.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAqwAsAAACBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T21:25:13.094Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "DestinationMapper.cs",
+              "DocumentMoniker": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Domain\\Mappings\\DestinationMapper.cs",
+              "RelativeDocumentMoniker": "backend.Domain\\Mappings\\DestinationMapper.cs",
+              "ToolTip": "G:\\Projects\\Praca in\u017Cynierska\\Aplikacja\\trips\\backend\\backend.Domain\\Mappings\\DestinationMapper.cs",
+              "RelativeToolTip": "backend.Domain\\Mappings\\DestinationMapper.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAgwBkAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-12T15:51:29.23Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

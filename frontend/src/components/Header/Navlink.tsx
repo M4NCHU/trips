@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { CiHome } from "react-icons/ci";
 import { Link } from "react-router-dom";
 
 interface NavLinkProps {
@@ -13,10 +12,12 @@ const NavLink: FC<NavLinkProps> = ({ link, title, icon, children }) => {
   return (
     <Link
       to={link}
-      className="px-6 hover:bg-pink-600 py-[1rem] gap-[1rem] flex items-center rounded-lg h-full"
+      className=" hover:bg-pink-600 gap-[1rem] flex items-center rounded-lg h-full justify-center p-0 md:p-[1rem] md:justify-start"
     >
       <div className="text-3xl font-semibold">{icon && icon}</div>
-      <span className="text-xl font-semibold">{title && title}</span>
+      <span className="hidden xl:inline-block text-xl font-semibold">
+        {title}
+      </span>
       {children && children}
     </Link>
   );

@@ -1,13 +1,12 @@
+import { useState, useEffect } from "react";
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { fetchDataPaginated } from "../api/apiUtils";
+import { fetchData } from "../api/apiUtils";
 import { PagedResult } from "src/types/PagedResult";
 
-// Typowanie dla opcji paginacji
 interface PaginationOptions {
-  pageSize: number;
-  queryParameters?: Record<string, any>;
+  pageSize?: number;
+  queryParameters?: Record<string, string | number>;
 }
 
 export const usePagination = <T>(url: string, options?: PaginationOptions) => {
@@ -22,23 +21,16 @@ export const usePagination = <T>(url: string, options?: PaginationOptions) => {
     setPage(pageParam);
   }, [location]);
 
-  const fetchPage = async (
-    page: number,
-    pageSize: number
-  ): Promise<PagedResult<T>> => {
-    const data = await fetchDataPaginated<T>(
+  const fetchPage = async (): Promise<PagedResult<T>> => {
+    const data = await fetchData<PagedResult<T>>(
       url,
-      page,
-      pageSize,
-      queryParameters
+      { method: "get" },
+      true,
+      queryParameters,
+      { page, pageSize }
     );
 
-    return {
-      items: data.items,
-      totalItems: data.totalItems,
-      pageSize: data.pageSize,
-      currentPage: data.currentPage,
-    };
+    return data;
   };
 
   const {
@@ -48,15 +40,15 @@ export const usePagination = <T>(url: string, options?: PaginationOptions) => {
     data,
     isFetching,
   }: UseQueryResult<PagedResult<T>, Error> = useQuery({
-    queryKey: [url, page, pageSize, queryParameters],
-    queryFn: () => fetchPage(page, pageSize),
+    queryKey: [url, page, pageSize, JSON.stringify(queryParameters)],
+    queryFn: fetchPage,
     staleTime: 5000,
     placeholderData: {
       items: [],
       totalItems: 0,
       pageSize: pageSize,
       currentPage: page,
-    },
+    } as PagedResult<T>,
   });
 
   return {
