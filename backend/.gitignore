@@ -1,0 +1,72 @@
+# Build artifacts
+bin/
+obj/
+out/
+
+# Debug and Release configuration files
+*.db
+*.pdb
+*.mdb
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+.vscode/*
+
+# Visual Studio for Mac
+.idea/
+.idea/*
+
+# Rider IDE
+.idea/
+*.sln.iml
+
+# Temporary files
+*.log
+*.tmp
+*.temp
+*.TMP
+*.TEMP
+*.DS_Store
+
+# Dependencies
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# Dotnet specific
+.env
+.env.*
+global.json
+*.lock.json
+
+# Azure Functions
+local.settings.json
+
+# Entity Framework migrations
+*.Designer.cs
+*.dbml.linq
+
+# Resharper
+_ReSharper/
+*.[Rr]e[Ss]harper
+
+# JetBrains Rider
+.idea/
+.idea/*
+
+# Backup files
+*.bak
+
+# IIS settings
+.vs/
+
+# OS generated files
+Thumbs.db
+Desktop.ini

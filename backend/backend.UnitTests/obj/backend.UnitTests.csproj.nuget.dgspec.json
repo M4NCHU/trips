@@ -1,28 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.UnitTests\\backend.UnitTests.csproj": {}
+    "C:\\Project\\trips\\backend\\backend.UnitTests\\backend.UnitTests.csproj": {}
   },
   "projects": {
-    "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Application\\backend.Application.csproj": {
+    "C:\\Project\\trips\\backend\\backend.Application\\backend.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Application\\backend.Application.csproj",
+        "projectUniqueName": "C:\\Project\\trips\\backend\\backend.Application\\backend.Application.csproj",
         "projectName": "backend.Application",
-        "projectPath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Application\\backend.Application.csproj",
-        "packagesPath": "C:\\Users\\macie\\.nuget\\packages\\",
-        "outputPath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Application\\obj\\",
+        "projectPath": "C:\\Project\\trips\\backend\\backend.Application\\backend.Application.csproj",
+        "packagesPath": "C:\\Users\\Maciek\\.nuget\\packages\\",
+        "outputPath": "C:\\Project\\trips\\backend\\backend.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\macie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Maciek\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -30,14 +30,14 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {
-              "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Domain\\backend.Domain.csproj": {
-                "projectPath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Domain\\backend.Domain.csproj"
+              "C:\\Project\\trips\\backend\\backend.Domain\\backend.Domain.csproj": {
+                "projectPath": "C:\\Project\\trips\\backend\\backend.Domain\\backend.Domain.csproj"
               },
-              "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj": {
-                "projectPath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj"
+              "C:\\Project\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj": {
+                "projectPath": "C:\\Project\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj"
               }
             }
           }
@@ -50,12 +50,13 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -63,19 +64,19 @@
             },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
-              "version": "[11.10.0, )"
+              "version": "[11.11.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[8.0.10, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.10, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[9.0.0, )"
             },
             "Moq": {
               "target": "Package",
@@ -83,11 +84,11 @@
             },
             "Serilog": {
               "target": "Package",
-              "version": "[4.1.0, )"
+              "version": "[4.2.0, )"
             },
             "Serilog.AspNetCore": {
               "target": "Package",
-              "version": "[8.0.3, )"
+              "version": "[9.0.0, )"
             },
             "Serilog.Sinks.Console": {
               "target": "Package",
@@ -99,7 +100,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.9.0, )"
+              "version": "[7.2.0, )"
             },
             "xunit": {
               "target": "Package",
@@ -122,29 +123,29 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Domain\\backend.Domain.csproj": {
+    "C:\\Project\\trips\\backend\\backend.Domain\\backend.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Domain\\backend.Domain.csproj",
+        "projectUniqueName": "C:\\Project\\trips\\backend\\backend.Domain\\backend.Domain.csproj",
         "projectName": "backend.Domain",
-        "projectPath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Domain\\backend.Domain.csproj",
-        "packagesPath": "C:\\Users\\macie\\.nuget\\packages\\",
-        "outputPath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Domain\\obj\\",
+        "projectPath": "C:\\Project\\trips\\backend\\backend.Domain\\backend.Domain.csproj",
+        "packagesPath": "C:\\Users\\Maciek\\.nuget\\packages\\",
+        "outputPath": "C:\\Project\\trips\\backend\\backend.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\macie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Maciek\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -152,8 +153,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {}
           }
         },
@@ -165,12 +166,13 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -178,11 +180,11 @@
             },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
-              "version": "[11.10.0, )"
+              "version": "[11.11.0, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[9.0.0, )"
             },
             "Moq": {
               "target": "Package",
@@ -190,11 +192,11 @@
             },
             "Serilog": {
               "target": "Package",
-              "version": "[4.1.0, )"
+              "version": "[4.2.0, )"
             },
             "Serilog.AspNetCore": {
               "target": "Package",
-              "version": "[8.0.3, )"
+              "version": "[9.0.0, )"
             },
             "Serilog.Sinks.Console": {
               "target": "Package",
@@ -206,7 +208,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.9.0, )"
+              "version": "[7.2.0, )"
             },
             "xunit": {
               "target": "Package",
@@ -229,29 +231,29 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj": {
+    "C:\\Project\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Project\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj",
         "projectName": "backend.Infrastructure",
-        "projectPath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\macie\\.nuget\\packages\\",
-        "outputPath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\obj\\",
+        "projectPath": "C:\\Project\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Maciek\\.nuget\\packages\\",
+        "outputPath": "C:\\Project\\trips\\backend\\backend.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\macie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Maciek\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -259,11 +261,11 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {
-              "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Domain\\backend.Domain.csproj": {
-                "projectPath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Domain\\backend.Domain.csproj"
+              "C:\\Project\\trips\\backend\\backend.Domain\\backend.Domain.csproj": {
+                "projectPath": "C:\\Project\\trips\\backend\\backend.Domain\\backend.Domain.csproj"
               }
             }
           }
@@ -276,12 +278,13 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -289,29 +292,29 @@
             },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
-              "version": "[11.10.0, )"
+              "version": "[11.11.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[8.0.10, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.10, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.10, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[9.0.0, )"
             },
             "Moq": {
               "target": "Package",
@@ -323,15 +326,15 @@
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[8.0.10, )"
+              "version": "[9.0.2, )"
             },
             "Serilog": {
               "target": "Package",
-              "version": "[4.1.0, )"
+              "version": "[4.2.0, )"
             },
             "Serilog.AspNetCore": {
               "target": "Package",
-              "version": "[8.0.3, )"
+              "version": "[9.0.0, )"
             },
             "Serilog.Sinks.Console": {
               "target": "Package",
@@ -343,7 +346,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.9.0, )"
+              "version": "[7.2.0, )"
             },
             "xunit": {
               "target": "Package",
@@ -366,29 +369,29 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.UnitTests\\backend.UnitTests.csproj": {
+    "C:\\Project\\trips\\backend\\backend.UnitTests\\backend.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.UnitTests\\backend.UnitTests.csproj",
+        "projectUniqueName": "C:\\Project\\trips\\backend\\backend.UnitTests\\backend.UnitTests.csproj",
         "projectName": "backend.UnitTests",
-        "projectPath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.UnitTests\\backend.UnitTests.csproj",
-        "packagesPath": "C:\\Users\\macie\\.nuget\\packages\\",
-        "outputPath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.UnitTests\\obj\\",
+        "projectPath": "C:\\Project\\trips\\backend\\backend.UnitTests\\backend.UnitTests.csproj",
+        "packagesPath": "C:\\Users\\Maciek\\.nuget\\packages\\",
+        "outputPath": "C:\\Project\\trips\\backend\\backend.UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\macie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Maciek\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -396,17 +399,17 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {
-              "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Application\\backend.Application.csproj": {
-                "projectPath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Application\\backend.Application.csproj"
+              "C:\\Project\\trips\\backend\\backend.Application\\backend.Application.csproj": {
+                "projectPath": "C:\\Project\\trips\\backend\\backend.Application\\backend.Application.csproj"
               },
-              "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Domain\\backend.Domain.csproj": {
-                "projectPath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Domain\\backend.Domain.csproj"
+              "C:\\Project\\trips\\backend\\backend.Domain\\backend.Domain.csproj": {
+                "projectPath": "C:\\Project\\trips\\backend\\backend.Domain\\backend.Domain.csproj"
               },
-              "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj": {
-                "projectPath": "G:\\Projects\\Praca inżynierska\\Aplikacja\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj"
+              "C:\\Project\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj": {
+                "projectPath": "C:\\Project\\trips\\backend\\backend.Infrastructure\\backend.Infrastructure.csproj"
               }
             }
           }
@@ -419,16 +422,17 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.11.1, )"
+              "version": "[17.12.0, )"
             },
             "Moq": {
               "target": "Package",
@@ -467,7 +471,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -39,3 +39,18 @@ G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\obj\Debug\
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\obj\Debug\net8.0\ref\backend.Domain.dll
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\bin\Debug\net8.0\backend.Domain.runtimeconfig.json
 G:\Projects\Praca inżynierska\Aplikacja\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.genruntimeconfig.cache
+C:\Project\trips\backend\backend.Domain\bin\Debug\net8.0\backend.Domain.deps.json
+C:\Project\trips\backend\backend.Domain\bin\Debug\net8.0\backend.Domain.runtimeconfig.json
+C:\Project\trips\backend\backend.Domain\bin\Debug\net8.0\backend.Domain.dll
+C:\Project\trips\backend\backend.Domain\bin\Debug\net8.0\backend.Domain.pdb
+C:\Project\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.csproj.AssemblyReference.cache
+C:\Project\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Project\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.AssemblyInfoInputs.cache
+C:\Project\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.AssemblyInfo.cs
+C:\Project\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.csproj.CoreCompileInputs.cache
+C:\Project\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.sourcelink.json
+C:\Project\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.dll
+C:\Project\trips\backend\backend.Domain\obj\Debug\net8.0\refint\backend.Domain.dll
+C:\Project\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.pdb
+C:\Project\trips\backend\backend.Domain\obj\Debug\net8.0\backend.Domain.genruntimeconfig.cache
+C:\Project\trips\backend\backend.Domain\obj\Debug\net8.0\ref\backend.Domain.dll
