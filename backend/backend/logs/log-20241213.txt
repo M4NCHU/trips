@@ -31,3 +31,493 @@
 2024-12-13 20:05:26.544 +01:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
 2024-12-13 20:05:26.545 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/favicon-32x32.png - 200 628 image/png 2.5874ms
 2024-12-13 20:05:26.553 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 25.9041ms
+2024-12-13 20:13:27.113 +01:00 [INF] User profile is available. Using 'C:\Users\Maciek\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-13 20:13:27.261 +01:00 [INF] Now listening on: https://localhost:7154
+2024-12-13 20:13:27.262 +01:00 [INF] Now listening on: http://localhost:5219
+2024-12-13 20:13:27.297 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-13 20:13:27.298 +01:00 [INF] Hosting environment: Development
+2024-12-13 20:13:27.298 +01:00 [INF] Content root path: C:\Project\trips\backend\backend
+2024-12-13 20:13:27.496 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2024-12-13 20:13:27.618 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 123.9621ms
+2024-12-13 20:13:27.723 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2024-12-13 20:13:27.723 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2024-12-13 20:13:27.723 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2024-12-13 20:13:27.726 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 3.5857ms
+2024-12-13 20:13:27.735 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 12.6729ms
+2024-12-13 20:13:27.751 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 28.2177ms
+2024-12-13 20:13:27.913 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2024-12-13 20:13:27.938 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.4797ms
+2024-12-13 20:13:30.459 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=10 - null null
+2024-12-13 20:13:30.459 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2024-12-13 20:13:30.459 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2024-12-13 20:13:30.496 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:13:30.496 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:13:30.496 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:13:30.857 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2024-12-13 20:13:30.857 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:13:30.857 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:13:30.874 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2024-12-13 20:13:30.874 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2024-12-13 20:13:30.874 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2024-12-13 20:13:32.707 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2024-12-13 20:13:32.707 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2024-12-13 20:13:32.707 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=10 - null null
+2024-12-13 20:13:32.709 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:13:32.711 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:13:32.712 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:13:32.714 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2024-12-13 20:13:32.714 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:13:32.714 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:13:32.715 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2024-12-13 20:13:32.716 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2024-12-13 20:13:32.717 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2024-12-13 20:13:32.784 +01:00 [INF] Base URL generated: https://localhost:7154
+2024-12-13 20:13:32.784 +01:00 [INF] Base URL generated: https://localhost:7154
+2024-12-13 20:13:32.805 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2024-12-13 20:13:32.805 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2024-12-13 20:13:32.805 +01:00 [INF] Fetching paginated categories for page 1 with page size 10
+2024-12-13 20:13:32.805 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2024-12-13 20:13:32.805 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2024-12-13 20:13:32.805 +01:00 [INF] Fetching paginated categories for page 1 with page size 10
+2024-12-13 20:13:32.807 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2024-12-13 20:13:32.807 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2024-12-13 20:13:33.275 +01:00 [ERR] Failed executing DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2024-12-13 20:13:33.275 +01:00 [ERR] Failed executing DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+2024-12-13 20:13:33.275 +01:00 [ERR] Failed executing DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2024-12-13 20:13:33.275 +01:00 [ERR] Failed executing DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2024-12-13 20:13:33.275 +01:00 [ERR] Failed executing DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+2024-12-13 20:13:33.275 +01:00 [ERR] Failed executing DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2024-12-13 20:13:33.312 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'backend.Infrastructure.Authentication.TripsDbContext'.
+Npgsql.PostgresException (0x80004005): 42P01: relation "Category" does not exist
+
+POSITION: 28
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "Category" does not exist
+    Position: 28
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable
+Npgsql.PostgresException (0x80004005): 42P01: relation "Category" does not exist
+
+POSITION: 28
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "Category" does not exist
+    Position: 28
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable
+2024-12-13 20:13:33.312 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'backend.Infrastructure.Authentication.TripsDbContext'.
+Npgsql.PostgresException (0x80004005): 42P01: relation "Destination" does not exist
+
+POSITION: 28
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "Destination" does not exist
+    Position: 28
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable
+Npgsql.PostgresException (0x80004005): 42P01: relation "Destination" does not exist
+
+POSITION: 28
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "Destination" does not exist
+    Position: 28
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable
+2024-12-13 20:13:33.312 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'backend.Infrastructure.Authentication.TripsDbContext'.
+Npgsql.PostgresException (0x80004005): 42P01: relation "Category" does not exist
+
+POSITION: 28
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "Category" does not exist
+    Position: 28
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable
+Npgsql.PostgresException (0x80004005): 42P01: relation "Category" does not exist
+
+POSITION: 28
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "Category" does not exist
+    Position: 28
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable
+2024-12-13 20:13:33.312 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'backend.Infrastructure.Authentication.TripsDbContext'.
+Npgsql.PostgresException (0x80004005): 42P01: relation "Category" does not exist
+
+POSITION: 28
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "Category" does not exist
+    Position: 28
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable
+Npgsql.PostgresException (0x80004005): 42P01: relation "Category" does not exist
+
+POSITION: 28
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "Category" does not exist
+    Position: 28
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable
+2024-12-13 20:14:14.857 +01:00 [ERR] Failed executing DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2024-12-13 20:14:14.999 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2024-12-13 20:14:15.008 +01:00 [INF] Applying migration '20240219213839_init'.
+2024-12-13 20:14:15.071 +01:00 [INF] Applying migration '20241010174631_AddCategoryIconColumn'.
+2024-12-13 20:14:15.080 +01:00 [INF] Applying migration '20241012233900_SetImageFileAsOptional'.
+2024-12-13 20:14:20.698 +01:00 [INF] User profile is available. Using 'C:\Users\Maciek\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-13 20:14:20.870 +01:00 [INF] Now listening on: https://localhost:7154
+2024-12-13 20:14:20.871 +01:00 [INF] Now listening on: http://localhost:5219
+2024-12-13 20:14:20.916 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-13 20:14:20.917 +01:00 [INF] Hosting environment: Development
+2024-12-13 20:14:20.917 +01:00 [INF] Content root path: C:\Project\trips\backend\backend
+2024-12-13 20:14:21.235 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2024-12-13 20:14:21.344 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 112.0757ms
+2024-12-13 20:14:21.445 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2024-12-13 20:14:21.445 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2024-12-13 20:14:21.445 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2024-12-13 20:14:21.517 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 8.154ms
+2024-12-13 20:14:21.550 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 105.3265ms
+2024-12-13 20:14:21.562 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 117.4046ms
+2024-12-13 20:14:21.658 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2024-12-13 20:14:21.681 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.6771ms
+2024-12-13 20:14:26.031 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=10 - null null
+2024-12-13 20:14:26.031 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2024-12-13 20:14:26.031 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2024-12-13 20:14:26.036 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:14:26.036 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:14:26.036 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:14:26.066 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2024-12-13 20:14:26.066 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:26.066 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:26.077 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2024-12-13 20:14:26.077 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2024-12-13 20:14:26.077 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2024-12-13 20:14:26.701 +01:00 [INF] Base URL generated: https://localhost:7154
+2024-12-13 20:14:26.713 +01:00 [INF] Fetching paginated categories for page 1 with page size 10
+2024-12-13 20:14:26.713 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2024-12-13 20:14:26.714 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2024-12-13 20:14:26.716 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2024-12-13 20:14:27.052 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2024-12-13 20:14:27.052 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2024-12-13 20:14:27.052 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+2024-12-13 20:14:27.156 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2024-12-13 20:14:27.156 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2024-12-13 20:14:27.156 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+ORDER BY d."Id"
+LIMIT @__p_1 OFFSET @__p_0
+2024-12-13 20:14:27.169 +01:00 [WRN] No destinations found for the given filter.
+2024-12-13 20:14:27.174 +01:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2024-12-13 20:14:27.176 +01:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-12-13 20:14:27.176 +01:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-12-13 20:14:27.177 +01:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 1096.0739ms
+2024-12-13 20:14:27.179 +01:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2024-12-13 20:14:27.185 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - 204 null null 1153.4996ms
+2024-12-13 20:14:27.190 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 1110.0243ms
+2024-12-13 20:14:27.190 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 1111.7136ms
+2024-12-13 20:14:27.191 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:27.192 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:27.192 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 404 null application/problem+json; charset=utf-8 1160.9857ms
+2024-12-13 20:14:27.193 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=10 - 404 null application/problem+json; charset=utf-8 1161.5837ms
+2024-12-13 20:14:28.016 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2024-12-13 20:14:28.016 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=10 - null null
+2024-12-13 20:14:28.016 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2024-12-13 20:14:28.018 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:14:28.019 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:14:28.021 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:14:28.024 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2024-12-13 20:14:28.024 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:28.024 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:28.025 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2024-12-13 20:14:28.025 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2024-12-13 20:14:28.026 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2024-12-13 20:14:28.086 +01:00 [INF] Base URL generated: https://localhost:7154
+2024-12-13 20:14:28.087 +01:00 [INF] Fetching paginated categories for page 1 with page size 10
+2024-12-13 20:14:28.087 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2024-12-13 20:14:28.087 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2024-12-13 20:14:28.089 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2024-12-13 20:14:28.090 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2024-12-13 20:14:28.090 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2024-12-13 20:14:28.093 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2024-12-13 20:14:28.091 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+2024-12-13 20:14:28.093 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2024-12-13 20:14:28.094 +01:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-12-13 20:14:28.097 +01:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-12-13 20:14:28.097 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+ORDER BY d."Id"
+LIMIT @__p_1 OFFSET @__p_0
+2024-12-13 20:14:28.098 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 68.537ms
+2024-12-13 20:14:28.098 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 70.2636ms
+2024-12-13 20:14:28.100 +01:00 [WRN] No destinations found for the given filter.
+2024-12-13 20:14:28.101 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:28.102 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:28.102 +01:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2024-12-13 20:14:28.103 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=10 - 404 null application/problem+json; charset=utf-8 86.9471ms
+2024-12-13 20:14:28.103 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 404 null application/problem+json; charset=utf-8 87.4875ms
+2024-12-13 20:14:28.104 +01:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 77.0067ms
+2024-12-13 20:14:28.108 +01:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2024-12-13 20:14:28.109 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - 204 null null 93.3867ms
+2024-12-13 20:14:29.120 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2024-12-13 20:14:29.120 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=10 - null null
+2024-12-13 20:14:29.122 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:14:29.123 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:14:29.123 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:29.124 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:29.124 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2024-12-13 20:14:29.125 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2024-12-13 20:14:29.128 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2024-12-13 20:14:29.128 +01:00 [INF] Fetching paginated categories for page 1 with page size 10
+2024-12-13 20:14:29.129 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2024-12-13 20:14:29.130 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2024-12-13 20:14:29.131 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2024-12-13 20:14:29.133 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2024-12-13 20:14:29.133 +01:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-12-13 20:14:29.135 +01:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-12-13 20:14:29.136 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 9.1359ms
+2024-12-13 20:14:29.136 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 8.8796ms
+2024-12-13 20:14:29.137 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:29.138 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:29.138 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 404 null application/problem+json; charset=utf-8 18.2332ms
+2024-12-13 20:14:29.139 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=10 - 404 null application/problem+json; charset=utf-8 18.919ms
+2024-12-13 20:14:31.150 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=10 - null null
+2024-12-13 20:14:31.150 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2024-12-13 20:14:31.152 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:14:31.153 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:14:31.153 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:31.154 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:31.154 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2024-12-13 20:14:31.155 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2024-12-13 20:14:31.156 +01:00 [INF] Fetching paginated categories for page 1 with page size 10
+2024-12-13 20:14:31.157 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2024-12-13 20:14:31.158 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2024-12-13 20:14:31.158 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2024-12-13 20:14:31.160 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2024-12-13 20:14:31.161 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2024-12-13 20:14:31.161 +01:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-12-13 20:14:31.162 +01:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-12-13 20:14:31.163 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 7.688ms
+2024-12-13 20:14:31.164 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 7.4052ms
+2024-12-13 20:14:31.165 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:31.166 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:31.166 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=10 - 404 null application/problem+json; charset=utf-8 16.0515ms
+2024-12-13 20:14:31.167 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 404 null application/problem+json; charset=utf-8 16.6807ms
+2024-12-13 20:14:35.170 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2024-12-13 20:14:35.170 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=10 - null null
+2024-12-13 20:14:35.171 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:14:35.173 +01:00 [INF] CORS policy execution successful.
+2024-12-13 20:14:35.173 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:35.174 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:35.174 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2024-12-13 20:14:35.175 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2024-12-13 20:14:35.177 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2024-12-13 20:14:35.177 +01:00 [INF] Fetching paginated categories for page 1 with page size 10
+2024-12-13 20:14:35.178 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2024-12-13 20:14:35.179 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2024-12-13 20:14:35.180 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2024-12-13 20:14:35.181 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2024-12-13 20:14:35.182 +01:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-12-13 20:14:35.183 +01:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-12-13 20:14:35.184 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 8.1465ms
+2024-12-13 20:14:35.185 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 7.7814ms
+2024-12-13 20:14:35.185 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:35.186 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2024-12-13 20:14:35.187 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 404 null application/problem+json; charset=utf-8 16.7868ms
+2024-12-13 20:14:35.187 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=10 - 404 null application/problem+json; charset=utf-8 17.462ms

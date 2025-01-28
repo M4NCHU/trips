@@ -5,7 +5,6 @@ import {
 } from "../types/TripDestinationTypes";
 import { fetchData } from "./apiUtils";
 
-// Adding trip participant
 export const UseCreateTripDestination = () => {
   const mutation = useMutation({
     mutationFn: async (formData: FormData) => {
@@ -27,7 +26,6 @@ export const UseCreateTripDestination = () => {
   return mutation;
 };
 
-// Get trip participant by id
 export const UseTripDestination = (id: string) => {
   return useQuery<TripDestination, Error>({
     queryKey: ["ByTripDestinationId"],
@@ -47,7 +45,6 @@ export const UseTripDestinationByTripId = (id: string | undefined) => {
   });
 };
 
-// Get trip destinations count
 export const UseTripDestinationCount = (tripId: string) => {
   return useQuery<number>({
     queryKey: ["ByTripDestinationCount"],

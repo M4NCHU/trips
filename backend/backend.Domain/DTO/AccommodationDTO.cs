@@ -16,7 +16,6 @@ namespace backend.Domain.DTOs
 
         [StringLength(128, ErrorMessage = "Location cannot exceed 128 characters.")]
         public string? Location { get; set; }
-
         public string? PhotoUrl { get; set; }
 
         [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0.")]
@@ -24,11 +23,8 @@ namespace backend.Domain.DTOs
 
         [Range(1, int.MaxValue, ErrorMessage = "Bed amount must be at least 1.")]
         public int BedAmount { get; set; }
-
         public DateTime CreatedAt { get; set; }
-
         public DateTime? ModifiedAt { get; set; }
-
         public IFormFile ImageFile { get; set; }
 
     }

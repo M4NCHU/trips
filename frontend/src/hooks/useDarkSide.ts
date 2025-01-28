@@ -17,13 +17,10 @@ export function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
     defaultValue ?? isDarkOS ?? false
   );
 
-  // Update darkMode if OS prefers changes
   useUpdateEffect(() => {
     setDarkMode(isDarkOS);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDarkOS]);
 
-  // Set the theme class on page load or when changing themes
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");

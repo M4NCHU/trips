@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace backend.Infrastructure.Respository
@@ -44,6 +45,11 @@ namespace backend.Infrastructure.Respository
             {
                 _dbSet.Remove(entity);
             }
+        }
+
+        public async Task<List<TEntity>> GetByConditionAsync(Expression<Func<TEntity, bool>> expression)
+        {
+            return await _dbSet.Where(expression).ToListAsync();
         }
     }
 }

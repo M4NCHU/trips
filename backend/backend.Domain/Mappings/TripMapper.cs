@@ -9,8 +9,6 @@ namespace backend.Domain.Mappings
     {
         public TripMapper()
         {
-
-            // W pliku konfiguracyjnym AutoMapper
             CreateMap<TripModel, TripDTO>();
 
         }

@@ -1,0 +1,789 @@
+2025-01-16 18:49:03.004 +01:00 [INF] User profile is available. Using 'C:\Users\Maciek\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-16 18:49:03.207 +01:00 [INF] Now listening on: https://localhost:7154
+2025-01-16 18:49:03.209 +01:00 [INF] Now listening on: http://localhost:5219
+2025-01-16 18:49:03.250 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-16 18:49:03.251 +01:00 [INF] Hosting environment: Development
+2025-01-16 18:49:03.251 +01:00 [INF] Content root path: C:\Project\trips\backend\backend
+2025-01-16 18:49:03.605 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2025-01-16 18:49:03.818 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 217.7334ms
+2025-01-16 18:49:03.938 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2025-01-16 18:49:03.938 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2025-01-16 18:49:03.938 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2025-01-16 18:49:04.058 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 119.5264ms
+2025-01-16 18:49:04.061 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 122.7012ms
+2025-01-16 18:49:04.117 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 178.6715ms
+2025-01-16 18:49:04.331 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2025-01-16 18:49:04.367 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 36.4911ms
+2025-01-16 18:49:08.234 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Authentication/user - null null
+2025-01-16 18:49:08.234 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-16 18:49:08.234 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-16 18:49:08.241 +01:00 [INF] CORS policy execution successful.
+2025-01-16 18:49:08.241 +01:00 [INF] CORS policy execution successful.
+2025-01-16 18:49:08.241 +01:00 [INF] CORS policy execution successful.
+2025-01-16 18:49:08.243 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - 204 null null 9.3398ms
+2025-01-16 18:49:08.243 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - 204 null null 9.3315ms
+2025-01-16 18:49:08.246 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-16 18:49:08.246 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-16 18:49:08.258 +01:00 [INF] CORS policy execution successful.
+2025-01-16 18:49:08.259 +01:00 [INF] CORS policy execution successful.
+2025-01-16 18:49:08.344 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-16 18:49:08.344 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-16 18:49:08.344 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-16 18:49:08.357 +01:00 [INF] Route matched with {action = "GetCurrentUser", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentUser() on controller backend.Controllers.AuthenticationController (backend).
+2025-01-16 18:49:08.358 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2025-01-16 18:49:08.359 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2025-01-16 18:49:09.322 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 18:49:09.335 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2025-01-16 18:49:09.338 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-16 18:49:09.340 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-16 18:49:09.775 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2025-01-16 18:49:09.775 +01:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+2025-01-16 18:49:09.790 +01:00 [INF] Executed DbCommand (39ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."LastName", a."LastUpdated", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__p_0
+LIMIT 1
+2025-01-16 18:49:09.816 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2025-01-16 18:49:09.856 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT d0."Id", d0."CategoryId", d0."CreatedAt", d0."Description", d0."GeoLocationId", d0."Location", d0."ModifiedAt", d0."Name", d0."PhotoUrl", d0."Price", g."Id", g."CreatedAt", g."Description", g."ItemId", g."Latitude", g."Longitude", g."ModifiedAt", g."Type"
+FROM (
+    SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+    FROM "Destination" AS d
+    ORDER BY d."Id"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS d0
+LEFT JOIN "GeoLocation" AS g ON d0."GeoLocationId" = g."Id"
+ORDER BY d0."Id"
+2025-01-16 18:49:09.873 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.CategoryDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 18:49:09.875 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-01-16 18:49:09.878 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[backend.Domain.DTO.Authentication.AccountDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 18:49:09.896 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Authentication/user - null null
+2025-01-16 18:49:09.898 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 1537.7467ms
+2025-01-16 18:49:09.898 +01:00 [INF] Executed action backend.Controllers.AuthenticationController.GetCurrentUser (backend) in 1537.09ms
+2025-01-16 18:49:09.898 +01:00 [INF] CORS policy execution successful.
+2025-01-16 18:49:09.899 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-16 18:49:09.899 +01:00 [INF] Executed endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-16 18:49:09.901 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-16 18:49:09.902 +01:00 [INF] Route matched with {action = "GetCurrentUser", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentUser() on controller backend.Controllers.AuthenticationController (backend).
+2025-01-16 18:49:09.905 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 200 null application/json; charset=utf-8 1659.5919ms
+2025-01-16 18:49:09.905 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Authentication/user - 200 null application/json; charset=utf-8 1671.4611ms
+2025-01-16 18:49:09.913 +01:00 [INF] Successfully fetched 6 destinations.
+2025-01-16 18:49:09.914 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.DestinationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 18:49:09.919 +01:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 1558.2314ms
+2025-01-16 18:49:09.920 +01:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-16 18:49:09.921 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - 200 null application/json; charset=utf-8 1674.9696ms
+2025-01-16 18:49:09.929 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250109222932_f010c23d-ee99-4ddb-a4a5-18ed8e2018ef.jpg - null null
+2025-01-16 18:49:09.929 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106153302_e150f6ec-4895-4e6c-9a25-ca031f107fd4.jpg - null null
+2025-01-16 18:49:09.929 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg - null null
+2025-01-16 18:49:09.929 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png - null null
+2025-01-16 18:49:09.929 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106161239_e4037aea-c1ce-45ff-b1e2-d852032e0aed.jpg - null null
+2025-01-16 18:49:09.929 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106161654_bad64b3c-2920-4cdf-bfa5-b5a5447c58c8.jpg - null null
+2025-01-16 18:49:09.940 +01:00 [INF] The file /Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png was not modified
+2025-01-16 18:49:09.940 +01:00 [INF] The file /Destinations/Destinations_20250109222932_f010c23d-ee99-4ddb-a4a5-18ed8e2018ef.jpg was not modified
+2025-01-16 18:49:09.940 +01:00 [INF] The file /Destinations/Destinations_20250106161239_e4037aea-c1ce-45ff-b1e2-d852032e0aed.jpg was not modified
+2025-01-16 18:49:09.940 +01:00 [INF] The file /Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg was not modified
+2025-01-16 18:49:09.940 +01:00 [INF] The file /Destinations/Destinations_20250106161654_bad64b3c-2920-4cdf-bfa5-b5a5447c58c8.jpg was not modified
+2025-01-16 18:49:09.940 +01:00 [INF] The file /Destinations/Destinations_20250106153302_e150f6ec-4895-4e6c-9a25-ca031f107fd4.jpg was not modified
+2025-01-16 18:49:09.942 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png - 304 null image/png 13.1593ms
+2025-01-16 18:49:09.942 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250109222932_f010c23d-ee99-4ddb-a4a5-18ed8e2018ef.jpg - 304 null image/jpeg 13.3013ms
+2025-01-16 18:49:09.945 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106161654_bad64b3c-2920-4cdf-bfa5-b5a5447c58c8.jpg - 304 null image/jpeg 15.7204ms
+2025-01-16 18:49:09.944 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg - 304 null image/jpeg 14.7991ms
+2025-01-16 18:49:09.943 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106161239_e4037aea-c1ce-45ff-b1e2-d852032e0aed.jpg - 304 null image/jpeg 13.9149ms
+2025-01-16 18:49:09.946 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106153302_e150f6ec-4895-4e6c-9a25-ca031f107fd4.jpg - 304 null image/jpeg 16.6926ms
+2025-01-16 18:49:09.955 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."LastName", a."LastUpdated", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__p_0
+LIMIT 1
+2025-01-16 18:49:09.974 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-01-16 18:49:09.977 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[backend.Domain.DTO.Authentication.AccountDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 18:49:09.978 +01:00 [INF] Executed action backend.Controllers.AuthenticationController.GetCurrentUser (backend) in 74.8192ms
+2025-01-16 18:49:09.979 +01:00 [INF] Executed endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-16 18:49:09.980 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Authentication/user - 200 null application/json; charset=utf-8 83.6728ms
+2025-01-16 18:49:36.159 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-16 18:49:36.161 +01:00 [INF] CORS policy execution successful.
+2025-01-16 18:49:36.162 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 18:49:36.166 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-16 18:49:36.168 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 18:49:36.171 +01:00 [INF] GetCartAsync started.
+2025-01-16 18:49:36.219 +01:00 [INF] Deserialized cartCookie into cartModels: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","User":null,"ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":null,"$type":"CartModel"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","User":null,"ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":null,"$type":"CartModel"}]
+2025-01-16 18:49:36.232 +01:00 [INF] Extracted destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 18:49:36.234 +01:00 [INF] Fetching destinations for provided IDs.
+2025-01-16 18:49:36.235 +01:00 [INF] Executing query for Destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 18:49:36.295 +01:00 [INF] Executed DbCommand (39ms) [Parameters=[@__ids_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+WHERE d."Id" = ANY (@__ids_0)
+2025-01-16 18:49:36.297 +01:00 [INF] Fetched 2 destinations.
+2025-01-16 18:49:36.298 +01:00 [INF] Successfully fetched 2 destinations.
+2025-01-16 18:49:36.299 +01:00 [INF] Fetched destinations: [{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"}]
+2025-01-16 18:49:36.312 +01:00 [INF] GetCartAsync completed successfully. Cart items: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"}]
+2025-01-16 18:49:36.328 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-16 18:49:36.346 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 178.6226ms
+2025-01-16 18:49:36.347 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 18:49:36.347 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 200 null application/json; charset=utf-8 188.208ms
+2025-01-16 18:49:49.164 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-16 18:49:49.167 +01:00 [INF] CORS policy execution successful.
+2025-01-16 18:49:49.168 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 18:49:49.168 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-16 18:49:49.170 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 18:49:49.171 +01:00 [INF] GetCartAsync started.
+2025-01-16 18:49:49.172 +01:00 [INF] Deserialized cartCookie into cartModels: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","User":null,"ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":null,"$type":"CartModel"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","User":null,"ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":null,"$type":"CartModel"}]
+2025-01-16 18:49:49.180 +01:00 [INF] Extracted destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 18:49:49.180 +01:00 [INF] Fetching destinations for provided IDs.
+2025-01-16 18:49:49.181 +01:00 [INF] Executing query for Destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 18:49:49.184 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ids_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+WHERE d."Id" = ANY (@__ids_0)
+2025-01-16 18:49:49.185 +01:00 [INF] Fetched 2 destinations.
+2025-01-16 18:49:49.186 +01:00 [INF] Successfully fetched 2 destinations.
+2025-01-16 18:49:49.187 +01:00 [INF] Fetched destinations: [{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"}]
+2025-01-16 18:49:49.196 +01:00 [INF] GetCartAsync completed successfully. Cart items: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"}]
+2025-01-16 18:49:49.211 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-16 18:49:49.212 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 42.1307ms
+2025-01-16 18:49:49.212 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 18:49:49.213 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 200 null application/json; charset=utf-8 48.9867ms
+2025-01-16 18:49:50.816 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-16 18:49:50.818 +01:00 [INF] CORS policy execution successful.
+2025-01-16 18:49:50.819 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 18:49:50.820 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-16 18:49:50.826 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 18:49:50.827 +01:00 [INF] GetCartAsync started.
+2025-01-16 18:49:50.827 +01:00 [INF] Deserialized cartCookie into cartModels: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","User":null,"ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":null,"$type":"CartModel"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","User":null,"ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":null,"$type":"CartModel"}]
+2025-01-16 18:49:50.835 +01:00 [INF] Extracted destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 18:49:50.835 +01:00 [INF] Fetching destinations for provided IDs.
+2025-01-16 18:49:50.836 +01:00 [INF] Executing query for Destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 18:49:50.838 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ids_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+WHERE d."Id" = ANY (@__ids_0)
+2025-01-16 18:49:50.839 +01:00 [INF] Fetched 2 destinations.
+2025-01-16 18:49:50.840 +01:00 [INF] Successfully fetched 2 destinations.
+2025-01-16 18:49:50.840 +01:00 [INF] Fetched destinations: [{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"}]
+2025-01-16 18:49:50.850 +01:00 [INF] GetCartAsync completed successfully. Cart items: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"}]
+2025-01-16 18:49:50.866 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-16 18:49:50.867 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 45.7768ms
+2025-01-16 18:49:50.868 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 18:49:50.868 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 200 null application/json; charset=utf-8 52.0189ms
+2025-01-16 18:49:58.974 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Reservation/user-reservations - null null
+2025-01-16 18:49:58.976 +01:00 [INF] CORS policy execution successful.
+2025-01-16 18:49:58.976 +01:00 [INF] Executing endpoint 'backend.Controllers.ReservationController.GetUserReservations (backend)'
+2025-01-16 18:49:58.980 +01:00 [INF] Route matched with {action = "GetUserReservations", controller = "Reservation"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserReservations() on controller backend.Controllers.ReservationController (backend).
+2025-01-16 18:49:58.982 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 18:49:58.983 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 18:49:58.985 +01:00 [INF] Fetching reservations for User ID: 74b9f27c-c745-4e27-9877-3848fd18bd82
+2025-01-16 18:49:59.013 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."CreatedAt", r."ModifiedAt", r."Status", r."TotalPrice", r."UserId", r0."Id", r0."AdditionalData", r0."CreatedAt", r0."ItemId", r0."ItemType", r0."Price", r0."Quantity", r0."ReservationId"
+FROM "Reservation" AS r
+LEFT JOIN "ReservationItem" AS r0 ON r."Id" = r0."ReservationId"
+WHERE r."UserId" = @__userId_0
+ORDER BY r."Id"
+2025-01-16 18:49:59.041 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[backend.Domain.DTO.ReservationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 18:49:59.052 +01:00 [INF] Executed action backend.Controllers.ReservationController.GetUserReservations (backend) in 71.2445ms
+2025-01-16 18:49:59.053 +01:00 [INF] Executed endpoint 'backend.Controllers.ReservationController.GetUserReservations (backend)'
+2025-01-16 18:49:59.054 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Reservation/user-reservations - 200 null application/json; charset=utf-8 80.1602ms
+2025-01-16 18:50:09.342 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Reservation/b54843d2-be6e-4bce-8290-4ca9fe908584 - null null
+2025-01-16 18:50:09.345 +01:00 [INF] CORS policy execution successful.
+2025-01-16 18:50:09.345 +01:00 [INF] Executing endpoint 'backend.Controllers.ReservationController.GetReservationById (backend)'
+2025-01-16 18:50:09.349 +01:00 [INF] Route matched with {action = "GetReservationById", controller = "Reservation"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetReservationById(System.Guid) on controller backend.Controllers.ReservationController (backend).
+2025-01-16 18:50:09.350 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 18:50:09.351 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 18:50:09.354 +01:00 [INF] Fetching reservation with ID: "b54843d2-be6e-4bce-8290-4ca9fe908584" for User ID: 74b9f27c-c745-4e27-9877-3848fd18bd82
+2025-01-16 18:50:09.364 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__reservationId_0='?' (DbType = Guid), @__userId_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r1."Id", r1."CreatedAt", r1."ModifiedAt", r1."Status", r1."TotalPrice", r1."UserId", r0."Id", r0."AdditionalData", r0."CreatedAt", r0."ItemId", r0."ItemType", r0."Price", r0."Quantity", r0."ReservationId"
+FROM (
+    SELECT r."Id", r."CreatedAt", r."ModifiedAt", r."Status", r."TotalPrice", r."UserId"
+    FROM "Reservation" AS r
+    WHERE r."Id" = @__reservationId_0 AND r."UserId" = @__userId_1
+    LIMIT 1
+) AS r1
+LEFT JOIN "ReservationItem" AS r0 ON r1."Id" = r0."ReservationId"
+ORDER BY r1."Id"
+2025-01-16 18:50:09.369 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTO.ReservationDTO'.
+2025-01-16 18:50:09.370 +01:00 [INF] Executed action backend.Controllers.ReservationController.GetReservationById (backend) in 19.8325ms
+2025-01-16 18:50:09.370 +01:00 [INF] Executed endpoint 'backend.Controllers.ReservationController.GetReservationById (backend)'
+2025-01-16 18:50:09.371 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Reservation/b54843d2-be6e-4bce-8290-4ca9fe908584 - 200 null application/json; charset=utf-8 28.7665ms
+2025-01-16 18:50:11.119 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Reservation/user-reservations - null null
+2025-01-16 18:50:11.120 +01:00 [INF] CORS policy execution successful.
+2025-01-16 18:50:11.121 +01:00 [INF] Executing endpoint 'backend.Controllers.ReservationController.GetUserReservations (backend)'
+2025-01-16 18:50:11.122 +01:00 [INF] Route matched with {action = "GetUserReservations", controller = "Reservation"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserReservations() on controller backend.Controllers.ReservationController (backend).
+2025-01-16 18:50:11.124 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 18:50:11.125 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 18:50:11.125 +01:00 [INF] Fetching reservations for User ID: 74b9f27c-c745-4e27-9877-3848fd18bd82
+2025-01-16 18:50:11.129 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."CreatedAt", r."ModifiedAt", r."Status", r."TotalPrice", r."UserId", r0."Id", r0."AdditionalData", r0."CreatedAt", r0."ItemId", r0."ItemType", r0."Price", r0."Quantity", r0."ReservationId"
+FROM "Reservation" AS r
+LEFT JOIN "ReservationItem" AS r0 ON r."Id" = r0."ReservationId"
+WHERE r."UserId" = @__userId_0
+ORDER BY r."Id"
+2025-01-16 18:50:11.130 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[backend.Domain.DTO.ReservationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 18:50:11.131 +01:00 [INF] Executed action backend.Controllers.ReservationController.GetUserReservations (backend) in 8.3118ms
+2025-01-16 18:50:11.132 +01:00 [INF] Executed endpoint 'backend.Controllers.ReservationController.GetUserReservations (backend)'
+2025-01-16 18:50:11.133 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Reservation/user-reservations - 200 null application/json; charset=utf-8 13.9747ms
+2025-01-16 18:50:16.390 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-16 18:50:16.393 +01:00 [INF] CORS policy execution successful.
+2025-01-16 18:50:16.393 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 18:50:16.394 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-16 18:50:16.396 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 18:50:16.397 +01:00 [INF] GetCartAsync started.
+2025-01-16 18:50:16.397 +01:00 [INF] Deserialized cartCookie into cartModels: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","User":null,"ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":null,"$type":"CartModel"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","User":null,"ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":null,"$type":"CartModel"}]
+2025-01-16 18:50:16.404 +01:00 [INF] Extracted destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 18:50:16.405 +01:00 [INF] Fetching destinations for provided IDs.
+2025-01-16 18:50:16.406 +01:00 [INF] Executing query for Destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 18:50:16.408 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ids_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+WHERE d."Id" = ANY (@__ids_0)
+2025-01-16 18:50:16.409 +01:00 [INF] Fetched 2 destinations.
+2025-01-16 18:50:16.409 +01:00 [INF] Successfully fetched 2 destinations.
+2025-01-16 18:50:16.410 +01:00 [INF] Fetched destinations: [{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"}]
+2025-01-16 18:50:16.421 +01:00 [INF] GetCartAsync completed successfully. Cart items: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"}]
+2025-01-16 18:50:16.436 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-16 18:50:16.437 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 41.4483ms
+2025-01-16 18:50:16.438 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 18:50:16.438 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 200 null application/json; charset=utf-8 47.9237ms
+2025-01-16 18:52:59.250 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-16 18:52:59.252 +01:00 [INF] CORS policy execution successful.
+2025-01-16 18:52:59.253 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 18:52:59.254 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-16 18:52:59.255 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 18:52:59.256 +01:00 [INF] GetCartAsync started.
+2025-01-16 18:52:59.256 +01:00 [INF] Deserialized cartCookie into cartModels: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","User":null,"ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":null,"$type":"CartModel"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","User":null,"ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":null,"$type":"CartModel"}]
+2025-01-16 18:52:59.263 +01:00 [INF] Extracted destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 18:52:59.264 +01:00 [INF] Fetching destinations for provided IDs.
+2025-01-16 18:52:59.264 +01:00 [INF] Executing query for Destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 18:52:59.266 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ids_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+WHERE d."Id" = ANY (@__ids_0)
+2025-01-16 18:52:59.267 +01:00 [INF] Fetched 2 destinations.
+2025-01-16 18:52:59.268 +01:00 [INF] Successfully fetched 2 destinations.
+2025-01-16 18:52:59.269 +01:00 [INF] Fetched destinations: [{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"}]
+2025-01-16 18:52:59.278 +01:00 [INF] GetCartAsync completed successfully. Cart items: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"}]
+2025-01-16 18:52:59.293 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-16 18:52:59.294 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 39.4693ms
+2025-01-16 18:52:59.295 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 18:52:59.295 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 200 null application/json; charset=utf-8 44.8231ms
+2025-01-16 21:53:08.286 +01:00 [INF] User profile is available. Using 'C:\Users\Maciek\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-16 21:53:08.494 +01:00 [INF] Now listening on: https://localhost:7154
+2025-01-16 21:53:08.495 +01:00 [INF] Now listening on: http://localhost:5219
+2025-01-16 21:53:08.535 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-16 21:53:08.536 +01:00 [INF] Hosting environment: Development
+2025-01-16 21:53:08.536 +01:00 [INF] Content root path: C:\Project\trips\backend\backend
+2025-01-16 21:53:08.881 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2025-01-16 21:53:09.036 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 158.0705ms
+2025-01-16 21:53:09.105 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2025-01-16 21:53:09.105 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2025-01-16 21:53:09.105 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2025-01-16 21:53:09.114 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 8.8522ms
+2025-01-16 21:53:09.120 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 14.585ms
+2025-01-16 21:53:09.135 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.316ms
+2025-01-16 21:53:09.248 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2025-01-16 21:53:09.275 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.5124ms
+2025-01-16 21:53:14.391 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7154/api/Authentication/login - multipart/form-data; boundary=----WebKitFormBoundaryLMZ93BmwEK14j9VW 248
+2025-01-16 21:53:14.396 +01:00 [INF] CORS policy execution successful.
+2025-01-16 21:53:14.474 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.Login (backend)'
+2025-01-16 21:53:14.486 +01:00 [INF] Route matched with {action = "Login", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(backend.Domain.DTO.Authentication.LoginDTO) on controller backend.Controllers.AuthenticationController (backend).
+2025-01-16 21:53:15.108 +01:00 [INF] User Maciek attempting to log in.
+2025-01-16 21:53:15.485 +01:00 [INF] Executed DbCommand (39ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."LastName", a."LastUpdated", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2025-01-16 21:53:15.612 +01:00 [INF] User Maciek logged in successfully.
+2025-01-16 21:53:15.652 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-01-16 21:53:15.662 +01:00 [INF] JWT created for user 74b9f27c-c745-4e27-9877-3848fd18bd82 with expiration at "2025-01-31T20:53:15.6558771Z"
+2025-01-16 21:53:15.676 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?', @__p_1='?', @__p_2='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."LoginProvider", a."Name", a."Value"
+FROM "AspNetUserTokens" AS a
+WHERE a."UserId" = @__p_0 AND a."LoginProvider" = @__p_1 AND a."Name" = @__p_2
+LIMIT 1
+2025-01-16 21:53:15.767 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[@p1='?', @p2='?', @p3='?', @p0='?', @p22='?', @p4='?' (DbType = Int32), @p5='?', @p23='?', @p6='?' (DbType = DateTime), @p7='?', @p8='?' (DbType = Boolean), @p9='?', @p10='?', @p11='?' (DbType = DateTime), @p12='?' (DbType = Boolean), @p13='?' (DbType = DateTime), @p14='?', @p15='?', @p16='?', @p17='?', @p18='?' (DbType = Boolean), @p19='?', @p20='?' (DbType = Boolean), @p21='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "AspNetUserTokens" SET "Value" = @p0
+WHERE "LoginProvider" = @p1 AND "Name" = @p2 AND "UserId" = @p3;
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p4, "ConcurrencyStamp" = @p5, "CreatedAt" = @p6, "Email" = @p7, "EmailConfirmed" = @p8, "FirstName" = @p9, "LastName" = @p10, "LastUpdated" = @p11, "LockoutEnabled" = @p12, "LockoutEnd" = @p13, "NormalizedEmail" = @p14, "NormalizedUserName" = @p15, "PasswordHash" = @p16, "PhoneNumber" = @p17, "PhoneNumberConfirmed" = @p18, "SecurityStamp" = @p19, "TwoFactorEnabled" = @p20, "UserName" = @p21
+WHERE "Id" = @p22 AND "ConcurrencyStamp" = @p23;
+2025-01-16 21:53:15.783 +01:00 [INF] JWT generated for user Maciek.
+2025-01-16 21:53:15.788 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-01-16 21:53:15.799 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[backend.Domain.DTO.Authentication.AccountDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 21:53:15.811 +01:00 [INF] Executed action backend.Controllers.AuthenticationController.Login (backend) in 1320.9279ms
+2025-01-16 21:53:15.813 +01:00 [INF] Executed endpoint 'backend.Controllers.AuthenticationController.Login (backend)'
+2025-01-16 21:53:15.818 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7154/api/Authentication/login - 200 null application/json; charset=utf-8 1427.7554ms
+2025-01-16 21:53:15.843 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-16 21:53:15.843 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-16 21:53:15.847 +01:00 [INF] CORS policy execution successful.
+2025-01-16 21:53:15.847 +01:00 [INF] CORS policy execution successful.
+2025-01-16 21:53:15.848 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - 204 null null 5.7638ms
+2025-01-16 21:53:15.848 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - 204 null null 5.7637ms
+2025-01-16 21:53:15.850 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-16 21:53:15.850 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-16 21:53:15.853 +01:00 [INF] CORS policy execution successful.
+2025-01-16 21:53:15.855 +01:00 [INF] CORS policy execution successful.
+2025-01-16 21:53:15.856 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-16 21:53:15.858 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-16 21:53:15.860 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2025-01-16 21:53:15.862 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2025-01-16 21:53:16.009 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 21:53:16.014 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-16 21:53:16.014 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2025-01-16 21:53:16.016 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-16 21:53:16.035 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+2025-01-16 21:53:16.057 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2025-01-16 21:53:16.064 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2025-01-16 21:53:16.067 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT d0."Id", d0."CategoryId", d0."CreatedAt", d0."Description", d0."GeoLocationId", d0."Location", d0."ModifiedAt", d0."Name", d0."PhotoUrl", d0."Price", g."Id", g."CreatedAt", g."Description", g."ItemId", g."Latitude", g."Longitude", g."ModifiedAt", g."Type"
+FROM (
+    SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+    FROM "Destination" AS d
+    ORDER BY d."Id"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS d0
+LEFT JOIN "GeoLocation" AS g ON d0."GeoLocationId" = g."Id"
+ORDER BY d0."Id"
+2025-01-16 21:53:16.105 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.CategoryDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 21:53:16.129 +01:00 [INF] Successfully fetched 6 destinations.
+2025-01-16 21:53:16.130 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 268.7866ms
+2025-01-16 21:53:16.130 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.DestinationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 21:53:16.131 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-16 21:53:16.133 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 200 null application/json; charset=utf-8 282.8652ms
+2025-01-16 21:53:16.136 +01:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 272.3677ms
+2025-01-16 21:53:16.137 +01:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-16 21:53:16.138 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - 200 null application/json; charset=utf-8 288.5163ms
+2025-01-16 21:57:30.597 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-16 21:57:30.597 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-16 21:57:30.600 +01:00 [INF] CORS policy execution successful.
+2025-01-16 21:57:30.602 +01:00 [INF] CORS policy execution successful.
+2025-01-16 21:57:30.602 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - 204 null null 49.0607ms
+2025-01-16 21:57:30.602 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - 204 null null 5.5615ms
+2025-01-16 21:57:30.609 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-16 21:57:30.614 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-16 21:57:30.618 +01:00 [INF] CORS policy execution successful.
+2025-01-16 21:57:30.620 +01:00 [INF] CORS policy execution successful.
+2025-01-16 21:57:30.621 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-16 21:57:30.621 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-16 21:57:30.622 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2025-01-16 21:57:30.622 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2025-01-16 21:57:30.632 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 21:57:30.633 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2025-01-16 21:57:30.633 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-16 21:57:30.635 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-16 21:57:30.635 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2025-01-16 21:57:30.636 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+2025-01-16 21:57:30.638 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2025-01-16 21:57:30.639 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT d0."Id", d0."CategoryId", d0."CreatedAt", d0."Description", d0."GeoLocationId", d0."Location", d0."ModifiedAt", d0."Name", d0."PhotoUrl", d0."Price", g."Id", g."CreatedAt", g."Description", g."ItemId", g."Latitude", g."Longitude", g."ModifiedAt", g."Type"
+FROM (
+    SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+    FROM "Destination" AS d
+    ORDER BY d."Id"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS d0
+LEFT JOIN "GeoLocation" AS g ON d0."GeoLocationId" = g."Id"
+ORDER BY d0."Id"
+2025-01-16 21:57:30.640 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.CategoryDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 21:57:30.641 +01:00 [INF] Successfully fetched 6 destinations.
+2025-01-16 21:57:30.641 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 17.2984ms
+2025-01-16 21:57:30.642 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.DestinationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 21:57:30.643 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-16 21:57:30.643 +01:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 20.2076ms
+2025-01-16 21:57:30.644 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 200 null application/json; charset=utf-8 32.2901ms
+2025-01-16 21:57:30.645 +01:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-16 21:57:30.647 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - 200 null application/json; charset=utf-8 38.0858ms
+2025-01-16 22:04:30.185 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-16 22:04:30.186 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-16 22:04:30.193 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:04:30.195 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:04:30.196 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - 204 null null 9.992ms
+2025-01-16 22:04:30.196 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - 204 null null 10.2038ms
+2025-01-16 22:04:30.198 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-16 22:04:30.198 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-16 22:04:30.206 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:04:30.207 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:04:30.208 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-16 22:04:30.208 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-16 22:04:30.209 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2025-01-16 22:04:30.210 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2025-01-16 22:04:30.217 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2025-01-16 22:04:30.217 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 22:04:30.218 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-16 22:04:30.219 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-16 22:04:30.246 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+2025-01-16 22:04:30.250 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT d0."Id", d0."CategoryId", d0."CreatedAt", d0."Description", d0."GeoLocationId", d0."Location", d0."ModifiedAt", d0."Name", d0."PhotoUrl", d0."Price", g."Id", g."CreatedAt", g."Description", g."ItemId", g."Latitude", g."Longitude", g."ModifiedAt", g."Type"
+FROM (
+    SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+    FROM "Destination" AS d
+    ORDER BY d."Id"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS d0
+LEFT JOIN "GeoLocation" AS g ON d0."GeoLocationId" = g."Id"
+ORDER BY d0."Id"
+2025-01-16 22:04:30.252 +01:00 [INF] Successfully fetched 6 destinations.
+2025-01-16 22:04:30.253 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.DestinationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 22:04:30.254 +01:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 42.4314ms
+2025-01-16 22:04:30.255 +01:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-16 22:04:30.256 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - 200 null application/json; charset=utf-8 57.9412ms
+2025-01-16 22:04:30.351 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2025-01-16 22:04:30.354 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2025-01-16 22:04:30.355 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.CategoryDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 22:04:30.356 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 145.7202ms
+2025-01-16 22:04:30.357 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-16 22:04:30.358 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 200 null application/json; charset=utf-8 159.9515ms
+2025-01-16 22:05:02.920 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-16 22:05:02.922 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:05:02.923 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 22:05:02.927 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-16 22:05:02.929 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 22:05:02.932 +01:00 [INF] GetCartAsync started.
+2025-01-16 22:05:02.966 +01:00 [INF] Deserialized cartCookie into cartModels: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","User":null,"ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":null,"$type":"CartModel"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","User":null,"ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":null,"$type":"CartModel"}]
+2025-01-16 22:05:02.980 +01:00 [INF] Extracted destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 22:05:02.982 +01:00 [INF] Fetching destinations for provided IDs.
+2025-01-16 22:05:02.983 +01:00 [INF] Executing query for Destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 22:05:03.048 +01:00 [INF] Executed DbCommand (38ms) [Parameters=[@__ids_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+WHERE d."Id" = ANY (@__ids_0)
+2025-01-16 22:05:03.050 +01:00 [INF] Fetched 2 destinations.
+2025-01-16 22:05:03.051 +01:00 [INF] Successfully fetched 2 destinations.
+2025-01-16 22:05:03.053 +01:00 [INF] Fetched destinations: [{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"}]
+2025-01-16 22:05:03.067 +01:00 [INF] GetCartAsync completed successfully. Cart items: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"}]
+2025-01-16 22:05:03.085 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-16 22:05:03.102 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 173.383ms
+2025-01-16 22:05:03.103 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 22:05:03.103 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 200 null application/json; charset=utf-8 183.7048ms
+2025-01-16 22:08:03.591 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-16 22:08:03.594 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:08:03.595 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 22:08:03.595 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-16 22:08:03.597 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 22:08:03.598 +01:00 [INF] GetCartAsync started.
+2025-01-16 22:08:03.599 +01:00 [INF] Deserialized cartCookie into cartModels: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","User":null,"ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":null,"$type":"CartModel"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","User":null,"ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":null,"$type":"CartModel"}]
+2025-01-16 22:08:03.607 +01:00 [INF] Extracted destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 22:08:03.608 +01:00 [INF] Fetching destinations for provided IDs.
+2025-01-16 22:08:03.609 +01:00 [INF] Executing query for Destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 22:08:03.611 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ids_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+WHERE d."Id" = ANY (@__ids_0)
+2025-01-16 22:08:03.612 +01:00 [INF] Fetched 2 destinations.
+2025-01-16 22:08:03.613 +01:00 [INF] Successfully fetched 2 destinations.
+2025-01-16 22:08:03.613 +01:00 [INF] Fetched destinations: [{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"}]
+2025-01-16 22:08:03.626 +01:00 [INF] GetCartAsync completed successfully. Cart items: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"}]
+2025-01-16 22:08:03.643 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-16 22:08:03.643 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 47.0346ms
+2025-01-16 22:08:03.644 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 22:08:03.645 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 200 null application/json; charset=utf-8 54.189ms
+2025-01-16 22:09:44.081 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-16 22:09:44.083 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:09:44.084 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 22:09:44.085 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-16 22:09:44.087 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 22:09:44.088 +01:00 [INF] GetCartAsync started.
+2025-01-16 22:09:44.089 +01:00 [INF] Deserialized cartCookie into cartModels: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","User":null,"ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":null,"$type":"CartModel"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","User":null,"ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":null,"$type":"CartModel"}]
+2025-01-16 22:09:44.098 +01:00 [INF] Extracted destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 22:09:44.098 +01:00 [INF] Fetching destinations for provided IDs.
+2025-01-16 22:09:44.099 +01:00 [INF] Executing query for Destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 22:09:44.232 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ids_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+WHERE d."Id" = ANY (@__ids_0)
+2025-01-16 22:09:44.234 +01:00 [INF] Fetched 2 destinations.
+2025-01-16 22:09:44.234 +01:00 [INF] Successfully fetched 2 destinations.
+2025-01-16 22:09:44.235 +01:00 [INF] Fetched destinations: [{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"}]
+2025-01-16 22:09:44.246 +01:00 [INF] GetCartAsync completed successfully. Cart items: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"}]
+2025-01-16 22:09:44.262 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-16 22:09:44.263 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 176.5762ms
+2025-01-16 22:09:44.263 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 22:09:44.264 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 200 null application/json; charset=utf-8 183.382ms
+2025-01-16 22:09:46.729 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-16 22:09:46.731 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:09:46.732 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 22:09:46.733 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-16 22:09:46.735 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 22:09:46.736 +01:00 [INF] GetCartAsync started.
+2025-01-16 22:09:46.736 +01:00 [INF] Deserialized cartCookie into cartModels: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","User":null,"ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":null,"$type":"CartModel"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","User":null,"ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":null,"$type":"CartModel"}]
+2025-01-16 22:09:46.745 +01:00 [INF] Extracted destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 22:09:46.746 +01:00 [INF] Fetching destinations for provided IDs.
+2025-01-16 22:09:46.746 +01:00 [INF] Executing query for Destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 22:09:46.748 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ids_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+WHERE d."Id" = ANY (@__ids_0)
+2025-01-16 22:09:46.750 +01:00 [INF] Fetched 2 destinations.
+2025-01-16 22:09:46.751 +01:00 [INF] Successfully fetched 2 destinations.
+2025-01-16 22:09:46.751 +01:00 [INF] Fetched destinations: [{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"}]
+2025-01-16 22:09:46.762 +01:00 [INF] GetCartAsync completed successfully. Cart items: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"}]
+2025-01-16 22:09:46.780 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-16 22:09:46.782 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 47.2171ms
+2025-01-16 22:09:46.782 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 22:09:46.783 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 200 null application/json; charset=utf-8 54.5961ms
+2025-01-16 22:11:48.303 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-16 22:11:48.306 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:11:48.306 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 22:11:48.307 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-16 22:11:48.309 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 22:11:48.310 +01:00 [INF] GetCartAsync started.
+2025-01-16 22:11:48.310 +01:00 [INF] Deserialized cartCookie into cartModels: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","User":null,"ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":null,"$type":"CartModel"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","User":null,"ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":null,"$type":"CartModel"}]
+2025-01-16 22:11:48.319 +01:00 [INF] Extracted destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 22:11:48.320 +01:00 [INF] Fetching destinations for provided IDs.
+2025-01-16 22:11:48.320 +01:00 [INF] Executing query for Destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 22:11:48.323 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ids_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+WHERE d."Id" = ANY (@__ids_0)
+2025-01-16 22:11:48.324 +01:00 [INF] Fetched 2 destinations.
+2025-01-16 22:11:48.325 +01:00 [INF] Successfully fetched 2 destinations.
+2025-01-16 22:11:48.326 +01:00 [INF] Fetched destinations: [{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"}]
+2025-01-16 22:11:48.338 +01:00 [INF] GetCartAsync completed successfully. Cart items: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"}]
+2025-01-16 22:11:48.357 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-16 22:11:48.358 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 49.5401ms
+2025-01-16 22:11:48.358 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 22:11:48.360 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 200 null application/json; charset=utf-8 56.6973ms
+2025-01-16 22:11:54.507 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-16 22:11:54.509 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:11:54.510 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 22:11:54.511 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-16 22:11:54.512 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 22:11:54.513 +01:00 [INF] GetCartAsync started.
+2025-01-16 22:11:54.514 +01:00 [INF] Deserialized cartCookie into cartModels: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","User":null,"ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":null,"$type":"CartModel"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","User":null,"ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":null,"$type":"CartModel"}]
+2025-01-16 22:11:54.521 +01:00 [INF] Extracted destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 22:11:54.522 +01:00 [INF] Fetching destinations for provided IDs.
+2025-01-16 22:11:54.523 +01:00 [INF] Executing query for Destination IDs: ["21a3557c-9ffa-4ad7-a4c7-edbbd6121417","435e0c6e-5027-4f95-9e37-ecd391aec6c8"]
+2025-01-16 22:11:54.525 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ids_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+WHERE d."Id" = ANY (@__ids_0)
+2025-01-16 22:11:54.526 +01:00 [INF] Fetched 2 destinations.
+2025-01-16 22:11:54.527 +01:00 [INF] Successfully fetched 2 destinations.
+2025-01-16 22:11:54.527 +01:00 [INF] Fetched destinations: [{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"}]
+2025-01-16 22:11:54.538 +01:00 [INF] GetCartAsync completed successfully. Cart items: [{"Id":"948da538-e62a-4d50-ab2e-5427d662a263","UserId":"","ItemType":"Destination","ItemId":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Quantity":1,"AdditionalData":"destynacja","CreatedAt":"2025-01-15T04:33:29.2940000Z","ModifiedAt":"2025-01-15T04:33:29.2940000Z","Destination":{"Id":"21a3557c-9ffa-4ad7-a4c7-edbbd6121417","Name":"nowa destynacja","Description":"destynacja","Location":"lokcja destynacji","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png","Price":12.99,"CategoryId":"01940e0f-3f11-74e6-a539-16bde3e9f9bb","CreatedAt":"2024-12-28T16:20:18.8430980Z","ModifiedAt":"2024-12-28T16:20:18.8431510Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"},{"Id":"f375abb0-270c-49a4-998e-c1ff392a9500","UserId":"","ItemType":"Destination","ItemId":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Quantity":1,"AdditionalData":"asdfasdf","CreatedAt":"2025-01-15T04:51:29.9430000Z","ModifiedAt":"2025-01-15T04:51:29.9430000Z","Destination":{"Id":"435e0c6e-5027-4f95-9e37-ecd391aec6c8","Name":"asdfasdf","Description":"asdfasdf","Location":"asdfasdf","PhotoUrl":"https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg","Price":12,"CategoryId":"01943beb-ae37-7924-8026-cb6c099620d5","CreatedAt":"2025-01-06T14:10:16.6082970Z","ModifiedAt":"2025-01-06T14:10:16.6083610Z","ImageFile":null,"Category":null,"VisitPlaces":[],"TripDestinations":[],"GeoLocation":null,"$type":"DestinationDTO"},"$type":"CartItemDTO"}]
+2025-01-16 22:11:54.555 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-16 22:11:54.555 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 43.6438ms
+2025-01-16 22:11:54.556 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-16 22:11:54.557 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 200 null application/json; charset=utf-8 49.9152ms
+2025-01-16 22:13:36.993 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-16 22:13:36.993 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-16 22:13:36.998 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:13:36.999 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:13:37.000 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - 204 null null 7.119ms
+2025-01-16 22:13:37.000 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - 204 null null 7.0396ms
+2025-01-16 22:13:37.002 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-16 22:13:37.005 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-16 22:13:37.009 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:13:37.010 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:13:37.011 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-16 22:13:37.011 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-16 22:13:37.012 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2025-01-16 22:13:37.012 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2025-01-16 22:13:37.014 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 22:13:37.014 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2025-01-16 22:13:37.015 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-16 22:13:37.016 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-16 22:13:37.017 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2025-01-16 22:13:37.019 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2025-01-16 22:13:37.021 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.CategoryDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 22:13:37.022 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 8.2465ms
+2025-01-16 22:13:37.023 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-16 22:13:37.024 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 200 null application/json; charset=utf-8 19.3145ms
+2025-01-16 22:13:37.041 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+2025-01-16 22:13:37.044 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT d0."Id", d0."CategoryId", d0."CreatedAt", d0."Description", d0."GeoLocationId", d0."Location", d0."ModifiedAt", d0."Name", d0."PhotoUrl", d0."Price", g."Id", g."CreatedAt", g."Description", g."ItemId", g."Latitude", g."Longitude", g."ModifiedAt", g."Type"
+FROM (
+    SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+    FROM "Destination" AS d
+    ORDER BY d."Id"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS d0
+LEFT JOIN "GeoLocation" AS g ON d0."GeoLocationId" = g."Id"
+ORDER BY d0."Id"
+2025-01-16 22:13:37.045 +01:00 [INF] Successfully fetched 6 destinations.
+2025-01-16 22:13:37.046 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.DestinationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 22:13:37.047 +01:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 33.4667ms
+2025-01-16 22:13:37.047 +01:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-16 22:13:37.048 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - 200 null application/json; charset=utf-8 46.2408ms
+2025-01-16 22:13:41.404 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-16 22:13:41.404 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-16 22:13:41.404 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Authentication/user - null null
+2025-01-16 22:13:41.406 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:13:41.407 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:13:41.409 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:13:41.409 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-16 22:13:41.410 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-16 22:13:41.410 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-16 22:13:41.411 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2025-01-16 22:13:41.411 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2025-01-16 22:13:41.415 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2025-01-16 22:13:41.416 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 22:13:41.416 +01:00 [INF] Route matched with {action = "GetCurrentUser", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentUser() on controller backend.Controllers.AuthenticationController (backend).
+2025-01-16 22:13:41.417 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-16 22:13:41.418 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2025-01-16 22:13:41.418 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-16 22:13:41.446 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2025-01-16 22:13:41.447 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+2025-01-16 22:13:41.448 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.CategoryDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 22:13:41.449 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT d0."Id", d0."CategoryId", d0."CreatedAt", d0."Description", d0."GeoLocationId", d0."Location", d0."ModifiedAt", d0."Name", d0."PhotoUrl", d0."Price", g."Id", g."CreatedAt", g."Description", g."ItemId", g."Latitude", g."Longitude", g."ModifiedAt", g."Type"
+FROM (
+    SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+    FROM "Destination" AS d
+    ORDER BY d."Id"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS d0
+LEFT JOIN "GeoLocation" AS g ON d0."GeoLocationId" = g."Id"
+ORDER BY d0."Id"
+2025-01-16 22:13:41.450 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 35.5026ms
+2025-01-16 22:13:41.451 +01:00 [INF] Successfully fetched 6 destinations.
+2025-01-16 22:13:41.452 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-16 22:13:41.453 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.DestinationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 22:13:41.453 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 200 null application/json; charset=utf-8 49.8029ms
+2025-01-16 22:13:41.454 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."LastName", a."LastUpdated", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__p_0
+LIMIT 1
+2025-01-16 22:13:41.454 +01:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 38.8422ms
+2025-01-16 22:13:41.457 +01:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-16 22:13:41.458 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - 200 null application/json; charset=utf-8 54.5175ms
+2025-01-16 22:13:41.460 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-01-16 22:13:41.462 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[backend.Domain.DTO.Authentication.AccountDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 22:13:41.463 +01:00 [INF] Executed action backend.Controllers.AuthenticationController.GetCurrentUser (backend) in 45.4058ms
+2025-01-16 22:13:41.464 +01:00 [INF] Executed endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-16 22:13:41.464 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Authentication/user - null null
+2025-01-16 22:13:41.465 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Authentication/user - 200 null application/json; charset=utf-8 60.9504ms
+2025-01-16 22:13:41.466 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:13:41.468 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-16 22:13:41.469 +01:00 [INF] Route matched with {action = "GetCurrentUser", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentUser() on controller backend.Controllers.AuthenticationController (backend).
+2025-01-16 22:13:41.482 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."LastName", a."LastUpdated", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__p_0
+LIMIT 1
+2025-01-16 22:13:41.485 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-01-16 22:13:41.486 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[backend.Domain.DTO.Authentication.AccountDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 22:13:41.487 +01:00 [INF] Executed action backend.Controllers.AuthenticationController.GetCurrentUser (backend) in 17.5805ms
+2025-01-16 22:13:41.488 +01:00 [INF] Executed endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-16 22:13:41.489 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Authentication/user - 200 null application/json; charset=utf-8 25.0559ms
+2025-01-16 22:13:45.296 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Reservation/user-reservations - null null
+2025-01-16 22:13:45.298 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:13:45.299 +01:00 [INF] Executing endpoint 'backend.Controllers.ReservationController.GetUserReservations (backend)'
+2025-01-16 22:13:45.302 +01:00 [INF] Route matched with {action = "GetUserReservations", controller = "Reservation"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserReservations() on controller backend.Controllers.ReservationController (backend).
+2025-01-16 22:13:45.304 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 22:13:45.305 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 22:13:45.308 +01:00 [INF] Fetching reservations for User ID: 74b9f27c-c745-4e27-9877-3848fd18bd82
+2025-01-16 22:13:45.334 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."CreatedAt", r."ModifiedAt", r."Status", r."TotalPrice", r."UserId", r0."Id", r0."AdditionalData", r0."CreatedAt", r0."ItemId", r0."ItemType", r0."Price", r0."Quantity", r0."ReservationId"
+FROM "Reservation" AS r
+LEFT JOIN "ReservationItem" AS r0 ON r."Id" = r0."ReservationId"
+WHERE r."UserId" = @__userId_0
+ORDER BY r."Id"
+2025-01-16 22:13:45.367 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[backend.Domain.DTO.ReservationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 22:13:45.381 +01:00 [INF] Executed action backend.Controllers.ReservationController.GetUserReservations (backend) in 77.8659ms
+2025-01-16 22:13:45.382 +01:00 [INF] Executed endpoint 'backend.Controllers.ReservationController.GetUserReservations (backend)'
+2025-01-16 22:13:45.383 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Reservation/user-reservations - 200 null application/json; charset=utf-8 86.6362ms
+2025-01-16 22:14:40.105 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Reservation/user-reservations - null null
+2025-01-16 22:14:40.108 +01:00 [INF] CORS policy execution successful.
+2025-01-16 22:14:40.109 +01:00 [INF] Executing endpoint 'backend.Controllers.ReservationController.GetUserReservations (backend)'
+2025-01-16 22:14:40.110 +01:00 [INF] Route matched with {action = "GetUserReservations", controller = "Reservation"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserReservations() on controller backend.Controllers.ReservationController (backend).
+2025-01-16 22:14:40.112 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 22:14:40.112 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 22:14:40.113 +01:00 [INF] Fetching reservations for User ID: 74b9f27c-c745-4e27-9877-3848fd18bd82
+2025-01-16 22:14:40.117 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."CreatedAt", r."ModifiedAt", r."Status", r."TotalPrice", r."UserId", r0."Id", r0."AdditionalData", r0."CreatedAt", r0."ItemId", r0."ItemType", r0."Price", r0."Quantity", r0."ReservationId"
+FROM "Reservation" AS r
+LEFT JOIN "ReservationItem" AS r0 ON r."Id" = r0."ReservationId"
+WHERE r."UserId" = @__userId_0
+ORDER BY r."Id"
+2025-01-16 22:14:40.119 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[backend.Domain.DTO.ReservationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 22:14:40.126 +01:00 [INF] Executed action backend.Controllers.ReservationController.GetUserReservations (backend) in 14.6939ms
+2025-01-16 22:14:40.127 +01:00 [INF] Executed endpoint 'backend.Controllers.ReservationController.GetUserReservations (backend)'
+2025-01-16 22:14:40.127 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Reservation/user-reservations - 200 null application/json; charset=utf-8 21.9808ms
+2025-01-16 23:16:22.784 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Reservation/user-reservations - null null
+2025-01-16 23:16:22.787 +01:00 [INF] CORS policy execution successful.
+2025-01-16 23:16:22.789 +01:00 [INF] Executing endpoint 'backend.Controllers.ReservationController.GetUserReservations (backend)'
+2025-01-16 23:16:22.789 +01:00 [INF] Route matched with {action = "GetUserReservations", controller = "Reservation"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserReservations() on controller backend.Controllers.ReservationController (backend).
+2025-01-16 23:16:22.794 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 23:16:22.795 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-16 23:16:22.795 +01:00 [INF] Fetching reservations for User ID: 74b9f27c-c745-4e27-9877-3848fd18bd82
+2025-01-16 23:16:22.825 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."CreatedAt", r."ModifiedAt", r."Status", r."TotalPrice", r."UserId", r0."Id", r0."AdditionalData", r0."CreatedAt", r0."ItemId", r0."ItemType", r0."Price", r0."Quantity", r0."ReservationId"
+FROM "Reservation" AS r
+LEFT JOIN "ReservationItem" AS r0 ON r."Id" = r0."ReservationId"
+WHERE r."UserId" = @__userId_0
+ORDER BY r."Id"
+2025-01-16 23:16:22.827 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[backend.Domain.DTO.ReservationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-16 23:16:22.829 +01:00 [INF] Executed action backend.Controllers.ReservationController.GetUserReservations (backend) in 38.3737ms
+2025-01-16 23:16:22.833 +01:00 [INF] Executed endpoint 'backend.Controllers.ReservationController.GetUserReservations (backend)'
+2025-01-16 23:16:22.834 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Reservation/user-reservations - 200 null application/json; charset=utf-8 50.1337ms

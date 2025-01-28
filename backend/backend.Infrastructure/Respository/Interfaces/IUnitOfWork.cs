@@ -15,6 +15,12 @@ namespace backend.Infrastructure.Respository
         ITripDestinationRepository TripDestinations { get; }
         ITripParticipantRepository TripParticipants { get; }
         IVisitPlaceRepository VisitPlaces { get; }
+        ICartRepository Carts { get; }
+        IReservationRepository Reservations { get; }
+        IReservationItemRepository ReservationItems { get; }
+        IPaymentRepository Payments { get; }
+        IGeoLocationRepository GeoLocations { get; }
+
 
         Task<bool> SaveChangesAsync();
     }

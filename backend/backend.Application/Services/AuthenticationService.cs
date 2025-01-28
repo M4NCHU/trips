@@ -52,12 +52,6 @@ namespace backend.Application.Services
             await _unitOfWork.Auth.ResetAccessFailedCountAsync(user);
             _logger.LogInformation("User {Username} logged in successfully.", model.Username);
 
-            /*if (!user.EmailConfirmed)
-            {
-                _logger.LogWarning("Email not confirmed for user {Username}.", model.Username);
-                return new LoginResultDTO { Success = false, Error = "Please confirm your email" };
-            }*/
-
             var token = await _jwtService.CreateJWT(user);
             await _unitOfWork.Auth.SetAuthenticationTokenAsync(user, "JWT", "RefreshToken", token);
 

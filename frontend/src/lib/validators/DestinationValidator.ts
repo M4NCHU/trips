@@ -15,7 +15,8 @@ export const DestinationValidator = z.object({
     .min(3, "Location must be at least 3 characters long")
     .max(100, "Location must be no longer than 100 characters"),
   price: z.string(),
-  categoryId: z.string().regex(guidRegex, "categoryId must be a valid GUID"),
+  availablePlaces: z.string(),
+  categoryId: z.string(),
 });
 
 export type DestinationPayload = z.infer<typeof DestinationValidator>;

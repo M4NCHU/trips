@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import SubmitButton from "src/components/ui/SubmitButton";
@@ -9,6 +9,9 @@ import { UseCreateDestination } from "../../../api/Destinations";
 import { DestinationValidator } from "../../../lib/validators/DestinationValidator";
 import FormHeader from "../../Forms/FormHeader";
 import Input from "../../Forms/Input";
+import MapModal from "src/components/Maps/Picker/MapPicker";
+import { GeoLocation } from "src/types/GeoLocation/GeoLocation";
+import { LatLngTuple } from "leaflet";
 
 interface CreateProps {}
 
@@ -18,6 +21,7 @@ interface FormValues {
   location: string;
   categoryId: string;
   price: string;
+  availablePlaces: string;
 }
 
 const initialFieldValues: FormValues = {
@@ -26,6 +30,7 @@ const initialFieldValues: FormValues = {
   location: "",
   categoryId: "",
   price: "",
+  availablePlaces: "",
 };
 
 const CreateDestinationForm: FC<CreateProps> = ({}) => {
@@ -40,6 +45,8 @@ const CreateDestinationForm: FC<CreateProps> = ({}) => {
   } = useForm(initialFieldValues, DestinationValidator);
   const { showPreview, imagePreview } = useImagePreview();
 
+  const [geoLocation, setGeoLocation] = useState<GeoLocation | null>(null);
+
   const {
     mutate: CreateDestination,
     isPending: CreateDestinationIsPending,
@@ -53,6 +60,14 @@ const CreateDestinationForm: FC<CreateProps> = ({}) => {
     setValue("categoryId", categoryId);
   };
 
+  const handleGeoLocationConfirm = (point: LatLngTuple) => {
+    setGeoLocation({
+      latitude: point[0],
+      longitude: point[1],
+    });
+    toast.success("Location selected successfully!");
+  };
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -62,7 +77,16 @@ const CreateDestinationForm: FC<CreateProps> = ({}) => {
       formData.append("imageFile", imagePreview.imageFile);
     }
 
+    if (geoLocation) {
+      formData.append("geoLocation.latitude", geoLocation.latitude.toString());
+      formData.append(
+        "geoLocation.longitude",
+        geoLocation.longitude.toString()
+      );
+    }
+
     if (validate()) {
+      console.log("validated");
       try {
         CreateDestination(formData, {
           onSuccess: (destinationData) => {
@@ -75,7 +99,7 @@ const CreateDestinationForm: FC<CreateProps> = ({}) => {
             toast.error("Failed to create destination.");
           },
         });
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error submitting form:", error);
       }
     }
@@ -100,7 +124,7 @@ const CreateDestinationForm: FC<CreateProps> = ({}) => {
             />
             <Input
               placeholder="Enter location"
-              label="location"
+              label="Location"
               name="location"
               value={values.location}
               onChange={handleChange}
@@ -108,7 +132,7 @@ const CreateDestinationForm: FC<CreateProps> = ({}) => {
             />
             <Input
               placeholder="Enter description"
-              label="description"
+              label="Description"
               name="description"
               value={values.description}
               onChange={handleChange}
@@ -125,30 +149,35 @@ const CreateDestinationForm: FC<CreateProps> = ({}) => {
               errorMessage={errors.price}
             />
 
+            <Input
+              placeholder="Enter available places"
+              label="Available places"
+              name="availablePlaces"
+              type="number"
+              value={values.availablePlaces}
+              onChange={handleChange}
+              errorMessage={errors.availablePlaces}
+            />
+
             <div className="flex flex-col gap-4 mb-2">
               <label className="font-bold mb-2" htmlFor="">
                 Choose category
               </label>
 
-              <div>
+              <div className="flex flex-row gap-2">
                 {categories
                   ? categories.map((category, i) => (
-                      <div
+                      <button
                         key={category.id}
-                        className={`flex flex-col w-14 h-14 items-center justify-center relative gap-1 ${
+                        className={`flex flex-col p-2 rounded-lg items-center justify-center relative gap-1 bg-secondary ${
                           values.categoryId === category.id
                             ? "border-2 border-blue-500"
                             : ""
                         }`}
                         onClick={() => handleCategoryToggle(category.id)}
                       >
-                        <img
-                          src={category.photoUrl}
-                          alt={`${category.name}`}
-                          className="object-cover"
-                        />
                         <div>{category.name}</div>
-                      </div>
+                      </button>
                     ))
                   : "There is no categories"}
               </div>
@@ -159,6 +188,7 @@ const CreateDestinationForm: FC<CreateProps> = ({}) => {
             <h2 className="text-xl font-bold border-b-2 py-2 mb-4">
               Destination photo
             </h2>
+            <MapModal onConfirm={handleGeoLocationConfirm} />
             <Input
               placeholder="Choose photo"
               label="Choose photo"

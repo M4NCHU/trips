@@ -8,7 +8,6 @@ namespace backend.Domain.Mappings
     {
         public TripDestinationMapping()
         {
-            // Configure mapping for TripDestinationModel to TripDestinationDTO
             CreateMap<TripDestinationModel, TripDestinationDTO>()
                 .ForMember(dest => dest.DayNumber, opt => opt.MapFrom(src => src.DayNumber));
 

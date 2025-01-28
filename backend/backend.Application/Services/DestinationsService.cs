@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using backend.Domain.DTOs;
+using backend.Domain.enums;
 using backend.Domain.Filters;
+using backend.Domain.Models;
 using backend.Infrastructure.Respository;
 using backend.Models;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace backend.Application.Services
@@ -65,7 +68,7 @@ namespace backend.Application.Services
             }
         }
 
-        public async Task<IActionResult> PostDestination(CreateDestinationDTO destinationDTO)
+        public async Task<IActionResult> PostDestination(CreateDestinationDTO destinationDTO, [FromForm] GeoLocationDTO geoLocation)
         {
             try
             {
@@ -86,6 +89,22 @@ namespace backend.Application.Services
                 var photoUrl = await _imageService.SaveImage(destinationDTO.ImageFile, "Destinations");
                 var destination = _mapper.Map<DestinationModel>(destinationDTO);
                 destination.PhotoUrl = photoUrl;
+
+                if (geoLocation != null)
+                {
+                    var geoLocationModel = _mapper.Map<GeoLocationModel>(geoLocation);
+
+                    geoLocationModel.Id = Guid.NewGuid(); 
+                    geoLocationModel.ItemId = destination.Id; 
+                    geoLocationModel.Type = CartItemType.Destination;
+                    geoLocationModel.Description = destination.Description;
+                    geoLocationModel.CreatedAt = DateTime.UtcNow;
+                    geoLocationModel.ModifiedAt = DateTime.UtcNow;
+
+                    await _unitOfWork.GeoLocations.AddAsync(geoLocationModel);
+                    destination.GeoLocationId = geoLocationModel.Id;
+                }
+
 
                 await _unitOfWork.Destinations.AddAsync(destination);
                 await _unitOfWork.SaveChangesAsync();
@@ -248,6 +267,44 @@ namespace backend.Application.Services
                 return new List<DestinationDTO>(); 
             }
         }
+
+        public async Task<List<DestinationDTO>> GetDestinationsByIdsAsync(List<Guid> ids)
+        {
+            try
+            {
+                _logger.LogInformation("Fetching destinations for provided IDs.");
+
+                if (ids == null || !ids.Any())
+                {
+                    _logger.LogWarning("No IDs were provided to fetch destinations.");
+                    return new List<DestinationDTO>();
+                }
+
+      
+                var destinations = _unitOfWork.Destinations.GetDestinationsByIdsAsync(ids).Result;
+
+                if (!destinations.Any())
+                {
+                    _logger.LogWarning("No destinations found for the provided IDs.");
+                    return new List<DestinationDTO>();
+                }
+
+                var destinationDTOs = _mapper.Map<List<DestinationDTO>>(destinations, opts =>
+                {
+                    opts.Items["BaseUrl"] = _baseUrl;
+                });
+
+                _logger.LogInformation("Successfully fetched {count} destinations.", destinationDTOs.Count);
+
+                return destinationDTOs;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while fetching destinations for provided IDs.");
+                return new List<DestinationDTO>();
+            }
+        }
+
 
     }
 }

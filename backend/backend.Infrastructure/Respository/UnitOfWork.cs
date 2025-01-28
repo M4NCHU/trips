@@ -25,6 +25,11 @@ namespace backend.Infrastructure.Respository
         public ITripDestinationRepository TripDestinations { get; }
         public ITripParticipantRepository TripParticipants { get; }
         public IVisitPlaceRepository VisitPlaces { get; }
+        public ICartRepository Carts { get; }
+        public IReservationRepository Reservations { get; }
+        public IReservationItemRepository ReservationItems { get; }
+        public IPaymentRepository Payments { get; }
+        public IGeoLocationRepository GeoLocations { get; }
 
         public UnitOfWork(TripsDbContext context, ILoggerFactory loggerFactory, IUserStore<UserModel> userStore)
         {
@@ -50,6 +55,11 @@ namespace backend.Infrastructure.Respository
             TripDestinations = new TripDestinationRepository(_context, loggerFactory.CreateLogger<TripDestinationRepository>());
             TripParticipants = new TripParticipantRepository(_context, loggerFactory.CreateLogger<TripParticipantRepository>());
             VisitPlaces = new VisitPlaceRepository(_context, loggerFactory.CreateLogger<VisitPlaceRepository>());
+            Carts = new CartRepository(_context, loggerFactory.CreateLogger<CartRepository>());
+            Reservations = new ReservationRepository(_context, loggerFactory.CreateLogger<ReservationRepository>());
+            ReservationItems = new ReservationItemRepository(_context, loggerFactory.CreateLogger<ReservationItemRepository>());
+            Payments = new PaymentRepository(_context, loggerFactory.CreateLogger<PaymentRepository>());
+            GeoLocations = new GeoLocationRepository(_context, loggerFactory.CreateLogger<GeoLocationRepository>());
         }
 
         public async Task<bool> SaveChangesAsync()

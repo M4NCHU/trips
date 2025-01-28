@@ -17,28 +17,27 @@ import { MdTravelExplore } from "react-icons/md";
 
 const Header = () => {
   const { isAuthenticated, user, logout } = useAuth();
-
-  //const { data: UserTripsCount } = UseUserTripsCount(user?.id, 0);
-
   return (
     <>
       <nav className="w-full flex justify-between px-0 bg-background">
-        <div className="p-2 flex flex-row justify-between gap-4 w-full">
+        <div className="pt-4 pl-2 pr-6 flex flex-row justify-between gap-4 w-full">
           <SearchModal />
-          <div className="user-panel flex items-center gap-[1rem] text-sm md:text-2xl font-bold px-[.5rem] md:px-[2rem]   rounded-full">
-            <div className="hidden md:block">
-              <Switcher />
-            </div>
-            <button className="p-1 hidden md:block">
+          <div className="user-panel flex items-center gap-[1rem] text-sm md:text-2xl font-bold  rounded-full">
+            <button className="p-2 rounded-lg hover:bg-pink-600 hidden md:block">
               <PiHeartLight className="cursor-pointer" />
             </button>
-
+            <Link
+              to={"/cart"}
+              className="px-4 py-2 font-semibold text-base bg-pink-600 hover:bg-pink-700 rounded-lg"
+            >
+              Reservations
+            </Link>
             {isAuthenticated() && user ? (
               <CustomDropdownMenu dropDownButton={<UserTrigger />}>
                 <div className="bg-background rounded-lg p-2 text-base">
                   <span>{user.lastName}</span>
                 </div>
-                <CustomDropdownMenuItem label="Home" href="/" />
+                <CustomDropdownMenuItem label="Profile" href="/profile" />
                 <CustomDropdownMenuItem label="Contact" href="/contact" />
                 <CustomDropdownMenuItem label="About" href="/about" />
                 <CustomDropdownMenuItem label="Admin" href="/admin" />

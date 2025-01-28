@@ -1,4 +1,3 @@
-// Importujemy FC i ReactElement z React dla TypeScript
 import React, { FC, ReactElement } from "react";
 
 interface FormImagePreviewProps {

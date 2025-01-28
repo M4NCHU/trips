@@ -9,7 +9,6 @@ namespace backend.Domain.Mappings
     {
         public CategoryMapper()
         {
-            // Map CategoryModel to CategoryDTO
             CreateMap<CategoryModel, CategoryDTO>();
             CreateMap<CreateCategoryRequestDTO, CategoryModel>()
                 .ForMember(dest => dest.ModifiedAt, opt => opt.MapFrom(src => DateTime.UtcNow))

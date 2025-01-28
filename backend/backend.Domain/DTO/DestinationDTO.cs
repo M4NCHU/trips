@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace backend.Domain.DTOs
 {
@@ -21,20 +23,23 @@ namespace backend.Domain.DTOs
 
         [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0.")]
         public double Price { get; set; }
+        public int AvailablePlaces { get; set; } = 0;
 
         public Guid CategoryId { get; set; }
 
         public DateTime? CreatedAt { get; set; }
 
         public DateTime? ModifiedAt { get; set; }
-
-        public IFormFile ImageFile { get; set; }
+        [NotMapped]
+        [JsonIgnore]
+        public IFormFile? ImageFile { get; set; }
 
        
         public CategoryDTO? Category { get; set; }
 
         public List<VisitPlaceDTO>? VisitPlaces { get; set; } = new List<VisitPlaceDTO>();
         public List<TripDestinationDTO>? TripDestinations { get; set; } = new List<TripDestinationDTO>();
+        public GeoLocationDTO? GeoLocation { get; set; }
 
     }
 

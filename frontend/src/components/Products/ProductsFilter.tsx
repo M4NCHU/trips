@@ -9,7 +9,7 @@ interface ProductsFilterProps {
 
 const ProductsFilter: FC<ProductsFilterProps> = ({ applyFilter, children }) => {
   return (
-    <div className="w-1/3 max-w-[32rem] min-w-[24rem] md:block flex flex-col">
+    <div className="w-2/5 min-w-[24rem] md:block flex flex-col">
       <div className="bg-secondary rounded-lg flex flex-col p-4 grow h-full">
         <div className="flex flex-row justify-between py-2 border-b-[1px] border-background">
           <div className="flex items-center justify-between w-full">

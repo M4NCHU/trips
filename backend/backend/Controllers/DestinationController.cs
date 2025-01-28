@@ -24,8 +24,6 @@ namespace backend.Controllers
         }
 
         
-
-        // GET: api/Destinations
         [HttpGet()]
         public async Task<ActionResult<PagedResult<DestinationDTO>>> GetDestinations([FromQuery] DestinationFilter filter, int page = 1, int pageSize = 2)
         {
@@ -33,9 +31,6 @@ namespace backend.Controllers
             return destinations;
         }
 
-        
-
-        // GET: api/Destinations/1
         [HttpGet("trip/{tripId}")]
         public async Task<ActionResult<IEnumerable<DestinationDTO>>> GetDestinationsForTrip(Guid tripId)
         {
@@ -50,7 +45,6 @@ namespace backend.Controllers
             }
         }
 
-        // GET: api/Destinations/5
         [HttpGet("{destinationId}")]
         public async Task<ActionResult<DestinationDTO>> GetDestination(Guid destinationId)
         {
@@ -71,7 +65,6 @@ namespace backend.Controllers
         }
 
 
-        // PUT: api/Destinations/5
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDestination(Guid id, CreateDestinationDTO destination)
@@ -79,15 +72,13 @@ namespace backend.Controllers
             return await _destinationService.PutDestination(id, destination);
         }
 
-        // POST: api/Destinations
         
         [HttpPost()]
-        public async Task<IActionResult> PostDestination(CreateDestinationDTO destinationDTO)
+        public async Task<IActionResult> PostDestination([FromForm] CreateDestinationDTO destinationDTO, [FromForm] GeoLocationDTO geoLocation)
         {
-            return await _destinationService.PostDestination(destinationDTO);
+            return await _destinationService.PostDestination(destinationDTO, geoLocation);
         }
 
-        // DELETE: api/Destinations/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDestination(Guid id)
         {

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using backend.Domain.DTOs;
+using backend.Domain.Models;
 using backend.Models;
 
 namespace backend.Domain.Mappings
@@ -8,7 +9,6 @@ namespace backend.Domain.Mappings
     {
         public DestinationMapper()
         {
-            // Map DestinationModel to DestinationDTO
             CreateMap<DestinationModel, DestinationDTO>()
                .ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom((src, dest, destMember, context) =>
                    src.PhotoUrl != null ? $"{context.Items["BaseUrl"]}/Images/Destinations/{src.PhotoUrl}" : null)) 
@@ -19,17 +19,18 @@ namespace backend.Domain.Mappings
                .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location ?? string.Empty)) 
                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => src.CreatedAt ?? DateTime.UtcNow))  
-               .ForMember(dest => dest.ModifiedAt, opt => opt.MapFrom(src => src.ModifiedAt ?? DateTime.UtcNow));  
+               .ForMember(dest => dest.ModifiedAt, opt => opt.MapFrom(src => src.ModifiedAt ?? DateTime.UtcNow));
 
-            // Map CreateDestinationDTO to DestinationModel
             CreateMap<CreateDestinationDTO, DestinationModel>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => Guid.NewGuid()))
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => DateTime.UtcNow))
                 .ForMember(dest => dest.ModifiedAt, opt => opt.MapFrom(src => DateTime.UtcNow))
-                .ForMember(dest => dest.ImageFile, opt => opt.Ignore()) 
-                .ForMember(dest => dest.Category, opt => opt.Ignore()) 
+                .ForMember(dest => dest.ImageFile, opt => opt.Ignore())
+                .ForMember(dest => dest.Category, opt => opt.Ignore())
                 .ForMember(dest => dest.VisitPlaces, opt => opt.Ignore())
-                .ForMember(dest => dest.TripDestinations, opt => opt.Ignore());
+                .ForMember(dest => dest.TripDestinations, opt => opt.Ignore())
+                .ForMember(dest => dest.GeoLocation, opt => opt.Ignore());
+
 
             CreateMap<DestinationModel, ResponseDestinationDTO>()
                .ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom((src, dest, destMember, context) =>
@@ -41,7 +42,11 @@ namespace backend.Domain.Mappings
                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => src.CreatedAt))
                .ForMember(dest => dest.ModifiedAt, opt => opt.MapFrom(src => src.ModifiedAt))
-               .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.CategoryId));
+               .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.CategoryId))
+               .ForMember(dest => dest.GeoLocation, opt => opt.MapFrom(src => src.GeoLocation));
+
+            CreateMap<GeoLocationModel, GeoLocationDTO>();
+
         }
     }
 }

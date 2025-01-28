@@ -3,7 +3,7 @@ import { BsCart } from "react-icons/bs";
 import { UseCategoryList } from "src/api/Category";
 import { useDestinationList } from "src/api/Destinations";
 import ProductsFilter from "src/components/Products/ProductsFilter";
-import ProductsItem from "src/components/Products/ProductsItem";
+import ProductsItem from "src/components/Products/Item/ProductsItem";
 import ProductsItemsList from "src/components/Products/ProductsItemsList";
 import ProductsItemsSection from "src/components/Products/ProductsItemsSection";
 import ProductsLayout from "src/components/Products/ProductsLayout";
@@ -89,8 +89,11 @@ const Destinations: FC<DestinationsProps> = () => {
                   />
                 </div>
                 <div className="flex flex-col gap-2 p-2">
-                  <h4 className="text-lg font-semibold">{item.name}</h4>
-                  <p className="text-gray-400 text-sm">{item.description}</p>
+                  <div>
+                    <h4 className="text-lg font-semibold">{item.name}</h4>
+                    <p className="text-gray-400 text-sm">{item.description}</p>
+                  </div>
+
                   <div className="flex flex-row justify-between items-center">
                     <span className="font-bold">{item.price} zł</span>
                     <ButtonWithIcon

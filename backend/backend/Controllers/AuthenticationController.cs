@@ -80,7 +80,6 @@ namespace backend.Controllers
         [HttpPost("refresh-token")]
         public async Task<IActionResult> RefreshToken()
         {
-            // Sprawdź, czy użytkownik jest uwierzytelniony
             if (User.Identity?.IsAuthenticated == true)
             {
                 var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -95,14 +94,12 @@ namespace backend.Controllers
                     return NotFound(new { message = "User not found." });
                 }
 
-                // Wygeneruj nowy token JWT
                 var newToken = await _jwtService.CreateJWT(user);
 
-                // Ustaw nowe ciasteczko z tokenem
                 var cookieOptions = new CookieOptions
                 {
                     HttpOnly = true,
-                  /*  Secure = true, // Ustaw na true w środowisku produkcyjnym*/
+                  /*  Secure = true, */
                     SameSite = SameSiteMode.Strict,
                     Expires = DateTime.UtcNow.AddHours(1)
                 };

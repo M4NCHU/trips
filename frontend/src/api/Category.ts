@@ -6,9 +6,8 @@ import { User } from "src/types/UserTypes";
 import { usePagination } from "src/hooks/usePagination";
 import useCookies from "src/hooks/useCookies";
 
-const SECRET_KEY = "your_secret_key"; // Upewnij się, że klucz jest bezpiecznie przechowywany
+const SECRET_KEY = "your_secret_key";
 
-// Funkcja do odszyfrowywania danych
 const decryptData = (encryptedData: string): User | null => {
   try {
     const bytes = CryptoJS.AES.decrypt(encryptedData, SECRET_KEY);
@@ -49,7 +48,6 @@ export const UseCategoryList = (filterParams: any = {}, pageSize = 2) => {
   };
 };
 
-// Zapytanie o kategorię po ID
 export const useGetCategoryById = (id: string | undefined) => {
   const { get } = useCookies();
 
@@ -86,24 +84,14 @@ export const useCreateCategory = () => {
 
   return useMutation({
     mutationFn: async (formData: FormData) => {
-      const encryptedUserData = get("user_data");
-      if (!encryptedUserData) {
-        throw new Error("No user data found in cookies.");
-      }
-
-      const userData = decryptData(encryptedUserData);
-
-      if (!userData || !userData.token) {
-        throw new Error("No JWT token found in user data.");
-      }
-
-      return await fetchData("/api/Category", {
-        method: "post",
-        data: formData,
-        headers: {
-          Authorization: `Bearer ${userData.token}`,
+      return await fetchData(
+        "/api/Category",
+        {
+          method: "post",
+          data: formData,
         },
-      });
+        true
+      );
     },
     onSuccess: () => {
       console.log("Category created successfully");

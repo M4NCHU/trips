@@ -26,64 +26,64 @@ module.exports = {
     },
     extend: {
       colors: {
-        border: "var(--border)", // Zmienna CSS
-        input: "var(--input)", // Zmienna CSS
-        ring: "var(--ring)", // Zmienna CSS
-        background: "var(--background)", // Zmienna CSS
-        foreground: "var(--foreground)", // Zmienna CSS
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)", 
+        background: "var(--background)", 
+        foreground: "var(--foreground)",
         primary: {
-          DEFAULT: "var(--primary)", // Zmienna CSS
-          foreground: "var(--primary-foreground)", // Zmienna CSS
+          DEFAULT: "var(--primary)", 
+          foreground: "var(--primary-foreground)", 
         },
         secondary: {
-          DEFAULT: "var(--secondary)", // Zmienna CSS
-          foreground: "var(--secondary-foreground)", // Zmienna CSS
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)", 
         },
         destructive: {
-          DEFAULT: "var(--destructive)", // Zmienna CSS
-          foreground: "var(--destructive-foreground)", // Zmienna CSS
+          DEFAULT: "var(--destructive)", 
+          foreground: "var(--destructive-foreground)", 
         },
         muted: {
-          DEFAULT: "var(--muted)", // Zmienna CSS
-          foreground: "var(--muted-foreground)", // Zmienna CSS
+          DEFAULT: "var(--muted)", 
+          foreground: "var(--muted-foreground)", 
         },
         accent: {
-          DEFAULT: "var(--accent)", // Zmienna CSS
-          foreground: "var(--accent-foreground)", // Zmienna CSS
+          DEFAULT: "var(--accent)", 
+          foreground: "var(--accent-foreground)", 
         },
         popover: {
-          DEFAULT: "var(--popover)", // Zmienna CSS
-          foreground: "var(--popover-foreground)", // Zmienna CSS
+          DEFAULT: "var(--popover)", 
+          foreground: "var(--popover-foreground)", 
         },
         card: {
-          DEFAULT: "var(--card)", // Zmienna CSS
-          foreground: "var(--card-foreground)", // Zmienna CSS
+          DEFAULT: "var(--card)", 
+          foreground: "var(--card-foreground)", 
         },
-        // Admin theme colors
+
         admin: {
-          background: "var(--background)", // Zmienna CSS
-          foreground: "var(--foreground)", // Zmienna CSS
+          background: "var(--background)", 
+          foreground: "var(--foreground)", 
           primary: {
-            DEFAULT: "var(--primary)", // Zmienna CSS
-            foreground: "var(--primary-foreground)", // Zmienna CSS
+            DEFAULT: "var(--primary)", 
+            foreground: "var(--primary-foreground)", 
           },
           secondary: {
-            DEFAULT: "var(--secondary)", // Zmienna CSS
-            foreground: "var(--secondary-foreground)", // Zmienna CSS
+            DEFAULT: "var(--secondary)", 
+            foreground: "var(--secondary-foreground)", 
           },
           accent: {
-            DEFAULT: "var(--accent)", // Zmienna CSS
-            foreground: "var(--accent-foreground)", // Zmienna CSS
+            DEFAULT: "var(--accent)", 
+            foreground: "var(--accent-foreground)", 
           },
           muted: {
-            DEFAULT: "var(--muted)", // Zmienna CSS
-            foreground: "var(--muted-foreground)", // Zmienna CSS
+            DEFAULT: "var(--muted)", 
+            foreground: "var(--muted-foreground)", 
           },
         },
-        // New custom color for central section
+        
         centralSection: {
-          foreground: "var(--central-section-foreground)", // Zmienna CSS
-          background: "var(--central-section-background)", // Zmienna CSS
+          foreground: "var(--central-section-foreground)", 
+          background: "var(--central-section-background)", 
         },
       },
       borderRadius: {

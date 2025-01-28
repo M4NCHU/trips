@@ -43,7 +43,7 @@ const CustomDropdownMenu = ({ dropDownButton, children }: any) => {
       <button onClick={toggleDropdown}>{dropDownButton}</button>
 
       {isOpen && (
-        <div className="absolute right-0 z-50 min-w-[12rem] rounded-md shadow-lg bg-secondary p-2 border-[1px] border-gray-800">
+        <div className="absolute right-0 z-50 min-w-[12rem] rounded-md shadow-lg bg-secondary p-2 border-[1px] border-gray-800 z-[450]">
           <div className="flex flex-col rounded-lg " onClick={closeDropdown}>
             {children}
           </div>

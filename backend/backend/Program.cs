@@ -18,6 +18,7 @@ using backend.Swagger;
 using backend.Infrastructure.Respository;
 using backend.Domain.Mappings;
 using System.Text.Json.Serialization;
+using backend.Application.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -54,6 +55,9 @@ builder.Services.AddScoped<ITripParticipantService, TripParticipantService>();
 builder.Services.AddScoped<IParticipantService, ParticipantService>();
 builder.Services.AddScoped<ITripDestinationService, TripDestinationService>();
 builder.Services.AddScoped<ISelectedPlaceService, SelectedPlaceService>();
+builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IGeoLocationService, GeoLocationService>();
 
 builder.Services.AddDbContext<TripsDbContext>(options =>
 {

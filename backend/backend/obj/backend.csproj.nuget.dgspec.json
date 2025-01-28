@@ -102,6 +102,10 @@
               "target": "Package",
               "version": "[7.2.0, )"
             },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
             "xunit": {
               "target": "Package",
               "version": "[2.9.2, )"
@@ -209,6 +213,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[7.2.0, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             },
             "xunit": {
               "target": "Package",
@@ -347,6 +355,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[7.2.0, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             },
             "xunit": {
               "target": "Package",
@@ -509,6 +521,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[7.2.0, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             },
             "xunit": {
               "target": "Package",

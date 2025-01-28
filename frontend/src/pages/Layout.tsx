@@ -25,7 +25,7 @@ const Layout: FC<LayoutProps> = ({ isAdmin, children }) => {
 
         <div className="flex flex-col h-screen grow w-full lg:w-[calc(100vw-5rem)] xl:w-[calc(100vw-20rem)]">
           <Header />
-          <div className="p-4 rounded-2xl m-[.5rem] md:m-[1rem] flex flex-col bg-secondary text-centralSection-foreground grow px-[.2rem] md:px-[2rem] overflow-y-auto gap-2">
+          <div className="rounded-2xl m-[.5rem] md:m-[1rem] flex flex-col bg-secondary text-centralSection-foreground grow overflow-y-auto gap-2 p-[2rem] max-h-[calc(100vh-66px)]">
             {isAdmin && <AdminNav />}
             {children}
           </div>

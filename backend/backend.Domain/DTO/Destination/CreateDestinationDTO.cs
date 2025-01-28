@@ -15,6 +15,8 @@ namespace backend.Domain.DTOs
         public string? Location { get; set; }
         public double Price { get; set; }
         public Guid CategoryId { get; set; }
+        public int AvailablePlaces { get; set; } = 0;
+        public string? GeoLocation { get; set; }
         public IFormFile ImageFile { get; set; }
     }
 }

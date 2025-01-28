@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { debounce } from "lodash"; // Możesz użyć lodash lub własnej implementacji debounce
+import { debounce } from "lodash";
 
 type FilterValues = string | number | undefined;
 

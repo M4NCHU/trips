@@ -1,11 +1,8 @@
-// api/AuthenticationAPI.ts
-
 import { useMutation } from "@tanstack/react-query";
 import { fetchData } from "./apiUtils";
 import { LoginResponse, RegisterUser } from "src/types/UserTypes";
 import toast from "react-hot-toast";
 
-// Creating user
 export const UseCreateUser = () => {
   const mutation = useMutation<RegisterUser, Error, FormData>({
     mutationFn: async (formData: FormData) => {

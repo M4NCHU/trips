@@ -1,9 +1,7 @@
-// api/trips.timport { useQuery } from "@tanstack/react-query";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Trip } from "../types/TripTypes";
 import { fetchData } from "./apiUtils";
 
-// Adding trip
 export const UseCreateTrip = () => {
   const mutation = useMutation({
     mutationFn: async (formData: FormData) => {
@@ -26,7 +24,6 @@ export const UseCreateTrip = () => {
   return mutation;
 };
 
-// Get trip by id
 export const UseTripById = (id: string | undefined) => {
   return useQuery<Trip, Error>({
     queryKey: ["tripById"],
@@ -37,7 +34,6 @@ export const UseTripById = (id: string | undefined) => {
   });
 };
 
-// Get all trips for user
 export const UseUserTripsList = (userId: string | undefined) => {
   return useQuery<Trip[], Error>({
     queryKey: ["userTripsList"],
@@ -48,7 +44,6 @@ export const UseUserTripsList = (userId: string | undefined) => {
   });
 };
 
-// Get all trips for user
 export const UseEnsureActiveTripExists = (userId: string | undefined) => {
   return useQuery<{ tripId: string; wasTripCreated: boolean }, Error>({
     queryKey: ["ensureActiveTripExists", userId],
@@ -63,7 +58,6 @@ export const UseEnsureActiveTripExists = (userId: string | undefined) => {
   });
 };
 
-// Get user trips count
 export const UseUserTripsCount = (
   userId: string | undefined,
   status: number
@@ -79,13 +73,9 @@ export const UseUserTripsCount = (
   });
 };
 
-// Change trip title
 export const UseChangeTripTitle = async (tripId: string, newTitle: string) => {
   try {
-    // Construct the endpoint with the tripId
     const endpoint = `/api/Trip/${tripId}/Title/${newTitle}`;
-
-    // Prepare the request body
     const requestBody = {
       newTitle: newTitle,
     };

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8OxPcLNYlnQ=",
+  "dgSpecHash": "Zt/qA4hWJII=",
   "success": true,
   "projectFilePath": "C:\\Project\\trips\\backend\\backend.Domain\\backend.Domain.csproj",
   "expectedPackageFiles": [
@@ -37,6 +37,7 @@
     "C:\\Users\\Maciek\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\7.2.0\\swashbuckle.aspnetcore.swaggergen.7.2.0.nupkg.sha512",
     "C:\\Users\\Maciek\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\7.2.0\\swashbuckle.aspnetcore.swaggerui.7.2.0.nupkg.sha512",
     "C:\\Users\\Maciek\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512",
+    "C:\\Users\\Maciek\\.nuget\\packages\\system.text.json\\9.0.0\\system.text.json.9.0.0.nupkg.sha512",
     "C:\\Users\\Maciek\\.nuget\\packages\\xunit\\2.9.2\\xunit.2.9.2.nupkg.sha512",
     "C:\\Users\\Maciek\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
     "C:\\Users\\Maciek\\.nuget\\packages\\xunit.analyzers\\1.16.0\\xunit.analyzers.1.16.0.nupkg.sha512",

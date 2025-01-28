@@ -8,8 +8,11 @@ interface ProductsItemProps {
 
 const ProductsItem: FC<ProductsItemProps> = ({ link, children }) => {
   return (
-    <Link to={link} className="rounded-lg w-full">
-      <div>{children}</div>
+    <Link
+      to={link}
+      className="rounded-lg w-full flex flex-col xl:flex-row gap-[1rem] bg-background p-4"
+    >
+      {children}
     </Link>
   );
 };

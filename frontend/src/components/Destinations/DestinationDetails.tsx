@@ -94,7 +94,6 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
   }, [id, tripsData, tripDestinationId]);
 
   const handleAddToTrip = (placeId: string, placePrice: number) => {
-    // Sprawdź, czy element o danym id już istnieje na liście
     const existingPlaceIndex = selectedPlaces.findIndex(
       (selectedPlace) => selectedPlace.id === placeId
     );
@@ -104,7 +103,6 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
     );
 
     if (existingPlaceIndex !== -1) {
-      // Jeżeli istnieje, usuń element z listy i zaktualizuj łączną cenę
       setSelectedPlaces((prevSelectedPlaces) => {
         const updatedSelectedPlaces = [...prevSelectedPlaces];
         const removedPlace = updatedSelectedPlaces.splice(
@@ -145,8 +143,6 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
   }
 
   const handleFormSubmit = async (e?: React.FormEvent) => {
-    // e.preventDefault();
-
     if (!id) {
       console.error("Error: No destination ID provided");
       return;
@@ -218,9 +214,7 @@ const DestinationDetails: FC<DestinationDetailsProps> = ({}) => {
             <div className="flex flex-row gap-4 items-center">
               <h2 className="text-2xl font-bold">{destination.name}</h2>
               <div className="w-2 h-[1px] bg-gray-500"></div>
-              <p className="text-lg font-normal text-gray-500">
-                {destination.category.name}
-              </p>
+              <p className="text-lg font-normal text-gray-500"></p>
             </div>
 
             <FaRegHeart className="text-2xl font-bold cursor-pointer hover:text-pink-700" />

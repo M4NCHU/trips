@@ -29,12 +29,25 @@ namespace backend.Infrastructure.Respository
                 query = query.Where(d => d.CategoryId == parsedCategoryId);
             }
 
+            if (filter != null &&
+                filter.NorthEastLat.HasValue && filter.NorthEastLng.HasValue &&
+                filter.SouthWestLat.HasValue && filter.SouthWestLng.HasValue)
+            {
+                query = query.Where(d =>
+                    d.GeoLocation != null &&
+                    d.GeoLocation.Latitude <= filter.NorthEastLat &&
+                    d.GeoLocation.Latitude >= filter.SouthWestLat &&
+                    d.GeoLocation.Longitude <= filter.NorthEastLng &&
+                    d.GeoLocation.Longitude >= filter.SouthWestLng);
+            }
+
             var totalItems = await query.CountAsync();
 
             var destinations = await query
                 .OrderBy(d => d.Id)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
+                .Include(d => d.GeoLocation)
                 .ToListAsync();
 
             return new PagedResult<DestinationModel>
@@ -65,10 +78,59 @@ namespace backend.Infrastructure.Respository
                 .ToListAsync();
         }
 
+        public async Task<List<DestinationModel>> GetDestinationsByIdsAsync(List<Guid> ids)
+        {
+            if (ids == null || !ids.Any())
+                return new List<DestinationModel>();
+
+            try
+            {
+                _logger.LogInformation("Executing query for Destination IDs: {@ids}", ids);
+
+                var destinations = await _context.Destination
+                    .Where(d => ids.Contains(d.Id))
+                    .ToListAsync();
+
+                _logger.LogInformation("Fetched {count} destinations.", destinations.Count);
+
+                return destinations;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while fetching destinations by IDs.");
+                throw;
+            }
+        }
+
+
+
+
         public async Task<bool> DestinationExistsAsync(Guid id)
         {
             _logger.LogInformation("Checking if destination with ID {Id} exists", id);
             return await _context.Destination.AnyAsync(d => d.Id == id);
         }
+
+        public async Task<List<DestinationModel>> GetByIdsAsync(List<Guid> ids)
+        {
+            _logger.LogInformation("Fetching destinations for IDs: {Ids}", ids);
+
+            return await _context.Destination
+                .Where(d => ids.Contains(d.Id))
+                .Include(d => d.GeoLocation) 
+                .Include(d => d.Category)    
+                .ToListAsync();
+        }
+
+        public async Task<DestinationModel?> GetWithDetailsAsync(Guid id)
+        {
+            _logger.LogInformation("Fetching destination with ID: {Id}", id);
+
+            return await _context.Destination
+                .Include(d => d.GeoLocation) 
+                .Include(d => d.Category)
+                .FirstOrDefaultAsync(d => d.Id == id);
+        }
+
     }
 }

@@ -18,5 +18,6 @@ namespace backend.Domain.DTOs
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
         public Guid CategoryId { get; set; }
+        public GeoLocationDTO? GeoLocation;
     }
 }

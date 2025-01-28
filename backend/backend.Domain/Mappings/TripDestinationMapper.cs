@@ -9,8 +9,6 @@ namespace backend.Domain.Mappings
     {
         public TripDestinationMapper()
         {
-            
-            // Map CategoryModel to CategoryDTO
             CreateMap<TripDestinationModel, TripDestinationDTO>();
         }
     }

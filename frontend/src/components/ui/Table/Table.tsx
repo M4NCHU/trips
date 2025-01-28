@@ -22,6 +22,7 @@ interface TableProps<T> {
   tableDescription?: string;
   columns: (keyof T)[];
   renderCell?: (item: T, column: keyof T) => React.ReactNode;
+  renderActions?: (item: T) => React.ReactNode;
   createModal?: React.ReactNode;
   tableClassName?: string;
   headerClassName?: string;
@@ -40,6 +41,7 @@ const Table = <T,>({
   tableDescription,
   columns,
   renderCell,
+  renderActions,
   createModal,
   tableClassName = "min-w-full bg-background rounded-xl",
   headerClassName = "px-6 py-3 text-left text-sm border-b-[1px] rounded-xl border-secondary font-bold",
@@ -54,7 +56,6 @@ const Table = <T,>({
   const [sortColumn, setSortColumn] = useState<keyof T | null>(null);
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
   const [searchQuery, setSearchQuery] = useState("");
-
   const buttonStyle =
     "hidden md:block rounded-full text-base placeholder:text-sm w-full h-full px-[2rem] min-w-[15rem] py-[.5rem] pr-[2.5rem] bg-secondary";
 
@@ -70,7 +71,6 @@ const Table = <T,>({
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
-
   const filteredData = data.filter((item) =>
     columns.some((column) =>
       String(item[column]).toLowerCase().includes(searchQuery.toLowerCase())
@@ -203,6 +203,9 @@ const Table = <T,>({
                       : (item[column] as React.ReactNode)}
                   </TableCell>
                 ))}
+                <td className={`${cellClassName} flex justify-end gap-2`}>
+                  {renderActions && renderActions(item)}
+                </td>
                 <td className={`${cellClassName} flex justify-end gap-2`}>
                   {onEdit && (
                     <ButtonWithIcon

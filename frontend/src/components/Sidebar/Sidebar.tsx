@@ -5,15 +5,16 @@ import NavLink from "../Header/Navlink";
 import { CiSettings } from "react-icons/ci";
 import { MdOutlineHotel, MdOutlineLocationOn } from "react-icons/md";
 import { IoMdInformationCircleOutline } from "react-icons/io";
+import Switcher from "../ui/Switcher";
 
 const Sidebar = () => {
   return (
     <aside className="h-screen bg-background text-primary lg:w-20 xl:w-[20rem] transition-all duration-300">
       <div className="flex flex-col justify-between h-full p-4">
-        <div className="sidebar-logo border-b-[1px] border-secondary mb-2 flex items-center justify-center xl:justify-center">
+        <div className="sidebar-logo border-b-[1px] w-full border-secondary mb-2 flex items-center justify-center xl:justify-center">
           <Link
             to="/"
-            className="flex items-center nav-logo hover:bg-secondary rounded-lg"
+            className="flex items-center nav-logo hover:bg-secondary w-full rounded-lg mb-2"
           >
             <img
               src={Logo}
@@ -48,7 +49,10 @@ const Sidebar = () => {
 
         <div className="sidebar-footer w-full bg-secondary rounded-xl py-3 px-4 flex items-center justify-center xl:justify-between">
           <div className="hidden xl:block text-sm font-semibold">user</div>
-          <CiSettings className="text-2xl" />
+          <div className="flex flex-col xl:flex-row gap-4 items-center text-2xl">
+            <Switcher />
+            <CiSettings className="" />
+          </div>
         </div>
       </div>
     </aside>

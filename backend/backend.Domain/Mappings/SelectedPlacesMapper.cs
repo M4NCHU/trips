@@ -9,8 +9,6 @@ namespace backend.Domain.Mappings
     {
         public TripParticipantMapper()
         {
-
-            // Map TripParticipantModel to TripParticipantDTO
             CreateMap<TripParticipantModel, TripParticipantDTO>();
         }
     }

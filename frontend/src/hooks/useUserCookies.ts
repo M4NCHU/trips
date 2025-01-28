@@ -81,7 +81,6 @@ export const useUserCookies = () => {
       });
 
       if (response && response.token) {
-        // Zaktualizuj dane użytkownika
         const updatedUser = {
           ...user,
           token: response.token,

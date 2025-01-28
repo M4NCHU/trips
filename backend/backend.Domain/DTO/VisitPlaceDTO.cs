@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend.Domain.DTOs
 {
@@ -15,6 +16,8 @@ namespace backend.Domain.DTOs
         public float Duration { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+        [NotMapped]
+
         public IFormFile ImageFile { get; set; }
         public Guid DestinationId { get; set; }
     }

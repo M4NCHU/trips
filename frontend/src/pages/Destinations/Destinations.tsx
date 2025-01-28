@@ -1,33 +1,28 @@
+import { LatLngTuple } from "leaflet";
 import { FC, useState } from "react";
-import { BsCart } from "react-icons/bs";
-import { MdOutlineAttachMoney } from "react-icons/md";
+import { CiLocationArrow1 } from "react-icons/ci";
 import { UseCategoryList } from "src/api/Category";
 import { useDestinationList } from "src/api/Destinations";
-import ProductFilterInput from "src/components/Products/ProductFilterInput";
-import ProductFilterRow from "src/components/Products/ProductFilterRow";
-import ProductsFilter from "src/components/Products/ProductsFilter";
-import ProductsItem from "src/components/Products/ProductsItem";
-import ProductsItemsList from "src/components/Products/ProductsItemsList";
-import ProductsItemsSection from "src/components/Products/ProductsItemsSection";
-import ProductsLayout from "src/components/Products/ProductsLayout";
-import { ButtonWithIcon } from "src/components/ui/Buttons/ButtonWithIcon";
-import { Button } from "src/components/ui/button";
-import useFilter from "src/hooks/UseFilter";
-import { IconName, isValidIconName } from "../../types/Icons/IconTypes";
-import { CiLocationArrow1 } from "react-icons/ci";
-import ProductsSectionHeader from "src/components/Products/ProductsSectionHeader";
 import CreateDestinationModal from "src/components/Destinations/Modals/CreateDestinationModal";
 import MapComponent from "src/components/Maps/MapComponen";
+import ItemActions from "src/components/Products/Item/ItemActions";
+import ItemActionsWrapper from "src/components/Products/Item/ItemActionsWrapper";
+import ItemDescriptionWrapper from "src/components/Products/Item/ItemDescriptionWrapper";
+import ItemFeatures from "src/components/Products/Item/ItemFeatures";
+import ItemHeader from "src/components/Products/Item/ItemHeader";
+import ItemImg from "src/components/Products/Item/ItemImg";
+import ProductsItem from "src/components/Products/Item/ProductsItem";
+import ProductsItemsSection from "src/components/Products/ProductsItemsSection";
+import ProductsLayout from "src/components/Products/ProductsLayout";
+import ProductsSectionHeader from "src/components/Products/ProductsSectionHeader";
+import { Button } from "src/components/ui/button";
+import useFilter from "src/hooks/UseFilter";
 
 interface DestinationsProps {}
 
 const Destinations: FC<DestinationsProps> = () => {
   const { filters, updateFilter, resetFilters } = useFilter();
 
-  const markers: { position: [number, number]; label: string }[] = [
-    { position: [49.555261997701884, 21.624581318696112], label: "Londyn" },
-    { position: [51.51, -0.1], label: "Drugi punkt w Londynie" },
-  ];
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [minPrice, setMinPrice] = useState<number | null>(null);
   const [maxPrice, setMaxPrice] = useState<number | null>(null);
@@ -42,6 +37,18 @@ const Destinations: FC<DestinationsProps> = () => {
     updateFilter("maxRating", maxRating ?? undefined);
   };
 
+  const handleBoundsChange = (bounds: {
+    northEastLat: number;
+    northEastLng: number;
+    southWestLat: number;
+    southWestLng: number;
+  }) => {
+    updateFilter("northEastLat", bounds.northEastLat);
+    updateFilter("northEastLng", bounds.northEastLng);
+    updateFilter("southWestLat", bounds.southWestLat);
+    updateFilter("southWestLng", bounds.southWestLng);
+  };
+
   const { data: destination, isError } = useDestinationList(filters);
   const {
     data: categories,
@@ -49,45 +56,35 @@ const Destinations: FC<DestinationsProps> = () => {
     isError: CategoriesError,
   } = UseCategoryList();
 
+  const validDestinations = destination.filter((d) => {
+    if (!d.geoLocation?.latitude || !d.geoLocation?.longitude) {
+      return false;
+    }
+    return true;
+  });
+
   return (
     <ProductsLayout>
-      <ProductsFilter applyFilter={applyFilters}>
-        <ProductFilterRow title={"Price"}>
-          <ProductFilterInput
-            icon={<MdOutlineAttachMoney />}
-            label="Min price"
-            type="number"
-            value={minPrice ?? ""}
-            onChange={(e) => setMinPrice(Number(e.target.value) || null)}
-          />
-          <ProductFilterInput
-            icon={<MdOutlineAttachMoney />}
-            label="Max price"
-            type="number"
-            value={maxPrice ?? ""}
-            onChange={(e) => setMaxPrice(Number(e.target.value) || null)}
-          />
-        </ProductFilterRow>
-        <ProductFilterRow title={"Choose categories"}>
-          <div className="flex flex-row gap-2 flex-wrap">
-            <Button onClick={() => setSelectedCategory(null)}>All</Button>
-            {categories &&
-              categories.map((item) => (
-                <Button
-                  icon={isValidIconName(item.icon) ? item.icon : undefined}
-                  key={item.id}
-                  variant={"defaultSecondary"}
-                  onClick={() => setSelectedCategory(item.id)}
-                  className={
-                    selectedCategory === item.id ? "border-blue-500" : ""
-                  }
-                >
-                  {item.name}
-                </Button>
-              ))}
+      <div className="flex flex-col gap-2 w-full xl:w-1/2">
+        <ProductsSectionHeader title="Available places"></ProductsSectionHeader>
+        <div className="flex flex-col h-auto xl:h-1 grow">
+          <div className="flex flex-col gap-2 overflow-y-auto ">
+            {destination.map((item, i) => (
+              <ProductsItem link={`/destination/${item.id}`} key={i}>
+                <ItemImg imgSrc={item.photoUrl} />
+                <ItemDescriptionWrapper>
+                  <ItemHeader title={item.name} />
+
+                  <ItemActionsWrapper>
+                    <ItemFeatures />
+                    <ItemActions item={item} />
+                  </ItemActionsWrapper>
+                </ItemDescriptionWrapper>
+              </ProductsItem>
+            ))}
           </div>
-        </ProductFilterRow>
-      </ProductsFilter>
+        </div>
+      </div>
 
       <ProductsItemsSection>
         <ProductsSectionHeader title="Destinations">
@@ -95,37 +92,20 @@ const Destinations: FC<DestinationsProps> = () => {
           <CreateDestinationModal />
         </ProductsSectionHeader>
 
-        <div className="maps-container mb-[2rem]">
-          <MapComponent markers={markers} />
+        <div className="maps-container mb-[2rem] h-[95%] flex flex-col grow">
+          <MapComponent
+            markers={validDestinations.map((d) => ({
+              position: [
+                d.geoLocation.latitude,
+                d.geoLocation.longitude,
+              ] as LatLngTuple,
+              label: d.name,
+              photoUrl: d.photoUrl,
+              description: d.description,
+            }))}
+            onBoundsChange={handleBoundsChange}
+          />
         </div>
-        <ProductsItemsList>
-          {destination.map((item, i) => (
-            <ProductsItem link={`/destination/${item.id}`} key={i}>
-              <div className="flex flex-col gap-2">
-                <div className="w-full h-48 overflow-hidden">
-                  <img
-                    src={item.photoUrl}
-                    alt="destination"
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-                <div className="flex flex-col gap-2 p-2">
-                  <h4 className="text-lg font-semibold">{item.name}</h4>
-                  <p className="text-foreground flex flex-row items-center gap-2 text-sm">
-                    <CiLocationArrow1 />
-                    {item.description}
-                  </p>
-                  <div className="flex flex-row justify-between items-center">
-                    <div className="product-price flex flex-row items-center gap-2 ">
-                      <h3 className="font-bold text-2xl">{item.price} zł</h3>
-                      <span className="text-foreground text-base">/night</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ProductsItem>
-          ))}
-        </ProductsItemsList>
       </ProductsItemsSection>
     </ProductsLayout>
   );

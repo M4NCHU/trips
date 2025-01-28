@@ -2,6 +2,7 @@
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
 using backend.Domain.Authentication;
+using backend.Domain.Models;
 
 namespace backend.Infrastructure.Authentication
 {
@@ -21,7 +22,12 @@ namespace backend.Infrastructure.Authentication
         public DbSet<AccommodationModel> Accommodation { get; set; }
         public DbSet<TripParticipantModel> TripParticipant { get; set; }
         public DbSet<ParticipantModel> Participant { get; set; }
-
+        public DbSet<CartModel> Cart { get; set; }
+        public DbSet<ReservationModel> Reservation { get; set; }
+        public DbSet<ReservationItemModel> ReservationItem { get; set; }
+        public DbSet<ReservationDetailsModel> ReservationDetails { get; set; }
+        public DbSet<PaymentModel> Payment { get; set; }
+        public DbSet<GeoLocationModel> GeoLocation { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

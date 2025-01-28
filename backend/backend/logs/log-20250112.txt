@@ -1,0 +1,472 @@
+2025-01-12 15:37:09.687 +01:00 [INF] User profile is available. Using 'C:\Users\Maciek\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-12 15:37:09.921 +01:00 [INF] Now listening on: https://localhost:7154
+2025-01-12 15:37:09.922 +01:00 [INF] Now listening on: http://localhost:5219
+2025-01-12 15:37:09.976 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-12 15:37:09.977 +01:00 [INF] Hosting environment: Development
+2025-01-12 15:37:09.978 +01:00 [INF] Content root path: C:\Project\trips\backend\backend
+2025-01-12 15:37:11.995 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2025-01-12 15:37:12.150 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 157.6664ms
+2025-01-12 15:37:12.217 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2025-01-12 15:37:12.217 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2025-01-12 15:37:12.218 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2025-01-12 15:37:12.291 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 73.1088ms
+2025-01-12 15:37:12.298 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 80.8821ms
+2025-01-12 15:37:12.319 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 102.0185ms
+2025-01-12 15:37:12.424 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2025-01-12 15:37:12.464 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 39.7656ms
+2025-01-12 15:37:14.865 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-12 15:37:14.865 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-12 15:37:14.865 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Authentication/user - null null
+2025-01-12 15:37:14.871 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:37:14.871 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:37:14.871 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:37:14.873 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - 204 null null 7.8712ms
+2025-01-12 15:37:14.873 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - 204 null null 7.871ms
+2025-01-12 15:37:14.874 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-12 15:37:14.874 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-12 15:37:14.878 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:37:14.885 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:37:14.959 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-12 15:37:14.959 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-12 15:37:14.959 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-12 15:37:14.971 +01:00 [INF] Route matched with {action = "GetCurrentUser", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentUser() on controller backend.Controllers.AuthenticationController (backend).
+2025-01-12 15:37:14.972 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2025-01-12 15:37:14.973 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2025-01-12 15:37:16.003 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-12 15:37:16.014 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2025-01-12 15:37:16.016 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-12 15:37:16.018 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-12 15:37:16.309 +01:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+2025-01-12 15:37:16.309 +01:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2025-01-12 15:37:16.325 +01:00 [INF] Executed DbCommand (39ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."LastName", a."LastUpdated", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__p_0
+LIMIT 1
+2025-01-12 15:37:16.350 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2025-01-12 15:37:16.389 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT d0."Id", d0."CategoryId", d0."CreatedAt", d0."Description", d0."GeoLocationId", d0."Location", d0."ModifiedAt", d0."Name", d0."PhotoUrl", d0."Price", g."Id", g."CreatedAt", g."Description", g."ItemId", g."Latitude", g."Longitude", g."ModifiedAt", g."Type"
+FROM (
+    SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+    FROM "Destination" AS d
+    ORDER BY d."Id"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS d0
+LEFT JOIN "GeoLocation" AS g ON d0."GeoLocationId" = g."Id"
+ORDER BY d0."Id"
+2025-01-12 15:37:16.406 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.CategoryDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-12 15:37:16.409 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-01-12 15:37:16.412 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[backend.Domain.DTO.Authentication.AccountDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-12 15:37:16.429 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Authentication/user - null null
+2025-01-12 15:37:16.431 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 1457.1688ms
+2025-01-12 15:37:16.431 +01:00 [INF] Executed action backend.Controllers.AuthenticationController.GetCurrentUser (backend) in 1456.1228ms
+2025-01-12 15:37:16.431 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:37:16.432 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-12 15:37:16.432 +01:00 [INF] Executed endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-12 15:37:16.434 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-12 15:37:16.435 +01:00 [INF] Route matched with {action = "GetCurrentUser", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentUser() on controller backend.Controllers.AuthenticationController (backend).
+2025-01-12 15:37:16.439 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 200 null application/json; charset=utf-8 1564.8857ms
+2025-01-12 15:37:16.439 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Authentication/user - 200 null application/json; charset=utf-8 1573.8762ms
+2025-01-12 15:37:16.446 +01:00 [INF] Successfully fetched 6 destinations.
+2025-01-12 15:37:16.446 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.DestinationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-12 15:37:16.450 +01:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 1475.6545ms
+2025-01-12 15:37:16.451 +01:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-12 15:37:16.452 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - 200 null application/json; charset=utf-8 1578.1095ms
+2025-01-12 15:37:16.463 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106153302_e150f6ec-4895-4e6c-9a25-ca031f107fd4.jpg - null null
+2025-01-12 15:37:16.463 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg - null null
+2025-01-12 15:37:16.464 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250109222932_f010c23d-ee99-4ddb-a4a5-18ed8e2018ef.jpg - null null
+2025-01-12 15:37:16.468 +01:00 [INF] The file /Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg was not modified
+2025-01-12 15:37:16.468 +01:00 [INF] The file /Destinations/Destinations_20250109222932_f010c23d-ee99-4ddb-a4a5-18ed8e2018ef.jpg was not modified
+2025-01-12 15:37:16.468 +01:00 [INF] The file /Destinations/Destinations_20250106153302_e150f6ec-4895-4e6c-9a25-ca031f107fd4.jpg was not modified
+2025-01-12 15:37:16.470 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg - 304 null image/jpeg 7.0296ms
+2025-01-12 15:37:16.470 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250109222932_f010c23d-ee99-4ddb-a4a5-18ed8e2018ef.jpg - 304 null image/jpeg 5.7608ms
+2025-01-12 15:37:16.471 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106153302_e150f6ec-4895-4e6c-9a25-ca031f107fd4.jpg - 304 null image/jpeg 7.9758ms
+2025-01-12 15:37:16.474 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106161239_e4037aea-c1ce-45ff-b1e2-d852032e0aed.jpg - null null
+2025-01-12 15:37:16.478 +01:00 [INF] The file /Destinations/Destinations_20250106161239_e4037aea-c1ce-45ff-b1e2-d852032e0aed.jpg was not modified
+2025-01-12 15:37:16.478 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106161239_e4037aea-c1ce-45ff-b1e2-d852032e0aed.jpg - 304 null image/jpeg 4.9048ms
+2025-01-12 15:37:16.481 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."LastName", a."LastUpdated", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__p_0
+LIMIT 1
+2025-01-12 15:37:16.483 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-01-12 15:37:16.485 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[backend.Domain.DTO.Authentication.AccountDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-12 15:37:16.486 +01:00 [INF] Executed action backend.Controllers.AuthenticationController.GetCurrentUser (backend) in 49.3515ms
+2025-01-12 15:37:16.487 +01:00 [INF] Executed endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-12 15:37:16.487 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Authentication/user - 200 null application/json; charset=utf-8 58.3629ms
+2025-01-12 15:37:16.497 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106161654_bad64b3c-2920-4cdf-bfa5-b5a5447c58c8.jpg - null null
+2025-01-12 15:37:16.498 +01:00 [INF] The file /Destinations/Destinations_20250106161654_bad64b3c-2920-4cdf-bfa5-b5a5447c58c8.jpg was not modified
+2025-01-12 15:37:16.499 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106161654_bad64b3c-2920-4cdf-bfa5-b5a5447c58c8.jpg - 304 null image/jpeg 2.1947ms
+2025-01-12 15:46:42.724 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 15:46:42.727 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:46:42.728 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:46:42.732 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-12 15:46:42.802 +01:00 [INF] Fetching all cart details in one query
+2025-01-12 15:46:42.848 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[backend.Application.Services.CartService+<GetCartAsync>d__5, backend.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-12 15:46:42.864 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 131.3277ms
+2025-01-12 15:46:42.865 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:46:42.987 +01:00 [INF] Executed DbCommand (68ms) [Parameters=[@__destinationIds_0='?' (DbType = Object), @__accommodationIds_1='?' (DbType = Object), @__visitPlaceIds_2='?' (DbType = Object), @__tripIds_3='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."ItemType", c."ItemId", c."ItemType" = 1, c."ItemType" = 2, c."ItemType" = 3, c."ItemType" = 4, d1."Id", d1."CategoryId", d1."CreatedAt", d1."Description", d1."GeoLocationId", d1."Location", d1."ModifiedAt", d1."Name", d1."PhotoUrl", d1."Price", a1."Id", a1."BedAmmount", a1."CreatedAt", a1."Description", a1."Location", a1."ModifiedAt", a1."Name", a1."PhotoUrl", a1."Price", v1."Id", v1."CreatedAt", v1."Description", v1."DestinationId", v1."Duration", v1."Latitude", v1."Longitude", v1."ModifiedAt", v1."Name", v1."PhotoUrl", v1."Price", t1."Id", t1."CreatedAt", t1."CreatedBy", t1."EndDate", t1."Latitude", t1."Longitude", t1."ModifiedAt", t1."StartDate", t1."Status", t1."Title", t1."TotalPrice"
+FROM "Cart" AS c
+LEFT JOIN (
+    SELECT d0."Id", d0."CategoryId", d0."CreatedAt", d0."Description", d0."GeoLocationId", d0."Location", d0."ModifiedAt", d0."Name", d0."PhotoUrl", d0."Price"
+    FROM (
+        SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price", ROW_NUMBER() OVER(PARTITION BY d."Id" ORDER BY d."Id") AS row
+        FROM "Destination" AS d
+    ) AS d0
+    WHERE d0.row <= 1
+) AS d1 ON c."ItemId" = d1."Id"
+LEFT JOIN (
+    SELECT a0."Id", a0."BedAmmount", a0."CreatedAt", a0."Description", a0."Location", a0."ModifiedAt", a0."Name", a0."PhotoUrl", a0."Price"
+    FROM (
+        SELECT a."Id", a."BedAmmount", a."CreatedAt", a."Description", a."Location", a."ModifiedAt", a."Name", a."PhotoUrl", a."Price", ROW_NUMBER() OVER(PARTITION BY a."Id" ORDER BY a."Id") AS row
+        FROM "Accommodation" AS a
+    ) AS a0
+    WHERE a0.row <= 1
+) AS a1 ON c."ItemId" = a1."Id"
+LEFT JOIN (
+    SELECT v0."Id", v0."CreatedAt", v0."Description", v0."DestinationId", v0."Duration", v0."Latitude", v0."Longitude", v0."ModifiedAt", v0."Name", v0."PhotoUrl", v0."Price"
+    FROM (
+        SELECT v."Id", v."CreatedAt", v."Description", v."DestinationId", v."Duration", v."Latitude", v."Longitude", v."ModifiedAt", v."Name", v."PhotoUrl", v."Price", ROW_NUMBER() OVER(PARTITION BY v."Id" ORDER BY v."Id") AS row
+        FROM "VisitPlace" AS v
+    ) AS v0
+    WHERE v0.row <= 1
+) AS v1 ON c."ItemId" = v1."Id"
+LEFT JOIN (
+    SELECT t0."Id", t0."CreatedAt", t0."CreatedBy", t0."EndDate", t0."Latitude", t0."Longitude", t0."ModifiedAt", t0."StartDate", t0."Status", t0."Title", t0."TotalPrice"
+    FROM (
+        SELECT t."Id", t."CreatedAt", t."CreatedBy", t."EndDate", t."Latitude", t."Longitude", t."ModifiedAt", t."StartDate", t."Status", t."Title", t."TotalPrice", ROW_NUMBER() OVER(PARTITION BY t."Id" ORDER BY t."Id") AS row
+        FROM "Trip" AS t
+    ) AS t0
+    WHERE t0.row <= 1
+) AS t1 ON c."ItemId" = t1."Id"
+WHERE (c."ItemType" = 1 AND c."ItemId" = ANY (@__destinationIds_0)) OR (c."ItemType" = 2 AND c."ItemId" = ANY (@__accommodationIds_1)) OR (c."ItemType" = 3 AND c."ItemId" = ANY (@__visitPlaceIds_2)) OR (c."ItemType" = 4 AND c."ItemId" = ANY (@__tripIds_3))
+2025-01-12 15:46:42.989 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 500 null application/json 265.2523ms
+2025-01-12 15:46:45.037 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 15:46:45.039 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:46:45.040 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:46:45.040 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-12 15:46:45.042 +01:00 [INF] Fetching all cart details in one query
+2025-01-12 15:46:45.044 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[backend.Application.Services.CartService+<GetCartAsync>d__5, backend.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-12 15:46:45.045 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__destinationIds_0='?' (DbType = Object), @__accommodationIds_1='?' (DbType = Object), @__visitPlaceIds_2='?' (DbType = Object), @__tripIds_3='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."ItemType", c."ItemId", c."ItemType" = 1, c."ItemType" = 2, c."ItemType" = 3, c."ItemType" = 4, d1."Id", d1."CategoryId", d1."CreatedAt", d1."Description", d1."GeoLocationId", d1."Location", d1."ModifiedAt", d1."Name", d1."PhotoUrl", d1."Price", a1."Id", a1."BedAmmount", a1."CreatedAt", a1."Description", a1."Location", a1."ModifiedAt", a1."Name", a1."PhotoUrl", a1."Price", v1."Id", v1."CreatedAt", v1."Description", v1."DestinationId", v1."Duration", v1."Latitude", v1."Longitude", v1."ModifiedAt", v1."Name", v1."PhotoUrl", v1."Price", t1."Id", t1."CreatedAt", t1."CreatedBy", t1."EndDate", t1."Latitude", t1."Longitude", t1."ModifiedAt", t1."StartDate", t1."Status", t1."Title", t1."TotalPrice"
+FROM "Cart" AS c
+LEFT JOIN (
+    SELECT d0."Id", d0."CategoryId", d0."CreatedAt", d0."Description", d0."GeoLocationId", d0."Location", d0."ModifiedAt", d0."Name", d0."PhotoUrl", d0."Price"
+    FROM (
+        SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price", ROW_NUMBER() OVER(PARTITION BY d."Id" ORDER BY d."Id") AS row
+        FROM "Destination" AS d
+    ) AS d0
+    WHERE d0.row <= 1
+) AS d1 ON c."ItemId" = d1."Id"
+LEFT JOIN (
+    SELECT a0."Id", a0."BedAmmount", a0."CreatedAt", a0."Description", a0."Location", a0."ModifiedAt", a0."Name", a0."PhotoUrl", a0."Price"
+    FROM (
+        SELECT a."Id", a."BedAmmount", a."CreatedAt", a."Description", a."Location", a."ModifiedAt", a."Name", a."PhotoUrl", a."Price", ROW_NUMBER() OVER(PARTITION BY a."Id" ORDER BY a."Id") AS row
+        FROM "Accommodation" AS a
+    ) AS a0
+    WHERE a0.row <= 1
+) AS a1 ON c."ItemId" = a1."Id"
+LEFT JOIN (
+    SELECT v0."Id", v0."CreatedAt", v0."Description", v0."DestinationId", v0."Duration", v0."Latitude", v0."Longitude", v0."ModifiedAt", v0."Name", v0."PhotoUrl", v0."Price"
+    FROM (
+        SELECT v."Id", v."CreatedAt", v."Description", v."DestinationId", v."Duration", v."Latitude", v."Longitude", v."ModifiedAt", v."Name", v."PhotoUrl", v."Price", ROW_NUMBER() OVER(PARTITION BY v."Id" ORDER BY v."Id") AS row
+        FROM "VisitPlace" AS v
+    ) AS v0
+    WHERE v0.row <= 1
+) AS v1 ON c."ItemId" = v1."Id"
+LEFT JOIN (
+    SELECT t0."Id", t0."CreatedAt", t0."CreatedBy", t0."EndDate", t0."Latitude", t0."Longitude", t0."ModifiedAt", t0."StartDate", t0."Status", t0."Title", t0."TotalPrice"
+    FROM (
+        SELECT t."Id", t."CreatedAt", t."CreatedBy", t."EndDate", t."Latitude", t."Longitude", t."ModifiedAt", t."StartDate", t."Status", t."Title", t."TotalPrice", ROW_NUMBER() OVER(PARTITION BY t."Id" ORDER BY t."Id") AS row
+        FROM "Trip" AS t
+    ) AS t0
+    WHERE t0.row <= 1
+) AS t1 ON c."ItemId" = t1."Id"
+WHERE (c."ItemType" = 1 AND c."ItemId" = ANY (@__destinationIds_0)) OR (c."ItemType" = 2 AND c."ItemId" = ANY (@__accommodationIds_1)) OR (c."ItemType" = 3 AND c."ItemId" = ANY (@__visitPlaceIds_2)) OR (c."ItemType" = 4 AND c."ItemId" = ANY (@__tripIds_3))
+2025-01-12 15:46:45.045 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 3.8495ms
+2025-01-12 15:46:45.047 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:46:45.056 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 500 null application/json 19.6522ms
+2025-01-12 15:46:49.071 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 15:46:49.073 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:46:49.073 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:46:49.074 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-12 15:46:49.083 +01:00 [INF] Fetching all cart details in one query
+2025-01-12 15:46:49.085 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[backend.Application.Services.CartService+<GetCartAsync>d__5, backend.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-12 15:46:49.086 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__destinationIds_0='?' (DbType = Object), @__accommodationIds_1='?' (DbType = Object), @__visitPlaceIds_2='?' (DbType = Object), @__tripIds_3='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."ItemType", c."ItemId", c."ItemType" = 1, c."ItemType" = 2, c."ItemType" = 3, c."ItemType" = 4, d1."Id", d1."CategoryId", d1."CreatedAt", d1."Description", d1."GeoLocationId", d1."Location", d1."ModifiedAt", d1."Name", d1."PhotoUrl", d1."Price", a1."Id", a1."BedAmmount", a1."CreatedAt", a1."Description", a1."Location", a1."ModifiedAt", a1."Name", a1."PhotoUrl", a1."Price", v1."Id", v1."CreatedAt", v1."Description", v1."DestinationId", v1."Duration", v1."Latitude", v1."Longitude", v1."ModifiedAt", v1."Name", v1."PhotoUrl", v1."Price", t1."Id", t1."CreatedAt", t1."CreatedBy", t1."EndDate", t1."Latitude", t1."Longitude", t1."ModifiedAt", t1."StartDate", t1."Status", t1."Title", t1."TotalPrice"
+FROM "Cart" AS c
+LEFT JOIN (
+    SELECT d0."Id", d0."CategoryId", d0."CreatedAt", d0."Description", d0."GeoLocationId", d0."Location", d0."ModifiedAt", d0."Name", d0."PhotoUrl", d0."Price"
+    FROM (
+        SELECT d."Id", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price", ROW_NUMBER() OVER(PARTITION BY d."Id" ORDER BY d."Id") AS row
+        FROM "Destination" AS d
+    ) AS d0
+    WHERE d0.row <= 1
+) AS d1 ON c."ItemId" = d1."Id"
+LEFT JOIN (
+    SELECT a0."Id", a0."BedAmmount", a0."CreatedAt", a0."Description", a0."Location", a0."ModifiedAt", a0."Name", a0."PhotoUrl", a0."Price"
+    FROM (
+        SELECT a."Id", a."BedAmmount", a."CreatedAt", a."Description", a."Location", a."ModifiedAt", a."Name", a."PhotoUrl", a."Price", ROW_NUMBER() OVER(PARTITION BY a."Id" ORDER BY a."Id") AS row
+        FROM "Accommodation" AS a
+    ) AS a0
+    WHERE a0.row <= 1
+) AS a1 ON c."ItemId" = a1."Id"
+LEFT JOIN (
+    SELECT v0."Id", v0."CreatedAt", v0."Description", v0."DestinationId", v0."Duration", v0."Latitude", v0."Longitude", v0."ModifiedAt", v0."Name", v0."PhotoUrl", v0."Price"
+    FROM (
+        SELECT v."Id", v."CreatedAt", v."Description", v."DestinationId", v."Duration", v."Latitude", v."Longitude", v."ModifiedAt", v."Name", v."PhotoUrl", v."Price", ROW_NUMBER() OVER(PARTITION BY v."Id" ORDER BY v."Id") AS row
+        FROM "VisitPlace" AS v
+    ) AS v0
+    WHERE v0.row <= 1
+) AS v1 ON c."ItemId" = v1."Id"
+LEFT JOIN (
+    SELECT t0."Id", t0."CreatedAt", t0."CreatedBy", t0."EndDate", t0."Latitude", t0."Longitude", t0."ModifiedAt", t0."StartDate", t0."Status", t0."Title", t0."TotalPrice"
+    FROM (
+        SELECT t."Id", t."CreatedAt", t."CreatedBy", t."EndDate", t."Latitude", t."Longitude", t."ModifiedAt", t."StartDate", t."Status", t."Title", t."TotalPrice", ROW_NUMBER() OVER(PARTITION BY t."Id" ORDER BY t."Id") AS row
+        FROM "Trip" AS t
+    ) AS t0
+    WHERE t0.row <= 1
+) AS t1 ON c."ItemId" = t1."Id"
+WHERE (c."ItemType" = 1 AND c."ItemId" = ANY (@__destinationIds_0)) OR (c."ItemType" = 2 AND c."ItemId" = ANY (@__accommodationIds_1)) OR (c."ItemType" = 3 AND c."ItemId" = ANY (@__visitPlaceIds_2)) OR (c."ItemType" = 4 AND c."ItemId" = ANY (@__tripIds_3))
+2025-01-12 15:46:49.086 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 11.2085ms
+2025-01-12 15:46:49.088 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:46:49.098 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 500 null application/json 26.5661ms
+2025-01-12 15:47:16.360 +01:00 [INF] User profile is available. Using 'C:\Users\Maciek\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-12 15:47:16.497 +01:00 [INF] Now listening on: https://localhost:7154
+2025-01-12 15:47:16.498 +01:00 [INF] Now listening on: http://localhost:5219
+2025-01-12 15:47:16.539 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-12 15:47:16.540 +01:00 [INF] Hosting environment: Development
+2025-01-12 15:47:16.540 +01:00 [INF] Content root path: C:\Project\trips\backend\backend
+2025-01-12 15:47:17.089 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2025-01-12 15:47:17.207 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 120.9383ms
+2025-01-12 15:47:17.256 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2025-01-12 15:47:17.256 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2025-01-12 15:47:17.256 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2025-01-12 15:47:17.259 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 2.9687ms
+2025-01-12 15:47:17.266 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 10.362ms
+2025-01-12 15:47:17.277 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 21.6847ms
+2025-01-12 15:47:17.382 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2025-01-12 15:47:17.414 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 31.9027ms
+2025-01-12 15:47:20.145 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 15:47:20.149 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:47:20.214 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:47:20.223 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-12 15:47:21.038 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-12 15:47:21.060 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 833.7446ms
+2025-01-12 15:47:21.062 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:47:21.121 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 500 null application/json 975.7658ms
+2025-01-12 15:47:21.863 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Authentication/user - null null
+2025-01-12 15:47:21.863 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 15:47:21.867 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:47:21.867 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:47:21.868 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-12 15:47:21.869 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:47:21.870 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-12 15:47:21.871 +01:00 [INF] Route matched with {action = "GetCurrentUser", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentUser() on controller backend.Controllers.AuthenticationController (backend).
+2025-01-12 15:47:21.930 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-12 15:47:21.933 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 62.2978ms
+2025-01-12 15:47:21.935 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:47:21.976 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 500 null application/json 112.6718ms
+2025-01-12 15:47:22.269 +01:00 [INF] Executed DbCommand (35ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."LastName", a."LastUpdated", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__p_0
+LIMIT 1
+2025-01-12 15:47:22.366 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-01-12 15:47:22.369 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[backend.Domain.DTO.Authentication.AccountDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-12 15:47:22.374 +01:00 [INF] Executed action backend.Controllers.AuthenticationController.GetCurrentUser (backend) in 501.6538ms
+2025-01-12 15:47:22.375 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Authentication/user - null null
+2025-01-12 15:47:22.375 +01:00 [INF] Executed endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-12 15:47:22.377 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:47:22.378 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-12 15:47:22.379 +01:00 [INF] Route matched with {action = "GetCurrentUser", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentUser() on controller backend.Controllers.AuthenticationController (backend).
+2025-01-12 15:47:22.379 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Authentication/user - 200 null application/json; charset=utf-8 515.8077ms
+2025-01-12 15:47:22.390 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."LastName", a."LastUpdated", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__p_0
+LIMIT 1
+2025-01-12 15:47:22.392 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-01-12 15:47:22.394 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[backend.Domain.DTO.Authentication.AccountDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-12 15:47:22.394 +01:00 [INF] Executed action backend.Controllers.AuthenticationController.GetCurrentUser (backend) in 14.7944ms
+2025-01-12 15:47:22.395 +01:00 [INF] Executed endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-12 15:47:22.396 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Authentication/user - 200 null application/json; charset=utf-8 21.0851ms
+2025-01-12 15:47:22.988 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 15:47:22.990 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:47:22.990 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:47:22.991 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-12 15:47:23.017 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-12 15:47:23.019 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 27.2564ms
+2025-01-12 15:47:23.020 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:47:23.029 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 500 null application/json 40.7748ms
+2025-01-12 15:47:25.045 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 15:47:25.047 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:47:25.047 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:47:25.048 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-12 15:47:25.075 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-12 15:47:25.077 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 28.202ms
+2025-01-12 15:47:25.078 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:47:25.089 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 500 null application/json 44.2247ms
+2025-01-12 15:47:29.100 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 15:47:29.102 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:47:29.103 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:47:29.104 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-12 15:47:29.133 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-12 15:47:29.135 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 30.1965ms
+2025-01-12 15:47:29.136 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:47:29.147 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 500 null application/json 46.6951ms
+2025-01-12 15:47:42.106 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 15:47:42.108 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:47:42.109 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Authentication/user - null null
+2025-01-12 15:47:42.109 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:47:42.112 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:47:42.112 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-12 15:47:42.113 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-12 15:47:44.300 +01:00 [INF] Route matched with {action = "GetCurrentUser", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentUser() on controller backend.Controllers.AuthenticationController (backend).
+2025-01-12 15:48:06.466 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-12 15:48:06.466 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Authentication/user - null null
+2025-01-12 15:48:06.468 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 24354.1694ms
+2025-01-12 15:48:06.469 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:48:06.470 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:48:06.470 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."LastName", a."LastUpdated", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__p_0
+LIMIT 1
+2025-01-12 15:48:06.470 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-12 15:48:06.480 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 500 null application/json 24373.8269ms
+2025-01-12 15:48:06.481 +01:00 [INF] Route matched with {action = "GetCurrentUser", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentUser() on controller backend.Controllers.AuthenticationController (backend).
+2025-01-12 15:48:06.482 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-01-12 15:48:06.485 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[backend.Domain.DTO.Authentication.AccountDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-12 15:48:06.486 +01:00 [INF] Executed action backend.Controllers.AuthenticationController.GetCurrentUser (backend) in 21767.4765ms
+2025-01-12 15:48:06.487 +01:00 [INF] Executed endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-12 15:48:06.488 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Authentication/user - 200 null application/json; charset=utf-8 24379.7286ms
+2025-01-12 15:48:06.512 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."LastName", a."LastUpdated", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__p_0
+LIMIT 1
+2025-01-12 15:48:06.515 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-01-12 15:48:06.516 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[backend.Domain.DTO.Authentication.AccountDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-12 15:48:06.517 +01:00 [INF] Executed action backend.Controllers.AuthenticationController.GetCurrentUser (backend) in 32.6824ms
+2025-01-12 15:48:06.518 +01:00 [INF] Executed endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-12 15:48:06.518 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Authentication/user - 200 null application/json; charset=utf-8 52.1589ms
+2025-01-12 15:48:07.489 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 15:48:07.491 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:48:07.492 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:48:07.492 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-12 15:49:19.120 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Runtime.CompilerServices.IAsyncStateMachine, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-12 15:49:19.154 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 15:49:19.155 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Authentication/user - null null
+2025-01-12 15:49:19.186 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:49:19.192 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:49:19.185 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Authentication/user - null null
+2025-01-12 15:49:19.185 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 15:49:19.194 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 71700.9243ms
+2025-01-12 15:49:19.195 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:49:19.195 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-12 15:49:19.202 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-12 15:49:19.196 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:49:19.197 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:49:19.203 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:49:19.204 +01:00 [INF] Route matched with {action = "GetCurrentUser", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentUser() on controller backend.Controllers.AuthenticationController (backend).
+2025-01-12 15:51:47.340 +01:00 [INF] User profile is available. Using 'C:\Users\Maciek\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-12 15:51:47.488 +01:00 [INF] Now listening on: https://localhost:7154
+2025-01-12 15:51:47.489 +01:00 [INF] Now listening on: http://localhost:5219
+2025-01-12 15:51:47.535 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-12 15:51:47.536 +01:00 [INF] Hosting environment: Development
+2025-01-12 15:51:47.537 +01:00 [INF] Content root path: C:\Project\trips\backend\backend
+2025-01-12 15:51:48.054 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2025-01-12 15:51:48.170 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 118.837ms
+2025-01-12 15:51:48.223 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2025-01-12 15:51:48.223 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2025-01-12 15:51:48.223 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2025-01-12 15:51:48.227 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 3.381ms
+2025-01-12 15:51:48.238 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 15.1749ms
+2025-01-12 15:51:48.251 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 28.1207ms
+2025-01-12 15:51:48.353 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2025-01-12 15:51:48.392 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 39.0867ms
+2025-01-12 15:51:49.542 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-12 15:51:49.542 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-12 15:51:49.546 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:51:49.546 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:51:49.548 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - 204 null null 5.9496ms
+2025-01-12 15:51:49.548 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - 204 null null 5.9678ms
+2025-01-12 15:51:49.553 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-12 15:51:49.553 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-12 15:51:49.555 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:51:49.555 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:51:49.653 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-12 15:51:49.653 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-12 15:51:49.669 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2025-01-12 15:51:49.669 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2025-01-12 15:51:53.319 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 15:51:53.380 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:51:53.381 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 3708.8764ms
+2025-01-12 15:51:53.382 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:51:53.383 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-12 15:51:53.520 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-12 15:51:53.613 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 500 null application/json 4060.3925ms
+2025-01-12 15:52:00.615 +01:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 10944.3559ms
+2025-01-12 15:52:00.648 +01:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-12 15:52:00.715 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - 500 null application/json 11162.0517ms
+2025-01-12 15:52:02.261 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 8739.9389ms
+2025-01-12 15:52:02.262 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:52:02.273 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 500 null application/json 8953.9642ms
+2025-01-12 15:52:03.278 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 15:52:03.280 +01:00 [INF] CORS policy execution successful.
+2025-01-12 15:52:03.281 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 15:52:03.283 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-12 15:55:24.686 +01:00 [INF] User profile is available. Using 'C:\Users\Maciek\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-12 15:55:24.855 +01:00 [INF] Now listening on: https://localhost:7154
+2025-01-12 15:55:24.856 +01:00 [INF] Now listening on: http://localhost:5219
+2025-01-12 15:55:24.895 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-12 15:55:24.895 +01:00 [INF] Hosting environment: Development
+2025-01-12 15:55:24.896 +01:00 [INF] Content root path: C:\Project\trips\backend\backend
+2025-01-12 15:55:25.366 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2025-01-12 15:55:25.477 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 113.4598ms
+2025-01-12 15:55:25.523 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2025-01-12 15:55:25.523 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2025-01-12 15:55:25.523 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2025-01-12 15:55:25.527 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 3.5128ms
+2025-01-12 15:55:25.539 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 15.5506ms
+2025-01-12 15:55:25.552 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.0179ms
+2025-01-12 15:55:25.655 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2025-01-12 15:55:25.685 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 30.742ms
+2025-01-12 23:56:37.430 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-12 23:56:37.438 +01:00 [INF] CORS policy execution successful.
+2025-01-12 23:56:37.515 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-12 23:56:37.527 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).

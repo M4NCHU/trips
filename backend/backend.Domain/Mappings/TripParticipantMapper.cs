@@ -9,8 +9,6 @@ namespace backend.Domain.Mappings
     {
         public SelectedPlacesMapper()
         {
-
-            // Map SelectedPlaceModel to SelectedPlaceDTO
             CreateMap<SelectedPlaceModel, SelectedPlaceDTO>();
         }
     }

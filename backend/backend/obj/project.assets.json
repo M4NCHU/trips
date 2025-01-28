@@ -3601,6 +3601,7 @@
           "Serilog.Sinks.Console": "6.0.0",
           "Serilog.Sinks.File": "6.0.0",
           "Swashbuckle.AspNetCore": "7.2.0",
+          "System.Text.Json": "9.0.0",
           "backend.Domain": "1.0.0",
           "backend.Infrastructure": "1.0.0",
           "xunit": "2.9.2"
@@ -3625,6 +3626,7 @@
           "Serilog.Sinks.Console": "6.0.0",
           "Serilog.Sinks.File": "6.0.0",
           "Swashbuckle.AspNetCore": "7.2.0",
+          "System.Text.Json": "9.0.0",
           "xunit": "2.9.2"
         },
         "compile": {
@@ -3652,6 +3654,7 @@
           "Serilog.Sinks.Console": "6.0.0",
           "Serilog.Sinks.File": "6.0.0",
           "Swashbuckle.AspNetCore": "7.2.0",
+          "System.Text.Json": "9.0.0",
           "backend.Domain": "1.0.0",
           "xunit": "2.9.2"
         },
@@ -9520,6 +9523,7 @@
       "Serilog.Sinks.Console >= 6.0.0",
       "Serilog.Sinks.File >= 6.0.0",
       "Swashbuckle.AspNetCore >= 7.2.0",
+      "System.Text.Json >= 9.0.0",
       "backend.Application >= 1.0.0",
       "backend.Domain >= 1.0.0",
       "backend.Infrastructure >= 1.0.0",
@@ -9666,6 +9670,10 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[7.2.0, )"
+          },
+          "System.Text.Json": {
+            "target": "Package",
+            "version": "[9.0.0, )"
           },
           "xunit": {
             "target": "Package",

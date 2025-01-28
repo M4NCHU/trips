@@ -7,7 +7,6 @@ import { Trip } from "../types/TripTypes";
 import { fetchData } from "./apiUtils";
 import toast from "react-hot-toast";
 
-// Adding trip participant
 export const UseCreateTripParticipant = () => {
   const mutation = useMutation({
     mutationFn: async (formData: FormData) => {
@@ -30,7 +29,6 @@ export const UseCreateTripParticipant = () => {
   return mutation;
 };
 
-// Get trip participant by id
 export const UseTripParticipant = (tripId: string | undefined) => {
   return useQuery<TripParticipant[], Error>({
     queryKey: ["tripParticipantsByTripId", tripId],

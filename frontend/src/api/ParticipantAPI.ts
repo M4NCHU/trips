@@ -3,7 +3,6 @@ import { Participant } from "../types/ParticipantTypes";
 import { fetchData } from "./apiUtils";
 import toast from "react-hot-toast";
 
-// Get all  participants
 export const useParticipants = (page = 1, pageSize = 2) => {
   return useQuery<Participant[], Error>({
     queryKey: ["Participants", page, pageSize],
@@ -15,7 +14,6 @@ export const useParticipants = (page = 1, pageSize = 2) => {
   });
 };
 
-// Get participant by id
 export const useParticipantById = (id: string) => {
   return useQuery<Participant, Error>({
     queryKey: ["ParticipantById", id],
@@ -25,25 +23,6 @@ export const useParticipantById = (id: string) => {
   });
 };
 
-// Update participant
-// export const useUpdateParticipant = () => {
-//   const queryClient = useQueryClient();
-
-//   return useMutation<void, Error, { id: string; Participant: Participant }>(
-//     ({ id, Participant }) => fetchData<void>(`/api/Participant/${id}`, {
-//       method: "put",
-//       data: Participant,
-//     }),
-//     {
-//       onSuccess: () => {
-//         // Invalidate and refetch the  participants query
-//         queryClient.invalidateQueries("Participants");
-//       },
-//     }
-//   );
-// };
-
-// Create  participant
 export const UseCreateParticipant = () => {
   const mutation = useMutation({
     mutationFn: async (formData: FormData) => {
@@ -62,20 +41,3 @@ export const UseCreateParticipant = () => {
   });
   return mutation;
 };
-
-// Delete  participant
-// export const useDeleteParticipant = () => {
-//   const queryClient = useQueryClient();
-
-//   return useMutation<void, Error, number>(
-//     (id) => fetchData<void>(`/api/Participant/${id}`, {
-//       method: "delete",
-//     }),
-//     {
-//       onSuccess: () => {
-//         // Invalidate and refetch the  participants query
-//         queryClient.invalidateQueries("Participants");
-//       },
-//     }
-//   );
-// };

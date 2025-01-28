@@ -1,4 +1,3 @@
-// api/destinations.timport { useQuery } from "@tanstack/react-query";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { usePagination } from "../hooks/usePagination";
 import {
@@ -14,8 +13,6 @@ import { ZodError, z } from "zod";
 export interface DestinationFilter {
   categoryId?: string;
 }
-
-// Get destinations with pagination
 
 export const useDestinationList = (filter?: any, pageSize = 20) => {
   const {
@@ -46,7 +43,6 @@ export const useDestinationList = (filter?: any, pageSize = 20) => {
   };
 };
 
-// Get destination by id
 export const useDestinationById = (id: string | undefined) => {
   return useQuery<DestinationCategory, Error>({
     queryKey: ["destination", id],
@@ -71,7 +67,6 @@ export const useSearchDestinations = (searchTerm: string) => {
   });
 };
 
-// Adding destination
 export const UseCreateDestination = () => {
   const mutation = useMutation({
     mutationFn: async (formData: FormData) => {
@@ -81,7 +76,8 @@ export const UseCreateDestination = () => {
           {
             method: "post",
             data: formData,
-          }
+          },
+          true
         );
         return response;
       } catch (error: any) {

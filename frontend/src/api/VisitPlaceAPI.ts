@@ -1,11 +1,7 @@
-// api/visitPlaces.timport { useQuery } from "@tanstack/react-query";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { CreateVisitPlace, VisitPlace } from "../types/VisitPlaceTypes";
 import { fetchData } from "./apiUtils";
 
-// // Get visitPlace by id
-
-// Adding visitPlace
 export const UseCreateVisitPlace = () => {
   const mutation = useMutation({
     mutationFn: async (formData: FormData) => {
@@ -25,7 +21,7 @@ export const UseCreateVisitPlace = () => {
   });
   return mutation;
 };
-// Get visitPlace by destination id
+
 export const useVisitPlacesByDestination = (id: string | undefined) => {
   return useQuery<VisitPlace[], Error>({
     queryKey: ["visitPlaceByDestination", id],
@@ -39,7 +35,6 @@ export const useVisitPlacesByDestination = (id: string | undefined) => {
   });
 };
 
-// Get visitPlace by destination id
 export const useVisitPlacesById = (id: string | undefined) => {
   return useQuery<VisitPlace, Error>({
     queryKey: ["visitPlaceById", id],

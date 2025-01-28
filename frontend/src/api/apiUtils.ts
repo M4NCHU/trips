@@ -1,7 +1,7 @@
-// api/apiUtils.ts
 import axios, { AxiosResponse, AxiosError } from "axios";
 import { PagedResult } from "src/types/PagedResult";
 import { isAuthenticated } from "../utils/authUtils";
+import { getCookie } from "src/utils/cookiesUtils";
 
 axios.defaults.baseURL =
   process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
@@ -42,11 +42,15 @@ export const fetchData = async <T>(
 
     const fullUrl = queryParams.toString() ? `${url}?${queryParams}` : url;
 
+    const authHeader = includeAuth
+      ? { Authorization: `Bearer ${getCookie("jwt")}` }
+      : {};
+
     const response: AxiosResponse<T> = await axios({
       method,
       url: fullUrl,
       data,
-      headers,
+      headers: { ...headers, ...authHeader },
     });
     return response.data;
   } catch (error) {

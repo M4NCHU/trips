@@ -1,3 +1,4 @@
+import { GeoLocation } from "./GeoLocation/GeoLocation";
 import { Category } from "./Category";
 import { VisitPlace } from "./VisitPlaceTypes";
 
@@ -10,6 +11,7 @@ export type Destination = {
   price: number;
   categoryId: string;
   visitPlaces: VisitPlace[];
+  geoLocation: GeoLocation;
 };
 
 export type CreateDestination = {

@@ -10,11 +10,11 @@ import FormHeader from "../../Forms/FormHeader";
 import Input from "../../Forms/Input";
 import { useNavigate } from "react-router-dom";
 import IconPicker from "src/components/Icons/IconPicker";
-import { Category } from "src/types/Category"; // Zakładam, że masz taki typ danych
+import { Category } from "src/types/Category";
 
 interface CreateCategoryFormProps {
-  category?: Category | null; // Może być przekazana kategoria do edycji
-  isEditMode?: boolean; // Tryb edycji
+  category?: Category | null;
+  isEditMode?: boolean;
 }
 
 interface FormValues {

@@ -6,7 +6,7 @@ export default function Switcher() {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
-    <button className="cursor-pointer p-1" onClick={toggleTheme}>
+    <button className="cursor-pointer" onClick={toggleTheme}>
       {isDarkMode ? <MdOutlineWbSunny /> : <FiMoon />}
     </button>
   );

@@ -9,8 +9,6 @@ namespace backend.Domain.Mappings
     {
         public VisitPlaceMapper()
         {
-
-            // Map VisitPlace to VisitPlaceDTO
             CreateMap<VisitPlaceModel, VisitPlaceDTO>();
         }
     }

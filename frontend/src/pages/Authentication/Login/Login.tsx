@@ -77,6 +77,7 @@ const Login: FC<LoginProps> = ({}) => {
             <div className="flex flex-col w-full gap-2">
               <h2 className="text-xl font-bold border-b-2 py-2 mb-4 ">Login</h2>
               <Input
+                className="bg-background p-3 rounded-lg"
                 placeholder="Enter username"
                 label="Username"
                 name="username"
@@ -87,6 +88,7 @@ const Login: FC<LoginProps> = ({}) => {
               />
 
               <Input
+                className="bg-background p-3 rounded-lg"
                 placeholder="Enter password"
                 label="Password"
                 type="password"

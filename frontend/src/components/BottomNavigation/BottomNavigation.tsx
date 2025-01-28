@@ -1,8 +1,7 @@
 import { FC, useState, useEffect } from "react";
-import { GoHome } from "react-icons/go";
-import BNavLink from "./BNavLink"; // Make sure this is your import
+import BNavLink from "./BNavLink";
 import { FaRegHeart } from "react-icons/fa";
-import Switcher from "../ui/Switcher"; // Make sure this is your import
+import Switcher from "../ui/Switcher";
 import { FiPhone } from "react-icons/fi";
 import SearchModal from "../Modals/SearchModal";
 
@@ -14,7 +13,6 @@ const BottomNavigation: FC<BottomNavigationProps> = () => {
 
   const controlNavbar = () => {
     if (typeof window !== "undefined") {
-      // Checks if window object is available
       setVisible(window.scrollY < lastScrollY || window.scrollY === 0);
       setLastScrollY(window.scrollY);
     }

@@ -1,4 +1,3 @@
-import DestinationDetails from "../components/Destinations/DestinationDetails";
 import { routerType } from "../types/Router";
 import Admin from "./Admin/Admin";
 import CategoryAdmin from "./Admin/Categories/Categories";
@@ -6,12 +5,18 @@ import CreateDestination from "./Admin/Destinations/Create";
 import DestinationsAdmin from "./Admin/Destinations/Destinations";
 import Login from "./Authentication/Login/Login";
 import Register from "./Authentication/Register/Register";
+import Cart from "./Cart/Cart";
 import UseCreateCategory from "./Categories/Create";
 import Contact from "./Contact/Contact";
 import Destinations from "./Destinations/Destinations";
+import Details from "./Destinations/Details";
 import Home from "./Home/Home";
 import ChooseTripScheme from "./Planning/ChooseTripScheme";
 import Planning from "./Planning/Planning";
+import Profile from "./Profile/Profile";
+import Reservation from "./Profile/Reservations/Reservation";
+import Reservations from "./Profile/Reservations/Reservations";
+import Resume from "./Resume/Resume";
 import CreateVisitPlace from "./VisitPlaces/Create";
 
 const pagesData: routerType[] = [
@@ -37,7 +42,7 @@ const pagesData: routerType[] = [
 
   {
     path: "destination/:id",
-    element: <DestinationDetails />,
+    element: <Details />,
     title: "Destination Details",
     isProtected: false,
   },
@@ -55,12 +60,49 @@ const pagesData: routerType[] = [
     title: "Plan your trip",
     isProtected: true,
   },
+
   {
     path: "planning",
     element: <ChooseTripScheme />,
     title: "Choose trip scheme",
     isProtected: true,
   },
+
+  {
+    path: "cart",
+    element: <Cart />,
+    title: "Cart",
+    isProtected: false,
+  },
+
+  {
+    path: "resume",
+    element: <Resume />,
+    title: "Resume",
+    isProtected: false,
+  },
+
+  {
+    path: "profile",
+    element: <Profile />,
+    title: "Profile",
+    isProtected: true,
+  },
+
+  {
+    path: "profile/reservations",
+    element: <Reservations />,
+    title: "Reservations",
+    isProtected: true,
+  },
+
+  {
+    path: "profile/reservations/:id",
+    element: <Reservation />,
+    title: "Reservation details",
+    isProtected: true,
+  },
+
   {
     path: "login",
     element: <Login />,

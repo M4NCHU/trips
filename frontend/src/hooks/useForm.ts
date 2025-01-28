@@ -2,7 +2,6 @@ import { useState, ChangeEvent } from "react";
 import toast from "react-hot-toast";
 import { ZodError, ZodSchema } from "zod";
 
-// Define a generic type for the useForm hook
 type UseForm<T> = {
   values: T;
   errors: Record<keyof T, string>;
@@ -13,7 +12,6 @@ type UseForm<T> = {
   reset: () => void;
 };
 
-// useForm hook
 const useForm = <T extends Record<string, any>>(
   initialValues: T,
   validator: ZodSchema<T>
@@ -29,7 +27,7 @@ const useForm = <T extends Record<string, any>>(
       ...values,
       [name]: value,
     });
-    // Optionally clear validation error for a field when it's edited
+
     if (errors[name]) {
       setErrors({
         ...errors,

@@ -2,7 +2,7 @@ import { FC } from "react";
 
 interface ProductsSectionHeaderProps {
   title: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const ProductsSectionHeader: FC<ProductsSectionHeaderProps> = ({

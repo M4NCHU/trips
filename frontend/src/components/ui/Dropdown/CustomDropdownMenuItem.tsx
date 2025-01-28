@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 interface CustomDropdownMenuItemProps {
   label: string;
-  href?: string; // href jest teraz opcjonalne
+  href?: string;
   icon?: ReactNode;
   variant?: "default" | "primary" | "danger";
   className?: string;
-  onClick?: () => void; // Opcjonalna akcja
+  onClick?: () => void;
 }
 
 const CustomDropdownMenuItem: React.FC<CustomDropdownMenuItemProps> = ({
@@ -26,7 +26,6 @@ const CustomDropdownMenuItem: React.FC<CustomDropdownMenuItemProps> = ({
 
   const itemClasses = `p-2 w-full flex justify-start items-center gap-2 text-base rounded-lg ${variantClasses[variant]} ${className}`;
 
-  // Renderowanie jako przycisk lub link w zależności od dostarczonych propsów
   return href ? (
     <Link className={itemClasses} to={href}>
       {icon && <span className="icon-container">{icon}</span>}

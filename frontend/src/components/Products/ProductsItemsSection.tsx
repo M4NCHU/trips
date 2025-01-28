@@ -6,7 +6,7 @@ interface ProductsItemsSectionProps {
 
 const ProductsItemsSection: FC<ProductsItemsSectionProps> = ({ children }) => {
   return (
-    <div className="grow bg-secondary flex-col p-4 gap-[1rem]">{children}</div>
+    <div className="grow bg-secondary flex-col gap-[1rem]">{children}</div>
   );
 };
 
