@@ -1,17 +1,17 @@
 import { FC, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { Button } from "src/components/ui/button";
 import ProfileNav from "src/components/Profile/ProfileNav/ProfileNav";
 import { useGetReservationById } from "src/api/ResumeAPI";
-import { ReservationDTO } from "src/types/Resume/ReservationDTO";
+import { useDestinationById } from "src/api/Destinations";
 
 interface ReservationDetailsProps {}
 
 const ReservationDetails: FC<ReservationDetailsProps> = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+
   const {
     data: reservation,
     isLoading,
@@ -49,7 +49,7 @@ const ReservationDetails: FC<ReservationDetailsProps> = () => {
             <strong>Total Price:</strong> {reservation.totalPrice.toFixed(2)} zł
           </p>
           <p>
-            <strong>Status:</strong>{" "}
+            <strong>Status:</strong> {reservation.status}
           </p>
           <p>
             <strong>Created At:</strong>{" "}
@@ -57,19 +57,9 @@ const ReservationDetails: FC<ReservationDetailsProps> = () => {
           </p>
           <h2 className="text-lg font-bold mt-4">Items</h2>
           <ul className="list-disc list-inside">
-            {reservation.reservationItems?.map((item, index) => (
-              <li key={item.itemId} className="mt-2">
-                <p>
-                  <strong>Item ID:</strong> {item.itemId}
-                </p>
-                <p>
-                  <strong>Price:</strong> {item.price} zł
-                </p>
-                <p>
-                  <strong>Quantity:</strong> {item.quantity}
-                </p>
-              </li>
-            ))}
+            {reservation.reservationItems?.map((item, index) => {
+              return <ReservationItem key={item.itemId} item={item} />;
+            })}
           </ul>
           <Button
             onClick={() => navigate("/profile/reservations")}
@@ -80,6 +70,46 @@ const ReservationDetails: FC<ReservationDetailsProps> = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+// 🔥 WYDZIELONY KOMPONENT, ABY MÓC UŻYWAĆ HOOKÓW POZA PĘTLĄ
+const ReservationItem: FC<{
+  item: { itemId: string; price: number; quantity: number };
+}> = ({ item }) => {
+  const {
+    data: destination,
+    isLoading,
+    isError,
+  } = useDestinationById(item.itemId);
+
+  return (
+    <li className="mt-2">
+      <p>
+        <strong>Item ID:</strong> {item.itemId}
+      </p>
+      <p>
+        <strong>Price:</strong> {item.price} zł
+      </p>
+      <p>
+        <strong>Quantity:</strong> {item.quantity}
+      </p>
+      {isLoading ? (
+        <p>Loading destination...</p>
+      ) : isError || !destination ? (
+        <p>Failed to load destination details.</p>
+      ) : (
+        <>
+          <p>
+            <strong>Destination Name:</strong> {destination.name}
+          </p>
+          <p>
+            <strong>Destination Price:</strong> {destination.price.toFixed(2)}{" "}
+            zł
+          </p>
+        </>
+      )}
+    </li>
   );
 };
 

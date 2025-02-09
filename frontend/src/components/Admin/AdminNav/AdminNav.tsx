@@ -13,8 +13,6 @@ const AdminNav: FC<AdminNavProps> = ({}) => {
         <ul className="admin-link-ul flex flex-row">
           <AdminLink link={"/admin/destinations"} title={"Destinations"} />
           <AdminLink link={"/admin/categories"} title={"Categories"} />
-          <AdminLink link={"/admin/trips"} title={"Trips"} />
-          <AdminLink link={"/admin/settings"} title={"Settings"} />
         </ul>
       </div>
     </div>

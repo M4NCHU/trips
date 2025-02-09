@@ -32,7 +32,7 @@ namespace backend.Domain.Mappings
                 .ForMember(dest => dest.GeoLocation, opt => opt.Ignore());
 
 
-            CreateMap<DestinationModel, ResponseDestinationDTO>()
+            CreateMap<DestinationModel, ResponseAccomodationDTO>()
                .ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom((src, dest, destMember, context) =>
                    src.PhotoUrl != null ? $"{context.Items["BaseUrl"]}/Images/Destinations/{src.PhotoUrl}" : null))
                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))

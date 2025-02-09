@@ -26,6 +26,9 @@ namespace backend.Domain.DTOs
         public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
         public IFormFile ImageFile { get; set; }
+        public Guid? GeoLocationId { get; set; }
+        public GeoLocationDTO? GeoLocation { get; set; }
+
 
     }
 

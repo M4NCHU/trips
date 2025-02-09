@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "src/context/UserContext";
 import { useRoleChecker } from "src/hooks/useRoleChecker";
 
@@ -9,16 +9,23 @@ const ProtectedRoute = ({
   children: any;
   roles?: string[];
 }) => {
-  const { user } = useAuth();
+  const { user, isAuthenticated, isLoading } = useAuth();
   const { hasRole } = useRoleChecker();
-  const navigate = useNavigate();
 
-  if (!user) {
-    return <Navigate to="/login" />;
+  console.log("User:", user);
+  console.log("isAuthenticated:", isAuthenticated());
+  console.log("isLoading:", isLoading);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (!isAuthenticated()) {
+    return <Navigate to="/login" replace />;
   }
 
   if (roles && !roles.some((role) => hasRole(role))) {
-    return <Navigate to="/" />;
+    return <Navigate to="/" replace />;
   }
 
   return children;

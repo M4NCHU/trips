@@ -23,7 +23,6 @@ export const useAddToCart = () => {
           method: "post",
           data: item,
         });
-        toast.success("Item added to cart successfully!");
         return response;
       } catch (error: any) {
         toast.error("Failed to add item to cart. Please try again.");

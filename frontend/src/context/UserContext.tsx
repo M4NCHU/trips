@@ -1,4 +1,3 @@
-// UserContext.tsx
 import React, { createContext, useState, useContext, useEffect } from "react";
 import toast from "react-hot-toast";
 import { User } from "src/types/UserTypes";
@@ -10,6 +9,7 @@ interface UserContextType {
   setUser: (user: User | null) => void;
   logout: () => void;
   isAuthenticated: () => boolean;
+  isLoading: boolean;
 }
 
 const UserContext = createContext<UserContextType | null>(null);
@@ -27,19 +27,28 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const { get, set } = useCookies();
   const [user, setUser] = useState<User | null>(null);
-
-  const fetchAndSetCurrentUser = async () => {
-    const fetchedUser = await fetchCurrentUser();
-    setUser(fetchedUser);
-  };
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const isAuthenticatedCookie = get("isAuthenticated");
-    if (isAuthenticatedCookie === "true") {
-      fetchAndSetCurrentUser();
-    } else {
-      setUser(null);
-    }
+    const checkAuthentication = async () => {
+      const isAuthenticatedCookie = get("isAuthenticated");
+
+      if (isAuthenticatedCookie === "true") {
+        try {
+          const fetchedUser = await fetchCurrentUser();
+          setUser(fetchedUser);
+        } catch (error) {
+          console.error("Błąd podczas pobierania użytkownika:", error);
+          setUser(null);
+        }
+      } else {
+        setUser(null);
+      }
+
+      setIsLoading(false);
+    };
+
+    checkAuthentication();
   }, []);
 
   const logout = async () => {
@@ -55,12 +64,13 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const isAuthenticated = (): boolean => {
-    const isAuthenticatedCookie = get("isAuthenticated");
-    return user !== null && isAuthenticatedCookie === "true";
+    return user !== null && get("isAuthenticated") === "true";
   };
 
   return (
-    <UserContext.Provider value={{ user, setUser, logout, isAuthenticated }}>
+    <UserContext.Provider
+      value={{ user, setUser, logout, isAuthenticated, isLoading }}
+    >
       {children}
     </UserContext.Provider>
   );

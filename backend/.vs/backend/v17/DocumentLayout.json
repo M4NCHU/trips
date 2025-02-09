@@ -3,35 +3,129 @@
   "WorkspaceRootPath": "C:\\Project\\trips\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\1dbf088aa0922badf378d816f9b3bd6b56c4cf88443c29b5228222ba496acf63\\backend\\backend.Application\\Services\\Interfaces\\IDestinationsService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|c:\\project\\trips\\backend\\backend.domain\\mappings\\acommodationmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\mappings\\acommodationmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|c:\\project\\trips\\backend\\backend.application\\services\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|c:\\project\\trips\\backend\\backend.application\\services\\accommodationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\accommodationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|c:\\project\\trips\\backend\\backend\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|c:\\project\\trips\\backend\\backend.domain\\mappings\\destinationmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\mappings\\destinationmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|c:\\project\\trips\\backend\\backend.application\\services\\interfaces\\iaccommodationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\interfaces\\iaccommodationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|c:\\project\\trips\\backend\\backend\\controllers\\accommodationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\controllers\\accommodationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|c:\\project\\trips\\backend\\backend.domain\\mappings\\categorymapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\mappings\\categorymapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|c:\\project\\trips\\backend\\backend.application\\services\\destinationsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\destinationsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Project\\trips\\backend\\backend.Infrastructure\\Migrations\\20250127215012_addAvailablePlacesRowToDestinations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend.Infrastructure\\Migrations\\20250127215012_addAvailablePlacesRowToDestinations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|c:\\project\\trips\\backend\\backend.domain\\dto\\accomodation\\createaccommodationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\dto\\accomodation\\createaccommodationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|c:\\project\\trips\\backend\\backend.domain\\dto\\accomodation\\responseaccomodationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\dto\\accomodation\\responseaccomodationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|c:\\project\\trips\\backend\\backend.domain\\dto\\destination\\createdestinationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\dto\\destination\\createdestinationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|c:\\project\\trips\\backend\\backend.domain\\dto\\destinationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\dto\\destinationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|c:\\project\\trips\\backend\\backend\\controllers\\tripparticipantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\controllers\\tripparticipantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\33b16e6a9aa7632cbb3b42e40cf8e049380b92214b2b0b13d2184235140696cf\\backend\\backend.Application\\Services\\AccommodationService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|c:\\project\\trips\\backend\\backend.domain\\enums\\cartitemtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\enums\\cartitemtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\e47c78c00e20f9943553fd536cdce4d57d206fc50099e3dbf60ec5cd4af09384\\backend\\backend.Domain\\enums\\TripStatusEnum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|c:\\project\\trips\\backend\\backend.domain\\enums\\tripstatusenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\enums\\tripstatusenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|c:\\project\\trips\\backend\\backend.infrastructure\\respository\\destinationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\destinationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|c:\\project\\trips\\backend\\backend.infrastructure\\respository\\interfaces\\iaccommodationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\interfaces\\iaccommodationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|c:\\project\\trips\\backend\\backend.application\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3BB5CF7-1116-4B34-B7BA-D0E889A4D5B7}|backend.UnitTests\\backend.UnitTests.csproj|c:\\project\\trips\\backend\\backend.unittests\\application\\services\\accommodationservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3BB5CF7-1116-4B34-B7BA-D0E889A4D5B7}|backend.UnitTests\\backend.UnitTests.csproj|solutionrelative:backend.unittests\\application\\services\\accommodationservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|c:\\project\\trips\\backend\\backend.domain\\models\\destinationmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\models\\destinationmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|c:\\project\\trips\\backend\\backend.infrastructure\\respository\\accommodationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\accommodationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|c:\\project\\trips\\backend\\backend.domain\\dto\\destinationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\dto\\destinationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|c:\\project\\trips\\backend\\backend.domain\\dto\\destination\\responsedestinationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\dto\\destination\\responsedestinationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|c:\\project\\trips\\backend\\backend\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|c:\\project\\trips\\backend\\backend.infrastructure\\respository\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|c:\\project\\trips\\backend\\backend\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|c:\\project\\trips\\backend\\backend.infrastructure\\respository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|c:\\project\\trips\\backend\\backend.infrastructure\\respository\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\respository\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|c:\\project\\trips\\backend\\backend.application\\services\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|c:\\project\\trips\\backend\\backend.infrastructure\\migrations\\20240219213839_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\migrations\\20240219213839_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\1dbf088aa0922badf378d816f9b3bd6b56c4cf88443c29b5228222ba496acf63\\backend\\backend.Application\\Services\\Interfaces\\IDestinationsService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|c:\\project\\trips\\backend\\backend.application\\services\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{026110F4-8A0E-4354-B577-07E7120B58B0}|backend.Application\\backend.Application.csproj|solutionrelative:backend.application\\services\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\9cf8787c225e4253833d1652ea323b0f75f21adaef44e10c22517d32f7e00d49\\backend\\backend.Domain\\DTO\\DestinationDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -64,16 +158,16 @@
       "RelativeMoniker": "D:0:0:{B2EA3184-261A-4A43-BAB9-C36BFE8AAB79}|backend.Domain\\backend.Domain.csproj|solutionrelative:backend.domain\\models\\reservationitemmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|c:\\project\\trips\\backend\\backend\\controllers\\destinationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\controllers\\destinationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|c:\\project\\trips\\backend\\backend\\controllers\\selectedplacecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\controllers\\selectedplacecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|c:\\project\\trips\\backend\\backend\\controllers\\tripparticipantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F998587-0CA2-456C-8C1B-0CF41827FAF8}|backend\\backend.csproj|solutionrelative:backend\\controllers\\tripparticipantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|c:\\project\\trips\\backend\\backend.infrastructure\\migrations\\20250209183533_accomodationgeolocation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\migrations\\20250209183533_accomodationgeolocation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|c:\\project\\trips\\backend\\backend.infrastructure\\migrations\\20250127215012_addavailableplacesrowtodestinations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71403F81-5574-454C-9112-6680E117F61E}|backend.Infrastructure\\backend.Infrastructure.csproj|solutionrelative:backend.infrastructure\\migrations\\20250127215012_addavailableplacesrowtodestinations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -83,7 +177,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -99,20 +193,327 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "IDestinationsService.cs",
-              "DocumentMoniker": "C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\1dbf088aa0922badf378d816f9b3bd6b56c4cf88443c29b5228222ba496acf63\\backend\\backend.Application\\Services\\Interfaces\\IDestinationsService.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\Users\\Maciek\\AppData\\Local\\SourceServer\\1dbf088aa0922badf378d816f9b3bd6b56c4cf88443c29b5228222ba496acf63\\backend\\backend.Application\\Services\\Interfaces\\IDestinationsService.cs",
-              "ToolTip": "C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\1dbf088aa0922badf378d816f9b3bd6b56c4cf88443c29b5228222ba496acf63\\backend\\backend.Application\\Services\\Interfaces\\IDestinationsService.cs",
-              "RelativeToolTip": "..\\..\\..\\Users\\Maciek\\AppData\\Local\\SourceServer\\1dbf088aa0922badf378d816f9b3bd6b56c4cf88443c29b5228222ba496acf63\\backend\\backend.Application\\Services\\Interfaces\\IDestinationsService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "CategoryMapper.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Domain\\Mappings\\CategoryMapper.cs",
+              "RelativeDocumentMoniker": "backend.Domain\\Mappings\\CategoryMapper.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Domain\\Mappings\\CategoryMapper.cs",
+              "RelativeToolTip": "backend.Domain\\Mappings\\CategoryMapper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T22:00:53.071Z",
+              "WhenOpened": "2025-02-09T20:17:15.9Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DestinationMapper.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Domain\\Mappings\\DestinationMapper.cs",
+              "RelativeDocumentMoniker": "backend.Domain\\Mappings\\DestinationMapper.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Domain\\Mappings\\DestinationMapper.cs",
+              "RelativeToolTip": "backend.Domain\\Mappings\\DestinationMapper.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwB8AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T20:17:00.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AcommodationMapper.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Domain\\Mappings\\AcommodationMapper.cs",
+              "RelativeDocumentMoniker": "backend.Domain\\Mappings\\AcommodationMapper.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Domain\\Mappings\\AcommodationMapper.cs",
+              "RelativeToolTip": "backend.Domain\\Mappings\\AcommodationMapper.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAqwBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T20:15:59.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CreateAccommodationDTO.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Domain\\DTO\\Accomodation\\CreateAccommodationDTO.cs",
+              "RelativeDocumentMoniker": "backend.Domain\\DTO\\Accomodation\\CreateAccommodationDTO.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Domain\\DTO\\Accomodation\\CreateAccommodationDTO.cs",
+              "RelativeToolTip": "backend.Domain\\DTO\\Accomodation\\CreateAccommodationDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T20:07:07.921Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "AccommodationController.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend\\Controllers\\AccommodationController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\AccommodationController.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend\\Controllers\\AccommodationController.cs",
+              "RelativeToolTip": "backend\\Controllers\\AccommodationController.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAgwC8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T20:01:07.354Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AccommodationService.cs",
+              "DocumentMoniker": "C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\33b16e6a9aa7632cbb3b42e40cf8e049380b92214b2b0b13d2184235140696cf\\backend\\backend.Application\\Services\\AccommodationService.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Users\\Maciek\\AppData\\Local\\SourceServer\\33b16e6a9aa7632cbb3b42e40cf8e049380b92214b2b0b13d2184235140696cf\\backend\\backend.Application\\Services\\AccommodationService.cs",
+              "ToolTip": "C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\33b16e6a9aa7632cbb3b42e40cf8e049380b92214b2b0b13d2184235140696cf\\backend\\backend.Application\\Services\\AccommodationService.cs",
+              "RelativeToolTip": "..\\..\\..\\Users\\Maciek\\AppData\\Local\\SourceServer\\33b16e6a9aa7632cbb3b42e40cf8e049380b92214b2b0b13d2184235140696cf\\backend\\backend.Application\\Services\\AccommodationService.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAF0AAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T19:44:55.153Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CartItemType.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Domain\\enums\\CartItemType.cs",
+              "RelativeDocumentMoniker": "backend.Domain\\enums\\CartItemType.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Domain\\enums\\CartItemType.cs",
+              "RelativeToolTip": "backend.Domain\\enums\\CartItemType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T19:34:58.792Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TripStatusEnum.cs",
+              "DocumentMoniker": "C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\e47c78c00e20f9943553fd536cdce4d57d206fc50099e3dbf60ec5cd4af09384\\backend\\backend.Domain\\enums\\TripStatusEnum.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Users\\Maciek\\AppData\\Local\\SourceServer\\e47c78c00e20f9943553fd536cdce4d57d206fc50099e3dbf60ec5cd4af09384\\backend\\backend.Domain\\enums\\TripStatusEnum.cs",
+              "ToolTip": "C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\e47c78c00e20f9943553fd536cdce4d57d206fc50099e3dbf60ec5cd4af09384\\backend\\backend.Domain\\enums\\TripStatusEnum.cs",
+              "RelativeToolTip": "..\\..\\..\\Users\\Maciek\\AppData\\Local\\SourceServer\\e47c78c00e20f9943553fd536cdce4d57d206fc50099e3dbf60ec5cd4af09384\\backend\\backend.Domain\\enums\\TripStatusEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T19:34:50.48Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "TripStatusEnum.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Domain\\enums\\TripStatusEnum.cs",
+              "RelativeDocumentMoniker": "backend.Domain\\enums\\TripStatusEnum.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Domain\\enums\\TripStatusEnum.cs",
+              "RelativeToolTip": "backend.Domain\\enums\\TripStatusEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T19:34:50.226Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "20250209183533_accomodationGeolocation.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Migrations\\20250209183533_accomodationGeolocation.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Migrations\\20250209183533_accomodationGeolocation.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Migrations\\20250209183533_accomodationGeolocation.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Migrations\\20250209183533_accomodationGeolocation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T18:35:33.237Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AccommodationServiceTests.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.UnitTests\\Application\\Services\\AccommodationServiceTests.cs",
+              "RelativeDocumentMoniker": "backend.UnitTests\\Application\\Services\\AccommodationServiceTests.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.UnitTests\\Application\\Services\\AccommodationServiceTests.cs",
+              "RelativeToolTip": "backend.UnitTests\\Application\\Services\\AccommodationServiceTests.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAQwI8AAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T18:31:16.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IAccommodationService.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Application\\Services\\Interfaces\\IAccommodationService.cs",
+              "RelativeDocumentMoniker": "backend.Application\\Services\\Interfaces\\IAccommodationService.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Application\\Services\\Interfaces\\IAccommodationService.cs",
+              "RelativeToolTip": "backend.Application\\Services\\Interfaces\\IAccommodationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T18:30:58.803Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AuthenticationService.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Application\\Services\\AuthenticationService.cs",
+              "RelativeDocumentMoniker": "backend.Application\\Services\\AuthenticationService.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Application\\Services\\AuthenticationService.cs",
+              "RelativeToolTip": "backend.Application\\Services\\AuthenticationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T18:19:10.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccommodationService.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Application\\Services\\AccommodationService.cs",
+              "RelativeDocumentMoniker": "backend.Application\\Services\\AccommodationService.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Application\\Services\\AccommodationService.cs",
+              "RelativeToolTip": "backend.Application\\Services\\AccommodationService.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAwwEwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T18:18:46.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IAccommodationRepository.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Respository\\Interfaces\\IAccommodationRepository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\Interfaces\\IAccommodationRepository.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Respository\\Interfaces\\IAccommodationRepository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\Interfaces\\IAccommodationRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T18:18:27.933Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DestinationRepository.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Respository\\DestinationRepository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\DestinationRepository.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Respository\\DestinationRepository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\DestinationRepository.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAcwDsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T18:17:14.21Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AccommodationRepository.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Respository\\AccommodationRepository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\AccommodationRepository.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Respository\\AccommodationRepository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\AccommodationRepository.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAqwCsAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T18:17:10.693Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ResponseAccomodationDTO.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Domain\\DTO\\Accomodation\\ResponseAccomodationDTO.cs",
+              "RelativeDocumentMoniker": "backend.Domain\\DTO\\Accomodation\\ResponseAccomodationDTO.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Domain\\DTO\\Accomodation\\ResponseAccomodationDTO.cs",
+              "RelativeToolTip": "backend.Domain\\DTO\\Accomodation\\ResponseAccomodationDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T18:13:56.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ResponseDestinationDTO.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Domain\\DTO\\Destination\\ResponseDestinationDTO.cs",
+              "RelativeDocumentMoniker": "backend.Domain\\DTO\\Destination\\ResponseDestinationDTO.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Domain\\DTO\\Destination\\ResponseDestinationDTO.cs",
+              "RelativeToolTip": "backend.Domain\\DTO\\Destination\\ResponseDestinationDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T18:13:33.025Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "CategoryRepository.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Respository\\CategoryRepository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\CategoryRepository.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Respository\\CategoryRepository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\CategoryRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T17:49:19.851Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\AuthenticationController.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "backend\\Controllers\\AuthenticationController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T22:32:30.632Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Respository\\Repository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\Repository.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Respository\\Repository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\Repository.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwDcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T22:30:31.634Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Respository\\Interfaces\\IRepository.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Respository\\Interfaces\\IRepository.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Respository\\Interfaces\\IRepository.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Respository\\Interfaces\\IRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T22:30:29.527Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Application\\Services\\Interfaces\\IRepository.cs",
+              "RelativeDocumentMoniker": "backend.Application\\Services\\Interfaces\\IRepository.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Application\\Services\\Interfaces\\IRepository.cs",
+              "RelativeToolTip": "backend.Application\\Services\\Interfaces\\IRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T22:30:24.276Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "20240219213839_init.cs",
+              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Migrations\\20240219213839_init.cs",
+              "RelativeDocumentMoniker": "backend.Infrastructure\\Migrations\\20240219213839_init.cs",
+              "ToolTip": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Migrations\\20240219213839_init.cs",
+              "RelativeToolTip": "backend.Infrastructure\\Migrations\\20240219213839_init.cs",
+              "ViewState": "AgIAAN4AAAAAAAAAAAAQwPcAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T22:29:08.623Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IDestinationsService.cs",
+              "DocumentMoniker": "C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\1dbf088aa0922badf378d816f9b3bd6b56c4cf88443c29b5228222ba496acf63\\backend\\backend.Application\\Services\\Interfaces\\IDestinationsService.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Users\\Maciek\\AppData\\Local\\SourceServer\\1dbf088aa0922badf378d816f9b3bd6b56c4cf88443c29b5228222ba496acf63\\backend\\backend.Application\\Services\\Interfaces\\IDestinationsService.cs",
+              "ToolTip": "C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\1dbf088aa0922badf378d816f9b3bd6b56c4cf88443c29b5228222ba496acf63\\backend\\backend.Application\\Services\\Interfaces\\IDestinationsService.cs",
+              "RelativeToolTip": "..\\..\\..\\Users\\Maciek\\AppData\\Local\\SourceServer\\1dbf088aa0922badf378d816f9b3bd6b56c4cf88443c29b5228222ba496acf63\\backend\\backend.Application\\Services\\Interfaces\\IDestinationsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-27T22:00:53.071Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
               "Title": "20250127215012_addAvailablePlacesRowToDestinations.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Infrastructure\\Migrations\\20250127215012_addAvailablePlacesRowToDestinations.cs",
               "RelativeDocumentMoniker": "backend.Infrastructure\\Migrations\\20250127215012_addAvailablePlacesRowToDestinations.cs",
@@ -120,51 +521,48 @@
               "RelativeToolTip": "backend.Infrastructure\\Migrations\\20250127215012_addAvailablePlacesRowToDestinations.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T21:50:12.27Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T21:50:12.27Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "CreateDestinationDTO.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Domain\\DTO\\Destination\\CreateDestinationDTO.cs",
               "RelativeDocumentMoniker": "backend.Domain\\DTO\\Destination\\CreateDestinationDTO.cs",
               "ToolTip": "C:\\Project\\trips\\backend\\backend.Domain\\DTO\\Destination\\CreateDestinationDTO.cs",
               "RelativeToolTip": "backend.Domain\\DTO\\Destination\\CreateDestinationDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAqwBYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-27T21:47:42.291Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 21,
               "Title": "DestinationDTO.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Domain\\DTO\\DestinationDTO.cs",
               "RelativeDocumentMoniker": "backend.Domain\\DTO\\DestinationDTO.cs",
               "ToolTip": "C:\\Project\\trips\\backend\\backend.Domain\\DTO\\DestinationDTO.cs",
               "RelativeToolTip": "backend.Domain\\DTO\\DestinationDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAowCkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T21:47:14.062Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T21:47:14.062Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 19,
               "Title": "DestinationModel.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Domain\\Models\\DestinationModel.cs",
               "RelativeDocumentMoniker": "backend.Domain\\Models\\DestinationModel.cs",
               "ToolTip": "C:\\Project\\trips\\backend\\backend.Domain\\Models\\DestinationModel.cs",
               "RelativeToolTip": "backend.Domain\\Models\\DestinationModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T21:46:15.929Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T21:46:15.929Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 32,
               "Title": "DestinationDTO.cs",
               "DocumentMoniker": "C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\9cf8787c225e4253833d1652ea323b0f75f21adaef44e10c22517d32f7e00d49\\backend\\backend.Domain\\DTO\\DestinationDTO.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Users\\Maciek\\AppData\\Local\\SourceServer\\9cf8787c225e4253833d1652ea323b0f75f21adaef44e10c22517d32f7e00d49\\backend\\backend.Domain\\DTO\\DestinationDTO.cs",
@@ -172,12 +570,11 @@
               "RelativeToolTip": "..\\..\\..\\Users\\Maciek\\AppData\\Local\\SourceServer\\9cf8787c225e4253833d1652ea323b0f75f21adaef44e10c22517d32f7e00d49\\backend\\backend.Domain\\DTO\\DestinationDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T21:45:53.124Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T21:45:53.124Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 33,
               "Title": "DestinationsService.cs",
               "DocumentMoniker": "C:\\Users\\Maciek\\AppData\\Local\\SourceServer\\c570ef07f39683dcecdb1e4b3312b52b91cb02be096b785e78abb8f11bac0a9f\\backend\\backend.Application\\Services\\DestinationsService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Users\\Maciek\\AppData\\Local\\SourceServer\\c570ef07f39683dcecdb1e4b3312b52b91cb02be096b785e78abb8f11bac0a9f\\backend\\backend.Application\\Services\\DestinationsService.cs",
@@ -190,7 +587,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 36,
               "Title": "ICartService.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Application\\Services\\Interfaces\\ICartService.cs",
               "RelativeDocumentMoniker": "backend.Application\\Services\\Interfaces\\ICartService.cs",
@@ -198,12 +595,11 @@
               "RelativeToolTip": "backend.Application\\Services\\Interfaces\\ICartService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T21:31:36.332Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T21:31:36.332Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 35,
               "Title": "CartController.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend\\Controllers\\CartController.cs",
               "RelativeDocumentMoniker": "backend\\Controllers\\CartController.cs",
@@ -211,12 +607,11 @@
               "RelativeToolTip": "backend\\Controllers\\CartController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T21:31:12.179Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T21:31:12.179Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 34,
               "Title": "CartService.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Application\\Services\\CartService.cs",
               "RelativeDocumentMoniker": "backend.Application\\Services\\CartService.cs",
@@ -224,12 +619,11 @@
               "RelativeToolTip": "backend.Application\\Services\\CartService.cs",
               "ViewState": "AgIAAFAAAAAAAAAAAAAwwFoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T21:25:04.391Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T21:25:04.391Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 39,
               "Title": "ReservationItemModel.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Domain\\Models\\ReservationItemModel.cs",
               "RelativeDocumentMoniker": "backend.Domain\\Models\\ReservationItemModel.cs",
@@ -237,12 +631,11 @@
               "RelativeToolTip": "backend.Domain\\Models\\ReservationItemModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T21:10:11.559Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T21:10:11.559Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 38,
               "Title": "ReservationModel.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Domain\\Models\\ReservationModel.cs",
               "RelativeDocumentMoniker": "backend.Domain\\Models\\ReservationModel.cs",
@@ -250,12 +643,11 @@
               "RelativeToolTip": "backend.Domain\\Models\\ReservationModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T21:08:42.236Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T21:08:42.236Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 37,
               "Title": "ReservationDTO.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Domain\\DTO\\Reservation\\ReservationDTO.cs",
               "RelativeDocumentMoniker": "backend.Domain\\DTO\\Reservation\\ReservationDTO.cs",
@@ -263,12 +655,11 @@
               "RelativeToolTip": "backend.Domain\\DTO\\Reservation\\ReservationDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T21:07:35.301Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T21:07:35.301Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 31,
               "Title": "ReservationService.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Application\\Services\\ReservationService.cs",
               "RelativeDocumentMoniker": "backend.Application\\Services\\ReservationService.cs",
@@ -276,51 +667,36 @@
               "RelativeToolTip": "backend.Application\\Services\\ReservationService.cs",
               "ViewState": "AgIAAHcAAAAAAAAAAAAwwBMAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T21:06:08.941Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T21:06:08.941Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 23,
               "Title": "ReservationController.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend\\Controllers\\ReservationController.cs",
               "RelativeDocumentMoniker": "backend\\Controllers\\ReservationController.cs",
               "ToolTip": "C:\\Project\\trips\\backend\\backend\\Controllers\\ReservationController.cs",
               "RelativeToolTip": "backend\\Controllers\\ReservationController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAswBkAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAApwBkAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T21:06:08.951Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T21:06:08.951Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "DestinationsService.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend.Application\\Services\\DestinationsService.cs",
               "RelativeDocumentMoniker": "backend.Application\\Services\\DestinationsService.cs",
               "ToolTip": "C:\\Project\\trips\\backend\\backend.Application\\Services\\DestinationsService.cs",
               "RelativeToolTip": "backend.Application\\Services\\DestinationsService.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAkwEcAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwCUAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-27T21:06:08.959Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "DestinationController.cs",
-              "DocumentMoniker": "C:\\Project\\trips\\backend\\backend\\Controllers\\DestinationController.cs",
-              "RelativeDocumentMoniker": "backend\\Controllers\\DestinationController.cs",
-              "ToolTip": "C:\\Project\\trips\\backend\\backend\\Controllers\\DestinationController.cs",
-              "RelativeToolTip": "backend\\Controllers\\DestinationController.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAcwE4AAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T16:05:01.652Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 40,
               "Title": "SelectedPlaceController.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend\\Controllers\\SelectedPlaceController.cs",
               "RelativeDocumentMoniker": "backend\\Controllers\\SelectedPlaceController.cs",
@@ -328,12 +704,11 @@
               "RelativeToolTip": "backend\\Controllers\\SelectedPlaceController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-25T12:31:42.758Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-25T12:31:42.758Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 10,
               "Title": "TripParticipantController.cs",
               "DocumentMoniker": "C:\\Project\\trips\\backend\\backend\\Controllers\\TripParticipantController.cs",
               "RelativeDocumentMoniker": "backend\\Controllers\\TripParticipantController.cs",
@@ -341,8 +716,7 @@
               "RelativeToolTip": "backend\\Controllers\\TripParticipantController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-25T12:31:41.708Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-25T12:31:41.708Z"
             }
           ]
         }

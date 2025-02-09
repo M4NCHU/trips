@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useResumeForm } from "src/hooks/useResumeForm";
-
 import { useCart, useRemoveFromCart } from "src/api/Cart";
 
 import { CartItem } from "src/types/Cart/CartItem";
@@ -10,6 +9,7 @@ import toast from "react-hot-toast";
 import { useCreateReservation } from "src/api/ResumeAPI";
 import SimpleForm from "src/components/Forms/SimpleForm";
 import ReviewAndSubmit from "src/components/Resume/ReviewAndSubmit";
+import useCookies from "src/hooks/useCookies";
 
 const steps = [
   { id: 1, label: "Personal Details" },
@@ -42,6 +42,7 @@ const Resume: FC = () => {
   const { mutate: createReservation, isPending: isCreatingReservation } =
     useCreateReservation();
 
+  const { get, set, remove } = useCookies();
   const [cart, setCart] = useState<CartItem[]>([]);
   const navigate = useNavigate();
 
@@ -78,8 +79,12 @@ const Resume: FC = () => {
       createReservation(cartData, {
         onSuccess: (data) => {
           console.log("Reservation created:", data);
-          toast.success("Reservation created successfully!");
-          navigate(`/payment/${data.id}`);
+
+          remove("cart");
+          setCart([]);
+
+          toast.success("Reservation completed successfully!");
+          navigate(`/profile/reservations`);
         },
         onError: (error: any) => {
           console.error("Failed to create reservation:", error);

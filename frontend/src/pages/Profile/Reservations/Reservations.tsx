@@ -65,23 +65,6 @@ const Reservations: FC<ReservationsProps> = () => {
       <div className="p-4">
         <h1 className="text-xl font-bold mb-4">Manage Reservations</h1>
 
-        <div className="flex flex-wrap gap-4 mb-4">
-          <FilterModal filters={filtersList} applyFilters={applyFilters} />
-
-          <Button
-            onClick={applyFilters}
-            className="bg-blue-500 text-white rounded px-4 py-2"
-          >
-            Apply Filters
-          </Button>
-          <Button
-            onClick={resetFilters}
-            className="bg-gray-500 text-white rounded px-4 py-2"
-          >
-            Reset Filters
-          </Button>
-        </div>
-
         <div className="p-0 md:p-4">
           <h1 className="text-xl font-bold mb-4">Reservations List</h1>
 

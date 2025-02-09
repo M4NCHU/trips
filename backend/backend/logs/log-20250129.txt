@@ -1,0 +1,306 @@
+2025-01-29 20:29:16.362 +01:00 [INF] User profile is available. Using 'C:\Users\Maciek\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-29 20:29:16.625 +01:00 [INF] Now listening on: https://localhost:7154
+2025-01-29 20:29:16.626 +01:00 [INF] Now listening on: http://localhost:5219
+2025-01-29 20:29:16.692 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-29 20:29:16.693 +01:00 [INF] Hosting environment: Development
+2025-01-29 20:29:16.694 +01:00 [INF] Content root path: C:\Project\trips\backend\backend
+2025-01-29 20:29:17.263 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger - null null
+2025-01-29 20:29:17.380 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger - 301 0 null 120.2796ms
+2025-01-29 20:29:17.384 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.html - null null
+2025-01-29 20:29:17.430 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.html - 200 null text/html;charset=utf-8 45.5396ms
+2025-01-29 20:29:17.510 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/swagger-ui.css - null null
+2025-01-29 20:29:17.511 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/swagger-ui-standalone-preset.js - null null
+2025-01-29 20:29:17.510 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.js - null null
+2025-01-29 20:29:17.510 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/swagger-ui-bundle.js - null null
+2025-01-29 20:29:17.543 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.js - 200 null application/javascript;charset=utf-8 32.1236ms
+2025-01-29 20:29:17.510 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/index.css - null null
+2025-01-29 20:29:17.536 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - null null
+2025-01-29 20:29:17.538 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/_vs/browserLink - null null
+2025-01-29 20:29:17.555 +01:00 [INF] Sending file. Request path: '/index.css'. Physical path: 'N/A'
+2025-01-29 20:29:17.560 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/index.css - 200 202 text/css 49.7869ms
+2025-01-29 20:29:17.562 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 47.6431ms
+2025-01-29 20:29:17.565 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-01-29 20:29:17.565 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-01-29 20:29:17.569 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/swagger-ui.css - 200 152035 text/css 58.9163ms
+2025-01-29 20:29:17.569 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/swagger-ui-standalone-preset.js - 200 230007 text/javascript 58.4284ms
+2025-01-29 20:29:17.577 +01:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-01-29 20:29:17.578 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/swagger-ui-bundle.js - 200 1426050 text/javascript 67.8334ms
+2025-01-29 20:29:17.592 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/_vs/browserLink - 200 null text/javascript; charset=UTF-8 54.0512ms
+2025-01-29 20:29:17.781 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - null null
+2025-01-29 20:29:17.815 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.3589ms
+2025-01-29 20:29:19.083 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Authentication/user - null null
+2025-01-29 20:29:19.084 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-29 20:29:19.084 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-29 20:29:19.089 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:29:19.089 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:29:19.089 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:29:19.090 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - 204 null null 6.3228ms
+2025-01-29 20:29:19.090 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - 204 null null 6.3265ms
+2025-01-29 20:29:19.091 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-29 20:29:19.091 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-29 20:29:19.099 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:29:19.129 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:29:19.195 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-29 20:29:19.195 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-29 20:29:19.195 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-29 20:29:19.206 +01:00 [INF] Route matched with {action = "GetCurrentUser", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentUser() on controller backend.Controllers.AuthenticationController (backend).
+2025-01-29 20:29:19.207 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2025-01-29 20:29:19.208 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2025-01-29 20:29:20.119 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-29 20:29:20.129 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2025-01-29 20:29:20.131 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-29 20:29:20.133 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-29 20:29:20.411 +01:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+2025-01-29 20:29:20.411 +01:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2025-01-29 20:29:20.426 +01:00 [INF] Executed DbCommand (35ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."LastName", a."LastUpdated", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__p_0
+LIMIT 1
+2025-01-29 20:29:20.448 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2025-01-29 20:29:20.482 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT d0."Id", d0."AvailablePlaces", d0."CategoryId", d0."CreatedAt", d0."Description", d0."GeoLocationId", d0."Location", d0."ModifiedAt", d0."Name", d0."PhotoUrl", d0."Price", g."Id", g."CreatedAt", g."Description", g."ItemId", g."Latitude", g."Longitude", g."ModifiedAt", g."Type"
+FROM (
+    SELECT d."Id", d."AvailablePlaces", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+    FROM "Destination" AS d
+    ORDER BY d."Id"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS d0
+LEFT JOIN "GeoLocation" AS g ON d0."GeoLocationId" = g."Id"
+ORDER BY d0."Id"
+2025-01-29 20:29:20.494 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.CategoryDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-29 20:29:20.499 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-01-29 20:29:20.502 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[backend.Domain.DTO.Authentication.AccountDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-29 20:29:20.515 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Authentication/user - null null
+2025-01-29 20:29:20.516 +01:00 [INF] Executed action backend.Controllers.AuthenticationController.GetCurrentUser (backend) in 1306.216ms
+2025-01-29 20:29:20.516 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 1306.1388ms
+2025-01-29 20:29:20.517 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:29:20.517 +01:00 [INF] Executed endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-29 20:29:20.518 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-29 20:29:20.520 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-29 20:29:20.520 +01:00 [INF] Route matched with {action = "GetCurrentUser", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentUser() on controller backend.Controllers.AuthenticationController (backend).
+2025-01-29 20:29:20.523 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 200 null application/json; charset=utf-8 1431.3128ms
+2025-01-29 20:29:20.523 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Authentication/user - 200 null application/json; charset=utf-8 1439.331ms
+2025-01-29 20:29:20.532 +01:00 [INF] Successfully fetched 8 destinations.
+2025-01-29 20:29:20.533 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.DestinationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-29 20:29:20.540 +01:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 1330.7755ms
+2025-01-29 20:29:20.541 +01:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-29 20:29:20.542 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - 200 null application/json; charset=utf-8 1450.5499ms
+2025-01-29 20:29:20.554 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg - null null
+2025-01-29 20:29:20.554 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250127215602_ab32d16d-2d54-4b4a-8326-7c233d0d3e1f.png - null null
+2025-01-29 20:29:20.554 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png - null null
+2025-01-29 20:29:20.560 +01:00 [INF] Sending file. Request path: '/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png'. Physical path: 'C:\Project\trips\backend\backend\Images\Destinations\Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png'
+2025-01-29 20:29:20.561 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20241228162018_11f0e4bb-3d14-4849-8d7c-1e224aef746d.png - 200 17742 image/png 7.4469ms
+2025-01-29 20:29:20.563 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250126161011_602b11ec-e3f6-41f2-90ef-520de043a450.jpg - null null
+2025-01-29 20:29:20.564 +01:00 [INF] Sending file. Request path: '/Destinations/Destinations_20250127215602_ab32d16d-2d54-4b4a-8326-7c233d0d3e1f.png'. Physical path: 'C:\Project\trips\backend\backend\Images\Destinations\Destinations_20250127215602_ab32d16d-2d54-4b4a-8326-7c233d0d3e1f.png'
+2025-01-29 20:29:20.566 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."LastName", a."LastUpdated", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."Id" = @__p_0
+LIMIT 1
+2025-01-29 20:29:20.567 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250127215602_ab32d16d-2d54-4b4a-8326-7c233d0d3e1f.png - 200 9801 image/png 13.3497ms
+2025-01-29 20:29:20.569 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106153302_e150f6ec-4895-4e6c-9a25-ca031f107fd4.jpg - null null
+2025-01-29 20:29:20.570 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2025-01-29 20:29:20.574 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[backend.Domain.DTO.Authentication.AccountDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-29 20:29:20.576 +01:00 [INF] Executed action backend.Controllers.AuthenticationController.GetCurrentUser (backend) in 54.2553ms
+2025-01-29 20:29:20.577 +01:00 [INF] Executed endpoint 'backend.Controllers.AuthenticationController.GetCurrentUser (backend)'
+2025-01-29 20:29:20.578 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Authentication/user - 200 null application/json; charset=utf-8 63.3486ms
+2025-01-29 20:29:20.627 +01:00 [INF] Sending file. Request path: '/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg'. Physical path: 'C:\Project\trips\backend\backend\Images\Destinations\Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg'
+2025-01-29 20:29:20.628 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106141016_54ffc463-cb60-42c0-b96c-223cc633cb9e.jpg - 200 4848495 image/jpeg 74.4652ms
+2025-01-29 20:29:20.636 +01:00 [INF] Sending file. Request path: '/Destinations/Destinations_20250126161011_602b11ec-e3f6-41f2-90ef-520de043a450.jpg'. Physical path: 'C:\Project\trips\backend\backend\Images\Destinations\Destinations_20250126161011_602b11ec-e3f6-41f2-90ef-520de043a450.jpg'
+2025-01-29 20:29:20.637 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250126161011_602b11ec-e3f6-41f2-90ef-520de043a450.jpg - 200 4848495 image/jpeg 74.0468ms
+2025-01-29 20:29:20.638 +01:00 [INF] Sending file. Request path: '/Destinations/Destinations_20250106153302_e150f6ec-4895-4e6c-9a25-ca031f107fd4.jpg'. Physical path: 'C:\Project\trips\backend\backend\Images\Destinations\Destinations_20250106153302_e150f6ec-4895-4e6c-9a25-ca031f107fd4.jpg'
+2025-01-29 20:29:20.640 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106153302_e150f6ec-4895-4e6c-9a25-ca031f107fd4.jpg - 200 4848495 image/jpeg 71.6491ms
+2025-01-29 20:29:20.647 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250109222932_f010c23d-ee99-4ddb-a4a5-18ed8e2018ef.jpg - null null
+2025-01-29 20:29:20.648 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106161239_e4037aea-c1ce-45ff-b1e2-d852032e0aed.jpg - null null
+2025-01-29 20:29:20.652 +01:00 [INF] Sending file. Request path: '/Destinations/Destinations_20250109222932_f010c23d-ee99-4ddb-a4a5-18ed8e2018ef.jpg'. Physical path: 'C:\Project\trips\backend\backend\Images\Destinations\Destinations_20250109222932_f010c23d-ee99-4ddb-a4a5-18ed8e2018ef.jpg'
+2025-01-29 20:29:20.653 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250109222932_f010c23d-ee99-4ddb-a4a5-18ed8e2018ef.jpg - 200 147817 image/jpeg 5.8353ms
+2025-01-29 20:29:20.655 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106161654_bad64b3c-2920-4cdf-bfa5-b5a5447c58c8.jpg - null null
+2025-01-29 20:29:20.738 +01:00 [INF] Sending file. Request path: '/Destinations/Destinations_20250106161239_e4037aea-c1ce-45ff-b1e2-d852032e0aed.jpg'. Physical path: 'C:\Project\trips\backend\backend\Images\Destinations\Destinations_20250106161239_e4037aea-c1ce-45ff-b1e2-d852032e0aed.jpg'
+2025-01-29 20:29:20.739 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106161239_e4037aea-c1ce-45ff-b1e2-d852032e0aed.jpg - 200 4848495 image/jpeg 90.9983ms
+2025-01-29 20:29:20.757 +01:00 [INF] Sending file. Request path: '/Destinations/Destinations_20250106161654_bad64b3c-2920-4cdf-bfa5-b5a5447c58c8.jpg'. Physical path: 'C:\Project\trips\backend\backend\Images\Destinations\Destinations_20250106161654_bad64b3c-2920-4cdf-bfa5-b5a5447c58c8.jpg'
+2025-01-29 20:29:20.758 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/Images/Destinations/Destinations_20250106161654_bad64b3c-2920-4cdf-bfa5-b5a5447c58c8.jpg - 200 4848495 image/jpeg 103.4619ms
+2025-01-29 20:38:42.939 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-29 20:38:42.940 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-29 20:38:42.945 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:38:42.946 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:38:42.947 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - 204 null null 7.5322ms
+2025-01-29 20:38:42.947 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - 204 null null 7.5887ms
+2025-01-29 20:38:42.948 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-29 20:38:42.949 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-29 20:38:42.955 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:38:42.957 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:38:42.958 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-29 20:38:42.958 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-29 20:38:42.958 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2025-01-29 20:38:42.959 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2025-01-29 20:38:42.962 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-29 20:38:42.962 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2025-01-29 20:38:42.963 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-29 20:38:42.963 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-29 20:38:42.996 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+2025-01-29 20:38:42.996 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2025-01-29 20:38:42.999 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2025-01-29 20:38:43.000 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT d0."Id", d0."AvailablePlaces", d0."CategoryId", d0."CreatedAt", d0."Description", d0."GeoLocationId", d0."Location", d0."ModifiedAt", d0."Name", d0."PhotoUrl", d0."Price", g."Id", g."CreatedAt", g."Description", g."ItemId", g."Latitude", g."Longitude", g."ModifiedAt", g."Type"
+FROM (
+    SELECT d."Id", d."AvailablePlaces", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+    FROM "Destination" AS d
+    ORDER BY d."Id"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS d0
+LEFT JOIN "GeoLocation" AS g ON d0."GeoLocationId" = g."Id"
+ORDER BY d0."Id"
+2025-01-29 20:38:43.001 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.CategoryDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-29 20:38:43.002 +01:00 [INF] Successfully fetched 8 destinations.
+2025-01-29 20:38:43.003 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 41.5867ms
+2025-01-29 20:38:43.003 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.DestinationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-29 20:38:43.004 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-29 20:38:43.005 +01:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 45.5422ms
+2025-01-29 20:38:43.006 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 200 null application/json; charset=utf-8 56.9902ms
+2025-01-29 20:38:43.006 +01:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-29 20:38:43.009 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - 200 null application/json; charset=utf-8 60.4572ms
+2025-01-29 20:38:45.181 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Cart/cart - null null
+2025-01-29 20:38:45.182 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:38:45.183 +01:00 [INF] Executing endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-29 20:38:45.187 +01:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCart() on controller backend.Controllers.CartController (backend).
+2025-01-29 20:38:45.189 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-29 20:38:45.220 +01:00 [INF] Fetching destinations for provided IDs.
+2025-01-29 20:38:45.223 +01:00 [INF] Executing query for Destination IDs: ["435e0c6e-5027-4f95-9e37-ecd391aec6c8","55892200-2e4b-4a88-9652-dd262c3800f6"]
+2025-01-29 20:38:45.283 +01:00 [INF] Executed DbCommand (36ms) [Parameters=[@__ids_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."AvailablePlaces", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+FROM "Destination" AS d
+WHERE d."Id" = ANY (@__ids_0)
+2025-01-29 20:38:45.284 +01:00 [INF] Fetched 2 destinations.
+2025-01-29 20:38:45.285 +01:00 [INF] Successfully fetched 2 destinations.
+2025-01-29 20:38:45.286 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.Collections.Generic.List`1[[backend.Domain.DTO.Cart.CartItemDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-29 20:38:45.302 +01:00 [INF] Executed action backend.Controllers.CartController.GetCart (backend) in 113.5748ms
+2025-01-29 20:38:45.303 +01:00 [INF] Executed endpoint 'backend.Controllers.CartController.GetCart (backend)'
+2025-01-29 20:38:45.304 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Cart/cart - 200 null application/json; charset=utf-8 123.0772ms
+2025-01-29 20:38:50.656 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Destination?northEastLat=51.596268045593526&northEastLng=0.10196685791015626&southWestLat=51.37306630297803&southWestLng=-0.2578353881835938&page=1&pageSize=20 - null null
+2025-01-29 20:38:50.657 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:38:50.658 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Destination?northEastLat=51.596268045593526&northEastLng=0.10196685791015626&southWestLat=51.37306630297803&southWestLng=-0.2578353881835938&page=1&pageSize=20 - 204 null null 1.9723ms
+2025-01-29 20:38:50.659 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?northEastLat=51.596268045593526&northEastLng=0.10196685791015626&southWestLat=51.37306630297803&southWestLng=-0.2578353881835938&page=1&pageSize=20 - null null
+2025-01-29 20:38:50.661 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:38:50.662 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-29 20:38:50.662 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2025-01-29 20:38:50.668 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-29 20:38:50.669 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-29 20:38:50.670 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-29 20:38:50.681 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__filter_NorthEastLat_0='?' (DbType = Double), @__filter_SouthWestLat_1='?' (DbType = Double), @__filter_NorthEastLng_2='?' (DbType = Double), @__filter_SouthWestLng_3='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+LEFT JOIN "GeoLocation" AS g ON d."GeoLocationId" = g."Id"
+WHERE g."Id" IS NOT NULL AND g."Latitude" <= @__filter_NorthEastLat_0 AND g."Latitude" >= @__filter_SouthWestLat_1 AND g."Longitude" <= @__filter_NorthEastLng_2 AND g."Longitude" >= @__filter_SouthWestLng_3
+2025-01-29 20:38:50.690 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__filter_NorthEastLat_0='?' (DbType = Double), @__filter_SouthWestLat_1='?' (DbType = Double), @__filter_NorthEastLng_2='?' (DbType = Double), @__filter_SouthWestLng_3='?' (DbType = Double), @__p_5='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT d."Id", d."AvailablePlaces", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price", g."Id", g."CreatedAt", g."Description", g."ItemId", g."Latitude", g."Longitude", g."ModifiedAt", g."Type"
+FROM "Destination" AS d
+LEFT JOIN "GeoLocation" AS g ON d."GeoLocationId" = g."Id"
+WHERE g."Id" IS NOT NULL AND g."Latitude" <= @__filter_NorthEastLat_0 AND g."Latitude" >= @__filter_SouthWestLat_1 AND g."Longitude" <= @__filter_NorthEastLng_2 AND g."Longitude" >= @__filter_SouthWestLng_3
+ORDER BY d."Id"
+LIMIT @__p_5 OFFSET @__p_4
+2025-01-29 20:38:50.692 +01:00 [INF] Successfully fetched 4 destinations.
+2025-01-29 20:38:50.692 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.DestinationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-29 20:38:50.693 +01:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 29.3866ms
+2025-01-29 20:38:50.694 +01:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-29 20:38:50.694 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?northEastLat=51.596268045593526&northEastLng=0.10196685791015626&southWestLat=51.37306630297803&southWestLng=-0.2578353881835938&page=1&pageSize=20 - 200 null application/json; charset=utf-8 35.3869ms
+2025-01-29 20:39:10.019 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-29 20:39:10.020 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-29 20:39:10.022 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:39:10.024 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:39:10.024 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Destination?page=1&pageSize=20 - 204 null null 4.9829ms
+2025-01-29 20:39:10.026 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - 204 null null 5.6121ms
+2025-01-29 20:39:10.031 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - null null
+2025-01-29 20:39:10.033 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-29 20:39:10.034 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:39:10.035 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:39:10.036 +01:00 [INF] Executing endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-29 20:39:10.037 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-29 20:39:10.037 +01:00 [INF] Route matched with {action = "GetDestinations", controller = "Destination"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.DestinationDTO]]] GetDestinations(backend.Domain.Filters.DestinationFilter, Int32, Int32) on controller backend.Controllers.DestinationController (backend).
+2025-01-29 20:39:10.038 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2025-01-29 20:39:10.040 +01:00 [INF] Base URL generated: https://localhost:7154
+2025-01-29 20:39:10.042 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-29 20:39:10.042 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2025-01-29 20:39:10.043 +01:00 [INF] Fetching destinations with filter and pagination. Page: 1, PageSize: 20
+2025-01-29 20:39:10.045 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Destination" AS d
+2025-01-29 20:39:10.046 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2025-01-29 20:39:10.049 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT d0."Id", d0."AvailablePlaces", d0."CategoryId", d0."CreatedAt", d0."Description", d0."GeoLocationId", d0."Location", d0."ModifiedAt", d0."Name", d0."PhotoUrl", d0."Price", g."Id", g."CreatedAt", g."Description", g."ItemId", g."Latitude", g."Longitude", g."ModifiedAt", g."Type"
+FROM (
+    SELECT d."Id", d."AvailablePlaces", d."CategoryId", d."CreatedAt", d."Description", d."GeoLocationId", d."Location", d."ModifiedAt", d."Name", d."PhotoUrl", d."Price"
+    FROM "Destination" AS d
+    ORDER BY d."Id"
+    LIMIT @__p_1 OFFSET @__p_0
+) AS d0
+LEFT JOIN "GeoLocation" AS g ON d0."GeoLocationId" = g."Id"
+ORDER BY d0."Id"
+2025-01-29 20:39:10.050 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2025-01-29 20:39:10.051 +01:00 [INF] Successfully fetched 8 destinations.
+2025-01-29 20:39:10.053 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.CategoryDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-29 20:39:10.053 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.DestinationDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-29 20:39:10.054 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 13.2809ms
+2025-01-29 20:39:10.056 +01:00 [INF] Executed action backend.Controllers.DestinationController.GetDestinations (backend) in 16.608ms
+2025-01-29 20:39:10.057 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-29 20:39:10.062 +01:00 [INF] Executed endpoint 'backend.Controllers.DestinationController.GetDestinations (backend)'
+2025-01-29 20:39:10.063 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 200 null application/json; charset=utf-8 29.4632ms
+2025-01-29 20:39:10.064 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Destination?page=1&pageSize=20 - 200 null application/json; charset=utf-8 32.5425ms
+2025-01-29 20:39:15.315 +01:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-29 20:39:15.318 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:39:15.318 +01:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7154/api/Category?page=1&pageSize=2 - 204 null null 3.13ms
+2025-01-29 20:39:15.320 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - null null
+2025-01-29 20:39:15.322 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:39:15.323 +01:00 [INF] Executing endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-29 20:39:15.323 +01:00 [INF] Route matched with {action = "GetCategories", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[backend.Domain.DTOs.PagedResult`1[backend.Domain.DTOs.CategoryDTO]]] GetCategories(Int32, Int32) on controller backend.Controllers.CategoryController (backend).
+2025-01-29 20:39:15.325 +01:00 [INF] Fetching paginated categories for page 1 with page size 2
+2025-01-29 20:39:15.326 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Category" AS c
+2025-01-29 20:39:15.328 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."CreatedAt", c."Description", c."Icon", c."ModifiedAt", c."Name", c."PhotoUrl"
+FROM "Category" AS c
+ORDER BY c."Name"
+LIMIT @__p_1 OFFSET @__p_0
+2025-01-29 20:39:15.329 +01:00 [INF] Executing OkObjectResult, writing value of type 'backend.Domain.DTOs.PagedResult`1[[backend.Domain.DTOs.CategoryDTO, backend.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-29 20:39:15.330 +01:00 [INF] Executed action backend.Controllers.CategoryController.GetCategories (backend) in 5.784ms
+2025-01-29 20:39:15.331 +01:00 [INF] Executed endpoint 'backend.Controllers.CategoryController.GetCategories (backend)'
+2025-01-29 20:39:15.332 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7154/api/Category?page=1&pageSize=2 - 200 null application/json; charset=utf-8 12.0393ms
+2025-01-29 20:39:22.435 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7154/api/Authentication/logout - application/x-www-form-urlencoded 0
+2025-01-29 20:39:22.437 +01:00 [INF] CORS policy execution successful.
+2025-01-29 20:39:22.438 +01:00 [INF] Executing endpoint 'backend.Controllers.AuthenticationController.Logout (backend)'
+2025-01-29 20:39:22.441 +01:00 [INF] Route matched with {action = "Logout", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Logout(LogoutDTO) on controller backend.Controllers.AuthenticationController (backend).
+2025-01-29 20:39:22.455 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-01-29 20:39:22.464 +01:00 [INF] Executed action backend.Controllers.AuthenticationController.Logout (backend) in 22.456ms
+2025-01-29 20:39:22.465 +01:00 [INF] Executed endpoint 'backend.Controllers.AuthenticationController.Logout (backend)'
+2025-01-29 20:39:22.466 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7154/api/Authentication/logout - 400 null application/problem+json; charset=utf-8 30.7428ms

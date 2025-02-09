@@ -17,7 +17,7 @@ const ItemHeader: FC<ItemHeaderProps> = ({ title, description }) => {
       </div>
       <div className="item-rating flex flex-col gap-2">
         <p>Excellent</p>
-        <span>604 Reviews</span>
+        <span></span>
       </div>
     </div>
   );

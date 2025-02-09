@@ -39,16 +39,10 @@ const Sidebar = () => {
               title="Trips"
               icon={<MdOutlineLocationOn />}
             />
-            <NavLink
-              link="/info"
-              title="Information"
-              icon={<IoMdInformationCircleOutline />}
-            />
           </ul>
         </div>
 
         <div className="sidebar-footer w-full bg-secondary rounded-xl py-3 px-4 flex items-center justify-center xl:justify-between">
-          <div className="hidden xl:block text-sm font-semibold">user</div>
           <div className="flex flex-col xl:flex-row gap-4 items-center text-2xl">
             <Switcher />
             <CiSettings className="" />

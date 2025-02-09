@@ -1,4 +1,6 @@
 import { routerType } from "../types/Router";
+import Accommodations from "./Accommodations/Accomodations";
+import DetailsAccomodation from "./Accommodations/Details";
 import Admin from "./Admin/Admin";
 import CategoryAdmin from "./Admin/Categories/Categories";
 import CreateDestination from "./Admin/Destinations/Create";
@@ -51,6 +53,20 @@ const pagesData: routerType[] = [
     path: "destination/:id/visit-place/create",
     element: <CreateVisitPlace />,
     title: "Create visit place",
+    isProtected: false,
+  },
+
+  {
+    path: "accommodations",
+    element: <Accommodations />,
+    title: "Accommodations",
+    isProtected: false,
+  },
+
+  {
+    path: "accommodation/:id",
+    element: <DetailsAccomodation />,
+    title: "Accommodation Details",
     isProtected: false,
   },
 

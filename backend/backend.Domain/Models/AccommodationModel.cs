@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using backend.Domain.DTOs;
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -20,6 +21,9 @@ namespace backend.Models
         public DateTime ModifiedAt { get; set; } = DateTime.Now;
         [NotMapped]
         public IFormFile ImageFile { get; set; }
+        public Guid? GeoLocationId { get; set; }
+        public GeoLocationDTO? GeoLocation { get; set; }
+
     }
 }
 

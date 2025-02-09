@@ -38,8 +38,6 @@ const Header = () => {
                   <span>{user.lastName}</span>
                 </div>
                 <CustomDropdownMenuItem label="Profile" href="/profile" />
-                <CustomDropdownMenuItem label="Contact" href="/contact" />
-                <CustomDropdownMenuItem label="About" href="/about" />
                 <CustomDropdownMenuItem label="Admin" href="/admin" />
                 <div className="my-2 h-[1px] bg-gray-800"></div>
                 <CustomDropdownMenuItem

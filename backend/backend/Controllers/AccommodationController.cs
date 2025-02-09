@@ -1,5 +1,6 @@
 ﻿using backend.Application.Services;
 using backend.Domain.DTOs;
+using backend.Domain.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -18,9 +19,9 @@ namespace backend.Controllers
 
         // GET: api/Accommodations
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AccommodationDTO>>> GetAccommodations(int page = 1, int pageSize = 2)
+        public async Task<ActionResult<PagedResult<AccommodationDTO>>> GetAccommodations([FromQuery] DestinationFilter filter, int page = 1, int pageSize = 2)
         {
-            var accommodations = await _accommodationService.GetAccommodations(page, pageSize);
+            var accommodations = await _accommodationService.GetAccomodations(filter, page, pageSize);
             return accommodations;
         }
 
@@ -40,11 +41,11 @@ namespace backend.Controllers
         }
 
         // POST: api/Accommodations
-        
+
         [HttpPost]
-        public async Task<ActionResult<AccommodationDTO>> PostAccommodation([FromForm] AccommodationDTO accommodation)
+        public async Task<ActionResult<AccommodationDTO>> PostAccommodation(CreateAccommodationDTO accomodationDTO, [FromForm] GeoLocationDTO geoLocation)
         {
-            return await _accommodationService.PostAccommodation(accommodation);
+            return await _accommodationService.PostAccommodation(accomodationDTO, geoLocation);
         }
 
         // DELETE: api/Accommodations/5

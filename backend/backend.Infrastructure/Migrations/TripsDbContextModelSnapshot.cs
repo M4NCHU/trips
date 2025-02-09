@@ -232,6 +232,23 @@ namespace backend.Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("backend.Domain.DTOs.GeoLocationDTO", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GeoLocationDTO");
+                });
+
             modelBuilder.Entity("backend.Domain.Models.GeoLocationModel", b =>
                 {
                     b.Property<Guid>("Id")
@@ -442,6 +459,9 @@ namespace backend.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<Guid?>("GeoLocationId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("text");
@@ -460,6 +480,8 @@ namespace backend.Infrastructure.Migrations
                         .HasColumnType("double precision");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GeoLocationId");
 
                     b.ToTable("Accommodation");
                 });
@@ -912,6 +934,15 @@ namespace backend.Infrastructure.Migrations
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("backend.Models.AccommodationModel", b =>
+                {
+                    b.HasOne("backend.Domain.DTOs.GeoLocationDTO", "GeoLocation")
+                        .WithMany()
+                        .HasForeignKey("GeoLocationId");
+
+                    b.Navigation("GeoLocation");
                 });
 
             modelBuilder.Entity("backend.Models.CartModel", b =>
